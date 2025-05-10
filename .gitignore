@@ -1,0 +1,77 @@
+.vscode/
+.DS_Store
+
+inOneWeekend
+
+# Cmake
+*.swp
+*.cmake
+*Cache*
+
+# Python Code
+.venv
+__pycache__
+*.pyc
+
+# Go
+ray-tracer
+ray-tracer-multi
+
+# C++
+*.o
+build
+build-multi
+
+# Rust
+target/
+Cargo.lock
+
+# General
+*.ppm
+*.time
+CMakeFiles/
+results/
+
+
+# Profiling
+*.prof*
+
+# Report
+
+*.aux
+*.bcf
+*.fdb_latexmk
+*.log
+*.synctex.gz
+*.synctex(busy)
+*.run.xml
+*.fls
+*.bbl
+*.blg
+*.out
+*.markdown.lua
+*.lof
+*.lot
+*.toc
+*.xmpi
+*.lua
+*.xdv
+*.*-SAVE-ERROR
+*.glo
+*.glsdefs
+*.ist
+*.acn
+*.acr
+*.alg
+*.glg
+*.gls
+creationdate.timestamp
+
+svg-inkscape/
+_markdown_report
+
+*.pdf
+
+# AI
+libtorch
+build
