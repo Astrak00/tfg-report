@@ -5,9 +5,11 @@
 \usepackage{enumitem}  % control item separation -> \begin{itemize}[nosep]
 \usepackage{lipsum}  % dummy text
 \usepackage{placeins}  % \FloatBarrier -> prevents figures and tables from passing that point
+\usepackage{hyperref}
 
 \usepackage{mymacros}  % report-specific macros
-
+\usepackage{glossaries}
+% \makenoidxglossaries
 
 % silence ht warnings
 \usepackage{silence}
@@ -63,13 +65,24 @@
 
   % ABSTRACT
   \begin{abstract}
-    \lipsum[1-3]
-    \keywords{Caca \sep culo \sep pedo \sep pis}
+
+  Nowadays, the importance of energy efficiency is increasing as more computationally expensive programs are being used by more and more people. The energy impact of running these programs is directly related with the programming language used to create the program as well as the design specifics. 
+
+  This thesis aims to bring a specific example of the power efficiency of three programming languages: Python, Go and C++. Each one having its differences and properties, ease of use and execution speed. Each of these languages has been selected as each one has a particular characteristic that can be representative of their respective category of language.
+
+  Compiled languages with no garbage collection and no managed runtime have usually had the best execution speed as they can reach byte-code for each specific platform, but in the last years, other methods have improved significantly, such as JIT (Just in Time) compiling
+
+  To achieve realistic results, these languages were tested in multiple configurations, on different hardware, core count and operating systems to be able to eliminate any outliers. 
+
+  Thus, this work will try showing the differences in energy consumption of different programming languages in a real world task, rendering a ray-traced image of multiple spheres with different materials and reflectivity.
+  
+    
+    \keywords{Compiled Language \sep Energy Efficiency \sep Interpreted Language \sep JIT \sep Ray-Tracing}
   \end{abstract}
 
 
   % TOC
-  \tableofcontents
+  \tableofcontents 
   \listoffigures
   \listoftables
 
@@ -80,15 +93,14 @@
     \includefrom{parts/}{state_of_the_art.tex}
     \includefrom{parts/}{analysis.tex}
     \includefrom{parts/}{design.tex}
-    \includefrom{parts/}{implementation.tex}
-    \includefrom{parts/}{validation.tex}
-    \includefrom{parts/}{planning.tex}
+    \includefrom{parts/}{evaluation.tex}
+    \includefrom{parts/}{planification.tex}
+    \includefrom{parts/}{economic.tex}
     \includefrom{parts/}{regulation.tex}
     \includefrom{parts/}{conclusions.tex}
     \newpage
     \import{parts/}{example.tex}
   \end{thesis}
-
 
   % BIBLIOGRAPHY
   \cleardoublepage

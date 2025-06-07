@@ -11,13 +11,69 @@
 % https://www.overleaf.com/learn/latex/Glossaries
 
 
-\newglossaryentry{caca} {
-  name = {caca},
-  description = {mucha caca}
+\newglossaryentry{CPP} {
+  name = {C++},
+  description = {Compiled language, created by Bjarne Stroustrup in 1979}
 }
 
-\newglossaryentrywithacronym{CAC}
-{cacaaaaaaa}
-{}
 
-\newacronym{gcd}{GCD}{Greatest Common Divisor}
+\newglossaryentry{RISC}{
+    name = {Reduced Instruction Set Computer},
+    description = {A Reduced Instruction Set Computer is a type of microprocessor architecture that utilizes a small, highly-optimized set of instructions rather than the highly-specialized set of instructions typically found in other architectures.},
+}
+
+\newglossaryentry{CISC}{
+    name = {Complex Instruction Set Computing},
+    description = {}
+}
+
+\newglossaryentry{goroutines}{
+    name = {goroutines},
+    description = {A goroutine is a lightweight thread managed by the Go runtime}
+}
+
+
+\newglossaryentrywithacronym{OOP}
+{Object-Oriented Programming}
+{Programming paradigm that organizes code into reusable units called "objects," which contain both data and the functions that operate on that data}
+
+
+\newacronym{jit}{JIT}{Just In Time Compiler}
+\newacronym{SIMD}{SIMD}{Single Instruction Multiple Data}
+
+
+
+\newglossaryentry{ai-accelerator}{
+    name = {AI Accelerator},
+    description = {An expansion card that usually has specific hardware to accelerate AI workloads}
+}   
+
+\newglossaryentry{cross-compilation}{
+    name = {cross compilation},
+    description = {Compiling a program with a different architecture than the host machine that is making the compilation.}
+}
+
+\newglossaryentrywithacronym{GIL}
+{Global Interpreter Lock}
+{The global interpreter lock is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once}
+
+\newglossaryentry{CPython}{
+    name = {CPython},
+    description = {Pythons default interpreter, with a \gls{GIL}, until version 3.13 which an experimental free-threaded version was created and version 3.14 will continue its development (both known as 3.13t and 3.14t respectively)}
+}
+
+\newglossaryentrywithacronym{VM}{Virtual Machine}{The Python virtual machine is the same as the interpreter, which turns python's code into machine ready instructions. Pythons default VM implementation if \gls{CPython}, but others exists such as Jython (Java), IronPython (.NET) or PyPy}
+
+\newglossaryentrywithacronym{GC}
+{Garbage Collector}
+{The garbage collector is an automatic memory management whose primary job is to reclaim memory that was allocated by the program but is no longer being used}
+
+\newglossaryentry{heap-allocation}{
+    name = {Heap Allocation},
+    description = {Heap allocation is the process of reserving a block of memory from a large, flexible pool (the heap) for program data whose size or lifetime is not known at compile time, allowing for dynamic memory management during program execution. As python does not know the sizes of most variables, it needs to perform heap allocations always.}
+}
+
+\newglossaryentry{polymorphism}{
+    name = {polymorphism},
+    description = {allows objects of different types to be treated as objects of a common superclass or interface}
+}

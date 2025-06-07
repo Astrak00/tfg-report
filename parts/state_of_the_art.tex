@@ -1,1 +1,251 @@
 \chapter{State of the Art}\label{chap:state-of-the-art}
+
+This chapter describes the paradigms and characteristics of different programming languages. Thus concepts of compiled languages, interpreters optimizations and parallelism are discussed with respect of the different programming languages.
+
+
+The purpose is to provide background information necessary to understand the study and present a clear justification for the decisions made
+
+
+\section{Energy Efficient Systems}
+
+An energy efficient system is defined as a system designed and optimized to performs its functions while consuming the minimum amount of energy possible, without compromising its performance, safety and reliability.
+
+As \textcite{Muralidhar2020Energy} put it, the average power a system draws is:
+$$P_{avg} = P_{dynamic} + P_{leakage}$$
+The dynamic power depends on the $V$ supply, the clock frequency, the node capacitance and the switching activity. This power can be reduced by reducing the load on the chip or by manually setting a limit on how much voltage the chip can draw (known as undervolting \cite{undervolting-effects})
+
+
+\section{System Architectures}
+
+While the energy efficiency of a system is significantly affected by connected devices (e.g., a graphics card or an \gls{ai-accelerator}), this study excludes any external devices and expansion cards. Therefore, the processor architecture is the primary factor determining energy consumption on the system.
+
+\subsection{x86 Architecture}
+The x86 architecture is the most widely adopted in the world of desktop and server computers, whose market share is almost entirely shared by \href{https://amd.com}{AMD} and \href{https://intel.com}{Intel} who created it in 1978. Originally called x86-16, due to the 16 bit word size, it debuted in the Intel 8086 a single core, a $3 \mu m$ node processor.
+
+Nowadays, the technology has improved, the architecture is now called x86-64, a 64 bit extension, created by AMD, and releases the full specification in August 2000. From 2006 onward, the two companies have been developing multi-core processors, adding further \gls{SIMD} Extensions such as AVX-512 \cite{intel-avx512}. Then came the integrated graphics and finally Power Efficiency Focus. 
+
+Then, a new paradigm came, instead of having a homogeneous set of cores, cores focused on performance and efficiency were added to the same package, the big.LITTLE architecture. This set of heterogeneous cores meant the scheduler had to be changed in the operating systems, to better allocate more demanding programs on high performing cores and lower important tasks, such as background jobs to the highly efficient cores. This technology was released by Intel on the 12th generation Intel core processors, using Intel 7 (a $7 nm$ node). This approach was revolutionary for power efficiency as \textcite{big-little} state.
+
+
+\subsection{ARM Architecture}
+The ARM (Advanced RISC Machine) is the newest architecture that has reached the global scale. Developed in 1986, the goal of this new 32 bit architecture was the simplicity. As \textcite{arm-story} puts it, the energy efficient came later. This allowed the ARM architecture to dominate on the mobile sector, specially on smartphones, which run on batteries.
+
+The characteristics of this ISA are a reduced set of instructions (RISC), which  allows processors to have fewer transistors than CISC architectures such as x86, resulting in lower cost, lower temperatures and lower power consumption.
+
+Currently, this technology is not only used in low-power light devices, but many laptops, and even desktops are using ARM chips due to their power efficiency and performance.
+
+
+
+\section{Programming Languages}
+
+In this section, the different programming languages that have been chosen will be discussed, as well as why other similar languages were not.
+
+\subsection{Go: Compiled Language with an Embedded Managed Runtime}
+
+Go is a language developed by \href{https://google.com}{Google}, released in 2009, focused on concurrency. It has a runtime which manages the \gls{goroutines}. As described by \cite{rosecrance2019garbage}, GO has a Garbage Collector, which means while the program is running, there needs to be a thread checking for unused memory structures. 
+
+From \autoref{tab:go_characteristics}, Go is statically typed and compiled, which makes it have a good start as an efficient programming language. But from the \autoref{tab:go_energy_characteristics}, we can observe go has a managed runtime, which means the energy consumption will be higher than other languages that do not have this. This runtime is the section of the program in charge of running and scheduling \gls{goroutines}. This is why go binaries have a bigger minimum size as the runtime has to be fitted in the binary, which is great for \gls{cross-compilation}, but not great for either energy efficiency or performance.
+
+This language was designed for backend tasks, handling thousands of simultaneous connections, while having an easy syntax for any programmer. Some companies that use this are Uber, Docker, Twitch and, although not mainly, Netflix.  %% Should I add urls to these companies?
+
+
+
+\begin{table}[h]
+	\centering
+	\caption{Go Language General Characteristics}
+	\label{tab:go_characteristics}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{0.35\textwidth} >{\raggedright\arraybackslash}p{0.55\textwidth}}
+		\toprule
+		\multicolumn{2}{c}{\textbf{General Characteristics}} \\
+		\midrule
+		\textbf{Characteristic}                      & \textbf{Description}\\
+		\midrule
+		Concurrency Support (Goroutines \& Channels) & Lightweight, concurrent execution units (goroutines) and communication primitives (channels) managed by the Go runtime, enabling efficient parallel processing and simplified concurrent programming. \\
+		\addlinespace
+		Statically Typed                             & Types are checked at compile-time, ensuring type safety and early error detection, contributing to robust applications. \\
+		\addlinespace
+		Compiled Language                            & Code is compiled directly to native machine code, resulting in fast execution and typically producing a single, self-contained executable. \\
+		\addlinespace
+		Comprehensive Standard Library               & Provides a rich set of packages for common tasks like networking, I/O, string manipulation, JSON handling, and cryptography, reducing reliance on external libraries. \\
+		\addlinespace
+		Garbage Collection                           & Automatic memory management simplifies development by handling memory allocation and deallocation, helping prevent common memory-related bugs like leaks and dangling pointers. \\
+		\addlinespace
+		Fast Compilation Times                       & The Go compiler is designed for speed, significantly reducing development iteration cycles and build times, especially for large projects.\\
+		\midrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Go Language Characteristics on Energy Efficiency}
+	\label{tab:go_energy_characteristics}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{0.35\textwidth} >{\raggedright\arraybackslash}p{0.55\textwidth}}
+		\toprule
+		\multicolumn{2}{c}{\textbf{Characteristics Impacting Performance \& Energy Efficiency}} \\
+		\midrule
+		\textbf{Characteristic}                            & \textbf{Description (Impact on Performance/Energy)}\\
+		\midrule
+		Efficient Concurrency (Goroutines \& Channels)     & Lightweight goroutines (often KBs in stack size) and efficient channel operations allow for high levels of concurrency with low overhead. \\
+		\addlinespace
+		Managed runtime                                    & Go has a managed runtime which manages memory deallocation and \gls{goroutines}. \\
+		\addlinespace
+		Compilation to Native Code                         & Produces efficient machine code directly executable by the CPU, performing some optimizations. \\
+		\addlinespace
+		Optimized Standard Library                         & Many standard library functions, especially in areas like networking and cryptography, are highly optimized, often using assembly for critical sections. \\
+		\addlinespace
+		Static Typing \& Compiler Optimizations             & Type safety allows for certain compiler optimizations like devirtualization and inlining. \\
+		\addlinespace
+		Value Types and Stack Allocation                   & Go prefers value types and encourages stack allocation where possible, reducing heap allocations and GC pressure. \textit{Stack operations are faster and more energy-efficient than heap operations.} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\subsection{Python: Interpreted Programming Language}
+
+\begin{table}[h]
+	\centering
+	\caption{Python Language General Characteristics}
+	\label{tab:python_characteristics}
+	\begin{tabular}{
+		>{\raggedright\arraybackslash}p{0.35\textwidth} % Characteristic
+		>{\raggedright\arraybackslash}p{0.55\textwidth}  % Python Description
+	}
+		\toprule
+		\multicolumn{2}{c}{\textbf{General Characteristics}} \\
+		\midrule
+		\textbf{Characteristic}      & \textbf{Python Description}\\
+		\midrule
+		Bad Concurrency Support      & Offers threading (often limited by the \gls{GIL} for CPU-bound tasks in \gls{CPython}), multiprocessing library (for parallelism) \\
+		\addlinespace
+		Typing System                & Dynamically Typed: Type checking occurs at runtime. Optional static type hinting (\href{https://peps.python.org/pep-0484/}{PEP 484}) for static analysis. \\
+		\addlinespace
+		Language Nature              & Interpreted Language: Typically compiled to bytecode executed by a \gls{VM}. \\
+		\addlinespace
+		Standard Library             & Extensive standard library: Offers a vast array of modules for diverse tasks, speeding up development. \\
+		\addlinespace
+		Garbage Collection           & Automatic memory management via reference counting and a cyclic garbage collector. \\
+		\addlinespace
+		Execution Model              & Interpretation: Code is interpreted, generally offering platform independence and ease of use. \\
+		\midrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Python Language Characteristics Impacting Performance \& Energy Efficiency}
+	\label{tab:python_energy_characteristics}
+	\begin{tabular}{
+		>{\raggedright\arraybackslash}p{0.35\textwidth} % Characteristic
+		>{\raggedright\arraybackslash}p{0.55\textwidth}  % Python Description
+	}
+		\toprule
+		\multicolumn{2}{c}{\textbf{Characteristics Impacting Performance \& Energy Efficiency}} \\
+		\midrule
+		\textbf{Characteristic}                 & \textbf{Python Description (Impact on Performance/Energy)}\\
+		\midrule
+		Concurrency Model Efficiency            & Threading (\gls{GIL} in \gls{CPython} limits CPU-bound parallelism), Multiprocessing (bypasses the \gls{GIL}, but has a higher overhead). Overall concurrency overhead is extremely high for CPU-bound tasks. \\
+		\addlinespace
+		Managed Runtime                         & The Python interpreter manages memory and execution. Interpreter overhead and dynamic nature impacts the raw performance and energy use substantially. \\
+		\addlinespace
+		Execution Strategy                      & Bytecode Interpretation: Code is compiled to bytecode and run on a \gls{VM}. \\
+		\addlinespace
+		Optimized Standard Library              & Performance-critical modules often implemented in C. Python call overhead still exists. \\
+		\addlinespace
+		Typing                                  & Dynamic typing limits static optimizations. \\
+		\addlinespace
+		Memory Allocation Strategy              & Object Model and \gls{heap-allocation}: Predominantly uses heap-allocated objects and references, potentially increasing \gls{GC} load, memory footprint, and access latency compared to stack-based value types. \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\subsubsection{Interpreters}
+
+%% PyPy: A \glsdisp{jit}{JIT} implementation of Python
+
+%% As we can see from \autoref{diovdnsoc} kjsdanvjadfngja jdsfs sfsj gap gdfibgdisb dsijb idsfbvidsb ds
+
+TO DO: Execution Strategy: JIT compilers (e.g., PyPy) can optimize hot code paths to machine code at runtime, improving performance but with potential warmup costs.
+
+
+TO DO: Typing \& Compiler Optimizations: \glsdisp{jit} can apply runtime type-based optimizations. Type hints do not directly provide runtime performance benefits in CPython.
+
+
+\subsection{C++: Directly Compiled, Unmanaged Language}
+C++ is one of the most famous language when it comes to high performance computing applications. Based on the programming language C, released in 1978 as a high-level language at the time, compared to assembly.
+
+
+\begin{table}[h]
+	\centering
+	\caption{C++ Language General Characteristics}
+	\label{tab:cpp_characteristics}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{0.35\textwidth} >{\raggedright\arraybackslash}p{0.55\textwidth}}
+		\toprule
+		\multicolumn{2}{c}{\textbf{General Characteristics}} \\
+		\midrule
+		\textbf{Characteristic}           & \textbf{Description}\\
+		\midrule
+		\gls{OOP}                         & Supports encapsulation, inheritance, and \gls{polymorphism}, enabling modular and reusable code. \\
+		\addlinespace
+		Statically Typed                  & Types are checked at compile-time, catching errors early and aiding optimization.\\
+		\addlinespace
+		Compiled Language                 & Code is compiled directly to native machine code for fast execution.\\
+		\addlinespace
+		Portability                       & Well-written code can be compiled and run on various platforms.\\
+		\addlinespace
+		Rich Standard Library             & Provides optimized data structures and algorithms (e.g., vectors, maps, sort, templates).\\
+		\addlinespace
+		Support for Multiple Paradigms    & Supports procedural, object-oriented, and generic programming.\\
+		\midrule
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[h]
+	\centering
+	\caption{C++ Language Characteristics on Energy Efficiency}
+    \label{tab:cpp_energy_characteristics}
+	\begin{tabular}{>{\raggedright\arraybackslash}p{0.35\textwidth} >{\raggedright\arraybackslash}p{0.55\textwidth}}
+		\multicolumn{2}{c}{\textbf{Characteristics Impacting Performance \& Energy Efficiency}} \\
+		\midrule
+		\textbf{Characteristic}                            & \textbf{Description (Impact on Performance/Energy)}\\
+		\midrule
+		Direct Memory Management                           & Allows fine-tuned memory accesing and managing (e.g., `new`/`delete`), avoiding garbage collection. \textit{Leads to fewer CPU cycles for memory tasks, saving energy.}\\
+		\addlinespace
+		Low-Level Capabilities                             & Pointers and bitwise operations enable direct hardware interaction. \\
+		\addlinespace
+		Compilation to Native Code \& Optimizing Compilers & Mature compilers generate highly optimized machine code. \textit{Faster execution means shorter active CPU time, lowering energy use.}\\
+		\addlinespace
+		Zero-Cost Abstractions                             & High-level features (classes, templates) aim to have no runtime overhead if unused or compiled efficiently.\\
+		\addlinespace
+		Templates and Generic Programming                  & Code specialized at compile-time for specific types, avoiding runtime overhead.\\
+		\addlinespace
+		RAII (Resource Acquisition Is Initialization)      & Deterministic resource management prevents leaks and improves stability.\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+As we can see from \autoref{tab:cpp_characteristics}, there are many characteristics on why the language is one of the most used for high performance software, for example, \href{https://blender.org}{blender} or \href{https://www.foundry.com/products/nuke-family}{nuke}. This known examples and the multiple tests performed in multiple courses during the computer science degree.
+
+If we take into account the energy efficiency, from \autoref{tab:cpp_energy_characteristics} we can observe that being a compiled language, with multiple optimizations at the compilation level, zero-cost abstractions, no runtime and direct memory management makes it one of the best low energy consumption language in theory.
+In this section, the different programming languages that have been chosen will be discussed, as well as why other similar languages were not.
+
+\subsubsection{Compilers}
+
+
+
+
+
+\subsection{Other languages not used}
+
+%% Talk about rust vs C++, same backend with LLVM 
+%% Add \gls to LLVM
+%% Make a table comparing some aspects with C++, GO and Python?
+%% Rust (Same as C++, even same backend on Clang, LLVM), JavaScript  (same as Python, interpreted)
+%% No se Java
+
+
+\section{Previous Benchmarks}
+
+%% El que me envió JD

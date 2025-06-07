@@ -1,21 +1,81 @@
 \chapter{Introduction}\label{chap:introduction}
-caca
-\section{Motivation}\label{sec:motivation}
 
+\definecolor{otherrenew}{RGB}{120,150,100}
+\definecolor{biofuels}{RGB}{150,120,90}
+\definecolor{solar}{RGB}{220,150,120}
+\definecolor{wind}{RGB}{60,80,120}
+\definecolor{hydro}{RGB}{100,140,200}
+\definecolor{nuclear}{RGB}{80,120,120}
+\definecolor{natgas}{RGB}{120,100,150}
+\definecolor{oil}{RGB}{180,120,120}
+\definecolor{coal}{RGB}{120,80,80}
+\definecolor{biomass}{RGB}{160,140,100}
+
+
+\section{Motivation}\label{sec:motivation}
+Energy consumption in the software industry has been raising over the years up to a point that it is now significant at a world energy consumption. % `Insert reference to papers that states how much energy software produces, not in embedded but in laptops, renderer (not washingmachines)`
+
+About $1.5\%$ of the world's energy consumption is to be blamed on data centers and server farms. These numbers may not represent much, but from the total $183,230$ TWh produced in 2023 \cite{energy-production-consumption} only $23,746$ TWh come from a renewable source as it can be seen from \autoref{fig:electricity_2023}, which comes to 12.96\%.
+
+Knowing which language to use for each project is decisive not only in regards to the expertise one or their team might have on that language, but also the performance and language characteristics. If you want to develop a high-performance stock trader you would never think about using a high level language such as python or Perl, but you would try sticking to compiled languages such as Java C, C++, Java or Rust. 
+
+Thus, the main motivation for this project lies in studying 3 different programming languages, with each one having peculiar characteristics, to test their respective speed and power consumption in different platforms and architectures. 
+
+This comes from the idea that the program efficiency does not come from the language itself, but the implementation of the algorithm that the programmer chooses. The language helps, but choosing the optimal algorithm is much more important.
+
+My personal take in this project comes from my hesitation in choosing a topic to specialize in inside the Computer Science area. Having seen and used many of these languages in multiple courses along these 4 years has made me realize the importance of choosing the correct language for each problem.
+
+
+\begin{figure}
+    \centering
+    \begin{tabular}{>{\raggedright}p{5cm}r}
+        \multicolumn{2}{l}{\textbf{\Large 2023}} \\
+        \multicolumn{2}{l}{in terawatt-hours} \\[0.5em]
+        \toprule
+            \textcolor{otherrenew}{\rule{0.4cm}{0.4cm}} Other renewables & 2,428 TWh \\
+            \textcolor{biofuels}{\rule{0.4cm}{0.4cm}} Modern biofuels & 1,318 TWh \\
+            \textcolor{solar}{\rule{0.4cm}{0.4cm}} Solar & 4,264 TWh \\
+            \textcolor{wind}{\rule{0.4cm}{0.4cm}} Wind & 6,040 TWh \\
+            \textcolor{hydro}{\rule{0.4cm}{0.4cm}} Hydropower & 11,014 TWh \\
+            \textcolor{nuclear}{\rule{0.4cm}{0.4cm}} Nuclear & 6,824 TWh \\
+            \textcolor{natgas}{\rule{0.4cm}{0.4cm}} Natural gas & 40,102 TWh \\
+            \textcolor{oil}{\rule{0.4cm}{0.4cm}} Oil & 54,564 TWh \\
+            \textcolor{coal}{\rule{0.4cm}{0.4cm}} Coal & 45,565 TWh \\
+            \textcolor{biomass}{\rule{0.4cm}{0.4cm}} Traditional biomass & 11,111 TWh \\
+        \midrule
+        \textbf{Total} & \textbf{183,230 TWh} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Global electricity generation by source in 2023}
+    \label{fig:electricity_2023}
+\end{figure}
 
 
 \section{Objectives}\label{sec:objectives}
 
+The main goal of this project is the study and analysis of three implementations of a ray-tracer program, measuring the energy consumption as well as the time each program takes to complete. It should be also noted that the platform in which the program is being run affects the energy consumption of the program. 
+
+To perform this, I have improved the code from a well-known book called Ray Tracing in One Weekend
+\cite{Shirley2025RTW1}, translating it to go and python, updating the code so that it could handle parallel rendering. 
+
+Once the code is created, the methodology for testing the different codes need to also be created. \begin{itemize}
+    \item x86 Intel Xeon Based
+    \item ARM Apple Icestorm \& Firestorm
+    \item x86 Zen 2 AMD ????
+    \item ARM Cortex-A76 CPU - Raspberry Pi 5
+\end{itemize} 
+
 \section{Document Structure}\label{sec:structure}
 The document contains the following chapters:
 \begin{itemize}
-  \item \chapterref{introduction}, .
-  \item \chapterref{state-of-the-art}, .
-  \item \chapterref{analysis}, .
-  \item \chapterref{design}, .
-  \item \chapterref{implementation}, .
-  \item \chapterref{validation}, .
-  \item \chapterref{planning}, .
-  \item \chapterref{regulation},.
-  \item \chapterref{conclusions}, .
+  \item \chapterref{introduction}, details the motivation of the project.
+  \item \chapterref{state-of-the-art}, describes the main points of interest in order to
+fully understand the project. Theoretical and technological issues are addressed.
+  \item \chapterref{analysis}, general description of the project and its requirements.
+  \item \chapterref{design}, describes the most relevant design decisions with the multi-language renderers and their multi-threaded implementation.
+  \item \chapterref{evaluation}, the analysis and benchmarks are performed and the results are exposed and discussed.
+  \item \chapterref{economic-env}, provides a comprehensive account of the project's developmental costs and its associated socio-economic implications.
+  \item \chapterref{planification}, describes the organization of the project along the development.
+  \item \chapterref{regulation}, indicates the licenses under which the project is distributed.
+  \item \chapterref{conclusions}, briefly analyzes the results obtained and states the possible future objectives of the project.
 \end{itemize}
