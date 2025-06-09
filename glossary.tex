@@ -17,19 +17,24 @@
 }
 
 
-\newglossaryentry{RISC}{
-    name = {Reduced Instruction Set Computer},
-    description = {A Reduced Instruction Set Computer is a type of microprocessor architecture that utilizes a small, highly-optimized set of instructions rather than the highly-specialized set of instructions typically found in other architectures.},
-}
+\newglossaryentrywithacronym{RISC}
+{Reduced Instruction Set Computer}
+{A Reduced Instruction Set Computer is a type of microprocessor architecture that utilizes a small, highly-optimized set of instructions rather than the highly-specialized set of instructions typically found in other architectures.}
+
 
 \newglossaryentry{CISC}{
     name = {Complex Instruction Set Computing},
     description = {}
 }
 
-\newglossaryentry{goroutines}{
-    name = {goroutines},
+\newglossaryentry{goroutine}{
+    name = {goroutine},
     description = {A goroutine is a lightweight thread managed by the Go runtime}
+}
+
+\newglossaryentry{channel}{
+    name = {channel},
+    description = {TODO}
 }
 
 
@@ -62,7 +67,9 @@
     description = {Pythons default interpreter, with a \gls{GIL}, until version 3.13 which an experimental free-threaded version was created and version 3.14 will continue its development (both known as 3.13t and 3.14t respectively)}
 }
 
-\newglossaryentrywithacronym{VM}{Virtual Machine}{The Python virtual machine is the same as the interpreter, which turns python's code into machine ready instructions. Pythons default VM implementation if \gls{CPython}, but others exists such as Jython (Java), IronPython (.NET) or PyPy}
+\newglossaryentrywithacronym{VM}
+{Virtual Machine}
+{The Python virtual machine is the same as the interpreter, which turns python's code into machine ready instructions. Pythons default VM implementation if \gls{CPython}, but others exists such as Jython (Java), IronPython (.NET) or PyPy}
 
 \newglossaryentrywithacronym{GC}
 {Garbage Collector}
@@ -76,4 +83,75 @@
 \newglossaryentry{polymorphism}{
     name = {polymorphism},
     description = {allows objects of different types to be treated as objects of a common superclass or interface}
+}
+
+\newacronym{ai}{AI}{Artificial Intelligence}
+
+\newacronym{PVM}{PVM}{Python's Virtual Machine}
+
+
+\newglossaryentry{bytecode}{
+    name = {bytecode},
+    description = {Bytecode is a set of instructions for a hypothetical machine, for example the Python Virtual Machine (PVM). or the \href{https://www.java.com/en/}{Java} Virtual Machine (JVM)}
+}
+
+\newglossaryentrywithacronym{AST}
+{Abstract Syntax Tree}
+{An abstract syntax tree is a data structure used in computer science to represent the structure of a program or code snippet. It is a tree representation of the abstract syntactic structure of text (often source code) written in a formal language.}
+
+
+\newacronym{cpu}{CPU}{Central Processing Unit}
+\newacronym{gpu}{GPU}{Graphics Processing Unit}
+\newacronym{isa}{ISA}{Instruction Set Architecture}
+\newacronym{cisc}{CISC}{Complex Instruction Set Computer}
+\newacronym{os}{OS}{Operating System}
+
+\newglossaryentry{gc-cycle}{
+    name = {Garbage Collection cycle},
+    description = {A Garbage Collection Cycle is a single execution of the garbage collection system that identifies and reclaims memory from objects no longer in use by an application.}
+}
+
+\newglossaryentry{mutex}{
+    name = {mutex},
+    description = {TODO}
+}
+
+\newacronym{raii}{RAII}{Resource Acquisition Is Initialization}
+
+
+\newglossaryentry{tri-color-mark-and-sweep}{
+    name = {tri-color mark and sweep},
+    description = {TODO}
+}
+
+\newacronym{i-o}{I/O}{Input / Output}
+\newacronym{json}{JSON}{JavaScript Object Notation}
+\newglossaryentry{c-extension}{
+    name = {C extension},
+    description = {TODO}
+}
+
+\newglossaryentry{LLVM}{
+    name = {LLVM},
+    description = {LLVM began as a research project at the University of Illinois, with the goal of providing a modern compilation strategy capable of supporting both static and dynamic compilation of arbitrary programming languages. The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. Despite its name, LLVM has little to do with traditional virtual machines. The name "LLVM" itself is not an acronym; it is the full name of the project.}
+}
+
+\newglossaryentry{numpy}{
+    name = {numpy},
+    description = {The most popular python package for scientific computation with python}
+}
+\newglossaryentry{PyTorch}{
+    name = {PyTorch},
+    description = {An open-source machine learning framework for Python, providing GPU-accelerated tensor computation and automatic differentiation for building and training deep neural networks.}
+}
+
+\newglossaryentry{V8}{
+    name = {V8},
+    description = {Google's open-source, high-performance JavaScript and WebAssembly engine, written in C++, that powers the Google Chrome browser and the Node.js runtime environment}
+}
+
+\newacronym{ram}{RAM}{Random Acces Memory}
+\newglossaryentry{fortran}{
+    name = {fortran},
+    description = {Fortran was a pioneering, high-level compiled programming language (short for Formula Translation) developed in the 1950s, which remains widely used for its high performance in scientific, engineering, and numerical computation.}
 }

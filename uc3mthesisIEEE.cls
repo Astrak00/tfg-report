@@ -424,10 +424,12 @@
 	showstringspaces = false,
 	commentstyle=\color{gray45},
 	%
-	% numbers=left,
-	% numbersep=15pt,
-	% numberstyle=\tiny,
-	% numberfirstline = false,
+    % Number line in a code block
+	numbers=left,
+	numbersep=15pt,
+	numberstyle=\tiny,
+	numberfirstline = false,
+    % Comment until here to remove the line numbers in a code block
 	breaklines=true,
 	xleftmargin=\parindent
 }
@@ -435,7 +437,8 @@
 \captionsetup*[lstlisting]{font=small, labelsep=period}
 
 \lstset{style=estilo}
-\renewcommand{\lstlistingname}{\uppercase{Código}}
+%% Custom Listing name
+%% \renewcommand{\lstlistingname}{Listing}
 
 
 

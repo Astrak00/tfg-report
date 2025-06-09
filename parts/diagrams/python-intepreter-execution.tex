@@ -1,0 +1,62 @@
+\tikzset{
+  block/.style = {
+    rectangle,
+    draw,
+    fill=blue!20,
+    text width=10em,
+    text centered,
+    rounded corners,
+    minimum height=2em
+  },
+  io/.style = {
+    trapezium,
+    trapezium left angle=70,
+    trapezium right angle=110,
+    draw,
+    fill=orange!20,
+    text centered,
+    minimum height=1em
+  },
+  line/.style = {draw, -latex'}
+}
+
+\begin{figure}
+  \centering
+  % Define node distance globally for the picture
+  \begin{tikzpicture}[node distance = 1cm and 1.5cm]
+    % Place nodes using the positioning library syntax
+    \node [io] (bytecode) {Bytecode Sequence};
+
+    \node [block, below = of bytecode] (fetch)
+      {a. Fetch next bytecode instruction};
+
+    \node [block, below = of fetch] (decode)
+      {b. Determine instruction's meaning (Decode)};
+
+    \node [block, below = of decode] (execute)
+      {c. Execute the instruction};
+
+    \node [block, below = of execute] (move)
+      {d. Move to next instruction};
+
+    \node [io, right = of execute, xshift=1.5cm, text width=5em] (data)
+      {Manipulate Call Stack \& Data Heap};
+
+    % Draw arrows (your path commands were already perfect)
+    \path [line] (bytecode) -- (fetch);
+    \path [line] (fetch) -- (decode);
+    \path [line] (decode) -- (execute);
+    \path [line] (execute) -- (move);
+
+    % Arrow showing interaction with data/stack
+    \path [draw, <->, -latex'] (execute.east) --
+      node[midway, above, text width=2cm, text centered] {Read/Write}
+      (data.west);
+
+    % The loop back arrow using orthogonal paths
+    \path [line] (move.west) -- ++(-1.5, 0) |- (fetch);
+
+  \end{tikzpicture}
+  \caption{Python’s Execution loop}
+  \label{fig:python-loop}
+\end{figure}
