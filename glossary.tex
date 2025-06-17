@@ -38,9 +38,7 @@
 }
 
 
-\newglossaryentrywithacronym{OOP}
-{Object-Oriented Programming}
-{Programming paradigm that organizes code into reusable units called "objects," which contain both data and the functions that operate on that data}
+
 
 
 \newacronym{jit}{JIT}{Just In Time Compiler}
@@ -154,4 +152,36 @@
 \newglossaryentry{fortran}{
     name = {fortran},
     description = {Fortran was a pioneering, high-level compiled programming language (short for Formula Translation) developed in the 1950s, which remains widely used for its high performance in scientific, engineering, and numerical computation.}
+}
+
+\newglossaryentrywithacronym{NUMA}
+{Non-Uniform Memory Access}
+{It's a computer memory design where the time it takes to access memory depends on which processor is accessing which memory location}
+
+\newacronym{CCX}{CCX}{Core Complex}
+\newacronym{fov}{FOV}{Field of Vision}
+
+\newglossaryentrywithacronym{oop}
+{Object-Oriented Programming}
+{Programming paradigm that organizes code into reusable units called "objects," which contain both data and the functions that operate on that data}
+
+
+\newglossaryentry{openMP}{
+    name = {openMP},
+    description = {OpenMP is an Application Program Interface (API) that may be used to explicitly direct multi-threaded, shared memory parallelism in C/C++ programs}
+}
+
+\newglossaryentry{green-thread}{
+    name = {Green threads},
+    description = {Green threads are software threads managed by a runtime environment or library, rather than directly by the operating system}
+}
+\newglossaryentrywithacronym{wg}
+{Wait Group}
+{A Go WaitGroup is a synchronization primitive that uses an internal counter, incremented by Add when goroutines start and decremented by Done when they finish, to block Wait until all registered goroutines have completed.}
+
+\newacronym{rgb}{RGB}{Red Green Blue}
+
+\newglossaryentry{ppm}{
+    name = {PPM},
+    description = {A PPM (Portable PixMap) is an image file format in the Netpbm family that encodes uncompressed color images via a simple text-based header (width, height, max color value) followed by ASCII or binary \gls{rgb} pixel data.}
 }

@@ -1,31 +1,251 @@
 \chapter{Design and Implementation}\label{chap:design}
 
+Thing cosa cosa cosa TODO
 
 \section{General Program Design}
+The "30,000 foot view" of the programs is a ray-tracer, that has multiple spheres, with different materials, indexes of refraction and sizes. Each of the pixels is calculated individually, and then, when all pixels have been processed, they are outputted to a \texttt{ppm} file.
 
+\autoref{fig:general_program_flow} TODO: hablar algo de aqui
+
+
+\input{parts/diagrams/code-files}
 
 \section{Scene}
+This first section of the program reads the input file and stores the spheres into their appropriate data-structures. 
+
 \subsection{Sphere\_data design}
+
+To ensure the consistency between programs and runs, I decided to create a file that would specify the layout of all spheres, and include the parameters for the camera setting, position and render settings:
+\begin{itemize}
+    \item \textbf{ratio <width: double> <height: double>} $\Rightarrow{}$ Aspect ratio of the output image (width / height).
+    \item \textbf{width <int>} $\Rightarrow{}$ The number of pixels for the width in the output image.
+    \item \textbf{samplesPerPixel <int>} $\Rightarrow{}$ How many times each of the pixels is processed. The higher this number is, the slower the render, but the less noise that the output image has. %% TODO add two pictures with high and low samplesPerPieñ
+    \item \textbf{maxDepth <int>} $\Rightarrow{}$ Specifies how many bounces a ray has to perform before getting the resulting color.
+    \item \textbf{vfov <int>} $\Rightarrow{}$ State the \gls{fov} of the camera.
+    \item \textbf{lookFrom <x: double> <y: double> <z: double>} $\Rightarrow{}$ Position of the camera in 3D space, where x is width, y is the height and z is the depth.
+    \item \textbf{lookAt <x: double> <y: double> <z: double>} $\Rightarrow{}$ States the relative "up" orientation of the camera.
+    \item \textbf{vup <x: double> <y: double> <z: double>} $\Rightarrow{}$ Vector that describes what is "up" in the scene
+    \item \textbf{defocusAngle <double>} $\Rightarrow{}$ This parameter represents the "aperture". A higher number will mean more objects will be in focus, and a smaller number results in a shallower dept of field.
+    \item \textbf{focusDist <double>} $\Rightarrow{}$ Specified the distance from camera lookfrom point to a plane where the elements are in perfect focus
+\end{itemize}
+
 \subsection{Language Specific}
+To try eliminating any possible influence of libraries created in other programming languages, all programs have been created only using their own standard library. The only exception for this is OpenMP used for C++ parallelization.
+
 \subsubsection{C++}
+When using C++, the intent was to use some of of C++ modern features that would make development easier and adapted to new standards such as the use of smart pointers, \texttt{constexpr} and range-based loops. It was designed as an object-oriented program, with polymorphism though virtual functions (inside \texttt{material}, \texttt{hittable}).
+
+The idea of making it header only was the benefits of inlining, easy to distribute and easily separable concepts and, as the compilation time is not crucial, the re-compilation of the headers every time there is a modification is not a drawback.
+
+To perform multi-threaded operations, I chose the OpenMP library, because of its convenience of parallelizing and great performance. It has been the standard for decades, originating from the Fortran world (1960s')
+
 \subsubsection{Go}
+When choosing Go as to build the ray-tracer, as Go does not support inheritance like other \gls{oop} languages, I had to use \texttt{interfaces}, which are the tools go provide for polymorphism. Interfaces are a type that defines a set of method signatures. Thus, for any struct that has the signature methods described in an interface, it can be called as an object from that type. 
+
+% --- GO CODE Interfaces ---
+\begin{lstlisting}[language=Go, caption={Go interface example.}, label={lst:go_interface_example}
+]
+type Material interface {
+	Scatter(rIn Ray, rec HitRecord) (bool, Color, Ray)
+}
+
+type Hittable interface {
+	Hit(r Ray, rayT Interval, rec *HitRecord) bool
+}
+\end{lstlisting}
+
+In my specific implementation, two instances of these keywords were used to denote all types of materials and all Hittable objects, that have to implement a scatter function and a hit function as described in \autoref{lst:go_interface_example}.
+
 \subsubsection{Python}
+python is one of the most open languages, where there are many ways of developing the same program. There have been some problems with python's parameters in functions, wether they are passed as parameters or as references. Unlike in C++ where you can add \texttt{\&} to symbolize the passing the parameter by reference in the function signature, or using the \texttt{*} in Go, in Python, at first, it seems you can not specify this behavior. But if you research into the inner-workings of pythons functions and how they work, it seems that "Python passes function arguments by assigning to them" as \cite{python-names-pycon15} states at PyCon 2015:
+
+\input{parts/code_blocks/python-function-assig}
 
 \section{Object}
+All objects in this program are spheres, even the "ground" is a sphere with a big enough radius that it seems a plane.
+
 \subsubsection{C++}
+Each of the spheres in C++ is a class called \texttt{sphere}, as all objects in this scene ar spheres. \texttt{sphere} is a derived class from \texttt{hittable}, an abstract class, such that in the case that, in the future the program is modified to have more objects, it is easily implemented. 
+
+\begin{lstlisting}[language=C++, caption={Sphere Class for C++}, label={lst:sphere_cpp}]
+class sphere : public hittable {
+  public:
+    sphere(point3 const & center, double radius,
+           shared_ptr<material> mat)
+      : center(center), radius(std::fmax(0, radius)), mat(mat) { }
+
+    bool hit(ray const & r, interval ray_t,
+             hit_record & rec) const override { ... }
+
+  private:
+    point3 center;
+    double radius;
+    shared_ptr<material> mat;
+};
+\end{lstlisting}
+
+
+
 \subsubsection{Go}
+Each of the spheres in Go is a struct, one for each of the materials implemented (Lambertian, Metal, Dielectric). Each of these types of materials implement the \texttt{Scatter} method, described in \autoref{lst:go_interface_example}.
+
+\begin{lstlisting}[language=Go, caption={Go materials structs.}, label={lst:go_materials_structs}]
+// Solid color
+type Lambertian struct {
+	Albedo Color
+}
+
+// Fuzz: 0 for perfect mirror, higher for fuzzier reflection
+type Metal struct {
+	Albedo Color
+	Fuzz   float64 
+}
+
+// Transparent material such as watter or ice
+type Dielectric struct {
+	RefractionIndex float64
+}
+\end{lstlisting}
+
+
+
 \subsubsection{Python}
+All spheres in Python are different classes that inherit from the same Material class:
+\begin{lstlisting}[language=Python, caption={Python abscract class.}, label={lst:python_material_abstract}]
+class Material(ABC):
+    @abstractmethod
+    def scatter(self, r_in: Ray, rec: 'HitRecord') -> tuple[bool, Color, Ray]:
+        """Returns (scatter_happened, attenuation, scattered_ray)"""
+        
+\end{lstlisting}
+    
+
 
 \section{Renderer}
+The main loop of the program is processing the object read from the file, added to the scene. 
+This loop has two version in each of the programs designed:
+\begin{itemize}
+    \item \textbf{Single-threaded loop}: The program only runs using one core. It has a double loop where it processes all the pixels in the image, one by one. This is an extremely \gls{cpu} intensive process, as there are many pixels and iterations to go though each of those pixels. After all pixels are processed, they are outputted into the \texttt{output\_file}
+    
+    \item \textbf{Multi-threaded loop}: There are many ways a multi-threaded renderer can work, even on different programming languages, different implementations have been chosen for specific reasons regarding their parallelization implementations. But in general, each of the pixels is processed and then they are all joined into an array / list that is outputted to a file.
+\end{itemize}
 
-\subsection{Camera}
-\subsubsection{C++}
-\subsubsection{Go}
-\subsubsection{Python}
 
 \subsection{Multiprocessing}
+As previously stated, each of the programming languages, not only uses a different approach into how they have been parallelized, but even the algorithm had to be changed, as the implementation of python's interpreters makes the obvious parallelization perform surprisingly bad (this will be discussed in its section)
+
 \subsubsection{C++}
+To implement multiprocessing in C++, the \gls{openMP} library has been used, as it allows to implement parallelism with a low-effort compared to the great results it provides. 
+
+\begin{lstlisting}[language=C++, caption={OpenMP Pragma instruction.}, label={lst:openmp_pragma}]
+#pragma omp parallel for schedule(dynamic, 1) default(none)      \
+    shared(image, world, lines_remaining, cout_mutex, std::cout) \
+    firstprivate(samples_per_pixel, max_depth, image_width, image_height)
+      for (int pixel = 0;
+           pixel < image_width * image_height;
+           pixel++) {
+      ...
+      }    
+\end{lstlisting}
+
+Dividing this \texttt{\#pragma} directive into its components to better understand why each of the sections exist and its effects on parallelizing:
+\begin{itemize}
+    \item \textbf{\#pragma omp parallel for}: This construct merges a parallel region with a for-loop, enabling work-sharing. Specifically, a group of threads is created, and all the iterations of the for-loop  are distributed among these threads.
+    
+    \item \textbf{schedule(dynamic, 1)}: Uses dynamic scheduling, meaning each thread grabs one job at a time. Using 1 creates some more scheduling overhead, but it ensures fine-grained balancing.
+    
+    \item \textbf{default(none)}: Disables all implicit data-sharing forcing the programmer to scope each variable used inside the parallel region. This helps at checking race conditions at compile time.
+    
+    \item \textbf{shared(image, world, lines\_remaining, cout\_mutex, std::cout)}: The named variables refer to a single instance in shared memory, visible to all threads:
+    \begin{itemize}
+        \item image: the pixel buffer, where al threads dump the processed pixel. Threads must coordinate writes so they don't stomp on each other.
+        \item world: the scene description, with all the spheres.
+        \item lines\_remaining: and atomic counter for progress reporting
+        \item cout\_mutex + std::cout: Locking the cout\_mutex before writing to std::cout to serialize console output.
+    \end{itemize}
+    
+    \item \textbf{firstprivate$(
+    samples\_ per_pixel,
+    max\_ depth,
+    image\_ width,
+    image\_ height)$}:
+    Each thread has its own copy of these variables, with the values copied form the master thread, they are constants, read-only, although you can modify them localy, but they do not copy to other threads.
+\end{itemize}
+
 \subsubsection{Go}
+To parallelize in go, its standard library provides a system called \glspl{goroutine}. These are "\glspl{green-thread}" that are created by Go's runtime every time the keyword \texttt{go} comes before a function.
+
+\begin{lstlisting}[language=Go, caption={Goroutines.}, label={lst:go_goroutines_example}]
+var wg sync.WaitGroup
+waitChan := make(chan struct{}, numThreads)
+lines_remaining := c.imageHeight
+
+for pixel_idx := range c.imageHeight * c.ImageWidth {
+    waitChan <- struct{}{}
+    wg.Add(1)
+    go func(pixel_idx int) { 
+        defer wg.Done()
+        ... 
+        <-waitChan 
+    }(pixel_idx)
+}
+wg.Wait()
+    
+\end{lstlisting}
+
+To be able to limit the number of threads that can be created, a channel with a size of \texttt{numThreads} is created and each time a new \gls{goroutine} is going to be created, it tries to add a struct to the channel which, if there is an empty place, it adds the struct and allows the program to continue. But, it the channel is full, the program stops and does not allow any continuation of the program until the channel has a free spot, which is generated after the pixel is added to the resulting image.
+
+To prevent the program from continue running before all the \glspl{goroutine} are finished, a \gls{wg} is used to prevent the main thread from continuing the main execution until all threads have finished (which is the same as the \gls{wg} being empty.
+
 \subsubsection{Python}
 
+To parallelize in python, I had to use the \texttt{concurrent.futures} library to properly parallelize the python execution.
+
+This library can create two types of "executors" which are:
+\begin{itemize}
+    \item \textbf{ThreadPoolExecutor}: for \gls{i-o}-bound tasks (uses threads)
+    \item \textbf{ProcessPoolExecutor}: for \gls{cpu}-bound tasks (uses processes)
+\end{itemize}
+To submit a task, you can use the following semantics, using python's list comprehension to create all the jobs:
+\begin{lstlisting}[language=Python, caption={Python submiting jobs ProcessPoolExecutor.}, label={lst:python_executor_sumbit}]
+futures = [
+    executor.submit(self.process_row, j, world)
+    for j in range(self.image_height)
+]
+\end{lstlisting}
+
+This creates a job for every pixel, running the function \texttt{self.process\_row} inside the camera object, with parameters \texttt{j} and \texttt{world}.
+
+To retrieve the results, you can simply iterate the futures object, as if it was a list of objects:
+\begin{lstlisting}[language=Python, caption={Python retieving data from Process execution pool.}, label={lst:python_executor_retrieve}]
+for future in futures:
+    j, row_pixels = future.result()
+    processed_rows += 1
+    ...
+    for i in range(self.image_width):
+        img.set_pixel(i, j, row_pixels[i])
+\end{lstlisting}
+
+
+There is an interesting aspect on why the difference between the loops in Python and the rest of the programming languages: Compiled languages iterate over every pixel, while python iterates over every line, why is this? Because a copy of the entire python environment has to be created and the overhead of copying so much information slows down the program extremely. We will see the impact of these change in the evaluation section of the report.
+
 \section{Output}
+
+The output of the program was initially thought to be though the standard output of the terminal, and redirecting the output to a \texttt{\gls{ppm}} file, but for measuring performance concerns and stability between different programs and their implementation of interacting with the operating system, it was decided that the program would create a file and output all the data into that file.
+
+The design of the output is a \gls{ppm} file, in which the first three lines define the content, aspect and maximum values of a file. 
+\begin{table}[H]
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    Field        & Description                                 \\
+    \midrule
+    P3           & Magic number (P3 = ASCII, P6 = binary)      \\
+    400 225      & Width and height (in pixels)                \\
+    255          & Maximum color value                         \\
+    \bottomrule
+  \end{tabular}
+  \caption{PPM file header fields}
+  \label{tab:ppm-header}
+\end{table}
+
+In my specific case, I used P3, as I am outputting the \gls{rgb} values individually and a 255 maximum color value, to simplify the outputting of the resulting image.

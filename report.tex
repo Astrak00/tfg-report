@@ -13,7 +13,16 @@
 % \usepackage{rotating}
 
 \usepackage{tikz} % For drawing flowcharts and graphs
-\usetikzlibrary{shapes.geometric, arrows, positioning}
+\usetikzlibrary{
+    positioning,
+    shapes.geometric,
+    arrows, % Using the compatible 'arrows' library
+    arrows.meta,
+    fit,
+    backgrounds
+}
+
+\usepackage{array}
 
 
 \usepackage{mymacros}  % report-specific macros

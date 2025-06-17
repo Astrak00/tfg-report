@@ -1,5 +1,7 @@
 \chapter{Evaluation}\label{chap:evaluation}
 
+\section{Programming Language Versions}
+
 \section{Measurement Platforms}
 \subsection{Many Core Platform}
 %% Comments on the platform, ie two xeon 16 cores processors with hyperthreading, x86
@@ -22,3 +24,16 @@
 \subsubsection{Results}
 
 
+\section{Comment on paralellizing different languages}
+
+%% more threads than avaiable, is it beneficial?
+
+%% Python
+%% Why the multi-threaded version is slower iterating though every pixel:
+%% Process creation overhead: The code uses ProcessPoolExecutor which creates separate Python processes for each pixel. Creating processes is much more expensive than creating threads, and doing it for every single pixel creates massive overhead.
+
+%% Data serialization: Each time a task is submitted to a process, Python needs to serialize (pickle) the entire world object and other parameters, then deserialize them in the worker process. This happens for every pixel!
+
+%% Too much granularity: Processing individual pixels in separate processes is extremely fine-grained parallelization. The overhead of process management far exceeds the actual computation time per pixel.
+
+%% Memory overhead: Each process has its own memory space, so the world object is duplicated across all worker processes.
