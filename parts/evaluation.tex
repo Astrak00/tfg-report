@@ -77,7 +77,7 @@ Considering the 32 and 48 cores tests with the python program, the energy consum
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{img/htop_not_running_100_60_cores.png}
-    \caption{Htop showing the cores not being used at 100\% when using many cores for processing in a per-pixel multi threading renderer }
+    \caption{\gls{htop} showing the cores not being used at 100\% when using many cores for processing in a per-pixel multi threading renderer }
     \label{fig:htop_60_not_100}
 \end{figure}
 
@@ -101,7 +101,16 @@ If we changed the implementation to a per-row renderer, on the go-side, the Go r
 %% Comments on the platform X86, 8 cores, 16 threads, AMR ZEN 2 (https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-7-3800x.html#amd_support_product_spec)
 %% Test with and without hyerthreading as math intensive calculations
 \subsubsection{Evaluated parameters}
+
+This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, which has 10 high performance cores and 4 high efficiency cores, which is a big.LITTLE architecture. This means that the high performance cores are used for CPU intensive tasks, while the high efficiency cores are used for less demanding tasks, such as web browsing or watching videos. But as Apple does not allow the user seting the cores to be used by a specific process, like it happens in Linux, we can not test the high efficiency cores isolated from the high performance cores, as the operating system will decide for us which cores to use for each process. 
+
+
+
 \subsubsection{Results}
+
+\input{parts/results/mbp-energy}
+
+\input{parts/results/mpb-execution-time.tex}
 
 \subsection{Raspberry Pi 5}
 \subsubsection{Evaluated parameters}

@@ -30,7 +30,7 @@ Cargo.lock
 *.ppm
 *.time
 CMakeFiles/
-results/
+results-/
 
 
 # Profiling
