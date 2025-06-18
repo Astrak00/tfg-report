@@ -1,12 +1,96 @@
 \chapter{Evaluation}\label{chap:evaluation}
 
-\section{Programming Language Versions}
+This section reflects the results of all the testing performed with the different programming languages and architectures / types of computer.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lcccc}
+    \toprule
+                            & C\++                  & Go        & Python        & PyPy \\
+    \midrule
+    Intel Xeon Gold 6326 x2 &  GCC 14.2.0           & go1.24.2  & Python 3.12.3 & PyPy 7.3.19 \\
+    MacbookPro M4 Pro       &  Apple Clang 17.0.0   & go1.24.2  & Python 3.13.3 & PyPy 7.3.19 \\
+    RPi 5                   &                       &           &               &             \\
+    Ryzen 3800x             &                       &           &               &             \\
+    \bottomrule
+  \end{tabular}
+  \caption{Comparison of language performance on different platforms}
+  \label{tab:lang-platforms}
+\end{table}
+
+It should be noted that python should not be used for performance critical applications, as it is an interpreted language, and it is not designed for high performance computing. However, it is a great language for rapid prototyping and development, and it is widely used in the industry. 
+
+Go's intent is to be a fast, efficient, and easy to use language, and it is designed for multithreading and concurrency, which makes it a great choice for high performance computing, specifically being designed for backend development for web applications, and it is widely used in the industry.
 
 \section{Measurement Platforms}
 \subsection{Many Core Platform}
+
+This platform is the most powerful combinations as well as power-hungry combinations of all of my suite of devices. This is a rack server, with two processors Intel Xeon Gold 6326, that have each 16 cores, 32 threads, contributing to a total of 32 cores, 64 threads. It also has the largest amount of \gls{ram} from this testing, with 256GB of \gls{DDR4} memory.
+
+As it has two sockets, one per CPU chip, there has to be an intercommunication between these processors if a process spreads out to more than 32 threads, or is set by the user using the command \texttt{taskset}, fixing the cores the process can run on.
+
+
+
 %% Comments on the platform, ie two xeon 16 cores processors with hyperthreading, x86
 \subsubsection{Evaluated parameters}
+This system was the most versatile in terms of how many  tests could be done, as it has many processors, and uses Linux on X86, a great advantage to force processes to run on specific cores
+
+The tests were done on a variety of core configuration, always setting, for core numbers less than 16, cores in the same processor. 
+
+\begin{itemize}
+    \item \textbf{1 Core}: Testing with one core, producing the baseline for the programs energy consumption and time.
+    \item \textbf{2 Cores}: Testing with 2 cores provides the first glimpse of parallelization.
+    \item \textbf{4 Cores}: Testing with 4 cores because many computer from some time ago had for cores.
+    \item \textbf{8 Cores}: Testing with 8 cores gives us a great insight into how many processors in the market work, and it is half of the amount of cores inside one chip.
+    \item \textbf{14 Cores}: Testing with 14 cores, because it is the number of cores available on the Laptop and wanted to have an execution time comparison. 
+    \item \textbf{16 Cores}: Testing with 16 cores as it is the amount or real cores on a single chip. This must be one of the most energy efficient and fast tests, if there were only one \gls{cpu}.
+    \item \textbf{28 Cores (in different \glspl{cpu}, but all real cores, no logical cores)}: Testing with 28 cores, distributed with two sockets is interesting because there has to be some information sharing over some bun inside the motherboard to synchronize both \glspl{cpu}. This wont be as energy efficient, but may be faster.
+    \item \textbf{28 Cores (in the same CPU, 16 cores, 32 virtual cores)}: Testing with 28 cores, inside the same CPU, the performance should be slower as there are less real cores to tackle the work, but it has the advantage of not needing to share data to another socket.
+    \item \textbf{32 Cores (same socket)}: Testing with 32 cores in the same socket is using all available logical threads of a system, the 16 real cores and the other 16 threads the \gls{cpu} has thanks to Hyper-Threading.
+    \item \textbf{32 Cores (only real cores)}: Testing with 32 real cores, across two sockets should be the most powerful combination for CPU intensive tasks, as all the operations should be able to be carried out without many interruptions.
+    \item \textbf{48 Cores}: Testing with 48 cores forces us to use all real cores and some logical cores.
+    \item \textbf{60 Cores}: Testing with 60 cores is also interesting and not 64, as this would force the machine to interrupt the program we are benchmarking to perform routine operations, such as checking for incoming connections, or logging.
+\end{itemize}
+
 \subsubsection{Results}
+
+The results for the server are shown in the following figures and tables. The energy consumption is measured in joules, and the execution time is measured in seconds. 
+
+\input{parts/results/server-energy-pkg}
+
+\input{parts/results/server-energy-ram}
+
+\input{parts/results/server-execution-time}
+
+
+From \autoref{fig:server-energy-pkg} we can see that the energy consumption of the server is not linear with the number of cores. It can be obvserved that the energy consumption decreases as the number of cores increases, but there ir a point in the graph and \autoref{tab:server-energy-pkg} where the energy consumption starts to increase slightly again, as well as the execution times in \autoref{fig:server-execution-time}, but not as much as the energy consumption. 
+This is due to hyperthreading \footnote{Hyperthreading is enables in this system as it it not mine and I could not dissable it to perform testing. To set the process to a fixed \gls{cpu}, I used \texttt{taskset -c [cores]} ie \texttt{taskset -c 0-15,32-47} for running across multiple \glspl{cpu} and \texttt{taskset -c 0-31} to force the prorgam to only run in a single \gls{cpu}} in the \glspl{cpu}, which allows the \glspl{cpu} to run two threads per core, but this is not as efficient as running a single thread per core, as the \glspl{cpu} have to share resources between the two threads.
+
+It is obvious from the multiple graphs and tables that the C\++ implementation is the most energy efficient and fastest by a significant margin, followed suprsingly by the PyPy execution of the Python code, which is faster than the Go implementation, and the Python implementation is the slowest and most energy consuming by an extremely large amount.
+
+I want to specifically talk about the 60 cores test, as it is the most interesting one. In this test, the energy consumption is lower than in the 48 cores test, as well as the execution time on the C++ implementation, but on the Go implementation, both energy consumption and execution time are higher than in the 48 cores test. This is because the Go implementation is not as efficient as the C\++ implementation, and the Go runtime has to manage more goroutines, which adds overhead. 
+
+Considering the 32 and 48 cores tests with the python program, the energy consumption reduces significanly when the program start using virtual cores, as the program is able to run on more cores, and the python runtime is not very demanding, being able to use these cores efficiently, as shown in \autoref{fig:server-energy-pkg} and \autoref{fig:server-execution-time} is an advantage to python with respect to itself.
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{img/htop_not_running_100_60_cores.png}
+    \caption{Htop showing the cores not being used at 100\% when using many cores for processing in a per-pixel multi threading renderer }
+    \label{fig:htop_60_not_100}
+\end{figure}
+
+It also must be noted that the cores during the 48 core benchmark were being used at 100\% of their capacity, while in the 60 cores test, the cores were mostly being usead at a lower percentage, as shown in \autoref{fig:htop_60_not_100}. This is because the Go runtime is not able to efficiently use all the cores when there are more than 48 cores available, and it is not able to schedule the goroutines efficiently as these routines finish so fast that the Go runtime is not able to keep all the cores busy.
+
+If we changed the implementation to a per-row renderer, on the go-side, the Go runtime would be able to use all the cores more efficiently, as it would be able to schedule the goroutines more efficiently, and the execution time would be lower, but the energy consumption would be higher, as the cores would be used at 100\% of their capacity. Thus, in this case, as we will see in other sections, having a faster execution time is not always the best option in terms of energy consumption.
+
+
+
+
+% When changin to a per-pixel rendered, lower cores energy efficiency increased, but the many cores, from 48 oward would not get used as much, thus reducing the energy efficiency and increating the execution time. 
+
+
 
 \subsection{Personal Desktop}
 %% Comments on the platform, ARM 14 core, big.LITTLE architecture (firestorm, 10 high performance cores and icestorm, 4 high efficiency cores)

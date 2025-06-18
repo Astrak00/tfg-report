@@ -37,7 +37,7 @@ When using C++, the intent was to use some of of C++ modern features that would 
 
 The idea of making it header only was the benefits of inlining, easy to distribute and easily separable concepts and, as the compilation time is not crucial, the re-compilation of the headers every time there is a modification is not a drawback.
 
-To perform multi-threaded operations, I chose the OpenMP library, because of its convenience of parallelizing and great performance. It has been the standard for decades, originating from the Fortran world (1960s')
+To perform multi-threaded operations, I chose the OpenMP library, because of its convenience of parallelizing and great performance. It has been the standard for decades, originating from the Fortran world (1960s\')
 
 \subsubsection{Go}
 When choosing Go as to build the ray-tracer, as Go does not support inheritance like other \gls{oop} languages, I had to use \texttt{interfaces}, which are the tools go provide for polymorphism. Interfaces are a type that defines a set of method signatures. Thus, for any struct that has the signature methods described in an interface, it can be called as an object from that type. 
@@ -113,7 +113,7 @@ type Dielectric struct {
 All spheres in Python are different classes that inherit from the same Material class:
 \begin{lstlisting}[language=Python, caption={Python abscract class.}, label={lst:python_material_abstract}]
 class Material(ABC):
-    @abstractmethod
+    \@abstractmethod
     def scatter(self, r_in: Ray, rec: 'HitRecord') -> tuple[bool, Color, Ray]:
         """Returns (scatter_happened, attenuation, scattered_ray)"""
         
@@ -249,3 +249,21 @@ The design of the output is a \gls{ppm} file, in which the first three lines def
 \end{table}
 
 In my specific case, I used P3, as I am outputting the \gls{rgb} values individually and a 255 maximum color value, to simplify the outputting of the resulting image.
+
+This is an example image, of an image that this program would generate at maximum reasonable quality settings, 1920 width, 300 samples per pixel and 200 max depth.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{img/ray_traced_balls.png}
+    \caption{Example of program output, 1920 width, 300 samples per pixel and 200 max depth}
+    \label{fig:ray_traced_max}
+\end{figure}
+
+And this is an example of the same picture, but with the settings used to test the programs on the Laptop and Server, which takes 168x more time than \autoref{fig:ray_traced_max}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{img/regular_spheres_output.png}
+    \caption{Example of program output, 400 width, 50 samples per pixel and 50 max depth}
+    \label{fig:ray_traced_average}
+\end{figure}

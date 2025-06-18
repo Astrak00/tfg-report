@@ -210,8 +210,8 @@ Go's scheduler performs a series of steps before starting to run the user's code
         
     \item \textbf{Memory Allocator and \gls{GC} initialization}: Go's runtime includes a complex memory allocator and Garbage Collector \cite{go:memory-distribution} and \cite{go:memory-internals} .
     \begin{itemize}
-        \item \textbf{Memory Reservation}: The runtime reserves a large region of virtual memory, divided into 3 areas: \texttt{spans}, \texttt{bitmap} and \texttt{arena} (where go objects are allocated on the heap.
-        \item \textbf{Allocator Structures}: Other structures such as the \texttt{mheap} (the global heap structure for Go, \texttt{mcentral} (a central cache for memory spans) and for each \texttt{P} a per-thread cache for allocating small objects without locking the main thread, called \texttt{mcache}.
+        \item \textbf{Memory Reservation}: The runtime reserves a large region of virtual memory, divided into 3 areas: \texttt{spans}, \texttt{bitmap} and \texttt{arena} where go objects are allocated on the heap.
+        \item \textbf{Allocator Structures}: Other structures such as the \texttt{mheap} (the global heap structure for Go), \texttt{mcentral} (a central cache for memory spans) and for each \texttt{P} a per-thread cache for allocating small objects without locking the main thread, called \texttt{mcache}.
         \item \textbf{\gls{GC} Pacer}: The pacer determines the optimal time to trigger a \gls{gc-cycle} based on the \texttt{GOGC} environment variable. The goal of Go's collection system is to perform one as the heap doubles in size since the previous cycle.
     \end{itemize}
         
