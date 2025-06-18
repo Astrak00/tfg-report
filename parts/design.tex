@@ -19,7 +19,7 @@ To ensure the consistency between programs and runs, I decided to create a file 
 \begin{itemize}
     \item \textbf{ratio <width: double> <height: double>} $\Rightarrow{}$ Aspect ratio of the output image (width / height).
     \item \textbf{width <int>} $\Rightarrow{}$ The number of pixels for the width in the output image.
-    \item \textbf{samplesPerPixel <int>} $\Rightarrow{}$ How many times each of the pixels is processed. The higher this number is, the slower the render, but the less noise that the output image has. %% TODO add two pictures with high and low samplesPerPieñ
+    \item \textbf{samplesPerPixel <int>} $\Rightarrow{}$ How many times each of the pixels is processed. The higher this number is, the slower the render, but the less noise that the output image has. See \autoref{fig:ray_traced_average} and \autoref{fig:ray_traced_max} for examples of the same image with different \texttt{samplesPerPixel} values.
     \item \textbf{maxDepth <int>} $\Rightarrow{}$ Specifies how many bounces a ray has to perform before getting the resulting color.
     \item \textbf{vfov <int>} $\Rightarrow{}$ State the \gls{fov} of the camera.
     \item \textbf{lookFrom <x: double> <y: double> <z: double>} $\Rightarrow{}$ Position of the camera in 3D space, where x is width, y is the height and z is the depth.
@@ -259,7 +259,7 @@ This is an example image, of an image that this program would generate at maximu
     \label{fig:ray_traced_max}
 \end{figure}
 
-And this is an example of the same picture, but with the settings used to test the programs on the Laptop and Server, which takes 168x more time than \autoref{fig:ray_traced_max}
+And this is an example of the same picture, but with the settings used to test the programs on the personal laptop and server, which takes 168x more time than \autoref{fig:ray_traced_max}
 
 \begin{figure}[h]
     \centering
