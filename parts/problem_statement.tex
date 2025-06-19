@@ -1,0 +1,645 @@
+\chapter{Problem Statement}\label{chap:analysis}
+
+\section{Project Description}
+Raytracer in multiple languages, comparing the energy efficiency of each one.
+
+\section{Requirements}
+
+\subsection{Requirements}
+
+UR -> User Requirement
+CA -> Capacity
+RE -> Restriction
+
+\subsubsection{User Requirements}
+
+\paragraph{Capacity}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-XX} \\
+        \toprule
+        \textbf{Description}        & \textit{Requirement's Description} \\
+        \textbf{Necessity}          & \textit{Low / Medium / High} \\
+        \textbf{Priority}           & \textit{Low / Medium / High} \\
+        \multirow{1}{*}{\textbf{Stability}} & \textit{Stable / Unstable}: How easy it is for the requirement to change \\ 
+                                            & along the development of the project \\
+        \textbf{Verifiability}       & \textit{Verifiable / Non-Verifiable} \\
+    \end{tabular}
+    \caption{Requirement UR-CA-XX}
+    \label{tab:ur-ca-xx}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-01} \\
+        \toprule
+        \textbf{Description}        &  The user must be able to run the language benchmarks on MacOS and Linux.  \\
+        \textbf{Necessity}          &  High   \\
+        \textbf{Priority}           &  Medium   \\
+        \textbf{Stability}          &  Stable   \\
+        \textbf{Verifiability}       &  Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-01}
+    \label{tab:ur-ca-01}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-02} \\
+        \toprule
+        \textbf{Description}        & The user must be able to inspect every aspect of the code. \\
+        \textbf{Necessity}          & High  \\
+        \textbf{Priority}           & High  \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}       & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-02}
+    \label{tab:ur-ca-02}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-03} \\
+        \toprule
+        \textbf{Description}        & The user must be able to add their own implementation of the program to be tested. \\
+        \textbf{Necessity}          &  High   \\
+        \textbf{Priority}           &  High   \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}       &  Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-03}
+    \label{tab:ur-ca-03}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-04} \\
+        \toprule
+        \textbf{Description}        & The user must be able to check the outputs of the programs. \\
+        \textbf{Necessity}          & High   \\
+        \textbf{Priority}           & High   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-04}
+    \label{tab:ur-ca-04}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-05} \\
+        \toprule
+        \textbf{Description}        & The user must be able to check the enery consumption of the benchmarks per-core\\
+        \textbf{Necessity}          & High   \\
+        \textbf{Priority}           & High   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-05}
+    \label{tab:ur-ca-05}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-06} \\
+        \toprule
+        \textbf{Description}        & The user must be able to decide the amount of cores needed via the CLI\\
+        \textbf{Necessity}          & High   \\
+        \textbf{Priority}           & High   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-06}
+    \label{tab:ur-ca-06}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-07} \\
+        \toprule
+        \textbf{Description}        & The user must be able to specify if the banchmark should use \texttt{taskset} to fix the number of avaiable cores.\\
+        \textbf{Necessity}          & High   \\
+        \textbf{Priority}           & High   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-07}
+    \label{tab:ur-ca-07}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-08} \\
+        \toprule
+        \textbf{Description}        & The user should be able to modify the execution command to add specific performance metric and energy consumption parameters before the execution of the benchmark. \\
+        \textbf{Necessity}          & Low   \\
+        \textbf{Priority}           & Low   \\
+        \textbf{Stability}          & Unstable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-08}
+    \label{tab:ur-ca-08}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-09} \\
+        \toprule
+        \textbf{Description}        & The user must be able to check the time taken to run the different programs / benchmarks \\
+        \textbf{Necessity}          & High   \\
+        \textbf{Priority}           & High   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-09}
+    \label{tab:ur-ca-09}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-10} \\
+        \toprule
+        \textbf{Description}        & The user must be able to change the parameters of the image generated \\
+        \textbf{Necessity}          & High   \\
+        \textbf{Priority}           & High   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-10}
+    \label{tab:ur-ca-10}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-11} \\
+        \toprule
+        \textbf{Description}        & The user must be able to visualize the resulting images of the program execution \\
+        \textbf{Necessity}          & High   \\
+        \textbf{Priority}           & High   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-11}
+    \label{tab:ur-ca-11}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-12} \\
+        \toprule
+        \textbf{Description}        & The user must be able to compare the resulting images of the program execution \\
+        \textbf{Necessity}          & High   \\
+        \textbf{Priority}           & High   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-12}
+    \label{tab:ur-ca-12}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-13} \\
+        \toprule
+        \textbf{Description}        & The system must inform the user how many cores it is using though the terminal \\
+        \textbf{Necessity}          & Medium   \\
+        \textbf{Priority}           & Low   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-13}
+    \label{tab:ur-ca-13}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-14} \\
+        \toprule
+        \textbf{Description}        & The user must be able to compare different executions on the same platform. \\
+        \textbf{Necessity}          & High   \\
+        \textbf{Priority}           & High   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-14}
+    \label{tab:ur-ca-14}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-15} \\
+        \toprule
+        \textbf{Description}        & The user must be able to view the remaining lines of the image to be renderes. \\
+        \textbf{Necessity}          & Low   \\
+        \textbf{Priority}           & Low   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-15}
+    \label{tab:ur-ca-15}
+\end{table}
+
+\paragraph{Restriction}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-RE-01} \\
+        \toprule
+        \textbf{Description}        &  The same architecture should be used for every program \\
+        \textbf{Necessity}          &  Low \\
+        \textbf{Priority}           &  Low \\
+        \textbf{Stability}          &  Unstable \\
+        \textbf{Verifiability}      &  Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-RE-01}
+    \label{tab:ur-re-01}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-RE-02} \\
+        \toprule
+        \textbf{Description}        & The system must have a "one-command" execution for any given language \\
+        \textbf{Necessity}          & Medium   \\
+        \textbf{Priority}           & Low   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-RE-02}
+    \label{tab:ur-re-02}
+\end{table}
+
+
+\subsection{Non Functional Requirements}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-NF-01} \\
+        \toprule
+        \textbf{Description}        & The different programs must have the same architecture \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             &  \textit{\nameref{tab:ur-re-01}}, \textit{\nameref{tab:ur-ca-14}} \\
+    \end{tabular}
+    \caption{Requirement SR-NF-01}
+    \label{tab:sr-nf-01}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-NF-02} \\
+        \toprule
+        \textbf{Description}        & The system should be open-source \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             &  \textit{\nameref{tab:ur-re-02}}, \textit{\nameref{tab:ur-ca-03}}, \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-06}}, \textit{\nameref{tab:ur-ca-07}}, \textit{\nameref{tab:ur-ca-08}}, \textit{\nameref{tab:ur-ca-10}}, \textit{\nameref{tab:ur-ca-12}}, \textit{\nameref{tab:ur-ca-13}} \\
+    \end{tabular}
+    \caption{Requirement SR-NF-02}
+    \label{tab:sr-nf-02}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-NF-03} \\
+        \toprule
+        \textbf{Description}        & The ray-tracer should be implemented in C++ \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             &  \textit{\nameref{tab:ur-re-01}} \\
+    \end{tabular}
+    \caption{Requirement SR-NF-03}
+    \label{tab:sr-nf-03}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-NF-04} \\
+        \toprule
+        \textbf{Description}        & The ray-tracer should be implemented in Python \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             &  \textit{\nameref{tab:ur-re-01}} \\
+    \end{tabular}
+    \caption{Requirement SR-NF-04}
+    \label{tab:sr-nf-04}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-NF-04} \\
+        \toprule
+        \textbf{Description}        & The ray-tracer should be implemented in Go \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             &  \textit{\nameref{tab:ur-re-01}} \\
+    \end{tabular}
+    \caption{Requirement SR-NF-04}
+    \label{tab:sr-nf-04}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-NF-05} \\
+        \toprule
+        \textbf{Description}        & The ray-tracer's output should be stored in a file \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             &  \textit{\nameref{tab:ur-ca-04}}, \textit{\nameref{tab:ur-ca-14}} \\
+    \end{tabular}
+    \caption{Requirement SR-NF-05}
+    \label{tab:sr-nf-05}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-NF-06} \\
+        \toprule
+        \textbf{Description}        & The ray-tracer's randomness should not impact the structure of the scene \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-10}}, \textit{\nameref{tab:ur-ca-14}} \\
+    \end{tabular}
+    \caption{Requirement SR-NF-06}
+    \label{tab:sr-nf-06}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-NF-07} \\
+        \toprule
+        \textbf{Description}        &  The system must implement different time-measuring systems for the different platforms\\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}}, \textit{\nameref{tab:ur-ca-14}} \\
+    \end{tabular}
+    \caption{Requirement SR-NF-07}
+    \label{tab:sr-nf-07}
+\end{table}
+
+\subsection{Functional Requirements}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-01} \\
+        \toprule
+        \textbf{Description}        &  The system must measure the energy consumption of each of the benchmarks regardless of the implementation language. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-09}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-01}
+    \label{tab:sr-fn-01}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-02} \\
+        \toprule
+        \textbf{Description}        &  The system must output the file where the energy consumption result is kept at the end of the execution. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}}, \textit{\nameref{tab:ur-ca-14}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-02}
+    \label{tab:sr-fn-02}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-03} \\
+        \toprule
+        \textbf{Description}        &  The system must output the file where the execution time is kept at the end of the execution. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}}, \textit{\nameref{tab:ur-ca-14}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-03}
+    \label{tab:sr-fn-03}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-04} \\
+        \toprule
+        \textbf{Description}        &  The system must reduce outlier results by executing the benchmarks multiple times. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-12}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-04}
+    \label{tab:sr-fn-04}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-05} \\
+        \toprule
+        \textbf{Description}        &  The system must show the lines that are remaining to be processed. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-15}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-05}
+    \label{tab:sr-fn-05}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-06} \\
+        \toprule
+        \textbf{Description}        &  The system must have a script to process MacOs Powermetrics results. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-06}
+    \label{tab:sr-fn-06}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-07} \\
+        \toprule
+        \textbf{Description}        &  The system must have a file from which all benchmarks can be launched. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-14}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-07}
+    \label{tab:sr-fn-07}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-08} \\
+        \toprule
+        \textbf{Description}        &  The system must have a file from which parameters for the simulation can be changed. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-06}}, \textit{\nameref{tab:ur-ca-14}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-08}
+    \label{tab:sr-fn-08}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-09} \\
+        \toprule
+        \textbf{Description}        &  The system must have a utility that checks the diference between two output images. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-04}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-09}
+    \label{tab:sr-fn-09}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-10} \\
+        \toprule
+        \textbf{Description}        &  The running of the benchamrks on any device must not interfere with the reading of the energy consumed by the program. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-10}
+    \label{tab:sr-fn-10}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{SR-FN-11} \\
+        \toprule
+        \textbf{Description}        &  The running of the benchamrks on any device must not interfere with the reading of the time taken to execute the program. \\
+        \textbf{Necessity}          &  High \\
+        \textbf{Priority}           &  High \\
+        \textbf{Stability}          &  Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}} \\
+    \end{tabular}
+    \caption{Requirement SR-FN-11}
+    \label{tab:sr-fn-11}
+\end{table}
+
+\section{Use Case}
+\checkmark
+
+% Ver en distintos ordenadores el uso?
+% Podría añadir el makefile un poco mejor para que se pudieran ejecutar todos los programas y medirlos, y sacar los resultados?
+
+\section{Traceability}
