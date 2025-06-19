@@ -1,0 +1,80 @@
+\begin{figure}
+    \centering
+    \hspace*{-2cm}
+    \begin{tikzpicture}
+        \begin{umlsystem}[] {Use Case Diagram for the Ray-Tracer Benchmarker} 
+            \umlusecase[name=cpp,x=4,y=-2,width=2.2cm,fill=blue!20] {Run all C++ benchmarks}
+            \umlusecase[name=cpp-sc,x=10,y=2,width=2.2cm,fill=blue!20] {Run C++ single-core}
+            \umlusecase[name=cpp-mc,x=10,y=0,width=2.2cm,fill=blue!20] {Run C++ multi-core}
+            \umlusecase[name=go,x=4,y=-4,width=2.2cm,fill=violet!20] {Run all Go benchmarks}
+            \umlusecase[name=go-sc,x=10,y=-2,width=2.2cm,fill=violet!20] {Run Go single-core}
+            \umlusecase[name=go-mc,x=10,y=-4,width=2.2cm,fill=violet!20] {Run Go multi-core}
+            \umlusecase[name=python,x=4,y=-6,width=2.2cm,fill=orange!20] {Run all Python benchmarks}
+            \umlusecase[name=python-sc,x=10,y=-7,width=2.2cm,fill=orange!20] {Run Python single-core}
+            \umlusecase[name=python-mc,x=10,y=-9,width=2.2cm,fill=orange!20] {Run Python multi-core}
+            \umlusecase[name=pypy,x=4,y=-8,width=2.2cm,fill=green!20] {Run all PyPy benchmarks}
+            \umlusecase[name=pypy-sc,x=10,y=-11,width=2.2cm,fill=green!20] {Run PyPy single-core}
+            \umlusecase[name=pypy-mc,x=10,y=-13,width=2.2cm,fill=green!20] {Run PyPy multi-core}
+            
+            \umlusecase[name=all,y=-5,width=2.2cm] {All benchmarks}
+            \umlusecase[name=all-sc,x=12,y=5.5,width=2.2cm] {All single-core benchmarks}
+            \umlusecase[name=all-mc,x=12,y=-16.5,width=2.2cm] {All multicore benchmarks}
+
+            
+
+        \end{umlsystem}
+        \node [above] at (current bounding box.north) {Ray-Tracer Benchmarker};
+
+        \umlactor[y=-5,x=-3.2] {User}
+
+        \umlassoc{User}{cpp}
+        \umlassoc{User}{cpp-sc}
+        \umlassoc{User}{cpp-mc}
+        \umlassoc{User}{go}
+        \umlassoc{User}{go-sc}
+        \umlassoc{User}{go-mc}
+        \umlassoc{User}{python}
+        \umlassoc{User}{python-sc}
+        \umlassoc{User}{python-mc}
+        \umlassoc{User}{pypy}
+        \umlassoc{User}{pypy-sc}
+        \umlassoc{User}{pypy-mc}
+        \umlassoc{User}{all}
+        \umlassoc{User}{all-sc}
+        \umlassoc{User}{all-mc}
+
+
+
+        % CPP extends single and multi
+        \draw [tikzuml dependency style] (cpp) -- node[above] {\scriptsize $\ll \text{extend} \gg$} (cpp-sc);
+        \draw [tikzuml dependency style] (cpp) -- node[above] {\scriptsize $\ll \text{extend} \gg$} (cpp-mc);
+        % Go 
+        \draw [tikzuml dependency style] (go) -- node[below] {\scriptsize $\ll \text{extend} \gg$} (go-sc);
+        \draw [tikzuml dependency style] (go) -- node[above] {\scriptsize $\ll \text{extend} \gg$} (go-mc);
+        % Python
+        \draw [tikzuml dependency style] (python) -- node[above] {\scriptsize $\ll \text{extend} \gg$} (python-sc);
+        \draw [tikzuml dependency style] (python) -- node[above] {\scriptsize $\ll \text{extend} \gg$} (python-mc);
+        % PyPy
+        \draw [tikzuml dependency style] (pypy) -- node[above] {\scriptsize $\ll \text{extend} \gg$} (pypy-sc);
+        \draw [tikzuml dependency style] (pypy) -- node[below] {\scriptsize $\ll \text{extend} \gg$} (pypy-mc);
+        % PyPy
+        \draw [tikzuml dependency style] (all) to[bend right=20] node[midway, below] {\scriptsize $\ll \text{extend} \gg$} (all-mc);
+        \draw [tikzuml dependency style] (all) to[bend left=20] node[midway, above] {\scriptsize $\ll \text{extend} \gg$} (all-sc);
+
+
+        % Single
+        \draw [tikzuml dependency style] (all-sc) to[bend left=0] node[midway, above] { \scriptsize $\ll \text{extend} \gg$} (cpp-sc);
+        \draw [tikzuml dependency style] (all-sc) to[bend left=35] node[midway, above] {\scriptsize $\ll \text{extend} \gg$} (go-sc);
+        \draw [tikzuml dependency style] (all-sc) to[bend left=26] node[midway, above] {\scriptsize $\ll \text{extend} \gg$} (python-sc);
+        \draw [tikzuml dependency style] (all-sc) to[bend left=38] node[midway, above] {\scriptsize $\ll \text{extend} \gg$} (pypy-sc);
+
+        % Multi-core
+        \draw [tikzuml dependency style] (all-mc) to[bend right=38] node[midway, above] {\scriptsize $\ll \text{extend} \gg$} (cpp-mc);
+        \draw [tikzuml dependency style] (all-mc) to[bend right=26] node[midway, above] {\scriptsize $\ll \text{extend} \gg$} (go-mc);
+        \draw [tikzuml dependency style] (all-mc) to[bend right=35] node[midway, above] {\scriptsize $\ll \text{extend} \gg$} (python-mc);
+        \draw [tikzuml dependency style] (all-mc) to[bend right=0] node[midway, above] {\scriptsize $\ll \text{extend} \gg$} (pypy-mc);
+        
+    \end{tikzpicture}
+    \caption{Use Case Diagram for the Ray-Tracer Benchmarker}
+    \label{fig:use-case}
+\end{figure}
