@@ -1,5 +1,6 @@
 comp:
 	latexmk -cd -shell-escape -pdf report.tex
+	cp report.pdf report-backup.pdf
 
 glossary:
 	makeglossaries report

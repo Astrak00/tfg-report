@@ -72,6 +72,11 @@ The traditional layout of these \glspl{cpu} can be found from \autoref{fig:xeon-
 Using AMD's ZEN 2 architecture as a new CPU architecture example, we can observe there are is an additional layer, compared to \autoref{fig:xeon-layour}. As \textcite{zen2-architecture} puts it in their paper, in \ref{fig:zen2-architecture}, the victim of this design is the L3 cache, which is shared between less cores.
 
 
+\subsection{Hyperthreading}
+\label{sec:hyperthreading}
+Hyperthreading is a technology that allows a single physical core to appear as two logical cores to the operating system. This means that the operating system can schedule two threads on a single physical core, allowing for better utilization of the CPU resources. This usually entails a better performance, as described by \textcite{hyperthreading}, but when \gls{cpu} intensive benchmarks are run, such as integer sorting, the performance can be worse than running the same program on a system that does not have hyperthreading enabled. This is because the two threads share the same resources, such as the cache and the execution units, which can lead to contention and reduced performance.
+
+
 \section{Programming Languages}
 
 In this section, the different programming languages that have been chosen will be discussed, as well as why other similar languages were not.

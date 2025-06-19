@@ -68,9 +68,15 @@ This is due to hyperthreading \footnote{Hyperthreading is enabled in this system
 
 It is obvious from the multiple graphs and tables that the C\++ implementation is the most energy efficient and fastest by a significant margin, followed suprsingly by the PyPy execution of the Python code, which is faster than the Go implementation, and the Python implementation is the slowest and most energy consuming by an extremely large amount.
 
+But, when loking close at the 28 core and 32 core tests, focusing in C++, we can see the energy consumption is lower when using cores from different CPUs rather than consuming more, as there is some energy efficiency loss when synchronizing the data between the two CPUs. But what happens in this case is that the C++ parallelization algorithm makes each of the cores have a very hard on \gls{cpu} workload, resulting in a more efficient result. This results in agreement with \autoref{sec:hyperthreading}, where it is explained that hyperthreading is not as efficient for specific tasks.
+
+
+
 I want to specifically talk about the 60 cores test, as it is the most interesting one. In this test, the energy consumption is lower than in the 48 cores test, as well as the execution time on the C++ implementation, but on the Go implementation, both energy consumption and execution time are higher than in the 48 cores test. This is because the Go implementation is not as efficient as the C\++ implementation, and the Go runtime has to manage more goroutines, which adds overhead. 
 
 Considering the 32 and 48 cores tests with the python program, the energy consumption reduces significanly when the program start using virtual cores, as the program is able to run on more cores, and the python runtime is not very demanding, being able to use these cores efficiently, as shown in \autoref{fig:server-energy-pkg} and \autoref{fig:server-execution-time} is an advantage to python with respect to itself.
+
+
 
 
 
@@ -86,20 +92,20 @@ It also must be noted that the cores during the 48 core benchmark were being use
 If we changed the implementation to a per-row renderer, on the go-side, the Go runtime would be able to use all the cores more efficiently, as it would be able to schedule the goroutines more efficiently, and the execution time would be lower, but the energy consumption would be higher, as the cores would be used at 100\% of their capacity. Thus, in this case, as we will see in other sections, having a faster execution time is not always the best option in terms of energy consumption.
 
 
-
-
 % When changin to a per-pixel rendered, lower cores energy efficiency increased, but the many cores, from 48 oward would not get used as much, thus reducing the energy efficiency and increating the execution time. 
 
 
 
 \subsection{Personal Desktop}
-%% Comments on the platform, ARM 14 core, big.LITTLE architecture (firestorm, 10 high performance cores and icestorm, 4 high efficiency cores)
+%% Comments on the platform X86, 8 cores, 16 threads, AMR ZEN 2 (https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-7-3800x.html#amd_support_product_spec)
+%% Test with and without hyerthreading as math intensive calculations
 \subsubsection{Evaluated parameters}
 \subsubsection{Results}
 
 \subsection{Personal SOTA Laptop}
-%% Comments on the platform X86, 8 cores, 16 threads, AMR ZEN 2 (https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-7-3800x.html#amd_support_product_spec)
-%% Test with and without hyerthreading as math intensive calculations
+This lapot is said to have one of the fastest single-core performance in the market. It has a 14 core ARM processor, using the big.LITTLE architecture, with 10 high performance cores and 4 high efficiency cores. It has 48GB of RAM, which is enough to run any of the tests.
+
+
 \subsubsection{Evaluated parameters}
 
 This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, which has 10 high performance cores and 4 high efficiency cores, which is a big.LITTLE architecture. This means that the high performance cores are used for CPU intensive tasks, while the high efficiency cores are used for less demanding tasks, such as web browsing or watching videos. But as Apple does not allow the user seting the cores to be used by a specific process, like it happens in Linux, we can not test the high efficiency cores isolated from the high performance cores, as the operating system will decide for us which cores to use for each process. 
@@ -119,14 +125,53 @@ This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, 
 
 \section{Comment on paralellizing different languages}
 
-%% more threads than avaiable, is it beneficial?
+In this section, I would like to make some comment on the paralelization on different languages, and why some might experience a different behaviour. 
 
-%% Python
-%% Why the multi-threaded version is slower iterating though every pixel:
-%% Process creation overhead: The code uses ProcessPoolExecutor which creates separate Python processes for each pixel. Creating processes is much more expensive than creating threads, and doing it for every single pixel creates massive overhead.
+\subsection{Go}
+When choosing how many "cores" the tests are using, for the Go implementation, I used the size of the \texttt{waitChan} channel. This number can be changed to be more than the total number of threads in the system, which sometimes increases the performance.
 
-%% Data serialization: Each time a task is submitted to a process, Python needs to serialize (pickle) the entire world object and other parameters, then deserialize them in the worker process. This happens for every pixel!
 
-%% Too much granularity: Processing individual pixels in separate processes is extremely fine-grained parallelization. The overhead of process management far exceeds the actual computation time per pixel.
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lcccc}
+    \toprule
+    Cores & Goroutines & Energy consumed (pkg) & Execution time \\
+    \midrule
+    1             & 1          &  28,522.69     &   172.95  \\ 
+    1             & 2          &  28,919.31     &   175.38  \\ 
+    2             & 2          &  18,231.97     &   89.319  \\
+    2             & 4          &  18,224.50     &   89.275  \\
+    4             & 4          &  10,304.27     &   45.508  \\
+    4             & 8          &  10,299.06     &   45.482  \\
+    8             & 8          &  5,617.27      &   23.781  \\
+    8             & 16         &  5,580.52      &   23.594  \\
+    14            & 14         &  3,155.30      &   14.034  \\
+    14            & 28         &  3,151.93      &   14.001  \\
+    16            & 16         &  2,904.52      &   12.456  \\
+    16            & 32         &  3,018.54      &   12.435  \\
+    28            & 28         &  2,306.35      &   8.9061  \\
+    28 Same CPU   & 28         &  2,271.71      &   7.6137  \\
+    28            & 56         &  2,314.29      &   7.7914  \\
+    28 Same CPU   & 56         &  2,290.85      &   8.8153  \\
+    32            & 32         &  2,151.74      &   8.1632  \\
+    32 Same CPU   & 32         &  2,109.37      &   6.8224  \\
+    32            & 64         &  2,121.88      &   8.1017  \\
+    32 Same CPU   & 64         &  2,142.21      &   6.8960  \\
+    48            & 48         &  1,856.93      &   5.7187  \\
+    48            & 96         &  1,848.47      &   5.6737  \\
+    60            & 60         &  1,744.76      &   5.3571  \\
+    60            & 120        &  1,737.80      &   5.3208  \\
+    60            & 200        &  1,724.73      &   5.2556  \\
+    60            & 250        &  1,719.49      &   5.2182  \\
+    \bottomrule
+  \end{tabular}
+  \caption{Go goroutines and threads used in the tests}
+  \label{tab:go-routines-cores}
+\end{table}
 
-%% Memory overhead: Each process has its own memory space, so the world object is duplicated across all worker processes.
+As it can be seen from \autoref{tab:go-routines-cores}, the Go implementation is able to use more than the total number of threads in the system, and it is able to use them efficiently, as the Go runtime is able to schedule the goroutines efficiently.
+
+\subsection{Python}
+When iterating though every pixel in Python, as the environment has to be copied for every single pixel, the cores are not being used at 100\% of their capacity, specifically, while testing I saw that the cores were being used at around 5\% of their capacity. Meaning the creation of too many threads is not beneficial, as the overhead of creating the threads is larger than the actual work being done by each thread. 
+Another factor that Python, each time a task is submitted to a process, Python needs to serialize (pickle) the entire world object and other parameters, then deserialize them in the worker process, which means that, if this has to happen for every pixel, the serializing and deselializing tasks run for much longer than the actual pixel processing.
+
