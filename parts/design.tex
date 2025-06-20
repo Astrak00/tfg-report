@@ -267,3 +267,145 @@ And this is an example of the same picture, but with the settings used to test t
     \caption{Example of program output, 400 width, 50 samples per pixel and 50 max depth}
     \label{fig:ray_traced_average}
 \end{figure}
+
+\section{Runing the program}
+To run the program, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for MacOS, as it needs \gls{sudo} privileges.
+
+\begin{lstlisting}[caption={Makefile for running the program.}, label={lst:makefile_run}
+    ]
+
+# ====== Configuration ======
+CORES                 ?= 14
+MAC_OS                ?= False
+SERVER                ?= False
+RESULTS_DIR           := $(CURDIR)/results-$(CORES)
+SPHERE_DATA           := sphere_data.txt
+POWERMETRICS_PID_FILE := $(RESULTS_DIR)/power/powermetrics.pid
+POWER_LOG             := $(RESULTS_DIR)/power/powermetrics
+POWER_TRIMM_LOG       := $(RESULTS_DIR)/power/powermetrics_trimmed
+POWER_CLEANED_LOG     := $(RESULTS_DIR)/power/powermetrics_cleaned
+POWER_INTERVAL        := 100  # Interval for powermetrics
+PERF_COMMAND := perf stat -r 5 -e 'power/energy-pkg/,power/energy-ram/'
+
+# ====== Directory Setup ======
+$(RESULTS_DIR):
+	@mkdir -p $(RESULTS_DIR)
+
+# ====== Power Management Functions ======
+# Args: $(1)=output_name
+define start_powermetrics
+	...
+endef
+
+# Args: $(1)=output_name
+define stop_powermetrics
+	...
+endef
+
+# ====== Ray Tracer Execution Functions ======
+# Generic function to run a ray tracer with timing
+# Args: $(1)=directory, $(2)=description, $(3)=command, $(4)=output_name
+define run_raytracer
+	...
+endef
+
+# Single-threaded version
+# Args: $(1)=directory, $(2)=description, $(3)=command, $(4)=output_name
+define run_raytracer_single
+	...
+endef
+
+# ====== Build Functions ======
+define build_cpp
+	@echo "Building C++ ray tracer ..."
+	...
+endef
+
+define build_go
+	@echo "Building Go ray tracer ..."
+	...
+endef
+
+# ====== Language-Specific Targets ======
+# Python Implementations
+.PHONY: python python-single pypy pypy-single
+python: $(RESULTS_DIR)
+	...
+
+python-single: $(RESULTS_DIR)
+	...
+
+pypy: $(RESULTS_DIR)
+	...
+    
+pypy-single: $(RESULTS_DIR)
+	...
+    
+# C++ Implementations
+.PHONY: cpp cpp-single cpp-build
+cpp-build:
+	...
+
+cpp: cpp-build $(RESULTS_DIR)
+	...
+    
+cpp-single: cpp-build $(RESULTS_DIR)
+	...
+    
+# Go Implementations
+.PHONY: go go-single go-build
+go-build:
+	...
+
+go: go-build $(RESULTS_DIR)
+	...
+    
+go-single: go-build $(RESULTS_DIR)
+	...
+    
+# ====== Batch Operations ======
+.PHONY: all all-multi all-single benchmark
+
+all-multi: cpp go pypy python $(RESULTS_DIR)
+	...
+
+all-single: cpp-single go-single pypy-single python-single $(RESULTS_DIR)
+	...
+
+all: all-multi all-single
+	...
+
+benchmark: all
+	...
+
+# ====== Utility Targets ======
+.PHONY: ppm-diff clean-power
+
+ppm-diff:
+	...
+
+clean-power:
+	...
+
+# ====== Cleanup Targets ======
+.PHONY: clean clean-builds clean-all stop-power
+stop-power:
+	...
+
+clean:
+	...
+
+clean-builds:
+	...
+
+clean-all: clean clean-builds
+	...
+
+# ====== Help and Information ======
+.PHONY: help info
+help:
+	...
+
+info:
+	...
+\end{lstlisting}

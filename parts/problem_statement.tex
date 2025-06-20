@@ -270,6 +270,38 @@ RE -> Restriction
     \label{tab:ur-ca-15}
 \end{table}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-16} \\
+        \toprule
+        \textbf{Description}        & The user must be able to run each benchmark individually. \\
+        \textbf{Necessity}          & Medium   \\
+        \textbf{Priority}           & Low   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-16}
+    \label{tab:ur-ca-16}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{UR-CA-17} \\
+        \toprule
+        \textbf{Description}        & The user must be able to run all benchmarks of one language together. \\
+        \textbf{Necessity}          & Medium   \\
+        \textbf{Priority}           & Low   \\
+        \textbf{Stability}          & Stable \\
+        \textbf{Verifiability}      & Verifiable \\
+    \end{tabular}
+    \caption{Requirement UR-CA-17}
+    \label{tab:ur-ca-17}
+\end{table}
+
 \subsubsection{Restriction}
 
 \begin{table}[H]
@@ -457,7 +489,7 @@ RE -> Restriction
         \textbf{Priority}           &  High \\
         \textbf{Stability}          &  Stable \\
         \textbf{Verifiability}      & Verifiable \\
-        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-09}} \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-09}}, \textit{\nameref{tab:ur-ca-16}}, \textit{\nameref{tab:ur-ca-17}} \\
     \end{tabular}
     \caption{Requirement SR-FN-01}
     \label{tab:sr-fn-01}
@@ -508,7 +540,7 @@ RE -> Restriction
         \textbf{Priority}           &  High \\
         \textbf{Stability}          &  Stable \\
         \textbf{Verifiability}      & Verifiable \\
-        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-12}} \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-12}}, \textit{\nameref{tab:ur-ca-16}}, \textit{\nameref{tab:ur-ca-17}} \\
     \end{tabular}
     \caption{Requirement SR-FN-04}
     \label{tab:sr-fn-04}
@@ -559,7 +591,7 @@ RE -> Restriction
         \textbf{Priority}           &  High \\
         \textbf{Stability}          &  Stable \\
         \textbf{Verifiability}      & Verifiable \\
-        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-14}} \\
+        \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-14}}, \textit{\nameref{tab:ur-ca-17}} \\
     \end{tabular}
     \caption{Requirement SR-FN-07}
     \label{tab:sr-fn-07}
@@ -639,7 +671,8 @@ RE -> Restriction
 
 \input{parts/diagrams/use-case.tex}
 
-% Ver en distintos ordenadores el uso?
+
 % Podría añadir el makefile un poco mejor para que se pudieran ejecutar todos los programas y medirlos, y sacar los resultados?
+% Poner esto en la implementación, aka el chapter 4
 
 \section{Traceability}
