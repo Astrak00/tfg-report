@@ -5,13 +5,87 @@ Thing cosa cosa cosa TODO
 \section{General Program Design}
 The "30,000 foot view" of the programs is a ray-tracer, that has multiple spheres, with different materials, indexes of refraction and sizes. Each of the pixels is calculated individually, and then, when all pixels have been processed, they are outputted to a \texttt{ppm} file.
 
-\autoref{fig:general_program_flow} TODO: hablar algo de aqui
-
+As it can be infered from the \autoref{fig:general_program_flow}, the program is divided into two main sections:
+\begin{itemize}
+    \item \textbf{Scene}: This section reads the input file and stores the spheres into their appropriate data-structures.
+    \item \textbf{Renderer}: This section is the main loop of the program, processing each pixel and outputting the resulting image.
+\end{itemize}
 
 \input{parts/diagrams/code-files}
 
+\begin{figure}[]
+    \centering
+    \begin{multicols}{3}
+
+        \textbf{C++ Implementation}
+        \dirtree{%
+        .1 ..
+        .2 .clang-format.
+        .2 .clang-tidy.
+        .2 CMakeLists.txt.
+        .2 src/.
+        .3 camera.hpp.
+        .3 color.hpp.
+        .3 hittable\_list.hpp.
+        .3 hittable.hpp.
+        .3 image.hpp.
+        .3 interval.hpp.
+        .3 main.cpp.
+        .3 material.hpp.
+        .3 ray.hpp.
+        .3 rtweekend.hpp.
+        .3 sphere.hpp.
+        .3 vec3.hpp.
+        }
+        
+        \columnbreak
+        
+        \textbf{Go Implementation}
+        \dirtree{%
+        .1 ..
+        .2 camera.go.
+        .2 color.go.
+        .2 go.mod.
+        .2 hittable\_list.go.
+        .2 hittable.go.
+        .2 image.go.
+        .2 interval.go.
+        .2 main.go.
+        .2 material.go.
+        .2 ray-tracer.
+        .2 ray.go.
+        .2 rtweekend.go.
+        .2 sphere.go.
+        .2 vec3.go.
+        }
+        
+        \columnbreak
+        
+        \textbf{Python Implementation}
+        \dirtree{%
+        .1 ..
+        .2 camera.py.
+        .2 color.py.
+        .2 hittable.py.
+        .2 image.py.
+        .2 main.py.
+        .2 material.py.
+        .2 ray.py.
+        .2 tree-py.txt.
+        .2 utils.py.
+        .2 vec3.py.
+        }
+        
+    \end{multicols}
+    \caption{File structures for Ray-Tracer implementations in different languages}
+    \label{fig:raytracer-structures}
+\end{figure}
+
+We can observe in \autoref{fig:raytracer-structures}, there are the different files that compose each of the implementations of the ray-tracer, in C++, Go and Python. The file structure is similar in all three languages, as they must have an almost identical implementations.
+
+
 \section{Scene}
-This first section of the program reads the input file and stores the spheres into their appropriate data-structures. 
+This first section of the program reads the input file and stores the spheres into their appropriate data-structures, as we will see in \autoref{sec:sphere-object}. 
 
 \subsection{Sphere\_data design}
 
@@ -62,6 +136,7 @@ python is one of the most open languages, where there are many ways of developin
 \input{parts/code_blocks/python-function-assig}
 
 \section{Object}
+\label{sec:sphere-object}
 All objects in this program are spheres, even the "ground" is a sphere with a big enough radius that it seems a plane.
 
 \subsubsection{C++}
