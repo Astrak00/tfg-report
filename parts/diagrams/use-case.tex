@@ -1,5 +1,4 @@
 \begin{figure}
-    \centering
     \hspace*{-2cm}
     \begin{tikzpicture}
         \begin{umlsystem}[] {Use Case Diagram for the Ray-Tracer Benchmarker} 
@@ -19,6 +18,8 @@
             \umlusecase[name=all,y=-5,width=2.2cm] {All benchmarks}
             \umlusecase[name=all-sc,x=12,y=5.5,width=2.2cm] {All single-core benchmarks}
             \umlusecase[name=all-mc,x=12,y=-16.5,width=2.2cm] {All multicore benchmarks}
+
+            \umlusecase[name=view-image,y=-10,width=2.2cm] {View image}
 
             
 
@@ -42,6 +43,7 @@
         \umlassoc{User}{all}
         \umlassoc{User}{all-sc}
         \umlassoc{User}{all-mc}
+        \umlassoc{User}{view-image}
 
 
 
@@ -78,3 +80,69 @@
     \caption{Use Case Diagram for the Ray-Tracer Benchmarker}
     \label{fig:use-case}
 \end{figure}
+
+
+\newpage
+\begin{landscape}
+\begin{figure}
+    \hspace*{-1.5cm}
+    \centering
+    \begin{tikzpicture}
+        \umlactor[name=user,x=-4,y=-14,] {User}
+
+        \begin{umlsystem}[x=-2,y=-12]{Ray-Tracer Benchmarker}
+
+            \umlusecase[x =  0, y =  0, name=runall]{Run all benchmarks}
+            \umlusecase[x =  6, y =  0, name=runcpp]{Run C++ benchmarks}
+            \umlusecase[x =  6, y = -3, name=rungo]{Run Go benchmarks}
+            \umlusecase[x =  6, y = -6, name=runpy]{Run Python benchmarks}
+            \umlusecase[x =  6, y = -9, name=runpypy]{Run PyPy benchmarks}
+
+            \umlusecase[x = 14, y =  0, width = 2.4cm, fill = gray!10, name=single]{Run single-core}
+            \umlusecase[x = 14, y = -3, width = 2.4cm, fill = gray!10, name=multi]{Run multicore}
+
+            \umlusecase[x = 20, y =  1, name=cppsingle]{C++ single-core}
+            \umlusecase[x = 20, y = -0.5, name=cppmulti]{C++ multi-core}
+            \umlusecase[x = 20, y = -2, name=gosingle]{Go single-core}
+            \umlusecase[x = 20, y = -3.5, name=gomulti]{Go multi-core}
+            \umlusecase[x = 20, y = -5, name=pysingle]{Python single-core}
+            \umlusecase[x = 20, y = -6.5, name=pymulti]{Python multi-core}
+            \umlusecase[x = 20, y = -8, name=pypysingle]{PyPy single-core}
+            \umlusecase[x = 20, y = -9.5, name=pypymulti]{PyPy multi-core}
+
+            \umlassoc{User}{runall}
+            \umlassoc{User}{runcpp}
+            \umlassoc{User}{rungo}
+            \umlassoc{User}{runpy}
+            \umlassoc{User}{runpypy}
+
+            \umlinclude{runall}{single}
+            \umlinclude{runall}{multi}
+
+            \umlinclude[anchor1=45,anchor2=135,pos=0.3]{runcpp}{single}
+            \umlinclude[anchor1=60,anchor2=120,pos=0.5]{rungo}{single}
+            \umlinclude[anchor1=75,anchor2=105,pos=0.7]{runpy}{single}
+            \umlinclude[anchor1=90,anchor2=90,pos=0.9]{runpypy}{single}
+
+            \umlinclude[anchor1=315,anchor2=225,pos=0.9]{runcpp}{multi}
+            \umlinclude[anchor1=300,anchor2=240,pos=0.7]{rungo}{multi}
+            \umlinclude[anchor1=285,anchor2=255,pos=0.5]{runpy}{multi}
+            \umlinclude[anchor1=270,anchor2=270,pos=0.3]{runpypy}{multi}
+
+            \umlinherit{single}{cppsingle}
+            \umlinherit{single}{gosingle}
+            \umlinherit{single}{pysingle}
+            \umlinherit{single}{pypysingle}
+
+            \umlinherit{multi}{cppmulti}
+            \umlinherit{multi}{gomulti}
+            \umlinherit{multi}{pymulti}
+            \umlinherit{multi}{pypymulti}
+        \end{umlsystem}
+
+    \end{tikzpicture}
+    \caption{Cleaned-up use-case diagram for the Ray-Tracer Benchmarker}
+    \label{fig:use-case-v2}
+\end{figure}
+
+\end{landscape}

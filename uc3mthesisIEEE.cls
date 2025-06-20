@@ -334,6 +334,7 @@
 \RequirePackage{multirow}  % combine cells
 \RequirePackage{caption}  % customize the title of tables and figures
 % \RequirePackage{float}
+\usepackage{rotating}
 \usepackage{floatrow} % use \ttabbox{\caption{}\label{}}{<tabular>} and \ffigbox{\caption{}\label{}}{<graphic>} to align the table/figure captions according to the defined style
 \RequirePackage{tablefootnote}  % allow footnotes from text in tables (\tablefootnote)
 \RequirePackage{threeparttable}  % fancier tables (with tablenotes)
