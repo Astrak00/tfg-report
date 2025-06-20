@@ -131,10 +131,9 @@ In this section, I would like to make some comment on the paralelization on diff
 \subsection{Go}
 When choosing how many "cores" the tests are using, for the Go implementation, I used the size of the \texttt{waitChan} channel. This number can be changed to be more than the total number of threads in the system, which sometimes increases the performance.
 
-
-\begin{table}[ht]
+\begin{table}
   \centering
-  \begin{tabular}{lcccc}
+  \begin{tabular}{lccc}
     \toprule
     Cores & Goroutines & Energy consumed (pkg) & Execution time \\
     \midrule
@@ -176,7 +175,7 @@ As it can be seen from \autoref{tab:go-routines-cores}, the Go implementation is
 When iterating though every pixel in Python, as the environment has to be copied for every single pixel, the cores are not being used at 100\% of their capacity, specifically, while testing I saw that the cores were being used at around 5\% of their capacity. Meaning the creation of too many threads is not beneficial, as the overhead of creating the threads is larger than the actual work being done by each thread. 
 Another factor that Python, each time a task is submitted to a process, Python needs to serialize (pickle) the entire world object and other parameters, then deserialize them in the worker process, which means that, if this has to happen for every pixel, the serializing and deselializing tasks run for much longer than the actual pixel processing.
 
-\section{Most efficient language}
+\section{Most efficient language optimizations}
 As we can see from these results, the most efficient language in terms of energy consumption and execution time is C\++. 
 
 But, out of the box, does C++ always provide the best performance? The answer is no, as the compiler plays an extremely important role in the performance of the code, and the compiler optimizations can make a huge difference in the performance of the code.
@@ -200,17 +199,11 @@ As to not leave the reader with the intreague of what would happen if we used di
 As \autocite{llvm-fast-math} explains, the \texttt{--fast-math} flag allows the compiler to perform optimizations that may not be mathematically correct, but will result in faster code. 
 
 
-\begin{table}[ht]
+\begin{table}
   \centering
-  \caption{Power/Energy and execution time for various core counts
-    and compiler optimization flags.
-    Boldface indicates the minimum value in each row.}
-  \label{tab:power-time-bold}
   \begin{tabular}{lrrrrr}
     \toprule
-    \textbf{Metric / Flags} & \textbf{-O0}    & \textbf{-O1}
-    & \textbf{-O2}    & \textbf{-O3}
-    & \textbf{-O3 (fast-math)} \\
+    \textbf{Metric / Flags} & \textbf{-O0} & \textbf{-O1} & \textbf{-O2} & \textbf{-O3} & \textbf{-O3 (fast-math)} \\
     \midrule
     \multicolumn{6}{c}{\textbf{1 core}} \\
     power/energy-pkg (J) & 52,957.47 & 5,185.28 & 4,388.12 &  4,031.83   & \textbf{4,005.70} \\
@@ -243,6 +236,10 @@ As \autocite{llvm-fast-math} explains, the \texttt{--fast-math} flag allows the 
     time (s)             & 7.5463    & 1.89955  & 1.80     &     1.79288     & \textbf{1.79288}\\
     \bottomrule
   \end{tabular}
+  \label{tab:compiler-optimizations}
+    \caption{Power/Energy and execution time for various core counts and compiler optimization flags. Boldface indicates the minimum value in each row.}
 \end{table}
 
+From the \autoref{tab:compiler-optimizations}, we can see that -O3 can be upto $13.13x$ mroe efficient and $11.44x$ faster than \texttt{-O0}, and \texttt{-O3} and $13.22x$ more efficient and $12.25x$ faster if we add the \texttt{--fast-math} flag on a single core task. But when we change and add more cores, the improvement decreases up to $4.24x$ faster more energy efficient and $4.16x$ faster with \texttt{-O3} and consume $4.22x$ less energy and take $4.11x$ less time with \texttt{-O3 --fast-math}.
 
+Thus, we can see that the compiler optimizations play a very important role in the performance of the code, and that C\++ is not always the most efficient language, as it depends on the compiler optimizations used. In conclusions, for optimization flags, eventhough \texttt{-O3 with --fast-math} is the most efficient, I would recommend using \texttt{-O3} for high-performance computing, as it provides a good balance between performance and accuracy. If the program is just a regular program, I would recommend using \texttt{-O2}, as it provides a good balance between performance and code size as well as compilation time, which we have not taken into account as the program is just compiled once and may be executed thousands of times.
