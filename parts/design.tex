@@ -2,7 +2,7 @@
 
 The premise of this chapter is to describe the design, implementation and decisions taken during the development of the different programs that compose this project.
 
-Section \ref{sec:general_program_design} describes the general design of the programs, and how they are divided. In the next sections, \autoref{sec:sphere-object} and \autoref{sec:renderer}, we will see how the objects are designed and how the rendering is done, respectively. Then, \autoref{sec:output} describes how the output is generated and how it can be used to visualize the results of the ray-tracer and finally, the last section, \autoref{sec:running_program}, describes how the program can be run and how to use the \texttt{Makefile} to run the program with different parameters.
+Section \autoref{sec:general_program_design} describes the general design of the programs, and how they are divided. In the next sections, \autoref{sec:sphere-object} and \autoref{sec:renderer}, we will see how the objects are designed and how the rendering is done, respectively. Then, \autoref{sec:output} describes how the output is generated and how it can be used to visualize the results of the ray-tracer and finally, the last section, \autoref{sec:running_program}, describes how the program can be run and how to use the \texttt{Makefile} to run the program with different parameters.
 
 \section{General Program Design}
 \label{sec:general_program_design}
@@ -487,4 +487,23 @@ help:
 
 info:
 	...
+\end{lstlisting}
+
+When running the macOS version, the output has to be cleaned up, as the powermetrics command outputs a lot of information that is not needed for the report. This is done by running the \texttt{utilities/clean\_macos.sh} script inside the \texttt{results-<cores>} folder. Then, to get the power consumption, the \texttt{utilities/macos\_to\_jules.py} script has to be executed like this:
+\begin{lstlisting}[language=bash, caption={Running the power consumption script.}, label={lst:macos_power_script}]
+python3 macos_to_jules.py \
+    '<output-folder>/powermetrics_cleaned_<lang>.log'
+\end{lstlisting}
+
+and the result would be printed to the terminal like this:
+\begin{lstlisting}[language=bash, caption={Power consumption output.}, label={lst:macos_power_output}]
+Power Statistics:
+Average: 31707.79 mW
+Maximum: 42631.00 mW
+Minimum: 2342.00 mW
+
+Energy Results:
+Total energy: 50.605626 J
+Total time: 1.60 s
+Average power: 31707.79 mW
 \end{lstlisting}
