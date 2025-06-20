@@ -83,6 +83,7 @@
 
 
 \newpage
+
 \begin{landscape}
 \begin{figure}
     \hspace*{-1.5cm}
@@ -92,23 +93,23 @@
 
         \begin{umlsystem}[x=-2,y=-12]{Ray-Tracer Benchmarker}
 
-            \umlusecase[x =  0, y =  0, name=runall]{Run all benchmarks}
-            \umlusecase[x =  6, y =  0, name=runcpp]{Run C++ benchmarks}
-            \umlusecase[x =  6, y = -3, name=rungo]{Run Go benchmarks}
-            \umlusecase[x =  6, y = -6, name=runpy]{Run Python benchmarks}
-            \umlusecase[x =  6, y = -9, name=runpypy]{Run PyPy benchmarks}
+            \umlusecase[x =  0, y =  0, name=runall]{UC-01: Run all benchmarks}
+            \umlusecase[x =  6, y =  0, width=2cm, name=runcpp,    fill=blue!20]{UC-02: Run C++ benchmarks}
+            \umlusecase[x =  6, y = -3, width=2cm, name=rungo,     fill=violet!20]{UC-03: Run Go benchmarks}
+            \umlusecase[x =  6, y = -6, width=2cm, name=runpy,     fill=orange!20]{UC-04: Run Python benchmarks}
+            \umlusecase[x =  6, y = -9, width=2cm, name=runpypy,   fill=green!20]{UC-05: Run PyPy benchmarks}
 
             \umlusecase[x = 14, y =  0, width = 2.4cm, fill = gray!10, name=single]{Run single-core}
             \umlusecase[x = 14, y = -3, width = 2.4cm, fill = gray!10, name=multi]{Run multicore}
 
-            \umlusecase[x = 20, y =  1, name=cppsingle]{C++ single-core}
-            \umlusecase[x = 20, y = -0.5, name=cppmulti]{C++ multi-core}
-            \umlusecase[x = 20, y = -2, name=gosingle]{Go single-core}
-            \umlusecase[x = 20, y = -3.5, name=gomulti]{Go multi-core}
-            \umlusecase[x = 20, y = -5, name=pysingle]{Python single-core}
-            \umlusecase[x = 20, y = -6.5, name=pymulti]{Python multi-core}
-            \umlusecase[x = 20, y = -8, name=pypysingle]{PyPy single-core}
-            \umlusecase[x = 20, y = -9.5, name=pypymulti]{PyPy multi-core}
+            \umlusecase[width=3cm, x = 20, y =  2, name=cppsingle,fill=blue!20]{UC-02.1: C++ single-core}
+            \umlusecase[width=3cm, x = 20, y = 0.25, name=cppmulti,fill=blue!20]{UC-02.2: C++ multi-core}
+            \umlusecase[width=3cm, x = 20, y = -1.5, name=gosingle,fill=violet!20]{UC-03.1: Go single-core}
+            \umlusecase[width=3cm, x = 20, y = -3.25, name=gomulti,fill=violet!20]{UC-03.2: Go multi-core}
+            \umlusecase[width=3cm, x = 20, y = -5, name=pysingle,fill=orange!20]{UC-04.1: Python single-core}
+            \umlusecase[width=3cm, x = 20, y = -6.75, name=pymulti,fill=orange!20]{UC-04.2: Python multi-core}
+            \umlusecase[width=3cm, x = 20, y = -8.5, name=pypysingle,fill=green!20]{UC-05.1: PyPy single-core}
+            \umlusecase[width=3cm, x = 20, y = -10.25, name=pypymulti,fill=green!20]{UC-05.2: PyPy multi-core}
 
             \umlassoc{User}{runall}
             \umlassoc{User}{runcpp}
@@ -116,33 +117,38 @@
             \umlassoc{User}{runpy}
             \umlassoc{User}{runpypy}
 
-            \umlinclude{runall}{single}
-            \umlinclude{runall}{multi}
+            % Include relationships from runall - positioned at top and bottom
+            \draw [tikzuml dependency style] (runall) to[bend left=16] node[above] {$\ll \text{extend} \gg$} (single);
+            % \umlextend[anchor1=45,anchor2=-225,pos=0.7]{runall}{single}
+            \umlextend[anchor1=315,anchor2=135,pos=0.2]{runall}{multi}
 
-            \umlinclude[anchor1=45,anchor2=135,pos=0.3]{runcpp}{single}
-            \umlinclude[anchor1=60,anchor2=120,pos=0.5]{rungo}{single}
-            \umlinclude[anchor1=75,anchor2=105,pos=0.7]{runpy}{single}
-            \umlinclude[anchor1=90,anchor2=90,pos=0.9]{runpypy}{single}
+            % Include relationships to single-core - staggered positions
+            \umlinclude[anchor1=0,anchor2=180,pos=0.6]{runcpp}{single}
+            \umlinclude[anchor1=45,anchor2=210,pos=0.4]{rungo}{single}
+            \umlinclude[anchor1=60,anchor2=240,pos=0.6]{runpy}{single}
+            \umlinclude[anchor1=70,anchor2=250,pos=0.4]{runpypy}{single}
 
-            \umlinclude[anchor1=315,anchor2=225,pos=0.9]{runcpp}{multi}
-            \umlinclude[anchor1=300,anchor2=240,pos=0.7]{rungo}{multi}
-            \umlinclude[anchor1=285,anchor2=255,pos=0.5]{runpy}{multi}
-            \umlinclude[anchor1=270,anchor2=270,pos=0.3]{runpypy}{multi}
+            % Include relationships to multi-core - staggered positions
+            \umlinclude[anchor1=-30,anchor2=180,pos=0.4]{runcpp}{multi}
+            \umlinclude[anchor1=330,anchor2=150,pos=0.6]{rungo}{multi}
+            \umlinclude[anchor1=300,anchor2=120,pos=0.4]{runpy}{multi}
+            \umlinclude[anchor1=270,anchor2=90,pos=0.3]{runpypy}{multi}
 
-            \umlinherit{single}{cppsingle}
-            \umlinherit{single}{gosingle}
-            \umlinherit{single}{pysingle}
-            \umlinherit{single}{pypysingle}
+            % Inheritance relationships
+            \umlinherit[anchor2=180]{single}{cppsingle}
+            \umlinherit[anchor2=180]{single}{gosingle}
+            \umlinherit[anchor2=180]{single}{pysingle}
+            \umlinherit[anchor2=180]{single}{pypysingle}
 
-            \umlinherit{multi}{cppmulti}
-            \umlinherit{multi}{gomulti}
-            \umlinherit{multi}{pymulti}
-            \umlinherit{multi}{pypymulti}
+            \umlinherit[anchor2=180]{multi}{cppmulti}
+            \umlinherit[anchor2=180]{multi}{gomulti}
+            \umlinherit[anchor2=180]{multi}{pymulti}
+            \umlinherit[anchor2=180]{multi}{pypymulti}
         \end{umlsystem}
 
     \end{tikzpicture}
     \caption{Cleaned-up use-case diagram for the Ray-Tracer Benchmarker}
     \label{fig:use-case-v2}
 \end{figure}
-
 \end{landscape}
+
