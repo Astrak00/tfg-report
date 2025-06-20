@@ -201,6 +201,8 @@ As \autocite{llvm-fast-math} explains, the \texttt{--fast-math} flag allows the 
 
 \begin{table}
   \centering
+  \caption{Power/Energy and execution time for various core counts and compiler optimization flags}
+  \label{tab:compiler-optimizations}
   \begin{tabular}{lrrrrr}
     \toprule
     \textbf{Metric / Flags} & \textbf{-O0} & \textbf{-O1} & \textbf{-O2} & \textbf{-O3} & \textbf{-O3 (fast-math)} \\
@@ -236,9 +238,8 @@ As \autocite{llvm-fast-math} explains, the \texttt{--fast-math} flag allows the 
     time (s)             & 7.5463    & 1.89955  & 1.80     &     1.79288     & \textbf{1.79288}\\
     \bottomrule
   \end{tabular}
-  \label{tab:compiler-optimizations}
-    \caption{Power/Energy and execution time for various core counts and compiler optimization flags. Boldface indicates the minimum value in each row.}
 \end{table}
+
 
 From the \autoref{tab:compiler-optimizations}, we can see that -O3 can be up to $13.13x$ more efficient and $11.44x$ faster than \texttt{-O0}, and \texttt{-O3} and $13.22x$ more efficient and $12.25x$ faster if we add the \texttt{--fast-math} flag on a single core task. But when we change and add more cores, the improvement decreases up to $4.24x$ faster more energy efficient and $4.16x$ faster with \texttt{-O3} and consume $4.22x$ less energy and take $4.11x$ less time with \texttt{-O3 --fast-math}.
 
