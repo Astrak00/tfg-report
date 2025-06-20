@@ -1,8 +1,11 @@
 \chapter{Design and Implementation}\label{chap:design}
 
-Thing cosa cosa cosa TODO
+The premise of this chapter is to describe the design, implementation and decisions taken during the development of the different programs that compose this project.
+
+Section \ref{sec:general_program_design} describes the general design of the programs, and how they are divided. In the next sections, \autoref{sec:sphere-object} and \autoref{sec:renderer}, we will see how the objects are designed and how the rendering is done, respectively. Then, \autoref{sec:output} describes how the output is generated and how it can be used to visualize the results of the ray-tracer and finally, the last section, \autoref{sec:running_program}, describes how the program can be run and how to use the \texttt{Makefile} to run the program with different parameters.
 
 \section{General Program Design}
+\label{sec:general_program_design}
 The "30,000 foot view" of the programs is a ray-tracer, that has multiple spheres, with different materials, indexes of refraction and sizes. Each of the pixels is calculated individually, and then, when all pixels have been processed, they are outputted to a \texttt{ppm} file.
 
 As it can be inferred from the \autoref{fig:general_program_flow}, the program is divided into two main sections:
@@ -85,6 +88,7 @@ We can observe in \autoref{fig:raytracer-structures}, there are the different fi
 
 
 \section{Scene}
+\label{sec:sphere-object}
 This first section of the program reads the input file and stores the spheres into their appropriate data-structures, as we will see in \autoref{sec:sphere-object}. 
 
 \subsection{Sphere\_data design}
@@ -197,6 +201,7 @@ class Material(ABC):
 
 
 \section{Renderer}
+\label{sec:renderer}
 The main loop of the program is processing the object read from the file, added to the scene. 
 This loop has two version in each of the programs designed:
 \begin{itemize}
@@ -305,7 +310,7 @@ for future in futures:
 There is an interesting aspect on why the difference between the loops in Python and the rest of the programming languages: Compiled languages iterate over every pixel, while python iterates over every line, why is this? Because a copy of the entire python environment has to be created and the overhead of copying so much information slows down the program extremely. We will see the impact of these change in the evaluation section of the report.
 
 \section{Output}
-
+\label{sec:output}
 The output of the program was initially thought to be though the standard output of the terminal, and redirecting the output to a \texttt{\gls{ppm}} file, but for measuring performance concerns and stability between different programs and their implementation of interacting with the operating system, it was decided that the program would create a file and output all the data into that file.
 
 The design of the output is a \gls{ppm} file, in which the first three lines define the content, aspect and maximum values of a file. 
@@ -344,6 +349,7 @@ And this is an example of the same picture, but with the settings used to test t
 \end{figure}
 
 \section{Running the program}
+\label{sec:running_program}
 To run the program, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for macOS, as it needs \gls{sudo} privileges.
 
 \begin{lstlisting}[caption={Makefile for running the program.}, label={lst:makefile_run}]
