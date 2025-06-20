@@ -5,7 +5,7 @@ Thing cosa cosa cosa TODO
 \section{General Program Design}
 The "30,000 foot view" of the programs is a ray-tracer, that has multiple spheres, with different materials, indexes of refraction and sizes. Each of the pixels is calculated individually, and then, when all pixels have been processed, they are outputted to a \texttt{ppm} file.
 
-As it can be infered from the \autoref{fig:general_program_flow}, the program is divided into two main sections:
+As it can be inferred from the \autoref{fig:general_program_flow}, the program is divided into two main sections:
 \begin{itemize}
     \item \textbf{Scene}: This section reads the input file and stores the spheres into their appropriate data-structures.
     \item \textbf{Renderer}: This section is the main loop of the program, processing each pixel and outputting the resulting image.
@@ -81,7 +81,7 @@ As it can be infered from the \autoref{fig:general_program_flow}, the program is
     \label{fig:raytracer-structures}
 \end{figure}
 
-We can observe in \autoref{fig:raytracer-structures}, there are the different files that compose each of the implementations of the ray-tracer, in C++, Go and Python. The file structure is similar in all three languages, as they must have an almost identical implementations.
+We can observe in \autoref{fig:raytracer-structures}, there are the different files that compose each of the implementations of the ray-tracer, in C++, Go and Python. The file structure is similar in all three languages, as they must have an almost identical implementation.
 
 
 \section{Scene}
@@ -100,18 +100,18 @@ To ensure the consistency between programs and runs, I decided to create a file 
     \item \textbf{lookAt <x: double> <y: double> <z: double>} $\Rightarrow{}$ States the relative "up" orientation of the camera.
     \item \textbf{vup <x: double> <y: double> <z: double>} $\Rightarrow{}$ Vector that describes what is "up" in the scene
     \item \textbf{defocusAngle <double>} $\Rightarrow{}$ This parameter represents the "aperture". A higher number will mean more objects will be in focus, and a smaller number results in a shallower dept of field.
-    \item \textbf{focusDist <double>} $\Rightarrow{}$ Specified the distance from camera lookfrom point to a plane where the elements are in perfect focus
+    \item \textbf{focusDist <double>} $\Rightarrow{}$ Specified the distance from camera look from point to a plane where the elements are in perfect focus
 \end{itemize}
 
 \subsection{Language Specific}
 To try eliminating any possible influence of libraries created in other programming languages, all programs have been created only using their own standard library. The only exception for this is OpenMP used for C++ parallelization.
 
 \subsubsection{C++}
-When using C++, the intent was to use some of of C++ modern features that would make development easier and adapted to new standards such as the use of smart pointers, \texttt{constexpr} and range-based loops. It was designed as an object-oriented program, with polymorphism though virtual functions (inside \texttt{material}, \texttt{hittable}).
+When using C++, the intent was to use some of C++ modern features that would make development easier and adapted to new standards such as the use of smart pointers, \texttt{constexpr} and range-based loops. It was designed as an object-oriented program, with polymorphism though virtual functions (inside \texttt{material}, \texttt{hittable}).
 
 The idea of making it header only was the benefits of inlining, easy to distribute and easily separable concepts and, as the compilation time is not crucial, the re-compilation of the headers every time there is a modification is not a drawback.
 
-To perform multi-threaded operations, I chose the OpenMP library, because of its convenience of parallelizing and great performance. It has been the standard for decades, originating from the Fortran world (1960s\')
+To perform multithreaded operations, I chose the OpenMP library, because of its convenience of parallelizing and great performance. It has been the standard for decades, originating from the Fortran world (1960s\')
 
 \subsubsection{Go}
 When choosing Go as to build the ray-tracer, as Go does not support inheritance like other \gls{oop} languages, I had to use \texttt{interfaces}, which are the tools go provide for polymorphism. Interfaces are a type that defines a set of method signatures. Thus, for any struct that has the signature methods described in an interface, it can be called as an object from that type. 
@@ -131,7 +131,7 @@ type Hittable interface {
 In my specific implementation, two instances of these keywords were used to denote all types of materials and all Hittable objects, that have to implement a scatter function and a hit function as described in \autoref{lst:go_interface_example}.
 
 \subsubsection{Python}
-python is one of the most open languages, where there are many ways of developing the same program. There have been some problems with python's parameters in functions, wether they are passed as parameters or as references. Unlike in C++ where you can add \texttt{\&} to symbolize the passing the parameter by reference in the function signature, or using the \texttt{*} in Go, in Python, at first, it seems you can not specify this behavior. But if you research into the inner-workings of pythons functions and how they work, it seems that "Python passes function arguments by assigning to them" as \cite{python-names-pycon15} states at PyCon 2015:
+python is one of the most open languages, where there are many ways of developing the same program. There have been some problems with python's parameters in functions, whether they are passed as parameters or as references. Unlike in C++ where you can add \texttt{\&} to symbolize the passing the parameter by reference in the function signature, or using the \texttt{*} in Go, in Python, at first, it seems you can not specify this behavior. But if you research into the inner-workings of pythons functions and how they work, it seems that "Python passes function arguments by assigning to them" as \cite{python-names-pycon15} states at PyCon 2015:
 
 \input{parts/code_blocks/python-function-assig}
 
@@ -140,7 +140,7 @@ python is one of the most open languages, where there are many ways of developin
 All objects in this program are spheres, even the "ground" is a sphere with a big enough radius that it seems a plane.
 
 \subsubsection{C++}
-Each of the spheres in C++ is a class called \texttt{sphere}, as all objects in this scene ar spheres. \texttt{sphere} is a derived class from \texttt{hittable}, an abstract class, such that in the case that, in the future the program is modified to have more objects, it is easily implemented. 
+Each of the spheres in C++ is a class called \texttt{sphere}, as all objects in this scene are spheres. \texttt{sphere} is a derived class from \texttt{hittable}, an abstract class, such that in the case that, in the future the program is modified to have more objects, it is easily implemented. 
 
 \begin{lstlisting}[language=C++, caption={Sphere Class for C++}, label={lst:sphere_cpp}]
 class sphere : public hittable {
@@ -202,7 +202,7 @@ This loop has two version in each of the programs designed:
 \begin{itemize}
     \item \textbf{Single-threaded loop}: The program only runs using one core. It has a double loop where it processes all the pixels in the image, one by one. This is an extremely \gls{cpu} intensive process, as there are many pixels and iterations to go though each of those pixels. After all pixels are processed, they are outputted into the \texttt{output\_file}
     
-    \item \textbf{Multi-threaded loop}: There are many ways a multi-threaded renderer can work, even on different programming languages, different implementations have been chosen for specific reasons regarding their parallelization implementations. But in general, each of the pixels is processed and then they are all joined into an array / list that is outputted to a file.
+    \item \textbf{multithreaded loop}: There are many ways a multithreaded renderer can work, even on different programming languages, different implementations have been chosen for specific reasons regarding their parallelization implementations. But in general, each of the pixels is processed, and then they are all joined into an array / list that is outputted to a file.
 \end{itemize}
 
 
@@ -210,7 +210,7 @@ This loop has two version in each of the programs designed:
 As previously stated, each of the programming languages, not only uses a different approach into how they have been parallelized, but even the algorithm had to be changed, as the implementation of python's interpreters makes the obvious parallelization perform surprisingly bad (this will be discussed in its section)
 
 \subsubsection{C++}
-To implement multiprocessing in C++, the \gls{openMP} library has been used, as it allows to implement parallelism with a low-effort compared to the great results it provides. 
+To implement multiprocessing in C++, the \gls{openMP} library has been used, as it allows implementing parallelism with a low-effort compared to the great results it provides. 
 
 \begin{lstlisting}[language=C++, caption={OpenMP Pragma instruction.}, label={lst:openmp_pragma}]
 #pragma omp parallel for schedule(dynamic, 1) default(none)      \
@@ -233,9 +233,9 @@ Dividing this \texttt{\#pragma} directive into its components to better understa
     
     \item \textbf{shared(image, world, lines\_remaining, cout\_mutex, std::cout)}: The named variables refer to a single instance in shared memory, visible to all threads:
     \begin{itemize}
-        \item image: the pixel buffer, where al threads dump the processed pixel. Threads must coordinate writes so they don't stomp on each other.
-        \item world: the scene description, with all the spheres.
-        \item lines\_remaining: and atomic counter for progress reporting
+        \item image: the pixel buffer, where all threads dump the processed pixel. Threads must coordinate writes so they don't stomp on each other.
+        \item World: the scene description, with all the spheres.
+        \item Lines remaining: and atomic counter for progress reporting
         \item cout\_mutex + std::cout: Locking the cout\_mutex before writing to std::cout to serialize console output.
     \end{itemize}
     
@@ -244,7 +244,7 @@ Dividing this \texttt{\#pragma} directive into its components to better understa
     max\_ depth,
     image\_ width,
     image\_ height)$}:
-    Each thread has its own copy of these variables, with the values copied form the master thread, they are constants, read-only, although you can modify them localy, but they do not copy to other threads.
+    Each thread has its own copy of these variables, with the values copied form the master thread, they are constants, read-only, although you can modify them locally, but they do not copy to other threads.
 \end{itemize}
 
 \subsubsection{Go}
@@ -268,9 +268,9 @@ wg.Wait()
     
 \end{lstlisting}
 
-To be able to limit the number of threads that can be created, a channel with a size of \texttt{numThreads} is created and each time a new \gls{goroutine} is going to be created, it tries to add a struct to the channel which, if there is an empty place, it adds the struct and allows the program to continue. But, it the channel is full, the program stops and does not allow any continuation of the program until the channel has a free spot, which is generated after the pixel is added to the resulting image.
+To be able to limit the number of threads that can be created, a channel with a size of \texttt{numThreads} is created and each time a new \gls{goroutine} is going to be created, it tries to add a struct to the channel which, if there is an empty place, it adds the struct and allows the program to continue. But, if the channel is full, the program stops and does not allow any continuation of the program until the channel has a free spot, which is generated after the pixel is added to the resulting image.
 
-To prevent the program from continue running before all the \glspl{goroutine} are finished, a \gls{wg} is used to prevent the main thread from continuing the main execution until all threads have finished (which is the same as the \gls{wg} being empty.
+To prevent the program from continue running before all the \glspl{goroutine} are finished, a \gls{wg} is used to prevent the main thread from continuing the main execution until all threads have finished (which is the same as the \gls{wg} being empty).
 
 \subsubsection{Python}
 
@@ -343,8 +343,8 @@ And this is an example of the same picture, but with the settings used to test t
     \label{fig:ray_traced_average}
 \end{figure}
 
-\section{Runing the program}
-To run the program, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for MacOS, as it needs \gls{sudo} privileges.
+\section{Running the program}
+To run the program, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for macOS, as it needs \gls{sudo} privileges.
 
 \begin{lstlisting}[caption={Makefile for running the program.}, label={lst:makefile_run}]
 # ====== Configuration ======

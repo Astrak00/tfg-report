@@ -88,7 +88,7 @@ Considering the 32-core and 48-core tests with the Python program, the energy co
     \label{fig:htop_60_not_100}
 \end{figure}
 
-It also must be noted that the cores during the 48 core benchmark were being used at 100\% of their capacity, while in the 60 cores test, the cores were mostly being usead at a lower percentage, as shown in \autoref{fig:htop_60_not_100}. This is because the Go runtime is not able to efficiently use all the cores when there are more than 48 cores available, and it is not able to schedule the goroutines efficiently as these routines finish so fast that the Go runtime is not able to keep all the cores busy.
+It also must be noted that the cores during the 48 core benchmark were being used at 100\% of their capacity, while in the 60 cores test, the cores were mostly being used at a lower percentage, as shown in \autoref{fig:htop_60_not_100}. This is because the Go runtime is not able to efficiently use all the cores when there are more than 48 cores available, and it is not able to schedule the goroutines efficiently as these routines finish so fast that the Go runtime is not able to keep all the cores busy.
 
 If we changed the implementation to a per-row renderer, on the go-side, the Go runtime would be able to use all the cores more efficiently, as it would be able to schedule the goroutines more efficiently, and the execution time would be lower, but the energy consumption would be higher, as the cores would be used at 100\% of their capacity. Thus, in this case, as we will see in other sections, having a faster execution time is not always the best option in terms of energy consumption.
 
@@ -109,7 +109,7 @@ This lapot is said to have one of the fastest single-core performance in the mar
 
 \subsubsection{Evaluated parameters}
 
-This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, which has 10 high performance cores and 4 high efficiency cores, which is a big.LITTLE architecture. This means that the high performance cores are used for CPU intensive tasks, while the high efficiency cores are used for less demanding tasks, such as web browsing or watching videos. But as Apple does not allow the user seting the cores to be used by a specific process, like it happens in Linux, we can not test the high efficiency cores isolated from the high performance cores, as the operating system will decide for us which cores to use for each process. 
+This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, which has 10 high performance cores and 4 high efficiency cores, which is a big.LITTLE architecture. This means that the high performance cores are used for CPU intensive tasks, while the high efficiency cores are used for less demanding tasks, such as web browsing or watching videos. But as Apple does not allow the user setting the cores to be used by a specific process, like it happens on Linux, we can not test the high efficiency cores isolated from the high performance cores, as the operating system will decide for us which cores to use for each process. 
 
 
 
@@ -124,9 +124,9 @@ This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, 
 \subsubsection{Results}
 
 
-\section{Comment on paralellizing different languages}
+\section{Comment on parallelizing different languages}
 
-In this section, I would like to make some comment on the paralelization on different languages, and why some might experience a different behaviour. 
+In this section, I would like to make some comment on the parallelization on different languages, and why some might experience a different behavior. 
 
 \subsection{Go}
 When choosing how many "cores" the tests are using, for the Go implementation, I used the size of the \texttt{waitChan} channel. This number can be changed to be more than the total number of threads in the system, which sometimes increases the performance.
@@ -173,7 +173,7 @@ As it can be seen from \autoref{tab:go-routines-cores}, the Go implementation is
 
 \subsection{Python}
 When iterating though every pixel in Python, as the environment has to be copied for every single pixel, the cores are not being used at 100\% of their capacity, specifically, while testing I saw that the cores were being used at around 5\% of their capacity. Meaning the creation of too many threads is not beneficial, as the overhead of creating the threads is larger than the actual work being done by each thread. 
-Another factor that Python, each time a task is submitted to a process, Python needs to serialize (pickle) the entire world object and other parameters, then deserialize them in the worker process, which means that, if this has to happen for every pixel, the serializing and deselializing tasks run for much longer than the actual pixel processing.
+Another factor that Python, each time a task is submitted to a process, Python needs to serialize (pickle) the entire world object and other parameters, then deserialize them in the worker process, which means that, if this has to happen for every pixel, the serializing and deserializing tasks run for much longer than the actual pixel processing.
 
 \section{Most efficient language optimizations}
 As we can see from these results, the most efficient language in terms of energy consumption and execution time is C\++. 
@@ -181,7 +181,7 @@ As we can see from these results, the most efficient language in terms of energy
 But, out of the box, does C++ always provide the best performance? The answer is no, as the compiler plays an extremely important role in the performance of the code, and the compiler optimizations can make a huge difference in the performance of the code.
 For these tests, I many optimization flags, such as \texttt{-O3} and \texttt{-march=native}, which allows the compiler to optimize the code for the specific architecture of the machine it is being compiled on. But what would happen if we used different compiler flags, would the results change? Would another language be more efficient?
 
-As to not leave the reader with the intreague of what would happen if we used different compiler flags, I have compiled and tested all the programs with the following flags:
+As to not leave the reader with the intrigue of what would happen if we used different compiler flags, I have compiled and tested all the programs with the following flags:
 \begin{itemize}
     \item \texttt{-O0}: No optimizations, the compiler will not optimize the code at all.
     \item \textbf{-O1}: Basic optimizations; the compiler will optimize the code. It performs a basic cleanup, removing dead code and some simple inlining.
@@ -191,7 +191,7 @@ As to not leave the reader with the intreague of what would happen if we used di
         \item Loop transformations: Unrolling loops even more than \texttt{-O2}, changing the distribution of loops and interchanging them.
         \item Speculative optimizations
         \item Vectorization: \gls{SIMD} instructions (AVX, SSE, etc.)
-        \item Predictive commoning (reuses computations from previous loop iterations)
+        \item Predictive commoning (reusing computations from previous loop iterations)
     \end{itemize}
     \item \textbf{-O3 with --fast-math}: Maximum optimizations; the compiler will optimize the code as much as possible, but operations will not be as precise.
 \end{itemize}
@@ -240,6 +240,6 @@ As \autocite{llvm-fast-math} explains, the \texttt{--fast-math} flag allows the 
     \caption{Power/Energy and execution time for various core counts and compiler optimization flags. Boldface indicates the minimum value in each row.}
 \end{table}
 
-From the \autoref{tab:compiler-optimizations}, we can see that -O3 can be upto $13.13x$ mroe efficient and $11.44x$ faster than \texttt{-O0}, and \texttt{-O3} and $13.22x$ more efficient and $12.25x$ faster if we add the \texttt{--fast-math} flag on a single core task. But when we change and add more cores, the improvement decreases up to $4.24x$ faster more energy efficient and $4.16x$ faster with \texttt{-O3} and consume $4.22x$ less energy and take $4.11x$ less time with \texttt{-O3 --fast-math}.
+From the \autoref{tab:compiler-optimizations}, we can see that -O3 can be up to $13.13x$ more efficient and $11.44x$ faster than \texttt{-O0}, and \texttt{-O3} and $13.22x$ more efficient and $12.25x$ faster if we add the \texttt{--fast-math} flag on a single core task. But when we change and add more cores, the improvement decreases up to $4.24x$ faster more energy efficient and $4.16x$ faster with \texttt{-O3} and consume $4.22x$ less energy and take $4.11x$ less time with \texttt{-O3 --fast-math}.
 
-Thus, we can see that the compiler optimizations play a very important role in the performance of the code, and that C\++ is not always the most efficient language, as it depends on the compiler optimizations used. In conclusions, for optimization flags, eventhough \texttt{-O3 with --fast-math} is the most efficient, I would recommend using \texttt{-O3} for high-performance computing, as it provides a good balance between performance and accuracy. If the program is just a regular program, I would recommend using \texttt{-O2}, as it provides a good balance between performance and code size as well as compilation time, which we have not taken into account as the program is just compiled once and may be executed thousands of times.
+Thus, we can see that the compiler optimizations play a very important role in the performance of the code, and that C\++ is not always the most efficient language, as it depends on the compiler optimizations used. In conclusions, for optimization flags, even though \texttt{-O3 with --fast-math} is the most efficient, I would recommend using \texttt{-O3} for high-performance computing, as it provides a good balance between performance and accuracy. If the program is just a regular program, I would recommend using \texttt{-O2}, as it provides a good balance between performance and code size as well as compilation time, which we have not taken into account as the program is just compiled once and may be executed thousands of times.
