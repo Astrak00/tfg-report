@@ -271,9 +271,7 @@ And this is an example of the same picture, but with the settings used to test t
 \section{Runing the program}
 To run the program, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for MacOS, as it needs \gls{sudo} privileges.
 
-\begin{lstlisting}[caption={Makefile for running the program.}, label={lst:makefile_run}
-    ]
-
+\begin{lstlisting}[caption={Makefile for running the program.}, label={lst:makefile_run}]
 # ====== Configuration ======
 CORES                 ?= 14
 MAC_OS                ?= False

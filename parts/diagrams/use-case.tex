@@ -99,8 +99,8 @@
             \umlusecase[x =  6, y = -6, width=2cm, name=runpy,     fill=orange!20]{UC-04: Run Python benchmarks}
             \umlusecase[x =  6, y = -9, width=2cm, name=runpypy,   fill=green!20]{UC-05: Run PyPy benchmarks}
 
-            \umlusecase[x = 14, y =  0, width = 2.4cm, fill = gray!10, name=single]{Run single-core}
-            \umlusecase[x = 14, y = -3, width = 2.4cm, fill = gray!10, name=multi]{Run multicore}
+            \umlusecase[x = 14, y =  0, width = 2.5cm, fill = gray!10, name=single]{UC-06:\\Run single-core}
+            \umlusecase[x = 14, y = -3, width = 2.5cm, fill = gray!10, name=multi]{UC-07:\\Run multicore}
 
             \umlusecase[width=3cm, x = 20, y =  2, name=cppsingle,fill=blue!20]{UC-02.1: C++ single-core}
             \umlusecase[width=3cm, x = 20, y = 0.25, name=cppmulti,fill=blue!20]{UC-02.2: C++ multi-core}
@@ -125,14 +125,14 @@
             % Include relationships to single-core - staggered positions
             \umlinclude[anchor1=0,anchor2=180,pos=0.6]{runcpp}{single}
             \umlinclude[anchor1=45,anchor2=210,pos=0.4]{rungo}{single}
-            \umlinclude[anchor1=60,anchor2=240,pos=0.6]{runpy}{single}
-            \umlinclude[anchor1=70,anchor2=250,pos=0.4]{runpypy}{single}
+            \umlinclude[anchor1=60,anchor2=220,pos=0.6]{runpy}{single}
+            \umlinclude[anchor1=70,anchor2=230,pos=0.4]{runpypy}{single}
 
             % Include relationships to multi-core - staggered positions
             \umlinclude[anchor1=-30,anchor2=180,pos=0.4]{runcpp}{multi}
-            \umlinclude[anchor1=330,anchor2=150,pos=0.6]{rungo}{multi}
-            \umlinclude[anchor1=300,anchor2=120,pos=0.4]{runpy}{multi}
-            \umlinclude[anchor1=270,anchor2=90,pos=0.3]{runpypy}{multi}
+            \umlinclude[anchor1=330,anchor2=190,pos=0.6]{rungo}{multi}
+            \umlinclude[anchor1=-60,anchor2=210,pos=0.4]{runpy}{multi}
+            \umlinclude[anchor1=270,anchor2=230,pos=0.3]{runpypy}{multi}
 
             % Inheritance relationships
             \umlinherit[anchor2=180]{single}{cppsingle}

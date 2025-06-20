@@ -6,6 +6,7 @@
 - [x] Add a section in the implementation talking about the Makefile and compilation
 - [ ] Finish Section 4 and 4.1 chapter introduction and general program design respectively 
 - [ ] Add a section on evaluation talking about the flags used to compiled the C++ code and make some graphs
+- [ ] Add a tree view of the files of all implementations
 
 ### Evaluating results Server
 - [ ] Talk about the server results pkg, the ones in bold from c++ are interesting
