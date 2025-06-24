@@ -1,7 +1,7 @@
 # TFG report
 
 ## Todo
-- [ ] Add a section in the state-of-the-art talking about CUDA and openGL (massive parallelism)
+- [x] Add a section in the state-of-the-art talking about CUDA and openGL (massive parallelism)
 - [x] Add a section in the implementation talking about the python script for energy measurements from powermetrics
 - [x] Add a section in the implementation talking about the Makefile and compilation
 - [x] Finish Section 4 and 4.1 chapter introduction and general program design respectively 

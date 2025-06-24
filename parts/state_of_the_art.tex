@@ -77,6 +77,23 @@ Using AMD's ZEN 2 architecture as a new CPU architecture example, we can observe
 Hyperthreading is a technology that allows a single physical core to appear as two logical cores to the operating system. This means that the operating system can schedule two threads on a single physical core, allowing for better utilization of the CPU resources. This usually entails a better performance, as described by \textcite{hyperthreading}, but when \gls{cpu} intensive benchmarks are run, such as integer sorting, the performance can be worse than running the same program on a system that does not have hyperthreading enabled. This is due to the two threads sharing the same resources, such as the cache and the execution units, which can lead to contention and reduced performance.
 
 
+\subsection{GPU and Accelerators}
+\label{sec:gpu-accelerators}
+The \gls{gpu} is a specialized processor designed to handle complex mathematical calculations, particularly those related to graphics rendering. It is optimized for parallel processing, allowing it to perform many calculations simultaneously. This makes it ideal for tasks such as image processing, machine learning, and scientific simulations. Most games run using GPU acceleration and most AI workloads can also be accelerated by using the GPU. 
+
+We can see from this recent paper \cite{gpu-energy-efficiency}, the fields where \glspl{gpu} are used are medical image processing, matrix-related computation, artificial intelligence, deep learning, etc. an acceleration of up to $50x$ can be obtained on specific kernels, compared to a \gls{cpu}.
+
+This would be the ideal architecture to implement our testing framework if what we were looking for is extreme performance, but, as the goal of this project is to analyze the energy efficiency of different programming languages, the \gls{gpu} is being considered for this project. 
+
+\subsubsection{CUDA}
+\label{sec:cuda}
+CUDA (Compute Unified Device Architecture) is a parallel computing platform and application programming interface (API) model created by NVIDIA. It allows developers to use a C-like programming language to write algorithms that can be executed on the GPU, enabling significant performance improvements for compute-intensive tasks. CUDA provides a rich set of libraries and tools for optimizing performance, making it a popular choice for high-performance computing applications. However, we will not use CUDA in this project as the focus is on analyzing the energy efficiency of programming languages rather than leveraging GPU acceleration. 
+\subsubsection{OpenCL}
+\label{sec:opencl}
+OpenCL (Open Computing Language) is an open standard for parallel programming of heterogeneous systems. It allows developers to write programs that can execute across various devices, including CPUs, GPUs, and other accelerators. OpenCL provides a C-like programming language and a set of APIs for managing parallel tasks, making it a versatile choice for high-performance computing applications. A future project could be analyzing the energy efficiency of CUDA programs vs OpenCL programs, as they are both parallel programming models for GPU acceleration.
+
+
+
 \section{Programming Languages}
 
 In this section, the different programming languages that have been chosen will be discussed, as well as why other similar languages were not.
