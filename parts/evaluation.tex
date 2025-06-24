@@ -139,7 +139,7 @@ When choosing how many "cores" the tests are using, for the Go implementation, I
 
 \input{parts/results/go-routines}
 
-As it can be seen from \autoref{tab:go-routines-cores}, the Go implementation is able to use more than the total number of threads in the system, and it is able to use them efficiently, as the Go runtime is able to schedule the goroutines efficiently.
+As it can be seen from \autoref{tab:go-routines-cores}, the Go implementation is able to use more than the total number of threads in the system, and it is able to use them efficiently, as the Go runtime is able to schedule the goroutines efficiently. We can also observe from the table, that the results that are run in the same CPU chip versus different CPU chips, have similar energy consumptions, but the execution times are significantly lower as there are no context switches happening between the two CPUs. This can be seen in the 28 cores same CPU and 32 cores same CPU tests, marked in \autoref{tab:go-routines-cores} with a \textbf{*}.
 
 \subsection{Python}
 When iterating though every pixel in Python, as the environment has to be copied for every single pixel, the cores are not being used at 100\% of their capacity, specifically, while testing I saw that the cores were being used at around 5\% of their capacity. Meaning the creation of too many threads is not beneficial, as the overhead of creating the threads is larger than the actual work being done by each thread. 
