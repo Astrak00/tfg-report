@@ -1,4 +1,4 @@
-\chapter{Planning}\label{chap:Planning}
+\chapter{Planning}\label{chap:planning}
 
 This chapter will cover the plan followed for the development of this project. It will include the initial plan, the changes made during the project and the final plan.
 
@@ -8,55 +8,86 @@ The initial plan for the development of this project was to create a suite of be
 The development of the project started on February 19th 2025 and was completed on July of the same year. The Gantt diagram illustrating the project plan shows the different phases of the project, including the initial research, the development of the benchmarks, the implementation of the framework, and the evaluation of the results.
 
 
+% Define some colors for the chart
+\definecolor{barblue}{RGB}{153,204,255}
+\definecolor{groupblue}{RGB}{51,153,255}
+\definecolor{barorange}{RGB}{255,204,153}
+\definecolor{grouporange}{RGB}{255,153,51}
+\definecolor{bargreen}{RGB}{153,255,153}
+\definecolor{groupgreen}{RGB}{51,204,51}
+\definecolor{barred}{RGB}{255,153,153}
+\definecolor{groupred}{RGB}{255,51,51}
+\definecolor{barpurple}{RGB}{204,153,255}
+\definecolor{grouppurple}{RGB}{153,51,255}
+
+
 
 \begin{landscape}
-\begin{figure}[h]
-    \centering
-    \caption[Gantt Diagram]{Gantt Diagram of the project plan.}
-    \label{fig:Gantt}
-    \begin{ganttchart}[
-        time slot unit=day,
-        x unit=0.075cm,
-        time slot format=isodate,
-        title/.append style={draw=black},
-        bar height=0.3,
-        bar top shift=0.4,
-        group height=0.4,
-        group top shift=0.3,
-        group label font=\bfseries,
-        bar label font=\footnotesize,
-        y unit chart=0.5cm
-    ]{2025-02-19}{2025-08-30}
-        \gantttitlecalendar{year, month=shortname} \\
+\centering
+\begin{ganttchart}[
+    x unit=1.8cm,
+    y unit title=0.8cm,
+    y unit chart=0.6cm,
+    vgrid,
+    hgrid,
+    title height=1,
+    title label font=\sffamily\bfseries,
+    bar left shift=0pt,
+    bar right shift=0pt,
+    group left shift=0pt,
+    group right shift=0pt,
+    milestone left shift=0pt,
+    milestone right shift=0pt,
+    bar/.style={fill=blue!50},
+    group/.style={fill=blue!30},
+    link/.style={-latex, thick, blue!50!black},
+    milestone/.append style={
+      shape=diamond,
+      fill=blue!50,
+      minimum size=8pt
+    },
+    time slot format=isodate,
+    time slot unit=month
+  ]{2025-02-19}{2025-09-15}
 
-        % 1. Analysis
-        \ganttgroup[name=analysis]{1.\ Analysis}{2025-02-19}{2025-02-25} \\
-        \ganttbar[name=reqs]{1.1\ Requirements}{2025-02-19}{2025-02-21} \\
-        \ganttbar[name=usecases]{1.2\ Use Cases}{2025-02-21}{2025-02-25} \\
+  % Phase 1: Analysis & Planning
+  \ganttgroup[name=g-plan]{1. Analysis \& Planning}{2025-02-19}{2025-03-15} \\
+  \ganttbar[name=b-lit]{Literature Review}{2025-02-19}{2025-03-10} \\
+  \ganttbar[name=b-req]{Define Requirements \& Use Cases}{2025-02-24}{2025-03-15} \\
+  \ganttmilestone[name=m-plan]{Planning Complete}{2025-03-15} \\
 
-        % 2. Design
-        \ganttgroup[name=design]{2.\ Design}{2025-02-19}{2025-05-20} \\
-        \ganttbar[name=design-previous]{2.1\ Study of Previous Benchmarks}{2025-02-22}{2025-04-30} \\
-        \ganttbar[name=design-structure]{2.2\ Development of Project Structure}{2025-03-02}{2025-04-01} \\
-        \ganttbar[name=design-power]{2.3\ Development of Power Measurement tools}{2025-04-01}{2025-05-20} \\
+  % Phase 2: Design & Prototyping
+  \ganttgroup[name=g-design, group/.style={fill=orange!30}]{2. Design \& Prototyping}{2025-03-16}{2025-05-20} \\
+  \ganttbar[name=b-algo, bar/.style={fill=orange!50}]{Design Core Algorithm \& Structure}{2025-03-16}{2025-04-15} \\
+  \ganttbar[name=b-tools, bar/.style={fill=orange!50}]{Develop Power Measurement Tools}{2025-04-10}{2025-05-20} \\
+  \ganttmilestone[name=m-design]{Design Complete}{2025-05-20} \\
 
-        % 3. Development of Benchmarks
-        \ganttgroup[name=devbench]{3.\ Development of Benchmarks}{2025-02-26}{2025-06-30} \\
-        \ganttbar[name=devbench-cpp]{3.1\ Development of C++}{2025-02-26}{2025-06-16} \\
-        \ganttbar[name=devbench-go]{3.2\ Development of Go}{2025-03-11}{2025-06-16} \\
-        \ganttbar[name=devbench-python]{3.3\ Development of Python}{2025-03-17}{2025-06-30} \\
+  % Phase 3: Benchmark Implementation
+  \ganttgroup[name=g-impl, group/.style={fill=green!30}]{3. Benchmark Implementation}{2025-04-16}{2025-06-30} \\
+  \ganttbar[name=b-cpp, bar/.style={fill=green!50}]{C++ Implementation}{2025-04-16}{2025-06-10} \\
+  \ganttbar[name=b-go, bar/.style={fill=green!50}]{Go Implementation}{2025-05-01}{2025-06-20} \\
+  \ganttbar[name=b-py, bar/.style={fill=green!50}]{Python \& PyPy Implementation}{2025-05-15}{2025-06-30} \\
+  \ganttmilestone[name=m-impl]{All Code Implemented}{2025-06-30} \\
 
-        % 4. Evaluation of Implementations
-        \ganttgroup[name=benchmarks]{4.\ Evaluating Implementations}{2025-06-02}{2025-07-30} \\
-        \ganttbar[name=benchmarks-server]{4.1\ Running on Server platform}{2025-06-02}{2025-06-18} \\
-        \ganttbar[name=benchmarks-laptop]{4.2\ Running on Personal Laptop}{2025-06-03}{2025-06-24} \\
-        \ganttbar[name=benchmarks-raspberry]{4.3\ Running on Raspberry Pi 5}{2025-06-15}{2025-06-27} \\
-        \ganttbar[name=benchmarks-desktop]{4.4\ Running on Personal Desktop}{2025-07-05}{2025-07-30} \\
+  % Phase 4: Evaluation & Data Analysis
+  \ganttgroup[name=g-eval, group/.style={fill=red!30}]{4. Evaluation \& Data Analysis}{2025-07-01}{2025-08-10} \\
+  \ganttbar[name=b-exec, bar/.style={fill=red!50}]{Execute Benchmarks on All Platforms}{2025-07-01}{2025-07-31} \\
+  \ganttbar[name=b-anal, bar/.style={fill=red!50}]{Analyze \& Visualize Results}{2025-07-15}{2025-08-10} \\
+  \ganttmilestone[name=m-eval]{Evaluation Complete}{2025-08-10} \\
 
-        % 5. Documentation
-        \ganttgroup[name=document]{5.\ Documentation}{2025-05-15}{2025-08-30} \\
+  % Phase 5: Documentation
+  \ganttgroup[name=g-doc, group/.style={fill=purple!30}]{5. Documentation}{2025-02-19}{2025-09-15} \\
+  \ganttbar[name=b-draft, bar/.style={fill=purple!60}]{Ongoing Documentation (Drafting)}{2025-02-19}{2025-08-01} \\
+  \ganttbar[name=b-final, bar/.style={fill=purple!80}]{Final Report Writing \& Revisions}{2025-08-01}{2025-09-10} \\
+  \ganttmilestone[name=m-submit]{Thesis Submitted}{2025-09-15} \\
 
+  % Dependencies
+  \ganttlink{m-plan}{g-design}
+  \ganttlink{b-algo}{b-tools}
+  \ganttlink{m-design}{g-impl}
+  \ganttlink{m-impl}{g-eval}
+  \ganttlink{b-exec}{b-anal}
+  \ganttlink{m-eval}{b-final}
 
-    \end{ganttchart}
-\end{figure}
+\end{ganttchart}
 \end{landscape}

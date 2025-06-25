@@ -122,13 +122,15 @@ We can see from \autoref{fig:log-mbp-energy} there does not seem to be a big dif
 
 
 
-Even though the energy consumption does not decrease, the execution time does, as we can see from \autoref{fig:log-mbp-execution-time}. The C\++ implementation is the fastest, followed by the PyPy implementation, then the Go implementation, and finally the Python implementation, which is the slowest by a large margin. I also created this \autoref{fig:linear-mbp-execution-time} to better visualize the execution time of each implementation without Python, as it distorts the results due to its slow performance. Raw data for both energy consumption and execution time can be found in \autoref{tab:mbp-power-consumption} and \autoref{tab:mbp-time-execution} respectively.
+Even though the energy consumption does not decrease, the execution time does, as we can see from \autoref{fig:log-mbp-execution-time}. The C++ implementation is the fastest, followed by the PyPy implementation, then the Go implementation, and finally the Python implementation, which is the slowest by a large margin. I also created this \autoref{fig:linear-mbp-execution-time} to better visualize the execution time of each implementation without Python, as it distorts the results due to its slow performance. Raw data for both energy consumption and execution time can be found in \autoref{tab:mbp-power-consumption} and \autoref{tab:mbp-time-execution} respectively.
 
 
 \subsection{Raspberry Pi 5}
 \subsubsection{Evaluated parameters}
 \subsubsection{Results}
 
+\input{parts/results/rpi-energy}
+\input{parts/results/rpi-execution}
 
 \section{Comment on parallelizing different languages}
 
