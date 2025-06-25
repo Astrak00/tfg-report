@@ -98,14 +98,14 @@
       14  3.62   \\
     };
     \addlegendentry{PyPy 3.11.11}
-    % power‐law fit: y = 26.0 * x^(–0.802)
+    % power‐law fit: y = 26.52 * x^(–0.795)
     \addplot[
       orange,
       dashed,
       forget plot,
       domain=1:14,
       samples=200
-    ] {26.0 * x^(-0.802)};
+    ] {26.52 * x^(-0.795)};
 
     %% Python %%
     \addplot[
@@ -117,21 +117,21 @@
     table[row sep=\\] {
       x    y       \\
       1    2697.08 \\
-      2    1631.14 \\
-      4    830.61  \\
-      8    423.92  \\
-      10   345.83  \\
-      14   312.64  \\
+      2    1356.76 \\
+      4    696.75  \\
+      8    350.76  \\
+      10   288.37  \\
+      14   262.00  \\
     };
     \addlegendentry{Python}
-    % power‐law fit: y = 2765 * x^(–0.868)
+    % power‐law fit: y = 2697 * x^(–0.870)
     \addplot[
       green!60!black,
       dashed,
       forget plot,
       domain=1:14,
       samples=200
-    ] {2765 * x^(-0.868)};
+    ] {2697 * x^(-0.870)};
 
   \end{semilogyaxis}
 \end{tikzpicture}
@@ -239,14 +239,14 @@
       14  3.62   \\
     };
     \addlegendentry{PyPy 3.11.11}
-    % power‐law fit: y = 26.0 * x^(–0.802)
+    % power‐law fit: y = 26.52 * x^(–0.795)
     \addplot[
       orange,
       dashed,
       forget plot,
       domain=1:14,
       samples=200
-    ] {26.0 * x^(-0.802)};
+    ] {26.52 * x^(-0.795)};
 
   \end{axis}
 \end{tikzpicture}
@@ -261,11 +261,11 @@
         Cores & C++  & Go    & PyPy 3.11.11 & Python    \\
         \hline
         1     & 7.48  & 54.16  & 26.52        & 2,697.08  \\
-        2     & 3.63  & 26.76  & 15.55        & 1,631.14  \\
-        4     & 2.06  & 14.80  & 8.25         & 830.61    \\
-        8     & 1.37  & 7.94   & 4.57         & 423.92    \\
-        10    & 1.26  & 6.66   & 3.81         & 345.83    \\
-        14    & 1.48  & 5.94   & 3.62         & 312.64    \\
+        2     & 3.63  & 26.76  & 15.55        & 1,356.76  \\
+        4     & 2.06  & 14.80  & 8.25         & 696.75    \\
+        8     & 1.37  & 7.94   & 4.57         & 350.76    \\
+        10    & 1.26  & 6.66   & 3.81         & 288.37    \\
+        14    & 1.48  & 5.94   & 3.62         & 262.00    \\
         \hline
     \end{tabular}
     \caption{Execution execution time by implementation and core count}
