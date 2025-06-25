@@ -17,6 +17,7 @@
 - [x] Talk about the mbp results time
 - [x] Put in bold the important results from the table 5.7, goroutines and threads.
 - [x] Talk about these results.
+- [x] Add graphs for the flag optimization results.
 
 ### Testing
 - [ ] Get the tester for the raspberry and test the code. IMPORTANT, less samples are used as the performance of the device is much lower than the server or laptop, and to reduce extreme execution times
