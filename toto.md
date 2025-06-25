@@ -13,18 +13,19 @@
 - [x] Talk about the server results pkg, the ones in bold from c++ are interesting
 - [x] Talk about the server results ram, not much change? Same data
 - [x] Talk about the server results time execution, give some numbers 
-
 - [x] Talk about the mbp results energy
 - [x] Talk about the mbp results time
-
 - [x] Put in bold the important results from the table 5.7, goroutines and threads.
 - [x] Talk about these results.
 
 ### Testing
 - [ ] Get the tester for the raspberry and test the code. IMPORTANT, less samples are used as the performance of the device is much lower than the server or laptop, and to reduce extreme execution times
 
-- [ ] Test for personal PC (R7 3800X)
+- [ ] Create graphs for the results of the raspberry, and add them to the report
+- [ ] Talk about the results of the raspberry, and add them to the report
 
+- [ ] Test for personal PC (R7 3800X)
+- [ ] Create graphs for the results of the personal PC, and add them to the report
 - [ ] Talk about the PCs results pkg, 
 - [ ] Talk about the PCs results ram, 
 - [ ] Talk about the PCs results execution time 

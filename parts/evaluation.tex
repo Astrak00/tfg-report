@@ -169,46 +169,7 @@ As to not leave the reader with the intrigue of what would happen if we used dif
 As \autocite{llvm-fast-math} explains, the \texttt{--fast-math} flag allows the compiler to perform optimizations that may not be mathematically correct, but will result in faster code. 
 
 
-\begin{table}
-  \centering
-  \caption{Power/Energy and execution time for various core counts and compiler optimization flags}
-  \label{tab:compiler-optimizations}
-  \begin{tabular}{lrrrrr}
-    \toprule
-    \textbf{Metric / Flags} & \textbf{-O0} & \textbf{-O1} & \textbf{-O2} & \textbf{-O3} & \textbf{-O3 (fast-math)} \\
-    \midrule
-    \multicolumn{6}{c}{\textbf{1 core}} \\
-    power/energy-pkg (J) & 52,957.47 & 5,185.28 & 4,388.12 &  4,031.83   & \textbf{4,005.70} \\
-    power/energy-ram (J) & 2,208.08  & 210.28   & 183.21   &    180.00   & \textbf{168.52}  \\
-    time (s)             & 270.06    & 27.453   & 24.02    &     23.5993 & \textbf{22.054}  \\
-    \midrule
-    \multicolumn{6}{c}{\textbf{4 cores}} \\
-    power/energy-pkg (J) & 13,379.59 & 1,564.51 & 1,417.01 & \textbf{1,386.60} & 1,414.08       \\
-    power/energy-ram (J) & 508.40    & 56.72    & 50.96    &     50.37         & \textbf{49.56}  \\
-    time (s)             & 66.066    & 7.4351   & 6.67     &    6.5605         & \textbf{6.478}  \\
-    \midrule
-    \multicolumn{6}{c}{\textbf{14 cores}} \\
-    power/energy-pkg (J) & 5,056.15  & 658.46   & 606.58   & \textbf{595.29}  & 639.00         \\
-    power/energy-ram (J) & 153.03    & 20.79    & 18.53    & \textbf{18.24}  & 20.10          \\
-    time (s)             & 19.9344   & 2.7184   & 2.42     & \textbf{2.3807} & 2.62           \\
-    \midrule
-    \multicolumn{6}{c}{\textbf{28 cores}} \\
-    power/energy-pkg (J) & 3,650.43  & 627.89   & 565.83   &    561.59   & \textbf{547.56} \\
-    power/energy-ram (J) & 120.49    & 20.00    & 18.00    &     17.93   & \textbf{17.47}  \\
-    time (s)             & 15.729    & 2.6043   & 2.36     &     2.3382  & \textbf{2.2701} \\
-    \midrule
-    \multicolumn{6}{c}{\textbf{32 cores}} \\
-    power/energy-pkg (J) & 3,353.53  & 606.52   & 552.98   &     548.83  & \textbf{535.22} \\
-    power/energy-ram (J) & 110.47    & 19.54    & 17.76    &     17.58   & \textbf{17.27}  \\
-    time (s)             & 14.4472   & 2.5369   & 2.33     &     2.3015  & \textbf{2.2368} \\
-    \midrule
-    \multicolumn{6}{c}{\textbf{60 cores}} \\
-    power/energy-pkg (J) & 2,794.03  & 698.96   & 661.76   & \textbf{659.31} & 671.51         \\
-    power/energy-ram (J) & 86.80     & 25.37    & 24.11    & \textbf{24.10}  & 24.76          \\
-    time (s)             & 7.5463    & 1.89955  & 1.80     &     1.79288     & \textbf{1.79288}\\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\input{parts/results/compiler-optimizations}
 
 
 From the \autoref{tab:compiler-optimizations}, we can see that -O3 can be up to $13.13x$ more efficient and $11.44x$ faster than \texttt{-O0}, and \texttt{-O3} and $13.22x$ more efficient and $12.25x$ faster if we add the \texttt{--fast-math} flag on a single core task. But when we change and add more cores, the improvement decreases up to $4.24x$ faster more energy efficient and $4.16x$ faster with \texttt{-O3} and consume $4.22x$ less energy and take $4.11x$ less time with \texttt{-O3 --fast-math}.
