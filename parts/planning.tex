@@ -1,0 +1,62 @@
+\chapter{Planning}\label{chap:Planning}
+
+This chapter will cover the plan followed for the development of this project. It will include the initial plan, the changes made during the project and the final plan.
+
+\section{Initial Plan}
+The initial plan for the development of this project was to create a suite of benchmarks, and a framework for evaluating the performance of different programming models on multiple computing systems. This involved the following key steps:
+
+The development of the project started on February 19th 2025 and was completed on July of the same year. The Gantt diagram illustrating the project plan shows the different phases of the project, including the initial research, the development of the benchmarks, the implementation of the framework, and the evaluation of the results.
+
+
+
+\begin{landscape}
+\begin{figure}[h]
+    \centering
+    \caption[Gantt Diagram]{Gantt Diagram of the project plan.}
+    \label{fig:Gantt}
+    \begin{ganttchart}[
+        time slot unit=day,
+        x unit=0.075cm,
+        time slot format=isodate,
+        title/.append style={draw=black},
+        bar height=0.3,
+        bar top shift=0.4,
+        group height=0.4,
+        group top shift=0.3,
+        group label font=\bfseries,
+        bar label font=\footnotesize,
+        y unit chart=0.5cm
+    ]{2025-02-19}{2025-08-30}
+        \gantttitlecalendar{year, month=shortname} \\
+
+        % 1. Analysis
+        \ganttgroup[name=analysis]{1.\ Analysis}{2025-02-19}{2025-02-25} \\
+        \ganttbar[name=reqs]{1.1\ Requirements}{2025-02-19}{2025-02-21} \\
+        \ganttbar[name=usecases]{1.2\ Use Cases}{2025-02-21}{2025-02-25} \\
+
+        % 2. Design
+        \ganttgroup[name=design]{2.\ Design}{2025-02-19}{2025-05-20} \\
+        \ganttbar[name=design-previous]{2.1\ Study of Previous Benchmarks}{2025-02-22}{2025-04-30} \\
+        \ganttbar[name=design-structure]{2.2\ Development of Project Structure}{2025-03-02}{2025-04-01} \\
+        \ganttbar[name=design-power]{2.3\ Development of Power Measurement tools}{2025-04-01}{2025-05-20} \\
+
+        % 3. Development of Benchmarks
+        \ganttgroup[name=devbench]{3.\ Development of Benchmarks}{2025-02-26}{2025-06-30} \\
+        \ganttbar[name=devbench-cpp]{3.1\ Development of C++}{2025-02-26}{2025-06-16} \\
+        \ganttbar[name=devbench-go]{3.2\ Development of Go}{2025-03-11}{2025-06-16} \\
+        \ganttbar[name=devbench-python]{3.3\ Development of Python}{2025-03-17}{2025-06-30} \\
+
+        % 4. Evaluation of Implementations
+        \ganttgroup[name=benchmarks]{4.\ Evaluating Implementations}{2025-06-02}{2025-07-30} \\
+        \ganttbar[name=benchmarks-server]{4.1\ Running on Server platform}{2025-06-02}{2025-06-18} \\
+        \ganttbar[name=benchmarks-laptop]{4.2\ Running on Personal Laptop}{2025-06-03}{2025-06-24} \\
+        \ganttbar[name=benchmarks-raspberry]{4.3\ Running on Raspberry Pi 5}{2025-06-15}{2025-06-27} \\
+        \ganttbar[name=benchmarks-desktop]{4.4\ Running on Personal Desktop}{2025-07-05}{2025-07-30} \\
+
+        % 5. Documentation
+        \ganttgroup[name=document]{5.\ Documentation}{2025-05-15}{2025-08-30} \\
+
+
+    \end{ganttchart}
+\end{figure}
+\end{landscape}
