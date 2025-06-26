@@ -1,1 +1,25 @@
 \chapter{Regulatory Framework}\label{chap:regulation}
+
+This chapter provides an overview of the regulatory framework that governs the development and deployment of the benchmarks, framework, and evaluation processes. It outlines the relevant laws, regulations, and standards that must be adhered to in order to ensure compliance and ethical considerations throughout the project lifecycle.
+
+In Europe, the General Data Protection Regulation (GDPR) \cite{gdpr} is widely recognized as a key regulatory standard in the software domain. However, because this work neither collects, processes, nor uses any user data, the GDPR does not apply. Instead, the project makes extensive use of third-party software and established technical standards.
+
+\section{Software Licenses}
+\label{sec:software-licenses}
+Several software licenses govern the use of the tools and libraries employed in this project. The following tools are particularly relevant:
+\begin{itemize}
+    \item \textbf{CMake}: CMake is an open-source, cross-platform build system designed for several programming languages. It is distributed under the 3-Clause BSD License \cite{bsd3}, which allows use, modification and distribution of the code as long as the copyright notice file is retained. Other restrictions regarding the copyright holders apply.
+    \item \textbf{LLVM}: The LLVM project is a collection of modular and reusable compiler and toolchain technologies. It was distributed under the University of Illinois/\gls{NCSA} Open Source License \cite{llvm-license-old}, which allowed for use, modification, and distribution with certain conditions regarding the copyright notice and disclaimer of warranties. However, the license has since been updated to the Apache License 2.0 \cite{llvm-license-new}, which is more permissive and widely accepted in the open-source community.
+    \item \textbf{CLion}: CLion is a commercial \gls{IDE} for C and C++ programming languages developed by JetBrains. It is distributed under a proprietary license, which allows for use and distribution under specific conditions set by the copyright holder. \cite{clion-license}
+    \item \textbf{Python}: The programming language has a \textit{PSF} license \cite{python-license} which is a permissive open-source license that allows for use, modification, and distribution of the Python programming language and its libraries.
+    \item \textbf{Go}: The Go programming language is distributed under a BSD-style license \cite{go-license}, which allows for use, modification, and distribution of the language and its libraries with certain conditions regarding the copyright notice and disclaimer of warranties. The license allows anyone to freely use, modify, and distribute the software for any purpose, including commercially, as long as the individual provides proper attribution and do not use the original authors' names for endorsement.
+\end{itemize}
+
+\section{Technical Standards}
+\begin{itemize}
+    \item \textbf{C++ Standard}: The C++ programming language is governed by the standard \cite{cpp-standard}, which defines the syntax, semantics, and libraries of the language. This standard ensures that C++ code is portable and consistent across different compilers and platforms. For this project, the C++20 standard \cite{cpp20-standard} has been used.
+\end{itemize}
+
+\section{License of the Project}
+The project is licensed under the MIT License \cite{mit-license}, which is a permissive open-source license that allows for use, modification, and distribution of the software. This license ensures that the project can be freely used and adapted by anyone, including for commercial purposes, as long as the original copyright notice and license terms are retained.
+

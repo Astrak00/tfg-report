@@ -36,8 +36,8 @@
 - [ ] Talk about planning and how the project was initially planned, and how it evolved
 
 ## Economic impact
-- [ ] Add text to the offer
-- [ ] Add text to the economic impact.
+- [x] Add text to the offer
+- [x] Add text to the economic impact.
 
 ## Regulatory Framework
 - [ ] Add text to the regulatory framework
