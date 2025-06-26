@@ -31,10 +31,6 @@ This platform represents the most powerful as well as power-hungry combination o
 As it has two sockets (one per CPU chip), there must be intercommunication between these processors if a process spreads out to more than 32 threads, or is set by the user using the command \texttt{taskset}, which fixes the cores the process can run on.
 
 
-
-%% Comments on the platform, ie two xeon 16 cores processors with hyperthreading, x86
-\subsubsection{Evaluated Parameters}
-
 This system was the most versatile in terms of the number of tests that could be performed, as it has many processors and uses Linux on x86, providing a great advantage for forcing processes to run on specific cores.
 
 The tests were conducted on a variety of core configurations, always setting cores in the same processor for core numbers less than 16.
@@ -106,14 +102,14 @@ If we changed the implementation to a per-row renderer, on the go-side, the Go r
 \subsection{Personal Desktop}
 %% Comments on the platform x86, 8 cores, 16 threads, AMR ZEN 2 (https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-7-3800x.html#amd_support_product_spec)
 %% Test with and without hyerthreading as math intensive calculations
-\subsubsection{Evaluated parameters}
+
 \subsubsection{Results}
+
+
 
 \subsection{Personal SOTA Laptop}
 This lapot is said to have one of the fastest single-core performance in the market. It has a 14 core ARM processor, using the big.LITTLE architecture, with 10 high performance cores and 4 high efficiency cores. It has 48GB of RAM, which is enough to run any of the tests.
 
-
-\subsubsection{Evaluated parameters}
 
 This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, which has 10 high performance cores and 4 high efficiency cores, which is a big.LITTLE architecture. This means that the high performance cores are used for CPU intensive tasks, while the high efficiency cores are used for less demanding tasks, such as web browsing or watching videos. But as Apple does not allow the user setting the cores to be used by a specific process, like it happens on Linux, we can not test the high efficiency cores isolated from the high performance cores, as the operating system will decide for us which cores to use for each process. 
 
@@ -131,13 +127,22 @@ Even though the energy consumption does not decrease, the execution time does, a
 
 
 \subsection{Raspberry Pi 5}
-\subsubsection{Evaluated parameters}
+This SBC (Single Board Computer) is one of the most popular in the market, and though is is nota great platform for testing the performance of different programming languages its popularity has made it an interesting option as it has much less power requirements than the other alternatives. It has a 4 core ARM processor, 8GB of RAM, which is enough to run any of the tests. 
+
+
 \subsubsection{Results}
+
+
 
 \input{parts/results/rpi-energy}
 
-
 \input{parts/results/rpi-execution}
+
+From both \autoref{fig:log-rpi-energy} and \autoref{fig:log-rpi-execution} we can see that the trend lines, in this case intersect, meaning that passing from 2 to 4 cores, the energy increases for the PyPy implementation and decreases for the rest of the implementation. This is due to the fact that the Raspberry Pi 5 has a much less powerfull processor and thus, compiled languages such as C++ and Go can obtain better power efficiency results when using more cores, as the processor is able to handle the load better. 
+
+It is impressive the slowness that python shows in this platform, $62$x less power efficient than PyPy and consuming more than $147$x the energy of the C++ implementation. 
+
+If we turn to the execution times, we can see that the C++ implementation is the fastest, followed by the Go implementation, then PyPy and lastly Python when looking at the 4 cores run of the benchmark. But, when the program was run with 2 cores, the PyPy implementation does not reduce much the execution time, compared to the Go result, interchanging the position of the Go and PyPy implementations, as it can be seen in clearer in the raw data in \autoref{tab:execution-time-by-cores} and \autoref{tab:power-sum-by-cores}.
 
 \section{Comment on parallelizing different languages}
 
