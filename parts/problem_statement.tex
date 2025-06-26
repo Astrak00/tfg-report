@@ -376,7 +376,7 @@ To better describe these requirements, we will use the following format:
         \textbf{Priority}           & How quick this requirement needs to be implemented (Low / Medium / High) \\
         \textbf{Stability}          & What is the probability of this requirement changing (Stable / Unstable) \\
         \textbf{Verifiability}      & How easy is it to verify this requirement is implemented (Verifiable / Non-Verifiable) \\
-        \textbf{Origin}             & References the user \ref{sec:user-requirements} requirements that inspired this requirement.  \\
+        \textbf{Origin}             & References the user (\autoref{sec:user-requirements}) requirements that inspired this requirement.  \\
     \end{tabular}
     \caption{Requirement SR-ZZ-XX}
 \end{table}
@@ -711,7 +711,11 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
 \end{table}
 
 \section{Use Case}
-\checkmark
+\label{sec:use-case}
+
+This section describes the use cases of the system. The use cases are represented in a diagram that shows the interactions between the user and the system. 
+
+We have many use cases, each representing a specific functionality of the system. As this is a discrete system, we have one use case per benchmark that can be run. This can be seen in \autoref{fig:use-case-v2}
 
 \input{parts/diagrams/use-case.tex}
 
@@ -1058,80 +1062,75 @@ Start of use cases:
 
 \section{Traceability}
 
-TODO text here 
+This section provides a traceability matrix that maps the requirements to the use cases. The matrix is designed to ensure that all requirements are addressed by the use cases defined in this document.
+
+It can be seen in \autoref{tab:traceability-matrix-ur} that all requirements are covered by the use cases, ensuring that the system meets the specified needs and in the following table \autoref{tab:traceability-matrix-fn} the functional and non-functional requirements are mapped to the use cases.
 
 \begin{landscape}
 
 \begin{table}
     \centering
-    \ttabbox[\FBwidth]
-    {\caption{Traceability matrix (for UC-CA \& UC-RE requirement)}}
-    {
-        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
-            \hline
-            \textbf{Requirement} & \rotatebox{65}{\textbf{UC-01}} & \rotatebox{65}{\textbf{UC-02}} & \rotatebox{65}{\textbf{UC-02.}1} & \rotatebox{65}{\textbf{UC-02.}2} & \rotatebox{65}{\textbf{UC-03}} & \rotatebox{65}{\textbf{UC-03.}1} & \rotatebox{65}{\textbf{UC-03.}2} & \rotatebox{65}{\textbf{UC-04}} & \rotatebox{65}{\textbf{UC-04.}1} & \rotatebox{65}{\textbf{UC-04.}2} & \rotatebox{65}{\textbf{UC-05}} & \rotatebox{65}{\textbf{UC-05.}1} & \rotatebox{65}{\textbf{UC-05.}2} & \rotatebox{65}{\textbf{UC-06}} & \rotatebox{65}{\textbf{UC-07}} \\
-            \hline
-            UR-CA-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-CA-02 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-            UR-CA-03 & \checkmark &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-            UR-CA-04 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-CA-05 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            %% Multic-core
-            UR-CA-06 & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark &            & \checkmark \\ \hline
-            UR-CA-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-CA-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-CA-09 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-CA-10 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-CA-11 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-CA-12 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-            UR-CA-13 & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark &            & \checkmark \\ \hline
-            UR-CA-14 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-CA-15 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-CA-16 &            &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            &            \\ \hline
-            UR-CA-17 &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            &            &            \\ \hline
-            UR-RE-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            UR-RE-02 &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            &            &            \\ \hline
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+        \hline
+        \textbf{Requirement} & \rotatebox{65}{\textbf{UC-01}} & \rotatebox{65}{\textbf{UC-02}} & \rotatebox{65}{\textbf{UC-02.}1} & \rotatebox{65}{\textbf{UC-02.}2} & \rotatebox{65}{\textbf{UC-03}} & \rotatebox{65}{\textbf{UC-03.}1} & \rotatebox{65}{\textbf{UC-03.}2} & \rotatebox{65}{\textbf{UC-04}} & \rotatebox{65}{\textbf{UC-04.}1} & \rotatebox{65}{\textbf{UC-04.}2} & \rotatebox{65}{\textbf{UC-05}} & \rotatebox{65}{\textbf{UC-05.}1} & \rotatebox{65}{\textbf{UC-05.}2} & \rotatebox{65}{\textbf{UC-06}} & \rotatebox{65}{\textbf{UC-07}} \\
+        \hline
+        UR-CA-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-02 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
+        UR-CA-03 & \checkmark &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
+        UR-CA-04 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-05 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        %% Multic-core
+        UR-CA-06 & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark &            & \checkmark \\ \hline
+        UR-CA-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-09 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-10 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-11 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-12 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
+        UR-CA-13 & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark &            & \checkmark \\ \hline
+        UR-CA-14 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-15 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-16 &            &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            &            \\ \hline
+        UR-CA-17 &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            &            &            \\ \hline
+        UR-RE-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-RE-02 &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            &            &            \\ \hline
 
-        \end{tabular}
-    }
-    \label{tab:traceability-matrix-ur}
+    \end{tabular}
+\caption{Traceability matrix (for UC-CA \& UC-RE requirement)}
+\label{tab:traceability-matrix-ur}
 \end{table}
 
 
 \begin{table}
     \centering
-    \ttabbox[\FBwidth]
-    {\caption{Traceability matrix (for functional \& non-functional requirements)}}
-    {
-        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
-            \hline
-            \textbf{Requirement} & \rotatebox{65}{\textbf{UC-01}} & \rotatebox{65}{\textbf{UC-02}} & \rotatebox{65}{\textbf{UC-02.}1} & \rotatebox{65}{\textbf{UC-02.}2} & \rotatebox{65}{\textbf{UC-03}} & \rotatebox{65}{\textbf{UC-03.}1} & \rotatebox{65}{\textbf{UC-03.}2} & \rotatebox{65}{\textbf{UC-04}} & \rotatebox{65}{\textbf{UC-04.}1} & \rotatebox{65}{\textbf{UC-04.}2} & \rotatebox{65}{\textbf{UC-05}} & \rotatebox{65}{\textbf{UC-05.}1} & \rotatebox{65}{\textbf{UC-05.}2} & \rotatebox{65}{\textbf{UC-06}} & \rotatebox{65}{\textbf{UC-07}} \\
-            \hline
-            SR-NF-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-NF-02 & \checkmark &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-            SR-NF-03 & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-            SR-NF-04 & \checkmark &            &            &            & \checkmark & \checkmark & \checkmark &            &            &            &            &            &            &            &            \\ \hline
-            SR-NF-05 & \checkmark &            &            &            &            &            &            & \checkmark & \checkmark & \checkmark &            &            &            &            &            \\ \hline
-            SR-NF-06 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-NF-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-NF-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            %% functional requirements
-            SR-FN-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-FN-02 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-FN-03 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-FN-04 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-FN-05 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-FN-06 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-FN-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-FN-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-FN-09 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-            SR-FN-10 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-            SR-FN-11 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+        \hline
+        \textbf{Requirement} & \rotatebox{65}{\textbf{UC-01}} & \rotatebox{65}{\textbf{UC-02}} & \rotatebox{65}{\textbf{UC-02.}1} & \rotatebox{65}{\textbf{UC-02.}2} & \rotatebox{65}{\textbf{UC-03}} & \rotatebox{65}{\textbf{UC-03.}1} & \rotatebox{65}{\textbf{UC-03.}2} & \rotatebox{65}{\textbf{UC-04}} & \rotatebox{65}{\textbf{UC-04.}1} & \rotatebox{65}{\textbf{UC-04.}2} & \rotatebox{65}{\textbf{UC-05}} & \rotatebox{65}{\textbf{UC-05.}1} & \rotatebox{65}{\textbf{UC-05.}2} & \rotatebox{65}{\textbf{UC-06}} & \rotatebox{65}{\textbf{UC-07}} \\
+        \hline
+        SR-NF-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-NF-02 & \checkmark &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
+        SR-NF-03 & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            &            &            &            &            &            &            &            &            \\ \hline
+        SR-NF-04 & \checkmark &            &            &            & \checkmark & \checkmark & \checkmark &            &            &            &            &            &            &            &            \\ \hline
+        SR-NF-05 & \checkmark &            &            &            &            &            &            & \checkmark & \checkmark & \checkmark &            &            &            &            &            \\ \hline
+        SR-NF-06 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-NF-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-NF-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        %% functional requirements
+        SR-FN-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-02 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-03 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-04 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-05 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-06 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-09 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
+        SR-FN-10 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-11 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
 
-        \end{tabular}
-    }
+    \end{tabular}
+    \caption{Traceability matrix (for functional \& non-functional requirements)}
     \label{tab:traceability-matrix-fn}
 \end{table}
-
 
 \end{landscape}

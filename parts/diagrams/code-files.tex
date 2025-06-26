@@ -1,78 +1,78 @@
 \begin{center}
 \begin{figure}
-\begin{tikzpicture}[scale=0.7,transform shape,
-                    >=Stealth, auto,
-                    node distance=2cm]
-  % Participants
-  \node[draw,rectangle] (Main)         {Main};
-  \node[draw,rectangle,right=of Main] (Camera)       {Camera};
-  \node[draw,rectangle,right=of Camera] (HittableList) {HittableList};
-  \node[draw,rectangle,right=of HittableList] (Sphere)       {Sphere};
-  \node[draw,rectangle,right=of Sphere]     (Material)     {Material};
+  \begin{tikzpicture}[scale=0.7,transform shape,
+                      >=Stealth, auto,
+                      node distance=2cm]
+    % Participants
+    \node[draw,rectangle] (Main)         {Main};
+    \node[draw,rectangle,right=of Main] (Camera)       {Camera};
+    \node[draw,rectangle,right=of Camera] (HittableList) {HittableList};
+    \node[draw,rectangle,right=of HittableList] (Sphere)       {Sphere};
+    \node[draw,rectangle,right=of Sphere]     (Material)     {Material};
 
-  % Lifelines
-  \foreach \P in {Main,Camera,HittableList,Sphere,Material} {
-    \draw[dotted] (\P.south) -- ++(0,-12cm);
-  }
+    % Lifelines
+    \foreach \P in {Main,Camera,HittableList,Sphere,Material} {
+      \draw[dotted] (\P.south) -- ++(0,-12cm);
+    }
 
-  % Messages
-  \draw[->]
-    ([yshift=-1cm] Main.south) --
-    node[above]{Construct camera object}
-    ([yshift=-1cm] Camera.south);
+    % Messages
+    \draw[->]
+      ([yshift=-1cm] Main.south) --
+      node[above]{Construct camera object}
+      ([yshift=-1cm] Camera.south);
 
-  \draw[->]
-    ([yshift=-2cm] Main.south) --
-    node[above]{Add Sphere(s)}
-    ([yshift=-2cm] HittableList.south);
+    \draw[->]
+      ([yshift=-2cm] Main.south) --
+      node[above]{Add Sphere(s)}
+      ([yshift=-2cm] HittableList.south);
 
-  \draw[->]
-    ([yshift=-3cm] Main.south) --
-    node[above]{Generate ray}
-    ([yshift=-3cm] Camera.south);
+    \draw[->]
+      ([yshift=-3cm] Main.south) --
+      node[above]{Generate ray}
+      ([yshift=-3cm] Camera.south);
 
-  \draw[->]
-    ([yshift=-4cm] Camera.south) --
-    node[above]{Test ray intersection (hit)}
-    ([yshift=-4cm] HittableList.south);
+    \draw[->]
+      ([yshift=-4cm] Camera.south) --
+      node[above]{Test ray intersection (hit)}
+      ([yshift=-4cm] HittableList.south);
 
-  \draw[->]
-    ([yshift=-5cm] HittableList.south) --
-    node[above]{Check for hit}
-    ([yshift=-5cm] Sphere.south);
+    \draw[->]
+      ([yshift=-5cm] HittableList.south) --
+      node[above]{Check for hit}
+      ([yshift=-5cm] Sphere.south);
 
-  \draw[dashed,->]
-    ([yshift=-6cm] Sphere.south) --
-    node[above]{Return hit result}
-    ([yshift=-6cm] HittableList.south);
+    \draw[dashed,->]
+      ([yshift=-6cm] Sphere.south) --
+      node[above]{Return hit result}
+      ([yshift=-6cm] HittableList.south);
 
-  \draw[dashed,->]
-    ([yshift=-7cm] HittableList.south) --
-    node[above]{Return closest hit}
-    ([yshift=-7cm] Camera.south);
+    \draw[dashed,->]
+      ([yshift=-7cm] HittableList.south) --
+      node[above]{Return closest hit}
+      ([yshift=-7cm] Camera.south);
 
-  \draw[dashed,->]
-    ([yshift=-8cm] Camera.south) --
-    node[above]{Return color}
-    ([yshift=-8cm] Main.south);
+    \draw[dashed,->]
+      ([yshift=-8cm] Camera.south) --
+      node[above]{Return color}
+      ([yshift=-8cm] Main.south);
 
-  \draw[->]
-    ([yshift=-9cm] Main.south) --
-    node[above]{Compute scatter/reflection/refraction}
-    ([yshift=-9cm] Material.south);
+    \draw[->]
+      ([yshift=-9cm] Main.south) --
+      node[above]{Compute scatter/reflection/refraction}
+      ([yshift=-9cm] Material.south);
 
-  \draw[dashed,->]
-    ([yshift=-10cm] Material.south) --
-    node[above]{Return scattered ray}
-    ([yshift=-10cm] Main.south);
+    \draw[dashed,->]
+      ([yshift=-10cm] Material.south) --
+      node[above]{Return scattered ray}
+      ([yshift=-10cm] Main.south);
 
-  % Self‐message loop
-  \draw[->]
-    ([yshift=-11cm] Main.south)
-      .. controls +(.8,0) and +(.8,-1) ..
-    node[right]{Output color}
-    ([yshift=-12cm] Main.south);
-\end{tikzpicture}
+    % Self‐message loop
+    \draw[->]
+      ([yshift=-11cm] Main.south)
+        .. controls +(.8,0) and +(.8,-1) ..
+      node[right]{Output color}
+      ([yshift=-12cm] Main.south);
+  \end{tikzpicture}
 \caption{General program data flow}
 \label{fig:general_program_flow}
 \end{figure}
