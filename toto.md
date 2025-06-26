@@ -8,7 +8,7 @@
 - [x] Add a section on evaluation talking about the flags used to compiled the C++ code and make some graphs
 - [x] Add a tree view of the files of all implementations
 - [x] Add the text for the use cases, requirements and traceability matrix
-- [ ] Check why the font has changed in the report, it is not the same as the template (some package that has been added?)
+- [x] Check why the font has changed in the report, it is not the same as the template (some package that has been added?)
 
 ### Evaluating results Server
 - [x] Talk about the server results pkg, the ones in bold from c++ are interesting
@@ -32,3 +32,23 @@
 - [ ] Talk about the PCs results ram, 
 - [ ] Talk about the PCs results execution time 
 
+## Planning
+- [ ] Talk about planning and how the project was initially planned, and how it evolved
+
+## Economic impact
+- [ ] Add text to the offer
+- [ ] Add text to the economic impact.
+
+## Regulatory Framework
+- [ ] Add text to the regulatory framework
+
+## Conclusions
+- [ ] Add text to the conclusions
+- [ ] Add a futures section with GPU implementation
+- [ ] Add a section about other programming languages, like Rust, and how they could be used in the future
+- [ ] Add a section about other programs that also can benefit from different programming languages, also complex
+- [ ] Create programs with fully fledged implementations with many libraries, such as `numpy` or `pytorch` for python or `OpenCV` or `Torch` for C++, and compare the performance of the different languages in these programs which use all the posibilities that they implement.
+
+## Appendix
+- [ ] Add an appendix with additional information and resources
+- [ ] Possible move the tables to the appendix.
