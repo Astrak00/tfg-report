@@ -1,1 +1,27 @@
 \chapter{Conclusions}\label{chap:conclusions}
+
+
+\section{Summary of Findings}
+After analyzing the data collected from the various experiments, we found that the most efficient programming language, by a great margin is C++. The results indicate that C++ outperforms both in energy consumption and execution time when compared to \gls{CPython}, Go and Pypy. This was to be expected, as C++ is a compiled language and is known for its performance efficiency.
+
+The most impressive result and surprising for many was the performance of Pypy compared to the rest. PyPy is just an interpreter for Python, but it uses a \gls{jit} compilation technique that allows it to execute Python code much faster than the standard \gls{CPython} interpreter. This \gls{jit} is not compatible with some python libraries such as Numpy \cite{numpy} as these libraries use \gls{c-extension} to speed up their execution. This means that Pypy can only be used with pure Python code, which limits its applicability in some cases.
+
+The implementation of multiple threads in the different programming languages was also a key factor in the performance of the programs. The easiest to implement, and the one that showed the best results, was C++, followed by Go, with its \glspl{goroutine} and \glspl{channel}. 
+
+Python's default implementation, \gls{CPython}, does not support true multithreading due to the \gls{GIL}, which limits the performance of multi-threaded programs, thus, the need of the library multithreading is needed.
+
+If we were to use libraries such as Numpy, the performance of \gls{CPython} would be much better, as these libraries are optimized for performance and can take advantage of the underlying hardware. However, this would not be a fair comparison, as we would not be using pure Python code.
+
+In conclusion, if the program is to be run only a couple of times, and the performance is not a key factor, \gls{CPython} is a good choice. However, if the program is to be run multiple times, or if performance is a key factor, C++ is the best choice. Go is also a good choice, as it has a good balance between performance and ease of use, specially for hundreds of threads working light tasks. Pypy is a good choice for pure Python code, but it has limitations when it comes to libraries that use \glspl{c-extension}.
+
+\section{Future Research}
+Future research could focus on the following areas:
+\begin{itemize}
+    \item Investigating the performance of other programming languages, such as Rust, Javascript, or Java, in similar scenarios.
+    \item Exploring the impact of different libraries and frameworks on the performance of the programming languages.
+    \item Analyzing the performance external accelerators such as \gls{gpu} or \gls{fpga} in conjunction with the programming languages.
+    \item Conducting a more extensive analysis of the performance of the programming languages in different scenarios, such as web applications, data processing, or machine learning.
+    \item Analyzing more workloads, such a web-server or a database, to see how the programming languages perform in these scenarios.
+    \item Investigating the impact of different hardware configurations on the performance of the programming languages such as the \gls{ram} speed, size and SSD storage speed.
+    \item Exploring the impact of different operating systems on the performance of the programming languages, such as Linux, Windows, or macOS.
+\end{itemize}
