@@ -1,0 +1,265 @@
+\chapter{Appendix}\label{apendix}
+
+
+\section{Server Benchmarks Tables Results}
+
+This section provides the reader with the detailed results of the server benchmarks, including energy consumption, RAM power consumption, and execution time for the server executions across different programming languages and core counts.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        energy-pkg     & C++                & Go         & PyPy       & Python        \\
+        \hline
+        1              & 3,756.26            & 28,522.69   & 7,972.65   & \textbf{1,510,534.76}  \\
+        2              & 2,591.91            & 18,231.97   & 5,147.60   & 1,141,490.15           \\
+        4              & 1,362.61            & 10,304.27   & 2,828.21   &   313,537.85           \\
+        8	           &   799.23 	         & 5,617.27    & 1,747.96   &	194,458.98           \\ 
+        14             &   603.37            & 3,155.30    & 1,232.03   &   130,506.94           \\
+        16             &   627.16            & 2,904.52    & 1,140.80   &   111,438.01           \\
+        28             &   \textbf{541.37}   & 2,306.35    & 1,252.93   &   122,384.40           \\
+        28 same CPU    &   \textbf{766.51}   & 2,271.71    & 1,175.52   &   \textbf{96,049.86}   \\
+        32             &   \textbf{529.61}   & 2,151.74    & 1,257.81   &   120,259.78           \\
+        32 same CPU    &   \textbf{757.79}   & 2,109.37    & 1,155.74   &   \textbf{87,343.61}   \\
+        48             &   740.57            & 1,856.93    & 1,354.03   &    97,331.00           \\
+        60             &   666.04            & 1,744.76    & 1,354.03   &    93,718.97           \\
+        \hline
+    \end{tabular}
+\caption{Server Package consumption}{Energy usage (pkg) by implementation and core count}
+\label{tab:server-energy-pkg}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        energy-ram   & C++             & Go                & PyPy                & Python            \\
+        \hline      
+        1            &   176.83        & 1,049.92          &   355.42            &  59,269.48        \\
+        2            &   111.08        &   755.43          &   253.06            &  36,442.43        \\
+        4            &    67.60        &   426.69          &   170.08            &  12,799.44        \\
+        8	           &    26.28 	     &   175.15          &    88.94            &	  6,683.08       \\
+        14           &    18.28        &   107.26          &    72.28            &   4,031.07        \\
+        16           &    19.29        &    95.60          &    71.84            &   3,705.32        \\
+        28           &    16.91        &    \textbf{55.07} &    \textbf{81.44}   & \textbf{4,057.46} \\
+        28 same CPU  & \textbf{29.01}  &    83.98          &    78.81            &   2,831.52        \\
+        32           &    17.80        &    66.51          &    \textbf{83.50}   & \textbf{4,037.98} \\
+        32 same CPU  & \textbf{28.15}  &    66.54          &    77.79            &   2.576.33        \\
+        48           &    27.02        &    70.64          &    89.06            &   2,850.62        \\
+        60           &    24.40        &    90.23          &    91.31            &   2,727.18        \\
+        \hline
+    \end{tabular}
+\caption{Server RAM consumption}{Energy usage (RAM) by implementation and core count}
+\label{tab:server-energy-ram}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        time         & C++             & Go            & PyPy          & Python     \\
+        \hline
+        1            & 23.70           & 172.952       & 46.58         & 5,913.41        \\
+        2            & 12.52           & 89.32         & 26.43         & 4,749.55        \\
+        4            & 6.69            & 45.51         & 13.97         & 1,665.41        \\
+        8	           & 3.51  	         & 23.78 	       & 7.66          & 872.89          \\
+        14           & 2.39            & 14.03         & 5.15          & 528.12          \\
+        16           & 2.55            & 12.46         & 4.88          & 482.30          \\
+        28           & 2.21            & 8.91          & 5.39          & 529.22          \\
+        28 same CPU  & 2.26            & 7.61          & 3.77          & 269.13          \\
+        32           & 2.20            & 8.16          & 5.44          & 523.04          \\
+        32 same CPU  & 2.19            & 6.82          & 3.58          & \textbf{244.57} \\
+        48           & 2.07            & 6.82          & 4.03          & 269.41          \\
+        60           & \textbf{1.81}   & \textbf{5.36} & \textbf{4.05} & 258.44          \\
+        \hline
+    \end{tabular}
+\caption{Server Execution Time}{Execution time by implementation and core count}
+\label{tab:server-execution-time}
+\end{table}
+
+\section{Personal Desktop Tables Results}
+
+This section provides the reader with the detailed results of the personal desktop benchmarks, including energy consumption, RAM power consumption and execution times for the benchmarks ran on a personal desktop with different core counts and programming languages.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        energy-pkg     & C++                 & Go          & PyPy       & Python              \\
+        \hline
+        1              &                     &             &            &                    \\
+        2              &                     &             &            &                    \\
+        4              &                     &             &            &                    \\
+        8	           &                     &             &            &                    \\
+        14             &                     &             &            &                    \\
+        16             &                     &             &            &                    \\
+        \hline
+    \end{tabular}
+\caption{Personal Desktop Package consumption}{Energy usage (pkg) by implementation and core count with Hyperthreading enabled}
+\label{tab:desktop-energy-pkg-hyperthreading}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        energy-pkg     & C++                 & Go          & PyPy       & Python              \\
+        \hline
+        1              &                     &             &            &                    \\
+        2              &                     &             &            &                    \\
+        4              &                     &             &            &                    \\
+        8	           &                     &             &            &                    \\
+        14             &                     &             &            &                    \\
+        16             &                     &             &            &                    \\
+        \hline
+    \end{tabular}
+\caption{Personal Desktop Package consumption}{Energy usage (pkg) by implementation and core count without Hyperthreading enabled}
+\label{tab:desktop-energy-pkg}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        energy-ram     & C++                 & Go          & PyPy       & Python              \\
+        \hline
+        1              &                     &             &            &                    \\
+        2              &                     &             &            &                    \\
+        4              &                     &             &            &                    \\
+        8	           &                     &             &            &                    \\
+        14             &                     &             &            &                    \\
+        16             &                     &             &            &                    \\
+        \hline
+    \end{tabular}
+\caption{Personal Desktop RAM Power consumption}{Energy usage (ram) by implementation and core count with Hyperthreading enabled}
+\label{tab:desktop-energy-ram-hyperthreading}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        energy-ram     & C++                 & Go          & PyPy       & Python              \\
+        \hline
+        1              &                     &             &            &                    \\
+        2              &                     &             &            &                    \\
+        4              &                     &             &            &                    \\
+        8	           &                     &             &            &                    \\
+        14             &                     &             &            &                    \\
+        16             &                     &             &            &                    \\
+        \hline
+    \end{tabular}
+\caption{Personal Desktop RAM Power consumption}{Energy usage (ram) by implementation and core count without Hyperthreading enabled}
+\label{tab:desktop-energy-ram}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        execution-time & C++                 & Go          & PyPy       & Python              \\
+        \hline
+        1              &                     &             &            &                    \\
+        2              &                     &             &            &                    \\
+        4              &                     &             &            &                    \\
+        8	           &                     &             &            &                    \\
+        14             &                     &             &            &                    \\
+        16             &                     &             &            &                    \\
+        \hline
+    \end{tabular}
+\caption{Personal Desktop Execution Time}{Execution time by implementation and core count with Hyperthreading enabled}
+\label{tab:desktop-execution-time-hyperthreading}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        execution-time & C++                 & Go          & PyPy       & Python              \\
+        \hline
+        1              &                     &             &            &                    \\
+        2              &                     &             &            &                    \\
+        4              &                     &             &            &                    \\
+        8	           &                     &             &            &                    \\
+        14             &                     &             &            &                    \\
+        16             &                     &             &            &                    \\
+        \hline
+    \end{tabular}
+\caption{Personal Desktop Execution Time}{Execution time by implementation and core count without Hyperthreading enabled}
+\label{tab:desktop-execution-time}
+\end{table}
+
+\section{Laptop Benchmarks Tables Results}
+
+This section provides the reader with the detailed results of the laptop benchmarks, including energy consumption and execution times for the benchmarks ran on a MacBook Pro with different core counts and programming languages.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        Cores & C++   & Go       & PyPy 3.11.11 & Python      \\
+        \hline
+        1     & 58.79  & 429.23  & 194.69       & 17,546.05   \\
+        2     & 68.93  & 452.12  & 211.21       & 16,322.57   \\
+        4     & 54.97  & 354.64  & 216.53       & 16,193.99   \\
+        8     & 55.94  & 348.14  & 216.60       & 15,509.12   \\
+        10    & 55.00  & 336.88  & 214.96       & 14,942.09   \\
+        14    & 48.39  & 300.66  & 203.92       & 13,777.34   \\
+        \hline
+    \end{tabular}
+\caption{Laptop Energy consumption}{Power consumption by implementation and core count}
+\label{tab:mbp-power-consumption}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        Cores & C++  & Go    & PyPy 3.11.11 & Python    \\
+        \hline
+        1     & 7.48  & 54.16  & 26.52        & 2,697.08  \\
+        2     & 3.63  & 26.76  & 15.55        & 1,356.76  \\
+        4     & 2.06  & 14.80  & 8.25         & 696.75    \\
+        8     & 1.37  & 7.94   & 4.57         & 350.76    \\
+        10    & 1.26  & 6.66   & 3.81         & 288.37    \\
+        14    & 1.48  & 5.94   & 3.62         & 262.00    \\
+        \hline
+    \end{tabular}
+\caption{Laptop Execution Time}{Execution execution time by implementation and core count}
+\label{tab:mbp-time-execution}
+\end{table}
+
+
+\section{Raspberry Pi Benchmarks Tables Results}
+
+This section provides the reader with the detailed results of the Raspberry Pi benchmarks, including energy consumption and execution times for the benchmarks ran on a Raspberry Pi 5 with different core counts and programming languages.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        Cores & C++    & Go      & PyPy         & Python      \\
+        \hline
+        1     & 80.00  & 236.67  & 190.00       & 11\,780.00  \\
+        2     & 51.67  & 153.33  & 152.33       &  7\,620.67  \\
+        4     & 41.28  & 107.20  & 181.60       &  5\,739.00  \\
+        \hline
+    \end{tabular}
+\caption{Power-sum (J) by implementation and core count}
+\label{tab:power-sum-by-cores}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        Cores & C++    & Go      & PyPy         & Python      \\
+        \hline
+        1     & 49.26  & 165.03  & 126.36       & 8\,853.08   \\
+        2     & 25.25  &  81.98  &  74.42       & 4\,423.91   \\
+        4     & 12.80  &  41.10  &  72.14       & 2\,264.50   \\
+        \hline
+    \end{tabular}
+\caption{Real execution time (s) by implementation and core count}
+\label{tab:real-time-by-cores}
+\end{table}

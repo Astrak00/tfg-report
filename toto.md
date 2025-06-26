@@ -40,15 +40,15 @@
 - [x] Add text to the economic impact.
 
 ## Regulatory Framework
-- [ ] Add text to the regulatory framework
+- [x] Add text to the regulatory framework
 
 ## Conclusions
-- [ ] Add text to the conclusions
-- [ ] Add a futures section with GPU implementation
-- [ ] Add a section about other programming languages, like Rust, and how they could be used in the future
-- [ ] Add a section about other programs that also can benefit from different programming languages, also complex
-- [ ] Create programs with fully fledged implementations with many libraries, such as `numpy` or `pytorch` for python or `OpenCV` or `Torch` for C++, and compare the performance of the different languages in these programs which use all the posibilities that they implement.
+- [x] Add text to the conclusions
+- [x] Add a futures section with GPU implementation
+- [x] Add a section about other programming languages, like Rust, and how they could be used in the future
+- [x] Add a section about other programs that also can benefit from different programming languages, also complex
+- [x] Create programs with fully fledged implementations with many libraries, such as `numpy` or `pytorch` for python or `OpenCV` or `Torch` for C++, and compare the performance of the different languages in these programs which use all the posibilities that they implement.
 
 ## Appendix
-- [ ] Add an appendix with additional information and resources
-- [ ] Possible move the tables to the appendix.
+- [x] Add an appendix with additional information and resources
+- [x] Possible move the tables to the appendix.

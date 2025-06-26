@@ -254,20 +254,3 @@
     \label{fig:linear-mbp-execution-time}
 \end{figure}
 
-\begin{table}
-    \centering
-    \begin{tabular}{lrrrr}
-        \hline
-        Cores & C++  & Go    & PyPy 3.11.11 & Python    \\
-        \hline
-        1     & 7.48  & 54.16  & 26.52        & 2,697.08  \\
-        2     & 3.63  & 26.76  & 15.55        & 1,356.76  \\
-        4     & 2.06  & 14.80  & 8.25         & 696.75    \\
-        8     & 1.37  & 7.94   & 4.57         & 350.76    \\
-        10    & 1.26  & 6.66   & 3.81         & 288.37    \\
-        14    & 1.48  & 5.94   & 3.62         & 262.00    \\
-        \hline
-    \end{tabular}
-    \caption{Laptop Execution Time}{Execution execution time by implementation and core count}
-    \label{tab:mbp-time-execution}
-\end{table}
