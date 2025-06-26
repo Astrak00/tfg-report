@@ -8,10 +8,10 @@ This section reflects the results of all the testing performed with the differen
     \toprule
                             & C\++                  & Go        & Python        & PyPy \\
     \midrule
-    Intel Xeon Gold 6326 x2 &  GCC 14.2.0           & go1.24.2  & Python 3.12.3 & PyPy 7.3.19 \\
-    MacbookPro M4 Pro       &  Apple Clang 17.0.0   & go1.24.2  & Python 3.13.3 & PyPy 7.3.19 \\
-    Raspberry Pi 5          &                       &           &               &             \\
-    Ryzen 3800x Desktop     &                       &           &               &             \\
+    Intel Xeon Gold 6326 x2 &  GCC 14.2.0           & go1.24.2  & Python 3.12.3 & PyPy 7.3.19 (3.11.11) \\
+    MacbookPro M4 Pro       &  Apple Clang 17.0.0   & go1.24.2  & Python 3.13.5 & PyPy 7.3.19 (3.11.11) \\
+    Raspberry Pi 5          &                       & go1.24.2  & Python 3.13.5 & PyPy 7.3.19 (3.11.11) \\
+    Ryzen 3800x Desktop     &                       &           &               &                       \\
     \bottomrule
   \end{tabular}
   \caption{Comparison of language performance on different platforms}
@@ -56,6 +56,11 @@ The tests were conducted on a variety of core configurations, always setting cor
 
 \subsubsection{Results}
 
+\newlength{\plotwidthgraph}
+\newlength{\plotheightgraph}
+\setlength{\plotwidthgraph}{14cm}
+\setlength{\plotheightgraph}{8cm}
+
 The results for the server are shown in the following figures and tables. The energy consumption is measured in joules, and the execution time is measured in seconds. 
 
 \input{parts/results/server-energy-pkg}
@@ -85,7 +90,7 @@ A usually not looked aspect is the energy consumed by the \gls{ram} in the syste
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{img/htop_not_running_100_60_cores.png}
-    \caption{\gls{htop} showing the cores not being used at 100\% when using many cores for processing in a per-pixel multi threading renderer }
+    \caption{Core usage per pixel renderer}{\gls{htop} showing the cores not being used at 100\% when using many cores for processing in a per-pixel multi threading renderer }
     \label{fig:htop_60_not_100}
 \end{figure}
 

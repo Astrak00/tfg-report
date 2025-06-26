@@ -4,8 +4,9 @@
 
 \begin{tikzpicture}
   \begin{semilogyaxis}[
-      width=14cm,
-      height=10.5cm,
+      title={Logarithmic Server Time Consumption},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
       xlabel={Number of Cores},
       ylabel={Time (ms)},
       ymode=log,
@@ -209,8 +210,7 @@
 
   \end{semilogyaxis}
 \end{tikzpicture}
-
-\caption{Execution time of the server in Joules for different core configurations}
+\caption{Server Execution Time}{Execution time of the server in Joules for different core configurations}
   \label{fig:server-execution-time}
 \end{figure}
 
@@ -234,6 +234,6 @@
         60           & \textbf{1.81}   & \textbf{5.36} & \textbf{4.05} & 258.44          \\
         \hline
     \end{tabular}
-    \caption{Execution time by implementation and core count}
+    \caption{Server Execution Time}{Execution time by implementation and core count}
     \label{tab:server-execution-time}
 \end{table}

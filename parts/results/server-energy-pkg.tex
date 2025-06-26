@@ -2,8 +2,9 @@
   \centering
   \begin{tikzpicture}
   \begin{semilogyaxis}[
-      width=14cm,
-      height=10.5cm,
+      title={Logarithmic Server Package Consumption},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
       xlabel={Number of Cores},
       ylabel={Energy (J)},
       ymode=log,
@@ -190,7 +191,7 @@
 
   \end{semilogyaxis}
 \end{tikzpicture}
-\caption{Energy consumption of the pkg (package, chips) server in Joules for different core configurations}
+\caption{Server Package consumption}{Energy consumption of the pkg (package, chips) server in Joules for different core configurations}
 \label{fig:server-energy-pkg}
 \end{figure}
 
@@ -215,6 +216,6 @@
         60             &   666.04            & 1,744.76    & 1,354.03   &    93,718.97           \\
         \hline
     \end{tabular}
-    \caption{Energy usage (pkg) by implementation and core count}
+    \caption{Server Package consumption}{Energy usage (pkg) by implementation and core count}
 \label{tab:server-energy-pkg}
 \end{table}

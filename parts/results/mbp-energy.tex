@@ -2,9 +2,10 @@
     \centering
     \begin{tikzpicture}
     %% Add a title for the figure
-  \begin{semilogyaxis}[
-      width=14cm,
-        height=10.5cm,
+    \begin{semilogyaxis}[
+        title={Logarithmic Energy Consumption of the Laptop benchmark},
+        width=\plotwidthgraph,
+        height=\plotheightgraph,
         xlabel={Number of Cores},
         ylabel={Energy (J)},
         ymode=log,
@@ -133,19 +134,20 @@
           samples=200
         ] {20000 * x^(-0.030)};
 
-  \end{semilogyaxis}
-\end{tikzpicture}
-    \caption{Logarithm Energy consumption of the MBP algorithm in different programming languages.}
+    \end{semilogyaxis}
+  \end{tikzpicture}
+    \caption{Logarithmic Laptop Energy consumption}{Logarithm Energy consumption of the MBP algorithm in different programming languages.}
     \label{fig:log-mbp-energy}
 \end{figure}
 
 \begin{figure}
     \centering
-    
+
     \begin{tikzpicture}
   \begin{axis}[
-      width=14cm,
-      height=10.5cm,
+      title={Linear Energy Consumption of the Laptop benchmark},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
       xlabel={Number of Cores},
       ylabel={Energy (J)},
       ymode=linear,
@@ -250,8 +252,7 @@
 
   \end{axis}
 \end{tikzpicture}
-
-    \caption{Linear Energy consumption of the MBP algorithm in different programming languages.}
+    \caption{Linear Laptop Energy consumption}{Linear Energy consumption of the MBP algorithm in different programming languages.}
     \label{fig:linear-mbp-energy}
 \end{figure}
 
@@ -259,7 +260,7 @@
     \centering
     \begin{tabular}{lrrrr}
         \hline
-        Cores & C++   & Go     & PyPy 3.11.11 & Python      \\
+        Cores & C++   & Go       & PyPy 3.11.11 & Python      \\
         \hline
         1     & 58.79  & 429.23  & 194.69       & 17,546.05   \\
         2     & 68.93  & 452.12  & 211.21       & 16,322.57   \\
@@ -269,6 +270,6 @@
         14    & 48.39  & 300.66  & 203.92       & 13,777.34   \\
         \hline
     \end{tabular}
-    \caption{Power consumption by implementation and core count}
+    \caption{Laptop Energy consumption}{Power consumption by implementation and core count}
     \label{tab:mbp-power-consumption}
 \end{table}

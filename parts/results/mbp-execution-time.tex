@@ -1,10 +1,10 @@
 \begin{figure}
     \centering
-   
     \begin{tikzpicture}
   \begin{semilogyaxis}[
-      width=14cm,
-      height=10.5cm,
+      title={Logarithmic Laptop Execution Time},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
       xlabel={Number of Cores},
       ylabel={Real time (s)},
       ymode=log,
@@ -135,17 +135,17 @@
 
   \end{semilogyaxis}
 \end{tikzpicture}
-    \caption{Logarithm Execution time of the mbp example in different programming languages.}
+    \caption{Logarithmic Laptop Execution Time}{Logarithm Execution time of the mbp example in different programming languages.}
     \label{fig:log-mbp-execution-time}
 \end{figure}
 
 \begin{figure}
     \centering
-   
     \begin{tikzpicture}
   \begin{axis}[
-      width=14cm,
-      height=10.5cm,
+      title={Linear Laptop Execution Time},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
       xlabel={Number of Cores},
       ylabel={Energy Consumption (J)},
       ymode=linear,
@@ -250,7 +250,7 @@
 
   \end{axis}
 \end{tikzpicture}
-    \caption{Execution time of the mbp example in different programming languages.}
+    \caption{Linear Laptop Execution Time}{Execution time of the mbp example in different programming languages.}
     \label{fig:linear-mbp-execution-time}
 \end{figure}
 
@@ -268,6 +268,6 @@
         14    & 1.48  & 5.94   & 3.62         & 262.00    \\
         \hline
     \end{tabular}
-    \caption{Execution execution time by implementation and core count}
+    \caption{Laptop Execution Time}{Execution execution time by implementation and core count}
     \label{tab:mbp-time-execution}
 \end{table}

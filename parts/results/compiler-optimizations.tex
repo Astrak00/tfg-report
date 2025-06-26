@@ -45,25 +45,22 @@
   \begin{tikzpicture}
     \begin{axis}[
         title={Execution Time vs. Core Count for Compiler Optimizations},
-        width=\textwidth,   % Use the full text width for the chart
-        height=8cm,         % Set a fixed height for the chart
-        ybar,               % This creates a vertical bar chart
-        ymode=log,          % Use a logarithmic scale for the y-axis
+        width=\textwidth,   
+        height=8cm,         
+        ybar,               
+        ymode=log,          
         log basis y={10},
-        enlarge x limits=0.12, % Add some space on the sides
+        enlarge x limits=0.12, 
         xlabel={Number of Cores},
         ylabel={Time (s)},
-        % Define the x-axis ticks as symbolic labels
         symbolic x coords={1, 4, 14, 28, 32, 60},
-        xtick=data, % Place ticks at the symbolic coordinates
-        bar width=6pt, % Set the width of each individual bar
-        % Position the legend below the chart
+        xtick=data, 
+        bar width=6pt, 
         legend style={
           at={(0.5,-0.25)},
           anchor=north,
-          legend columns=-1 % Arrange legend entries horizontally
+          legend columns=-1 
         },
-        % Format the numbers on the y-axis to be readable
         yticklabel style={
             /pgf/number format/fixed,
             /pgf/number format/precision=2
@@ -79,7 +76,7 @@
     \legend{-O0, -O1, -O2, -O3, -O3 (fast-math)}
     \end{axis}
   \end{tikzpicture}
-  \caption{Execution time (log scale) for various core counts and compiler flags.}
+  \caption{Execution time for multiple compiler flags}{Execution time (log scale) for various core counts and compiler flags.}
   \label{fig:time-chart}
 \end{figure}
 
@@ -119,7 +116,7 @@
     \legend{-O0, -O1, -O2, -O3, -O3 (fast-math)}
     \end{axis}
   \end{tikzpicture}
-  \caption{Package energy consumption (log scale) for various core counts and compiler flags.}
+  \caption{Package consumption for multiple compiler flags}{Package energy consumption (log scale) for various core counts and compiler flags.}
   \label{fig:pkg-energy-chart}
 \end{figure}
 
@@ -159,6 +156,6 @@
     \legend{-O0, -O1, -O2, -O3, -O3 (fast-math)}
     \end{axis}
   \end{tikzpicture}
-  \caption{RAM energy consumption (log scale) for various core counts and compiler flags.}
+  \caption{RAM consumption for multiple compiler flags}{RAM energy consumption (log scale) for various core counts and compiler flags.}
   \label{fig:ram-energy-chart}
 \end{figure}
