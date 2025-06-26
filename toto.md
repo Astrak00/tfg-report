@@ -8,6 +8,7 @@
 - [x] Add a section on evaluation talking about the flags used to compiled the C++ code and make some graphs
 - [x] Add a tree view of the files of all implementations
 - [x] Add the text for the use cases, requirements and traceability matrix
+- [ ] Check why the font has changed in the report, it is not the same as the template (some package that has been added?)
 
 ### Evaluating results Server
 - [x] Talk about the server results pkg, the ones in bold from c++ are interesting
@@ -20,9 +21,9 @@
 - [x] Add graphs for the flag optimization results.
 
 ### Testing
-- [ ] Get the tester for the raspberry and test the code. IMPORTANT, less samples are used as the performance of the device is much lower than the server or laptop, and to reduce extreme execution times
+- [x] Get the tester for the raspberry and test the code. IMPORTANT, less samples are used as the performance of the device is much lower than the server or laptop, and to reduce extreme execution times
 
-- [ ] Create graphs for the results of the raspberry, and add them to the report
+- [x] Create graphs for the results of the raspberry, and add them to the report
 - [ ] Talk about the results of the raspberry, and add them to the report
 
 - [ ] Test for personal PC (R7 3800X)
@@ -30,3 +31,4 @@
 - [ ] Talk about the PCs results pkg, 
 - [ ] Talk about the PCs results ram, 
 - [ ] Talk about the PCs results execution time 
+

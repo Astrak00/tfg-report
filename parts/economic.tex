@@ -1,16 +1,108 @@
 \chapter{Socioeconomic environment}\label{chap:economic-env}
 
 \section{Budget}
+In this section of the report, an analysis of the budget for the project is presented. The budget includes the costs associated with the development of the benchmarks, the framework, and the evaluation of the results. The budget is divided into different categories, including human resources, material resources, software, and indirect costs.
 
 \subsection{Human Resources}
+The human resources budget includes the costs associated with the personnel involved in the project. This includes salaries, benefits, and any other costs related to the project team. The total cost for human resources is estimated to be €9,000. This budget is based on the assumption that the project will require a total of 300 hours of work, with an hourly rate of €30, which is a reasonable rate for software development and project management in Spain. If we were to consider a different region, such as the United States, the hourly rate could be significantly higher, potentially reaching €100/hour or more, which would increase the total cost to €30,000 or more.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lll}
+    \textbf{Total Hours} & \textbf{Hourly Rate} & \textbf{Total Cost} \\
+    \hline
+    300 hours & €30/hour & €9,000 \\
+  \end{tabular}
+  \caption{Human Costs}
+  \label{tab:human-resources}
+\end{table}
 
 \subsection{Material Resources}
+The material resources budget includes the costs associated with the physical resources needed for the project. This includes hardware, software, and any other materials required for the development and evaluation of the benchmarks.
+
+\begin{table}[h]
+  \vspace{1em}
+  \noindent\hspace*{-1.7cm}
+\begin{tabular}{lllllll}
+    \multirow{1}{*}{\textbf{Category}} & \textbf{Description}   & \textbf{Cost} & \textbf{Lifetime} & \textbf{Usage} & \textbf{Cost} & \textbf{Amortized} \\
+    & & & (months) & (months) & (month) & \textbf{Cost} \\
+    \hline
+    Personal Laptop       & Development \& testing  & 3,444€   & 48        & 7     & 71.75€     & 502.25€  \\
+    Professional Server   & Development \& testing  & 4,500€   & 24        & 1     & 187.50€    & 187.50€  \\
+    Raspberry Pi 5        & Development \& testing  & 85€      & 12        & 2     & 7.08€      & 14.17€   \\
+    Personal Desktop      & Development \& testing  & 2,000€   & 72        & 2     & 27.78€     & 55.56€   \\
+    Hardware              & Power measurement       & 20€      & 12        & 1     & 1.67€      & 1.67€    \\
+    Software              & Licenses, tools, etc.   & 0€       & $\infty$  & 3     & 0€         & 0.00€    \\
+    \hline
+    \textbf{Total}        & & & & & & \textbf{761.14€} \\
+  \end{tabular}
+  
+  \caption{Material Resources Costs}
+  \label{tab:material-resources}
+\end{table}
+
 \subsubsection{Hardware}
+The hardware budget includes the costs associated with the physical machines used for testing and evaluation. This includes the server used for testing, a personal computer, one laptop and a Raspberry Pi 5 as compute nodes. I also acquired a power measurement device. The total cost for hardware is estimated to be $761.14$€.
 
 \subsection{Software}
+The software budget would include the costs associated with the software tools and licenses needed for the project. As this project has been developed using open-source software or free tools, the software budget is estimated to be €0. The free for everyone software used includes:
+\begin{itemize}
+    \item \textbf{VS Code:} Served as the primary Integrated Development Environment.
+    \item \textbf{CMake:} Managed the build process in a cross-platform environment.
+    \item \textbf{Ubuntu:} Operating System for most of the testing.
+    \item \textbf{MacOS:} Supported development and compatibility checks on an alternative OS.
+    \item \textbf{\LaTeX } Used for formatting and compiling the project documentation.
+\end{itemize}
+
+But there are some software licenses that were used during the project, but they were not paid for, as they were provided by the fact that these tools have an education license. The following table summarizes the software licensing costs:
+
+\begin{table}[h]
+  \centering
+  \caption{Software Licensing Costs}
+  \label{tab:software-licensing-costs}
+  \begin{tabular}{l|c|c|c}
+    \hline
+    \textbf{Product}     & \textbf{Monthly Cost (€)} & \textbf{Usage (Months)} & \textbf{Amortized Cost (€)} \\
+    \hline
+    CLion                & 0.0                       & 7                       & 0.0 \\
+    GitHub Pro           & 0.0                       & 7                       & 0.0 \\
+    GitHub Copilot       & 0.0                       & 7                       & 0.0 \\
+    \hline
+    \textbf{Total}       & 0.00 €                    &                         & 0.00 € \\
+    \hline
+  \end{tabular}
+\end{table}
+
 
 \subsection{Indirect Costs}
+The indirect costs budget includes any costs that are not directly attributable to the project but are necessary for its completion. This includes overhead costs, administrative expenses, and any other indirect costs associated with the project. 
+Some of these costs may include office space, utilities, and other general expenses that are necessary for the project but not directly related to the development or evaluation of the benchmarks:
+\begin{itemize}
+    \item Office space: €200/month
+    \item Utilities (electricity, internet, etc.): €100/month
+    \item Administrative expenses: €50/month
+\end{itemize}
+Assuming the project runs for 6 months, and the work is performed remotely, eliminating the need for office space, the total indirect costs can be estimated to be: 900€.
 
 \subsection{Total Cost}
+The total cost for the project is the sum of all the individual budget categories. This includes human resources, material resources, software, and indirect costs. The total estimated cost for the project is 10,661.14€.
+
+\subsection{Offer}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Title}         & Evaluating performance and energy impact of programming languages \\ 
+    \textbf{Author}        & Eduardo Alarcón Navarro \\ 
+    \textbf{Start Date}    & 2025-02-19 \\ 
+    \textbf{End Date}      & 2025-08-30 \\ 
+    \textbf{Duration}      & 7 months \\ 
+    \hline
+    \textbf{Project Offer} & 10,661.14€      \\ 
+    \hline
+  \end{tabular}
+  \caption{Project Offer}
+  \label{tab:project-offer}
+\end{table}
 
 \section{Socio-economic Impact}
