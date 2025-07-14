@@ -1,0 +1,88 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Energy Efficiency Speedup - Raspberry Pi},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Relative Efficiency},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.548387097 \\
+      4   1.937984496 \\
+    };
+    \addlegendentry{C++}
+
+    %% Go %%
+    \addplot[
+      violet,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.543478261 \\
+      4   2.207711443 \\
+    };
+    \addlegendentry{Go}
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.24726477 \\
+      4   1.046255507 \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.545796518 \\
+      4   2.052622408 \\
+    };
+    \addlegendentry{Python}
+
+  \end{axis}
+\end{tikzpicture}
+    \caption{Raspberry Pi - Energy Efficiency Speedup}{Energy efficiency speedup of the Raspberry Pi benchmark across different programming languages.}
+    \label{fig:rpi-speedup}
+\end{figure}

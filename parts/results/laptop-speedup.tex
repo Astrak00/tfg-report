@@ -1,0 +1,100 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Energy Efficiency Speedup - Laptop},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Relative Efficiency},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,10,14},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   0.8529409333 \\
+      4   1.069494819 \\
+      8   1.050991109 \\
+      10  1.06893843 \\
+      14  1.215060831 \\
+    };
+    \addlegendentry{C++}
+
+    %% Go %%
+    \addplot[
+      violet,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   0.9493750903 \\
+      4   1.210314987 \\
+      8   1.232920914 \\
+      10  1.274120302 \\
+      14  1.427607056 \\
+    };
+    \addlegendentry{Go}
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   0.9217920879 \\
+      4   0.8991166162 \\
+      8   0.8988151816 \\
+      10  0.9056839419 \\
+      14  0.9547354298 \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.074956681 \\
+      4   1.083492072 \\
+      8   1.131338076 \\
+      10  1.174270223 \\
+      14  1.273544411 \\
+    };
+    \addlegendentry{Python}
+
+  \end{axis}
+\end{tikzpicture}
+    \caption{Laptop - Energy Efficiency Speedup}{Energy efficiency speedup of the Laptop benchmark across different programming languages.}
+    \label{fig:laptop-speedup}
+\end{figure}

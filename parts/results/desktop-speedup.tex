@@ -1,0 +1,104 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Energy Efficiency Speedup - Desktop},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Relative Efficiency},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,12,14,16},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.507304763 \\
+      4   2.242327612 \\
+      8   2.796316665 \\
+      12  2.920958049 \\
+      14  2.977358037 \\
+      16  3.082991294 \\
+    };
+    \addlegendentry{C++}
+
+    %% Go %%
+    \addplot[
+      violet,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.565922217 \\
+      4   2.51216421 \\
+      8   3.7060202 \\
+      12  4.430729033 \\
+      14  4.702083667 \\
+      16  4.913829636 \\
+    };
+    \addlegendentry{Go}
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.224855557 \\
+      4   1.728929021 \\
+      8   2.169853226 \\
+      12  1.924538378 \\
+      14  1.824201658 \\
+      16  1.730774156 \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.557213926 \\
+      4   2.425306233 \\
+      8   3.280598124 \\
+      12  3.022507745 \\
+      14  2.903193084 \\
+      16  2.765595611 \\
+    };
+    \addlegendentry{Python}
+
+  \end{axis}
+\end{tikzpicture}
+    \caption{Desktop - Energy Efficiency Speedup}{Energy efficiency speedup of the Desktop benchmark across different programming languages.}
+    \label{fig:desktop-speedup}
+\end{figure}

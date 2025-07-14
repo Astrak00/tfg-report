@@ -64,6 +64,7 @@ The results for the server are shown in the following figures and tables. The en
 \input{parts/results/server-energy-ram}
 
 \input{parts/results/server-execution-time}
+\input{parts/results/server-speedup.tex}
 
 
 From \autoref{fig:log-server-energy-pkg}, we can see that the energy consumption of the server is not linear with the number of cores. It can be observed that the energy consumption decreases as the number of cores increases, but there is a point in the graph and \autoref{tab:server-energy-pkg} where the energy consumption starts to increase slightly again, as well as the execution times in \autoref{fig:log-server-execution-time}, but not as much as the energy consumption.
@@ -108,6 +109,7 @@ This platform is one of the most common in the amateur market, as it is a person
 \input{parts/results/desktop-energy}
 
 \input{parts/results/desktop-execution}
+\input{parts/results/desktop-speedup.tex}
 
 These results show a clear trend in the energy consumption and execution time of the different programming languages. The C\++ implementation is the most energy-efficient, as expected, but again, PyPy surprises with its results, being the second most energy-efficient and being much closer to the \gls{CPP} implementation than the Go implementation, which is the third most energy-efficient. Specific numbers for energy consumption and execution time can be found in \autoref{tab:desktop-energy-pkg-hyperthreading} and \autoref{tab:desktop-execution-time-hyperthreading}.
 
@@ -128,6 +130,7 @@ This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, 
 \input{parts/results/mbp-energy}
 
 \input{parts/results/mbp-execution-time.tex}
+\input{parts/results/laptop-speedup.tex}
 
 We can see from \autoref{fig:log-mbp-energy} there does not seem to be a big difference between the execution with one or multiple cores, but this is due to the fact that the table has a logarithmic scale. If we take a look at \autoref{fig:linear-mbp-energy}, we can see that the energy consumption decreases substantially with the Go implementation. But, strangely, both the C\++ and PyPy implementation do not seem to reduce the energy consumption with multiple cores. This seems to be due to the fact that the Apple M4 Pro has a big.LITTLE architecture, and the operating system is not able to efficiently use the high performance cores when there are more than $10$ cores available, as it is not able to schedule the tasks efficiently. It could also be that the CPU is drawing its maximum power (around $45-50W$) when running the C\++ and PyPy implementations, and thus the energy consumption does not change much with the number of cores as these are quite fast. \footnote{This is one of the points that should be studied forward, more testing with ARM chips and a better measurement of the power consumption, with a desktop computer such as the Mac Mini.}
 
@@ -145,6 +148,7 @@ This SBC (Single Board Computer) is one of the most popular in the market, and t
 \input{parts/results/rpi-energy}
 
 \input{parts/results/rpi-execution}
+\input{parts/results/raspberry-speedup.tex}
 
 From both \autoref{fig:log-rpi-energy} and \autoref{fig:log-rpi-execution} we can see that the trend lines, in this case intersect, meaning that passing from 2 to 4 cores, the energy increases for the PyPy implementation and decreases for the rest of the implementation. This is due to the fact that the Raspberry Pi 5 has a much less powerfull processor and thus, compiled languages such as C++ and Go can obtain better power efficiency results when using more cores, as the processor is able to handle the load better. 
 

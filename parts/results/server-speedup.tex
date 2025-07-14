@@ -1,0 +1,116 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Energy Efficiency Speedup - Server},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Relative Efficiency},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,16,32,60,64,120,128},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.449224703 \\
+      4   2.756665517 \\
+      8   4.699848604 \\
+      16  6.225466961 \\
+      32  5.989316921 \\
+      60  6.938433973 \\
+      64  4.900470966 \\
+      120 7.09250203 \\
+      128 4.9568614 \\
+    };
+    \addlegendentry{C++}
+
+    %% Go %%
+    \addplot[
+      violet,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.564432697 \\
+      4   2.768045674 \\
+      8   5.077678303 \\
+      16  9.039612715 \\
+      32  9.820104527 \\
+      60  12.36702582 \\
+      64  12.55560349 \\
+      120 13.25563962 \\
+      128 13.5218999 \\
+    };
+    \addlegendentry{Go}
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.548809154 \\
+      4   2.818973839 \\
+      8   4.561116959 \\
+      16  6.471149241 \\
+      32  6.988648317 \\
+      60  6.363204648 \\
+      64  6.782232544 \\
+      120 6.338516946 \\
+      128 6.898307578 \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      mark=o,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.323300741 \\
+      4   4.817711048 \\
+      8   7.767883818 \\
+      16  11.57436351 \\
+      32  13.55493304 \\
+      60  12.34254336 \\
+      64  15.72656914 \\
+      120 12.5605981 \\
+      128 17.29416455 \\
+    };
+    \addlegendentry{Python}
+
+  \end{axis}
+\end{tikzpicture}
+    \caption{Server - Energy Efficiency Speedup}{Energy efficiency speedup of the Server benchmark across different programming languages.}
+    \label{fig:server-speedup}
+\end{figure}
