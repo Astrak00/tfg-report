@@ -3,7 +3,7 @@
     \begin{tikzpicture}
     %% Add a title for the figure
     \begin{semilogyaxis}[
-        title={Logarithmic Energy Consumption of the Laptop benchmark},
+        title={Logarithmic energy consumption - Laptop},
         width=\plotwidthgraph,
         height=\plotheightgraph,
         xlabel={Number of Cores},
@@ -135,17 +135,16 @@
         ] {20000 * x^(-0.030)};
 
     \end{semilogyaxis}
-  \end{tikzpicture}
-    \caption{Logarithmic Laptop Energy consumption}{Logarithm Energy consumption of the MBP algorithm in different programming languages.}
+\end{tikzpicture}
+    \caption{Laptop - Logarithmic energy consumption}{Logarithm energy consumption of the Laptop benchmark across different programming languages.}
     \label{fig:log-mbp-energy}
 \end{figure}
 
 \begin{figure}
     \centering
-
     \begin{tikzpicture}
-  \begin{axis}[
-      title={Linear Energy Consumption of the Laptop benchmark},
+    \begin{axis}[
+      title={Linear energy consumption without Python - Laptop},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -252,7 +251,7 @@
 
   \end{axis}
 \end{tikzpicture}
-    \caption{Linear Laptop Energy consumption}{Linear Energy consumption on the Laptop in different programming languages without Python.}
+    \caption{Laptop - Linear energy consumption}{Linear energy consumption of the laptop benchmark across different programming languages without Python.}
     \label{fig:linear-mbp-energy}
 \end{figure}
 

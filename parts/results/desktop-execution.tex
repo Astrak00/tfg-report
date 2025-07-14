@@ -2,7 +2,7 @@
     \centering
     \begin{tikzpicture}
   \begin{semilogyaxis}[
-      title={Logarithmic Desktop Execution Time},
+      title={Logarithmic Execution Time - Desktop},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -120,7 +120,7 @@
     table[row sep=\\] {
       x    y       \\
       1    6063.96 \\
-      2    4822.21 \\
+      2    3084.07 \\
       4    1600.72 \\
       8    825.24  \\
       12   848.99  \\
@@ -128,18 +128,18 @@
       16   878.90  \\
     };
     \addlegendentry{Python}
-    % power-law fit: y = 6063.96 * x^(-0.75)
+    % power-law fit: y = 6063.96 * x^(-0.870)
     \addplot[
       green!60!black,
       dashed,
       forget plot,
       domain=1:16,
       samples=200
-    ] {6063.96 * x^(-0.75)};
+    ] {6063.96 * x^(-0.870)};
 
   \end{semilogyaxis}
 \end{tikzpicture}
-    \caption{Logarithmic execution time comparison across different programming languages}
+    \caption{Desktop - Logarithmic Execution Time}{Logarithm Execution time of the Desktop benchmark across different programming languages.}
     \label{fig:log-desktop-execution-time}
     
 \end{figure}
@@ -148,7 +148,7 @@
     \centering
     \begin{tikzpicture}
   \begin{axis}[
-      title={Linear Desktop Execution Time without Python},
+      title={Linear Execution Time without Python - Desktop},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -258,7 +258,7 @@
 
   \end{axis}
 \end{tikzpicture}
-    \caption{Linear execution time comparison excluding Python for better visibility of other languages}
+    \caption{Desktop - Linear execution Time}{Linear execution time of the laptop benchmark across different programming languages without Python.}
     \label{fig:linear-desktop-execution-time-hyperthreading}
 \end{figure}
 

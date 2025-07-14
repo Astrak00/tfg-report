@@ -2,7 +2,7 @@
     \centering
     \begin{tikzpicture}
   \begin{semilogyaxis}[
-      title={Logarithmic Desktop Energy Consumption},
+      title={Logarithmic Energy Consumption - Desktop},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -120,7 +120,7 @@
     table[row sep=\\] {
       x    y         \\
       1    272235.58 \\
-      2    183084.07 \\
+      2    174822.21 \\
       4    112247.92 \\
       8    82983.52  \\
       12   90069.44  \\
@@ -128,27 +128,26 @@
       16   98436.51  \\
     };
     \addlegendentry{Python}
-    % power-law fit: y = 272235.58 * x^(-0.35)
+    % power-law fit: y = 272235.58 * x^(-0.665)
     \addplot[
       green!60!black,
       dashed,
       forget plot,
       domain=1:16,
       samples=200
-    ] {272235.58 * x^(-0.35)};
+    ] {272235.58 * x^(-0.665)};
 
   \end{semilogyaxis}
 \end{tikzpicture}
-    \caption{Logarithmic desktop energy consumption comparison across different programming languages}
+    \caption{Desktop - Logarithmic energy consumption}{Logarithm energy consumption of the Desktop benchmark across different programming languages}
     \label{fig:log-desktop-energy}
-    
 \end{figure}
 
 \begin{figure}
     \centering
     \begin{tikzpicture}
   \begin{axis}[
-      title={Linear Energy Desktop Consumption without Python},
+      title={Linear Energy Consumption without Python - Desktop},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -258,6 +257,6 @@
 
   \end{axis}
 \end{tikzpicture}
-    \caption{Linear energy consumption comparison excluding Python for better visibility of other languages}
+    \caption{Desktop - Linear energy consumption}{Linear energy consumption of the Desktop benchmark across different programming languages}
     \label{fig:linear-desktop-energy-hyperthreading}
 \end{figure}

@@ -226,7 +226,7 @@ Go's scheduler performs a series of steps before starting to run the user's code
         The heart of the concurrency system in Go is the "M:G:P" model. Before any go code is executed, the scheduler must be initialized, which happens inside \texttt{runtime.schedinit}.
         \begin{itemize}
             \item \textbf{\texttt{M0} and \texttt{G0} Creation}: The program starts with a single \gls{os} thread ($M0$). Every $M$ thread has a special \gls{goroutine} called \texttt{g0}, which is responsible for scheduling other runtime tasks.
-            \item \textbf{P Initializations}: A list of \texttt{Ps} or processors, which is a resource required to execute Go code, is created. The limit of \texttt{P} is determined by the \texttt{GOMAXPROCS} environment variable or inside the Go code by using the \texttt{runtime.GOMAXPROCS()} function.
+            \item \textbf{P Initializations}: A list of \texttt{Ps} or processors, which is a resource required to execute Go code, is created. The limit of \texttt{P} is determined by the \texttt{GOMAXPROCS} environment variable or inside the  code by using the \texttt{runtime.GOMAXPROCS()} function.
         \end{itemize}
         At this time, the scheduler limits are put in place, limiting the maximum number of \gls{os} threads to 10,000.
         
