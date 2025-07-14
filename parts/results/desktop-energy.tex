@@ -1,0 +1,263 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{semilogyaxis}[
+      title={Logarithmic Desktop Energy Consumption},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Energy Consumption (J)},
+      ymode=log,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,12,14,16},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.98,0.98)},
+        anchor=north east,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      only marks,
+      mark=o,
+      mark options={draw=blue,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y      \\
+      1   991.49 \\
+      2   657.79 \\
+      4   442.17 \\
+      8   354.57 \\
+      12  339.44 \\
+      14  333.01 \\
+      16  321.60 \\
+    };
+    \addlegendentry{C++}
+    % power-law fit: y = 991.49 * x^(-0.4)
+    \addplot[
+      blue,
+      dashed,
+      forget plot,
+      domain=1:16,
+      samples=200
+    ] {991.49 * x^(-0.4)};
+
+    %% Go %%
+    \addplot[
+      violet,
+      only marks,
+      mark=o,
+      mark options={draw=violet,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y       \\
+      1   5867.26 \\
+      2   3746.84 \\
+      4   2335.54 \\
+      8   1583.17 \\
+      12  1324.22 \\
+      14  1247.80 \\
+      16  1194.03 \\
+    };
+    \addlegendentry{Go}
+    % power-law fit: y = 5867.26 * x^(-0.5)
+    \addplot[
+      violet,
+      dashed,
+      forget plot,
+      domain=1:16,
+      samples=200
+    ] {5867.26 * x^(-0.5)};
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      only marks,
+      mark=o,
+      mark options={draw=orange,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y       \\
+      1   1621.77 \\
+      2   1324.05 \\
+      4   938.02  \\
+      8   747.41  \\
+      12  842.68  \\
+      14  889.03  \\
+      16  937.02  \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+    % power-law fit: y = 1621.77 * x^(-0.2)
+    \addplot[
+      orange,
+      dashed,
+      forget plot,
+      domain=1:16,
+      samples=200
+    ] {1621.77 * x^(-0.2)};
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      only marks,
+      mark=o,
+      mark options={draw=green!60!black,fill=white}
+    ]
+    table[row sep=\\] {
+      x    y         \\
+      1    272235.58 \\
+      2    183084.07 \\
+      4    112247.92 \\
+      8    82983.52  \\
+      12   90069.44  \\
+      14   93771.09  \\
+      16   98436.51  \\
+    };
+    \addlegendentry{Python}
+    % power-law fit: y = 272235.58 * x^(-0.35)
+    \addplot[
+      green!60!black,
+      dashed,
+      forget plot,
+      domain=1:16,
+      samples=200
+    ] {272235.58 * x^(-0.35)};
+
+  \end{semilogyaxis}
+\end{tikzpicture}
+    \caption{Logarithmic desktop energy consumption comparison across different programming languages}
+    \label{fig:log-desktop-energy}
+    
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Linear Energy Desktop Consumption without Python},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Energy Consumption (J)},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,12,14,16},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.98,0.98)},
+        anchor=north east,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      only marks,
+      mark=o,
+      mark options={draw=blue,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y      \\
+      1   991.49 \\
+      2   657.79 \\
+      4   442.17 \\
+      8   354.57 \\
+      12  339.44 \\
+      14  333.01 \\
+      16  321.60 \\
+    };
+    \addlegendentry{C++}
+    % power-law fit: y = 991.49 * x^(-0.4)
+    \addplot[
+      blue,
+      dashed,
+      forget plot,
+      domain=1:16,
+      samples=200
+    ] {991.49 * x^(-0.4)};
+
+    %% Go %%
+    \addplot[
+      violet,
+      only marks,
+      mark=o,
+      mark options={draw=violet,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y       \\
+      1   5867.26 \\
+      2   3746.84 \\
+      4   2335.54 \\
+      8   1583.17 \\
+      12  1324.22 \\
+      14  1247.80 \\
+      16  1194.03 \\
+    };
+    \addlegendentry{Go}
+    % power-law fit: y = 5867.26 * x^(-0.5)
+    \addplot[
+      violet,
+      dashed,
+      forget plot,
+      domain=1:16,
+      samples=200
+    ] {5867.26 * x^(-0.5)};
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      only marks,
+      mark=o,
+      mark options={draw=orange,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y       \\
+      1   1621.77 \\
+      2   1324.05 \\
+      4   938.02  \\
+      8   747.41  \\
+      12  842.68  \\
+      14  889.03  \\
+      16  937.02  \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+    % power-law fit: y = 1621.77 * x^(-0.2)
+    \addplot[
+      orange,
+      dashed,
+      forget plot,
+      domain=1:16,
+      samples=200
+    ] {1621.77 * x^(-0.2)};
+
+  \end{axis}
+\end{tikzpicture}
+    \caption{Linear energy consumption comparison excluding Python for better visibility of other languages}
+    \label{fig:linear-desktop-energy}
+\end{figure}

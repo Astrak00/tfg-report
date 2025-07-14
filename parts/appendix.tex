@@ -82,23 +82,25 @@ This section provides the reader with the detailed results of the server benchma
 This section provides the reader with the detailed results of the personal desktop benchmarks, including energy consumption, RAM power consumption and execution times for the benchmarks ran on a personal desktop with different core counts and programming languages.
 
 \begin{table}[H]
-    \centering
+ \centering
     \begin{tabular}{lrrrr}
-        \hline
-        energy-pkg     & C++                 & Go          & PyPy       & Python              \\
-        \hline
-        1              &                     &             &            &                    \\
-        2              &                     &             &            &                    \\
-        4              &                     &             &            &                    \\
-        8	           &                     &             &            &                    \\
-        14             &                     &             &            &                    \\
-        16             &                     &             &            &                    \\
-        \hline
+    \hline
+    energy-pkg & C++ & Go & PyPy & Python \\
+    \hline
+    1 & 991.49 & 5867.26 & 1621.77 & 272235.58 \\
+    2 & 657.79 & 3746.84 & 1324.05 & 183084.07 \\
+    4 & 442.17 & 2335.54 & 938.02 & 112247.92 \\
+    8 & 354.57 & 1583.17 & 747.41 & 82983.52 \\
+    12 & 339.44 & 1,324.22 & 842.68 & 90,069.44 \\
+    14 & 333.01 & 1247.80 & 889.03 & 93771.09 \\
+    16 & 321.60 & 1194.03 & 937.02 & 98436.51 \\
+    \hline
     \end{tabular}
-\caption{Personal Desktop Package consumption}{Energy usage (pkg) by implementation and core count with Hyperthreading enabled}
+\caption{Personal Desktop Package consumption}{Energy usage by implementation and core count with Hyperthreading enabled}
 \label{tab:desktop-energy-pkg-hyperthreading}
 \end{table}
 
+%% TODO or delete
 \begin{table}[H]
     \centering
     \begin{tabular}{lrrrr}
@@ -113,64 +115,30 @@ This section provides the reader with the detailed results of the personal deskt
         16             &                     &             &            &                    \\
         \hline
     \end{tabular}
-\caption{Personal Desktop Package consumption}{Energy usage (pkg) by implementation and core count without Hyperthreading enabled}
+\caption{Personal Desktop Package consumption}{Energy usage by implementation and core count without Hyperthreading enabled}
 \label{tab:desktop-energy-pkg}
 \end{table}
 
 \begin{table}[H]
-    \centering
+ \centering
     \begin{tabular}{lrrrr}
-        \hline
-        energy-ram     & C++                 & Go          & PyPy       & Python              \\
-        \hline
-        1              &                     &             &            &                    \\
-        2              &                     &             &            &                    \\
-        4              &                     &             &            &                    \\
-        8	           &                     &             &            &                    \\
-        14             &                     &             &            &                    \\
-        16             &                     &             &            &                    \\
-        \hline
-    \end{tabular}
-\caption{Personal Desktop RAM Power consumption}{Energy usage (ram) by implementation and core count with Hyperthreading enabled}
-\label{tab:desktop-energy-ram-hyperthreading}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{lrrrr}
-        \hline
-        energy-ram     & C++                 & Go          & PyPy       & Python              \\
-        \hline
-        1              &                     &             &            &                    \\
-        2              &                     &             &            &                    \\
-        4              &                     &             &            &                    \\
-        8	           &                     &             &            &                    \\
-        14             &                     &             &            &                    \\
-        16             &                     &             &            &                    \\
-        \hline
-    \end{tabular}
-\caption{Personal Desktop RAM Power consumption}{Energy usage (ram) by implementation and core count without Hyperthreading enabled}
-\label{tab:desktop-energy-ram}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{lrrrr}
-        \hline
-        execution-time & C++                 & Go          & PyPy       & Python              \\
-        \hline
-        1              &                     &             &            &                    \\
-        2              &                     &             &            &                    \\
-        4              &                     &             &            &                    \\
-        8	           &                     &             &            &                    \\
-        14             &                     &             &            &                    \\
-        16             &                     &             &            &                    \\
-        \hline
+    \hline
+    execution-time & C++ & Go & PyPy & Python \\
+    \hline
+    1 & 22.78 & 178.98 & 37.12 & 6063.96 \\
+    2 & 11.71 & 70.51 & 21.62 & 4822.21 \\
+    4 & 6.23 & 36.79 & 12.28 & 1600.72 \\
+    8 & 3.45 & 19.18 & 6.85 & 825.24 \\
+    12 & 3.20 & 14.33 & 6.95 & 848.99 \\
+    14 & 3.09 & 12.97 & 7.01 & 866.47 \\
+    16 & 2.97 & 12.09 & 7.21 & 878.90 \\
+    \hline
     \end{tabular}
 \caption{Personal Desktop Execution Time}{Execution time by implementation and core count with Hyperthreading enabled}
 \label{tab:desktop-execution-time-hyperthreading}
 \end{table}
 
+%% TODO or delete
 \begin{table}[H]
     \centering
     \begin{tabular}{lrrrr}

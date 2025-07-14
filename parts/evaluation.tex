@@ -11,7 +11,7 @@ This section reflects the results of all the testing performed with the differen
     Intel Xeon Gold 6326 x2 &  GCC 14.2.0           & go1.24.2  & 3.12.3 & 7.3.19 (3.11.11) \\
     MacbookPro M4 Pro       &  Apple Clang 17.0.0   & go1.24.2  & 3.13.5 & 7.3.19 (3.11.11) \\
     Raspberry Pi 5          &                       & go1.24.2  & 3.13.5 & 7.3.19 (3.11.11) \\
-    Ryzen 3800x Desktop     &                       &           &        &                  \\
+    Ryzen 3800x Desktop     &                       & go1.24.5  &        &                  \\
     \bottomrule
   \end{tabular}
   \caption{Language versions and compilers per platform}{Programming languages and their versions used in the tests, per platform.}
@@ -100,11 +100,16 @@ If we changed the implementation to a per-row renderer, on the go-side, the Go r
 
 
 \subsection{Personal Desktop}
-%% Comments on the platform x86, 8 cores, 16 threads, AMR ZEN 2 (https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-7-3800x.html#amd_support_product_spec)
-%% Test with and without hyerthreading as math intensive calculations
+This platform is one of the most common in the amateur market, as it is a personal desktop computer with a Ryzen 3800x processor, which has 8 cores and 16 threads. It has 32GB of RAM, which is enough to run any of the tests. It has a Zen 2 architecture, which has heterogeneous cores. These tests were performed with hyperthreading enabled, as it is the most popular configuration, and the default configuration. 
+
 
 \subsubsection{Results}
 
+\input{parts/results/desktop-energy}
+
+\input{parts/results/desktop-execution}
+
+These results 
 
 
 \subsection{Personal SOTA Laptop}
