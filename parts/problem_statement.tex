@@ -41,7 +41,7 @@ To better describe these requirements, we will use the following format:
         \textbf{Description}        & \textit{Requirement's Description} \\
         \textbf{Necessity}          & \textit{Low / Medium / High} \\
         \textbf{Priority}           & \textit{Low / Medium / High} \\
-        \multirow{1}{*}{\textbf{Stability}} & \textit{Stable / Unstable}: How easy it is for the requirement to change \\ 
+        \multirow{1}{*}{\textbf{Stability}} & \textit{Stable / Unstable}: How easy it is for the requirement to change \\
                                             & along the development of the project \\
         \textbf{Verifiability}       & \textit{Verifiable / Non-Verifiable} \\
     \end{tabular}
@@ -390,7 +390,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \toprule
         \multicolumn{2}{c}{SR-NF-01} \\
         \toprule
-        \textbf{Description}        & The different programs must have the same architecture \\
+        \textbf{Description}        & The different programs must have the same architecture. \\
         \textbf{Necessity}          &  High \\
         \textbf{Priority}           &  High \\
         \textbf{Stability}          &  Stable \\
@@ -424,7 +424,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \toprule
         \multicolumn{2}{c}{SR-NF-03} \\
         \toprule
-        \textbf{Description}        & The ray-tracer should be implemented in C++ \\
+        \textbf{Description}        & The ray-tracer should be implemented in \gls{CPP} \\
         \textbf{Necessity}          &  High \\
         \textbf{Priority}           &  High \\
         \textbf{Stability}          &  Stable \\
@@ -475,7 +475,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \toprule
         \multicolumn{2}{c}{SR-NF-06} \\
         \toprule
-        \textbf{Description}        & The ray-tracer's output should be stored in a file \\
+        \textbf{Description}        & The ray-tracer's output should be stored in a file. \\
         \textbf{Necessity}          &  High \\
         \textbf{Priority}           &  High \\
         \textbf{Stability}          &  Stable \\
@@ -509,7 +509,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \toprule
         \multicolumn{2}{c}{SR-NF-08} \\
         \toprule
-        \textbf{Description}        &  The system must implement different time-measuring systems for the different platforms\\
+        \textbf{Description}        &  The system must implement different time-measuring systems for the different platforms. \\
         \textbf{Necessity}          &  High \\
         \textbf{Priority}           &  High \\
         \textbf{Stability}          &  Stable \\
@@ -752,7 +752,7 @@ Start of use cases:
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -773,7 +773,7 @@ Start of use cases:
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The C++ benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -793,7 +793,7 @@ Start of use cases:
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make cpp-single}.\\
                                               & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\ 
+                                              & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The C++ single-core benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -814,7 +814,7 @@ Start of use cases:
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The C++ multicore benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -837,7 +837,7 @@ Start of use cases:
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Go benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -858,7 +858,7 @@ Start of use cases:
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make go-single}.\\
                                               & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\ 
+                                              & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Go single-core benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -879,7 +879,7 @@ Start of use cases:
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Go multicore benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -901,7 +901,7 @@ Start of use cases:
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Python benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -922,7 +922,7 @@ Start of use cases:
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make python-single}.\\
                                               & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\ 
+                                              & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Python single-core benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -943,7 +943,7 @@ Start of use cases:
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Python multicore benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -958,16 +958,16 @@ Start of use cases:
         \toprule
         \multicolumn{2}{c}{\textbf{ID: UC-05}} \\
         \toprule
-        \textbf{Name}                         &  Run Pypy Benchmarks. \\
+        \textbf{Name}                         &  Run PyPy Benchmarks. \\
         \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all Pypy implementation of the benchmarks, multicore and single-core versions. \\
+        \textbf{Objective}                    &  Running all PyPy implementation of the benchmarks, multicore and single-core versions. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make pypy pypy-single}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The Pypy benchmarks are executed, and the results are stored, and those files are output. \\
+        \textbf{Postconditions}               &  The PyPy benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
     \caption{Use Case UC-05}
     \label{tab:uc-05}
@@ -980,15 +980,15 @@ Start of use cases:
         \toprule
         \multicolumn{2}{c}{\textbf{ID: UC-05.1}} \\
         \toprule
-        \textbf{Name}                         &  Run Pypy Benchmarks. \\
+        \textbf{Name}                         &  Run PyPy Benchmarks. \\
         \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the Pypy implementation of the single-core benchmarks. \\
+        \textbf{Objective}                    &  Running the PyPy implementation of the single-core benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make pypy-single}.\\
                                               & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\ 
+                                              & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The Pypy single-core benchmark is executed, and the results are stored, and those files are output. \\
+        \textbf{Postconditions}               &  The PyPy single-core benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
     \caption{Use Case UC-05.1}
     \label{tab:uc-05.1}
@@ -1000,16 +1000,16 @@ Start of use cases:
         \toprule
         \multicolumn{2}{c}{\textbf{ID: UC-05.2}} \\
         \toprule
-        \textbf{Name}                         &  Run Pypy Benchmarks. \\
+        \textbf{Name}                         &  Run PyPy Benchmarks. \\
         \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the Pypy implementation of the multicore benchmarks. \\
+        \textbf{Objective}                    &  Running the PyPy implementation of the multicore benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make pypy}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The Pypy multicore benchmark is executed, and the results are stored, and those files are output. \\
+        \textbf{Postconditions}               &  The PyPy multicore benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
     \caption{Use Case UC-05.2}
     \label{tab:uc-05.2}
@@ -1025,11 +1025,11 @@ Start of use cases:
         \toprule
         \textbf{Name}                         &  Run Single core Benchmarks. \\
         \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all Pypy implementation of the single-core version of the benchmarks. \\
+        \textbf{Objective}                    &  Running all PyPy implementation of the single-core version of the benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make all-single}.\\
                                               & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\ 
+                                              & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The single-core implementation of the benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -1045,12 +1045,12 @@ Start of use cases:
         \toprule
         \textbf{Name}                         &  Run multicore Benchmarks. \\
         \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all Pypy implementation of the multicore version of the benchmarks. \\
+        \textbf{Objective}                    &  Running all PyPy implementation of the multicore version of the benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make multi}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
                                               & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\ 
+                                              & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The multicore implementation of the benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
@@ -1074,26 +1074,45 @@ It can be seen in \autoref{tab:traceability-matrix-ur} that all requirements are
         \hline
         \textbf{Requirement} & \rotatebox{65}{\textbf{UC-01}} & \rotatebox{65}{\textbf{UC-02}} & \rotatebox{65}{\textbf{UC-02.}1} & \rotatebox{65}{\textbf{UC-02.}2} & \rotatebox{65}{\textbf{UC-03}} & \rotatebox{65}{\textbf{UC-03.}1} & \rotatebox{65}{\textbf{UC-03.}2} & \rotatebox{65}{\textbf{UC-04}} & \rotatebox{65}{\textbf{UC-04.}1} & \rotatebox{65}{\textbf{UC-04.}2} & \rotatebox{65}{\textbf{UC-05}} & \rotatebox{65}{\textbf{UC-05.}1} & \rotatebox{65}{\textbf{UC-05.}2} & \rotatebox{65}{\textbf{UC-06}} & \rotatebox{65}{\textbf{UC-07}} \\
         \hline
-        UR-CA-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-CA-02 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-        UR-CA-03 & \checkmark &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-        UR-CA-04 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-CA-05 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        UR-CA-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-CA-02 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\
+        \hline
+        UR-CA-03 & \checkmark &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\
+        \hline
+        UR-CA-04 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-CA-05 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
         %% Multic-core
-        UR-CA-06 & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark &            & \checkmark \\ \hline
-        UR-CA-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-CA-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-CA-09 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-CA-10 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-CA-11 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-CA-12 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-        UR-CA-13 & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark &            & \checkmark \\ \hline
-        UR-CA-14 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-CA-15 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-CA-16 &            &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            &            \\ \hline
-        UR-CA-17 &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            &            &            \\ \hline
-        UR-RE-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        UR-RE-02 &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            &            &            \\ \hline
+        UR-CA-06 & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark &            & \checkmark \\
+        \hline
+        UR-CA-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-CA-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-CA-09 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-CA-10 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-CA-11 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-CA-12 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\
+        \hline
+        UR-CA-13 & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark &            & \checkmark \\
+        \hline
+        UR-CA-14 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-CA-15 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-CA-16 &            &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            & \checkmark & \checkmark &            &            \\
+        \hline
+        UR-CA-17 &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            &            &            \\
+        \hline
+        UR-RE-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        UR-RE-02 &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            & \checkmark &            &            &            &            \\
+        \hline
 
     \end{tabular}
 \caption{Traceability matrix (for UC-CA \& UC-RE requirement)}
@@ -1107,26 +1126,45 @@ It can be seen in \autoref{tab:traceability-matrix-ur} that all requirements are
         \hline
         \textbf{Requirement} & \rotatebox{65}{\textbf{UC-01}} & \rotatebox{65}{\textbf{UC-02}} & \rotatebox{65}{\textbf{UC-02.}1} & \rotatebox{65}{\textbf{UC-02.}2} & \rotatebox{65}{\textbf{UC-03}} & \rotatebox{65}{\textbf{UC-03.}1} & \rotatebox{65}{\textbf{UC-03.}2} & \rotatebox{65}{\textbf{UC-04}} & \rotatebox{65}{\textbf{UC-04.}1} & \rotatebox{65}{\textbf{UC-04.}2} & \rotatebox{65}{\textbf{UC-05}} & \rotatebox{65}{\textbf{UC-05.}1} & \rotatebox{65}{\textbf{UC-05.}2} & \rotatebox{65}{\textbf{UC-06}} & \rotatebox{65}{\textbf{UC-07}} \\
         \hline
-        SR-NF-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-NF-02 & \checkmark &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-        SR-NF-03 & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-        SR-NF-04 & \checkmark &            &            &            & \checkmark & \checkmark & \checkmark &            &            &            &            &            &            &            &            \\ \hline
-        SR-NF-05 & \checkmark &            &            &            &            &            &            & \checkmark & \checkmark & \checkmark &            &            &            &            &            \\ \hline
-        SR-NF-06 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-NF-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-NF-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-NF-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-NF-02 & \checkmark &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\
+        \hline
+        SR-NF-03 & \checkmark & \checkmark & \checkmark & \checkmark &            &            &            &            &            &            &            &            &            &            &            \\
+        \hline
+        SR-NF-04 & \checkmark &            &            &            & \checkmark & \checkmark & \checkmark &            &            &            &            &            &            &            &            \\
+        \hline
+        SR-NF-05 & \checkmark &            &            &            &            &            &            & \checkmark & \checkmark & \checkmark &            &            &            &            &            \\
+        \hline
+        SR-NF-06 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-NF-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-NF-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
         %% functional requirements
-        SR-FN-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-FN-02 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-FN-03 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-FN-04 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-FN-05 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-FN-06 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-FN-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-FN-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-FN-09 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\ \hline
-        SR-FN-10 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
-        SR-FN-11 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        SR-FN-01 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-FN-02 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-FN-03 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-FN-04 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-FN-05 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-FN-06 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-FN-07 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-FN-08 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-FN-09 &            &            &            &            &            &            &            &            &            &            &            &            &            &            &            \\
+        \hline
+        SR-FN-10 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
+        SR-FN-11 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+        \hline
 
     \end{tabular}
     \caption{Traceability matrix (for functional \& non-functional requirements)}

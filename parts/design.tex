@@ -238,7 +238,7 @@ Dividing this \texttt{\#pragma} directive into its components to better understa
     
     \item \textbf{shared(image, world, lines\_remaining, cout\_mutex, std::cout)}: The named variables refer to a single instance in shared memory, visible to all threads:
     \begin{itemize}
-        \item image: the pixel buffer, where all threads dump the processed pixel. Threads must coordinate writes so they don't stomp on each other.
+        \item image: the pixel buffer, where all threads dump the processed pixel.
         \item World: the scene description, with all the spheres.
         \item Lines remaining: and atomic counter for progress reporting
         \item cout\_mutex + std::cout: Locking the cout\_mutex before writing to std::cout to serialize console output.

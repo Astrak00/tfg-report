@@ -2,9 +2,9 @@
 
 
 \section{Summary of Findings}
-After analyzing the data collected from the various experiments, we found that the most efficient programming language, by a great margin is \gls{CPP}. The results indicate that \gls{CPP} outperforms both in energy consumption and execution time when compared to \gls{CPython}, Go and Pypy. This was to be expected, as \gls{CPP} is a compiled language and is known for its performance and energy efficiency, as it is an evolution of C.
+After analyzing the data collected from the various experiments, we found that the most efficient programming language, by a great margin is \gls{CPP}. The results indicate that \gls{CPP} outperforms both in energy consumption and execution time when compared to \gls{CPython}, Go and PyPy. This was to be expected, as \gls{CPP} is a compiled language and is known for its performance and energy efficiency, as it is an evolution of C.
 
-The most impressive and surprising result for many tests has been the performance of Pypy compared to the other programming languages. PyPy is just an interpreter for Python (that can run a limited subset of what \gls{CPython} can run), but it uses a \gls{jit} compilation technique that allows it to execute Python code much faster than the standard interpreter. This \gls{jit} is not compatible with some python libraries such as Numpy \cite{numpy} as these libraries use \gls{c-extension} to speed up their execution. This means that Pypy can only be used with pure Python code, which limits its applicability in some cases.
+The most impressive and surprising result for many tests has been the performance of PyPy compared to the other programming languages. PyPy is just an interpreter for Python (that can run a limited subset of what \gls{CPython} can run), but it uses a \gls{jit} compilation technique that allows it to execute Python code much faster than the standard interpreter. This \gls{jit} is not compatible with some python libraries such as Numpy \cite{numpy} as these libraries use \gls{c-extension} to speed up their execution. This means that PyPy can only be used with pure Python code, which limits its applicability in some cases.
 
 The implementation of multiple threads in the different programming languages was also a key factor in the performance of the programs. The easiest to implement, and the one that showed the best results, was C++, followed by Go, with its \glspl{goroutine} and \glspl{channel}. 
 
@@ -12,7 +12,7 @@ Python's default implementation, \gls{CPython}, does not support true multithrea
 
 If we were to use libraries such as Numpy, the performance of \gls{CPython} would be much better, as these libraries are optimized for performance and can take advantage of the underlying hardware. However, this would not be a fair comparison, as we would not be using pure Python code.
 
-In conclusion, if the program is to be run only a couple of times, and the performance is not a key factor, \gls{CPython} is a good enough choice. However, if the program is to be run multiple times, or if performance is a key factor, \gls{CPP} is the best choice. Go is also a good choice, as it has a good balance between performance and ease of use, specially for hundreds of threads working light tasks, for example a web server. Pypy is a good choice for pure Python code, but it has limitations when it comes to libraries that use \glspl{c-extension}.
+In conclusion, if the program is to be run only a couple of times, and the performance is not a key factor, \gls{CPython} is a good enough choice. However, if the program is to be run multiple times, or if performance is a key factor, \gls{CPP} is the best choice. Go is also a good choice, as it has a good balance between performance and ease of use, specially for hundreds of threads working light tasks, for example a web server. PyPy is a good choice for pure Python code, but it has limitations when it comes to libraries that use \glspl{c-extension}.
 
 \section{Future Research}
 Future research could focus on the following areas:
