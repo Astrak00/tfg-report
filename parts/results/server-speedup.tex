@@ -2,7 +2,7 @@
     \centering
     \begin{tikzpicture}
   \begin{axis}[
-      title={Energy Efficiency Speedup - Server},
+      title={Energy package relative efficiency - Server},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -12,7 +12,7 @@
       grid=both,
       minor tick num=1,
       grid style={gray!30,dashed},
-      xtick={1,2,4,8,16,32,60,64,120,128},
+      xtick={1,2,4,8,14,16,28,32,48,60},
       x tick label style={
         font=\footnotesize,
         rotate=45,
@@ -33,19 +33,20 @@
     \addplot[
       blue,
       mark=o,
+      line width=1.5pt,
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.449224703 \\
-      4   2.756665517 \\
-      8   4.699848604 \\
-      16  6.225466961 \\
-      32  5.989316921 \\
-      60  6.938433973 \\
-      64  4.900470966 \\
-      120 7.09250203 \\
-      128 4.9568614 \\
+      1   1            \\
+      2   1.449224703  \\
+      4   2.756665517  \\
+      8   4.699848604  \\
+      14  6.225466961  \\
+      16  5.989316921  \\
+      28  6.938433973  \\
+      32  7.09250203   \\
+      48  5.072120124  \\
+      60  5.63969131   \\
     };
     \addlegendentry{C++}
 
@@ -53,6 +54,7 @@
     \addplot[
       violet,
       mark=o,
+      line width=1.5pt,
     ]
     table[row sep=\\] {
       x   y     \\
@@ -60,12 +62,12 @@
       2   1.564432697 \\
       4   2.768045674 \\
       8   5.077678303 \\
-      16  9.039612715 \\
-      32  9.820104527 \\
-      60  12.36702582 \\
-      64  12.55560349 \\
-      120 13.25563962 \\
-      128 13.5218999 \\
+      14  9.039612715 \\
+      16  9.820104527 \\
+      28  12.36702582 \\
+      32  13.25563962 \\
+      48  15.36013205 \\
+      60  16.34762947 \\
     };
     \addlegendentry{Go}
 
@@ -73,6 +75,7 @@
     \addplot[
       orange,
       mark=o,
+      line width=1.5pt,
     ]
     table[row sep=\\] {
       x   y     \\
@@ -80,12 +83,12 @@
       2   1.548809154 \\
       4   2.818973839 \\
       8   4.561116959 \\
-      16  6.471149241 \\
-      32  6.988648317 \\
-      60  6.363204648 \\
-      64  6.782232544 \\
-      120 6.338516946 \\
-      128 6.898307578 \\
+      14  6.471149241 \\
+      16  6.988648317 \\
+      28  6.363204648 \\
+      32  6.338516946 \\
+      48  5.888089629 \\
+      60  5.888089629 \\
     };
     \addlegendentry{PyPy 3.11.11}
 
@@ -93,6 +96,7 @@
     \addplot[
       green!60!black,
       mark=o,
+      line width=1.5pt,
     ]
     table[row sep=\\] {
       x   y     \\
@@ -100,17 +104,259 @@
       2   1.323300741 \\
       4   4.817711048 \\
       8   7.767883818 \\
-      16  11.57436351 \\
-      32  13.55493304 \\
-      60  12.34254336 \\
-      64  15.72656914 \\
-      120 12.5605981 \\
-      128 17.29416455 \\
+      14  11.57436351 \\
+      16  13.55493304 \\
+      28  12.34254336 \\
+      32  12.5605981 \\
+      48  15.51956483 \\
+      60  16.11770556 \\
     };
     \addlegendentry{Python}
 
   \end{axis}
 \end{tikzpicture}
-    \caption{Server - Energy Efficiency Speedup}{Energy efficiency speedup of the Server benchmark across different programming languages.}
-    \label{fig:server-speedup}
+  \caption{Server - Energy package relative efficiency}{Energy package relative efficiency of the Server benchmark across different programming languages (higher is better).}
+  \label{fig:server-relative-energy-pkg}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Energy RAM relative efficiency - Server},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Relative Efficiency},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,14,16,28,32,48,60},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.591915736 \\
+      4   2.615828402 \\
+      8   6.72869102 \\
+      14  9.673413567 \\
+      16  9.166925868 \\
+      28  10.45712596 \\
+      32  9.934269663 \\
+      48  6.544411547 \\
+      60  7.247131148 \\
+    };
+    \addlegendentry{C++}
+
+    %% Go %%
+    \addplot[
+      violet,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.389830957 \\
+      4   2.460615435 \\
+      8   5.994404796 \\
+      14  9.788551184 \\
+      16  10.98242678 \\
+      28  19.06518976 \\
+      32  15.78589686 \\
+      48  14.86296716 \\
+      60  11.63604123 \\
+    };
+    \addlegendentry{Go}
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.404489054 \\
+      4   2.089722484 \\
+      8   3.996177198 \\
+      14  4.917266187 \\
+      16  4.947383073 \\
+      28  4.364194499 \\
+      32  4.256526946 \\
+      48  3.990792724 \\
+      60  3.892454277 \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.626386317 \\
+      4   4.630630403 \\
+      8   8.868586939 \\
+      14  14.70316219 \\
+      16  15.99577796 \\
+      28  14.60753181 \\
+      32  14.67800138 \\
+      48  20.79178424 \\
+      60  21.73288012 \\
+    };
+    \addlegendentry{Python}
+
+  \end{axis}
+\end{tikzpicture}
+  \caption{Server - Energy RAM relative efficiency}{Energy RAM relative efficiency of the Server benchmark across different programming languages (higher is better).}
+  \label{fig:server-relative-energy-ram}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Execution time speedup - Server},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Relative Efficiency},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,14,16,28,32,48,60},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1           \\
+      2   1.893580649 \\
+      4   3.54450708  \\
+      8   6.761345161 \\
+      14  9.931124052 \\
+      16  9.285616355 \\
+      28  10.72363719 \\
+      32  10.75233602 \\
+      48  11.44044402 \\
+      60  13.08634206 \\
+    };
+    \addlegendentry{C++}
+
+    %% Go %%
+    \addplot[
+      violet,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.936318141 \\
+      4   3.800430694 \\
+      8   7.27261259 \\
+      14  12.32364258 \\
+      16  13.88487476 \\
+      28  19.41918721 \\
+      32  21.18654449 \\
+      48  30.24288737 \\
+      60  32.28425827 \\
+    };
+    \addlegendentry{Go}
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.762302338 \\
+      4   3.335818117 \\
+      8   6.077745016 \\
+      14  9.039604921 \\
+      16  9.554855912 \\
+      28  8.639275249 \\
+      32  8.559430409 \\
+      48  11.56981423 \\
+      60  11.48991219 \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.245045155 \\
+      4   3.550721298 \\
+      8   6.77451541 \\
+      14  11.19708921 \\
+      16  12.26084751 \\
+      28  11.17381572 \\
+      32  11.30584039 \\
+      48  21.94947016 \\
+      60  22.8814247 \\
+    };
+    \addlegendentry{Python}
+
+  \end{axis}
+\end{tikzpicture}
+  \caption{Server - Execution time speedup}{Energy efficiency speedup of the Server benchmark across different programming languages (higher is better).}
+  \label{fig:server-time-speedup}
 \end{figure}

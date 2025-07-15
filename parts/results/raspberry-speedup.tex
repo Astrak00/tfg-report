@@ -2,7 +2,7 @@
     \centering
     \begin{tikzpicture}
   \begin{axis}[
-      title={Energy Efficiency Speedup - Raspberry Pi},
+      title={Energy efficiency speedup - Raspberry Pi},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -33,6 +33,7 @@
     \addplot[
       blue,
       mark=o,
+      line width=1.5pt,
     ]
     table[row sep=\\] {
       x   y     \\
@@ -46,6 +47,7 @@
     \addplot[
       violet,
       mark=o,
+      line width=1.5pt,
     ]
     table[row sep=\\] {
       x   y     \\
@@ -59,6 +61,7 @@
     \addplot[
       orange,
       mark=o,
+      line width=1.5pt,
     ]
     table[row sep=\\] {
       x   y     \\
@@ -72,6 +75,7 @@
     \addplot[
       green!60!black,
       mark=o,
+      line width=1.5pt,
     ]
     table[row sep=\\] {
       x   y     \\
@@ -83,6 +87,99 @@
 
   \end{axis}
 \end{tikzpicture}
-    \caption{Raspberry Pi - Energy Efficiency Speedup}{Energy efficiency speedup of the Raspberry Pi benchmark across different programming languages.}
-    \label{fig:rpi-speedup}
+    \caption{Raspberry Pi - Energy package relative efficiency}{Energy package relative efficiency of the Raspberry Pi benchmark across different programming languages.}
+    \label{fig:rpi-relative-energy}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Energy efficiency speedup - Raspberry Pi},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Relative Efficiency},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.950877788	 \\
+      4   3.848824582	 \\
+    };
+    \addlegendentry{C++}
+
+    %% Go %%
+    \addplot[
+      violet,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   2.013136804 \\
+      4   4.015077052 \\
+    };
+    \addlegendentry{Go}
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.697986947 \\
+      4   1.751732838 \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      mark=o,
+      line width=1.5pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   2.001188255 \\
+      4   3.909506176 \\
+    };
+    \addlegendentry{Python}
+
+  \end{axis}
+\end{tikzpicture}
+    \caption{Raspberry Pi - Energy package relative efficiency}{Energy package relative efficiency of the Raspberry Pi benchmark across different programming languages.}
+    \label{fig:rpi-relative-energy}
 \end{figure}
