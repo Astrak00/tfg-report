@@ -4,17 +4,17 @@ This section reflects the results of all the testing performed with the differen
 
 \begin{table}[ht]
   \centering
-  \begin{tabular}{lcccc}
+  \begin{tabular}{lccccc}
     \toprule
-                            & C\++                  & Go        & Python & PyPy \\
+               & \gls{OS}       & C++                  & Go       & Python & PyPy \\
     \midrule
-    Intel Xeon Gold 6326 x2 &  GCC 14.2.0           & go1.24.2  & 3.12.3 & 7.3.19 (3.11.11) \\
-    Macbook Pro M4 Pro      &  Apple Clang 17.0.0   & go1.24.2  & 3.13.5 & 7.3.19 (3.11.11) \\
-    Raspberry Pi 5          &  GCC 14.2.0           & go1.24.4  & 3.13.5 & 7.3.19 (3.11.11) \\
-    Ryzen 3800x Desktop     &  GCC 13.3.0           & go1.24.5  & 3.13.5 & 7.3.19 (3.11.11) \\
+    Server     & Ubuntu 24.04.2 &  GCC 14.2.0          & 1.24.2  & 3.12.3 & 7.3.19 \\
+    Laptop     & macOS 15.5     &  Apple Clang 17.0.0  & 1.24.2  & 3.13.5 & 7.3.19 \\
+    Raspberry  & Debian 12      &  GCC 14.2.0          & 1.24.4  & 3.13.5 & 7.3.19 \\
+    Desktop    & Ubuntu 24.04.2 &  GCC 13.3.0          & 1.24.5  & 3.13.5 & 7.3.19 \\
     \bottomrule
   \end{tabular}
-  \caption{Language versions and compilers per platform}{Programming languages and their versions used in the tests, per platform.}
+  \caption{Language versions and compilers per platform}{Programming languages versions and operating systems used.}
   \label{tab:lang-platforms}
 \end{table}
 
@@ -69,7 +69,7 @@ The results for the server are shown in the following figures and tables. The en
 
 From \autoref{fig:log-server-energy-pkg}, we can see that the energy consumption of the server is not linear with the number of cores. It can be observed that the energy consumption decreases as the number of cores increases, but there is a point in the graph and \autoref{tab:server-energy-pkg} where the energy consumption starts to increase slightly again, as well as the execution times in \autoref{fig:log-server-execution-time}, but not as much as the energy consumption.
 
-This is due to hyperthreading\footnote{Hyperthreading is enabled in this system as it is not mine and I cannot disable it to perform testing. To set the process to a fixed \gls{cpu}, I used \texttt{taskset -c [cores]}, i.e., \texttt{taskset -c 0-15,32-47} for running across multiple \glspl{cpu} and \texttt{taskset -c 0-31} to force the program to only run in a single \gls{cpu}.} in the \glspl{cpu}, which allows the \glspl{cpu} to run two threads per core, but this is not as efficient as running a single thread per core, as the \glspl{cpu} have to share resources between the two threads.
+This is due to hyperthreading \footnote{Hyperthreading is enabled in this system. To set the process to a fixed \gls{cpu}, I used \texttt{taskset -c [cores]}, i.e., \texttt{taskset -c 0-15,32-47} for running across multiple \glspl{cpu} and \texttt{taskset -c 0-31} to force the program to only run in a single \gls{cpu}.} in the \glspl{cpu}, which allows the \glspl{cpu} to run two threads per core, but this is not as efficient as running a single thread per core, as the \glspl{cpu} have to share resources between the two threads.
 
 It is obvious from the multiple graphs and tables that the C\++ implementation is the most energy-efficient and fastest by a significant margin, followed surprisingly by the PyPy execution of the Python code, which is faster than the Go implementation, and the Python implementation is the slowest and most energy-consuming by an extremely large amount.
 

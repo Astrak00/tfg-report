@@ -41,7 +41,6 @@
 - [x] Talk about planning and how the project was initially planned, and how it evolved
 
 
-
 ## Economic impact
 - [x] Add text to the offer
 - [x] Add text to the economic impact.
@@ -59,3 +58,4 @@
 ## Appendix
 - [x] Add an appendix with additional information and resources
 - [x] Possible move the tables to the appendix.
+- [x] Removed appendix from chapters

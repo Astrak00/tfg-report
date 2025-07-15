@@ -211,7 +211,7 @@ In this section, the different programming languages that have been chosen will 
 \subsection{Go: Compiled Language with an Embedded Managed Runtime}
 Go is a language developed by \href{https://google.com}{Google}, released in 2009, focused on concurrency. It has a runtime which manages the \glspl{goroutine}. As described by \cite{rosecrance2019garbage}, Go has a Garbage Collector, which means while the program is running, there needs to be a thread checking for unused memory structures. 
 
-This language was designed for backend tasks, handling thousands of simultaneous connections, while having an easy syntax for any programmer. Some companies that use this are Uber, Docker, Twitch, previously Discord \cite{discord-blog-go-rust} and, although not mainly, Netflix.  %% Should I add urls to these companies?
+This language was designed for backend tasks, handling thousands of simultaneous connections, while having an easy syntax for any programmer. Some companies that use this are Uber, Docker, Twitch, previously Discord \cite{discord-blog-go-rust} and, although not mainly, Netflix.
 
 From \autoref{tab:language_comparison}, it can be seen that Go is statically typed and compiled, which makes it have a good start as an efficient programming language. But from the \autoref{tab:language_comparison_energy}, we can observe go has a managed runtime, which means the energy consumption will be higher than other languages that do not have this. This runtime is the section of the program in charge of running and scheduling \glspl{goroutine}. This is why go binaries have a bigger minimum size as the runtime has to be fitted in the binary, which is great for \gls{cross-compilation}, but not great for either energy efficiency or performance.
 
