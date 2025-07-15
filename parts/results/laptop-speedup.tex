@@ -1,0 +1,211 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Energy relative efficiency - Laptop},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Relative Efficiency},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,10,14},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      mark=o,
+      line width=1.25pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   0.8529409333 \\
+      4   1.069494819 \\
+      8   1.050991109 \\
+      10  1.06893843 \\
+      14  1.215060831 \\
+    };
+    \addlegendentry{C++}
+
+    %% Go %%
+    \addplot[
+      violet,
+      mark=o,
+      line width=1.25pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   0.9493750903 \\
+      4   1.210314987 \\
+      8   1.232920914 \\
+      10  1.274120302 \\
+      14  1.427607056 \\
+    };
+    \addlegendentry{Go}
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      mark=o,
+      line width=1.25pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   0.9217920879 \\
+      4   0.8991166162 \\
+      8   0.8988151816 \\
+      10  0.9056839419 \\
+      14  0.9547354298 \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      mark=o,
+      line width=1.25pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.074956681 \\
+      4   1.083492072 \\
+      8   1.131338076 \\
+      10  1.174270223 \\
+      14  1.273544411 \\
+    };
+    \addlegendentry{Python}
+
+  \end{axis}
+\end{tikzpicture}
+    \caption{Laptop - Energy relative efficiency}{Energy relative efficiency of the Laptop benchmark across different programming languages.}
+    \label{fig:laptop-relative-energy}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Execution time speedup - Laptop},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Speedup},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,10,14},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      mark=o,
+      line width=1.25pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   2.05922865 \\
+      4   3.632167153 \\
+      8   5.472181552 \\
+      10  5.937251787 \\
+      14  5.050675676 \\
+    };
+    \addlegendentry{C++}
+
+    %% Go %%
+    \addplot[
+      violet,
+      mark=o,
+      line width=1.25pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1	 \\
+      2   2.023690307	 \\
+      4   3.659077089	 \\
+      8   6.823484944	 \\
+      10  8.13671875	 \\
+      14  9.11904361	 \\
+    };
+    \addlegendentry{Go}
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      mark=o,
+      line width=1.25pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   1.705439815 \\
+      4   3.216468591 \\
+      8   5.804990151 \\
+      10  6.954116413 \\
+      14  7.324772162 \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      mark=o,
+      line width=1.25pt,
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   1 \\
+      2   2.227968773 \\
+      4   4.338455223 \\
+      8   8.617862305 \\
+      10  10.48247378 \\
+      14  11.53744275 \\
+    };
+    \addlegendentry{Python}
+
+  \end{axis}
+\end{tikzpicture}
+    \caption{Laptop - Execution time speedup}{Execution time speedup of the Laptop benchmark across different programming languages.}
+    \label{fig:laptop-time-speedup}
+\end{figure}
+
+WORK IN PROGRESS \autoref{fig:laptop-speedup} TODO: Check numbers, check correctness in graph, add the time speedup graph.

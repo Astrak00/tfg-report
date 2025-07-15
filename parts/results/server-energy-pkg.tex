@@ -196,3 +196,172 @@
 \end{figure}
 
 
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+  \begin{axis}[
+      title={Energy efficiency speedup},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Speedup (relative to 1 core)},
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,14,16,28,32,48,60},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.02,0.98)},
+        anchor=north west,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=1,
+      legend cell align=left,
+      ymin=0,
+      ymax=18,
+    ]
+
+    %% C++ Speedup (Energy efficiency improvement) %%
+    \addplot[
+      blue,
+      mark=o,
+      mark options={draw=blue,fill=white},
+      line width=1.5pt
+    ] table[row sep=\\] {
+      x    y \\
+      1    1.00  \\
+      2    1.45  \\
+      4    2.76  \\
+      8    4.70  \\
+      14   6.22  \\
+      16   5.99  \\
+      28   6.94  \\  
+      32   7.09  \\  
+      48   5.07  \\
+      60   5.64  \\
+    };
+    \addlegendentry{C++}
+    
+    \addplot[
+      blue,
+      only marks,
+      mark=*,
+      mark options={draw=blue,fill=blue}
+    ] table[row sep=\\] {
+      x    y \\
+      28   4.90  \\  
+      32   4.95  \\  
+    };
+    \addlegendentry{C++ same CPU}
+
+    %% Go Speedup %%
+    \addplot[
+      violet,
+      mark=o,
+      mark options={draw=violet,fill=white},
+      line width=1.5pt
+    ] table[row sep=\\] {
+      x    y \\
+      1    1.00  \\
+      2    1.56  \\
+      4    2.77  \\
+      8    5.08  \\
+      14   9.04  \\
+      16   9.82  \\
+      28   12.37 \\
+      32   13.26 \\
+      48   15.36 \\
+      60   16.35 \\
+    };
+    \addlegendentry{Go}
+    
+    \addplot[
+      violet,
+      only marks,
+      mark=*,
+      mark options={draw=violet,fill=violet}
+    ] table[row sep=\\] {
+      x    y \\
+      28   12.56 \\
+      32   13.52 \\
+    };
+    \addlegendentry{Go same CPU}
+
+    %% PyPy Speedup %%
+    \addplot[
+      orange,
+      mark=o,
+      mark options={draw=orange,fill=white},
+      line width=1.5pt
+    ] table[row sep=\\] {
+      x    y \\
+      1    1.00  \\
+      2    1.55  \\
+      4    2.82  \\
+      8    4.56  \\
+      14   6.47  \\
+      16   6.99  \\
+      28   6.36  \\
+      32   6.34  \\
+      48   5.89  \\
+      60   5.89  \\
+    };
+    \addlegendentry{PyPy}
+    
+    \addplot[
+      orange,
+      only marks,
+      mark=*,
+      mark options={draw=orange,fill=orange}
+    ] table[row sep=\\] {
+      x    y \\
+      28   6.78  \\
+      32   6.90  \\
+    };
+    \addlegendentry{PyPy same CPU}
+
+    %% Python Speedup %%
+    \addplot[
+      green!60!black,
+      mark=o,
+      mark options={draw=green!60!black,fill=white},
+      line width=1.5pt
+    ] table[row sep=\\] {
+      x    y \\
+      1    1.00  \\
+      2    1.32  \\
+      4    4.82  \\
+      8    7.77  \\
+      14   11.57 \\
+      16   13.55 \\
+      28   12.34 \\
+      32   12.56 \\
+      48   15.52 \\
+      60   16.11 \\
+    };
+    \addlegendentry{Python}
+    
+    \addplot[
+      green!60!black,
+      only marks,
+      mark=*,
+      mark options={draw=green!60!black,fill=green!60!black}
+    ] table[row sep=\\] {
+      x    y \\
+      28   15.73 \\  
+      32   17.29 \\
+    };
+    \addlegendentry{Python same CPU}
+
+  \end{axis}
+  \end{tikzpicture}
+\caption{Server - Speedup Energy Efficiency}{Server benchmark energy performance comparison across programming languages: Energy efficiency speedup relative to single-core performance (higher is better).}
+\label{fig:energy-comparison}
+\end{figure}
