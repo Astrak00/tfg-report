@@ -26,14 +26,21 @@
 - [x] Create graphs for the results of the raspberry, and add them to the report
 - [ ] Talk about the results of the raspberry, and add them to the report
 
-- [ ] Test for personal PC (R7 3800X)
-- [ ] Create graphs for the results of the personal PC, and add them to the report
+- [x] Test for personal PC (R7 3800X)
+- [x] Create graphs for the results of the personal PC, and add them to the report
 - [ ] Talk about the PCs results pkg, 
-- [ ] Talk about the PCs results ram, 
 - [ ] Talk about the PCs results execution time 
 
+## Non-hyperthreading version of the desktop
+- [ ] Get the results
+- [ ] Create graphs for the results of the non-hyperthreading desktop, and add them to the report
+- [ ] Create relative speedup graphs for the non-hyperthreading desktop, and add them to the report
+- [ ] Talk about the non-hyperthreading desktop results pkg,
+
 ## Planning
-- [ ] Talk about planning and how the project was initially planned, and how it evolved
+- [x] Talk about planning and how the project was initially planned, and how it evolved
+
+
 
 ## Economic impact
 - [x] Add text to the offer
