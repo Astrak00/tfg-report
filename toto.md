@@ -27,7 +27,8 @@
 - [ ] Talk about the results of the raspberry, and add them to the report
 
 - [x] Test for personal PC (R7 3800X)
-- [x] Create graphs for the results of the personal PC, and add them to the report
+- [x] Create graphs for the results of the personal PC, and add them to the report.
+
 - [ ] Talk about the PCs results pkg, 
 - [ ] Talk about the PCs results execution time 
 
@@ -36,6 +37,17 @@
 - [ ] Create graphs for the results of the non-hyperthreading desktop, and add them to the report
 - [ ] Create relative speedup graphs for the non-hyperthreading desktop, and add them to the report
 - [ ] Talk about the non-hyperthreading desktop results pkg,
+
+
+## Results to re-run:
+- [ ] Server Go 28 cores
+- [ ] Trend line Logarithmic Energy Consumption - Desktop (python & go)
+- [ ] Linear Energy Consumption without Python - Desktop (Go)
+- [ ] Logarithmic Execution Time - Desktop (all)
+- [ ] Execution time speedup - Desktop (go, es muy lineal)
+- [ ] Logarithmic energy consumption - Laptop (Python)
+
+
 
 ## Planning
 - [x] Talk about planning and how the project was initially planned, and how it evolved
