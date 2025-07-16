@@ -255,3 +255,246 @@
     \label{fig:linear-desktop-execution-time-hyperthreading}
 \end{figure}
 
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{semilogyaxis}[
+      title={Logarithmic Execution Time - Desktop},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Real time (s)},
+      ymode=log,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,6,8},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.98,0.98)},
+        anchor=north east,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      only marks,
+      mark=o,
+      mark options={draw=blue,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   22.60 \\
+      2   11.64 \\
+      4   6.20  \\
+      6   4.49  \\
+      8   3.43  \\
+    };
+    \addlegendentry{C++}
+    % power-law fit: y = 22.60 * x^(-0.8)
+    \addplot[
+      blue,
+      forget plot,
+      domain=1:8,
+      samples=200
+    ] {19.94 * x^(-0.740)};
+
+    %% Go %%
+    \addplot[
+      violet,
+      only marks,
+      mark=o,
+      mark options={draw=violet,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y      \\
+      1   178.43 \\
+      2   69.77  \\
+      4   36.68  \\
+      6   25.24  \\
+      8   20.84  \\
+    };
+    \addlegendentry{Go}
+    % power-law fit: y = 178.43 * x^(-0.9)
+    \addplot[
+      violet,
+      forget plot,
+      domain=1:8,
+      samples=200
+    ] {152.85 * x^(-0.953)};
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      only marks,
+      mark=o,
+      mark options={draw=orange,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y      \\
+      1   36.42  \\
+      2   21.59  \\
+      4   11.97  \\
+      6   8.35   \\
+      8   6.91   \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+    % power-law fit: y = 36.42 * x^(-0.7)
+    \addplot[
+      orange,
+      forget plot,
+      domain=1:8,
+      samples=200
+    ] {32.85 * x^(-0.619)};
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      only marks,
+      mark=o,
+      mark options={draw=green!60!black,fill=white}
+    ]
+    table[row sep=\\] {
+      x    y       \\
+      2    3115.45 \\
+      4    1634.00 \\
+      6    1104.04 \\
+      8    829.50  \\
+    };
+    \addlegendentry{Python}
+    % power-law fit: y = 3115.45 * x^(-0.870)
+    \addplot[
+      green!60!black,
+      forget plot,
+      domain=2:8,
+      samples=200
+    ] {5123.25 * x^(-0.719)};
+
+  \end{semilogyaxis}
+\end{tikzpicture}
+    \caption{Desktop - Logarithmic Execution Time without Hyperthreading}{Logarithm Execution time of the Desktop benchmark without Hyperthreading across different programming languages.}
+    \label{fig:log-desktop-execution-time}
+    
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+  \begin{axis}[
+      title={Linear Execution Time without Python - Desktop},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Real time (s)},
+      ymode=linear,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,6,8},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.98,0.98)},
+        anchor=north east,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+    %% C++ %%
+    \addplot[
+      blue,
+      only marks,
+      mark=o,
+      mark options={draw=blue,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y     \\
+      1   22.60 \\
+      2   11.64 \\
+      4   6.20  \\
+      6   4.49  \\
+      8   3.43  \\
+    };
+    \addlegendentry{C++}
+    % power-law fit: y = 22.60 * x^(-0.8)
+    \addplot[
+      blue,
+      forget plot,
+      domain=1:8,
+      samples=200
+    ] {22.78 * x^(-0.8)};
+
+    %% Go %%
+    \addplot[
+      violet,
+      only marks,
+      mark=o,
+      mark options={draw=violet,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y      \\
+      1   178.43 \\
+      2   69.77  \\
+      4   36.68  \\
+      6   25.24  \\
+      8   20.84  \\
+    };
+    \addlegendentry{Go}
+    % power-law fit: y = 178.43 * x^(-0.9)
+    \addplot[
+      violet,
+      forget plot,
+      domain=1:8,
+      samples=200
+    ] {178.98 * x^(-0.9)};
+
+    %% PyPy 3.11.11 %%
+    \addplot[
+      orange,
+      only marks,
+      mark=o,
+      mark options={draw=orange,fill=white}
+    ]
+    table[row sep=\\] {
+      x   y      \\
+      1   36.42  \\
+      2   21.59  \\
+      4   11.97  \\
+      6   8.35   \\
+      8   6.91   \\
+    };
+    \addlegendentry{PyPy 3.11.11}
+    % power-law fit: y = 36.42 * x^(-0.7)
+    \addplot[
+      orange,
+      forget plot,
+      domain=1:8,
+      samples=200
+    ] {37.12 * x^(-0.7)};
+
+  \end{axis}
+\end{tikzpicture}
+    \caption{Desktop - Linear execution Time without Hyperthreading}{Linear execution time of the laptop benchmark without Hyperthreading across different programming languages without Python.}
+    \label{fig:linear-desktop-execution-time-hyperthreading}
+\end{figure}
+

@@ -1,7 +1,22 @@
 
 \chapter{Server Benchmarks Tables Results}
 
-This section provides the reader with the detailed results of the server benchmarks: energy consumption, RAM power consumption and execution time for the server executions across different programming languages and core counts.
+This section provides the reader with the detailed results of the server benchmarks: energy\begin{table}[H]
+    \centering
+    \begin{tabular}{lrrrr}
+        \hline
+        execution-time & C++                 & Go          & PyPy       & Python              \\
+        \hline
+        1              & 22.60               & 178.43      & 36.42      &                    \\
+        2              & 11.64               & 69.77       & 21.59      & 3,115.45           \\
+        4              & 6.20                & 36.68       & 11.97      & 1,634.00           \\
+        6              & 4.49                & 25.24       & 8.35       & 1,104.04           \\
+        8	           & 3.43                & 20.84       & 6.91       & 829.50             \\
+        \hline
+    \end{tabular}
+\caption{Desktop - Execution Time}{Execution time on the Desktop benchmark by implementation and core count}
+\label{tab:desktop-execution-time}
+\end{table}power consumption and execution time for the server executions across different programming languages and core counts.
 
 \begin{table}[H]
     \centering
@@ -98,19 +113,17 @@ This section provides the reader with the detailed results of the personal deskt
 \label{tab:desktop-energy-pkg-hyperthreading}
 \end{table}
 
-%% TODO or delete
 \begin{table}[H]
     \centering
     \begin{tabular}{lrrrr}
         \hline
         energy-pkg     & C++                 & Go          & PyPy       & Python              \\
         \hline
-        1              &                     &             &            &                    \\
-        2              &                     &             &            &                    \\
-        4              &                     &             &            &                    \\
-        8	           &                     &             &            &                    \\
-        14             &                     &             &            &                    \\
-        16             &                     &             &            &                    \\
+        1              & 1,008.55            & 5,945.33    & 1,635.95   &                    \\
+        2              & 671.13              & 3,652.85    & 1,296.42   & 176,092.08         \\
+        4              & 6.20                & 2,421.40    & 914.60     & 113,582.17         \\
+        6              & 388.96              & 1,878.72    & 789.89     & 95,214.00          \\
+        8	           & 346.15              & 1,645.18    & 735.35     & 82,869.55          \\
         \hline
     \end{tabular}
 \caption{Desktop - Package energy consumption}{Energy usage by the package on the Desktop benchmark by implementation and core count}
@@ -136,19 +149,17 @@ This section provides the reader with the detailed results of the personal deskt
 \label{tab:desktop-execution-time-hyperthreading}
 \end{table}
 
-%% TODO or delete
 \begin{table}[H]
     \centering
     \begin{tabular}{lrrrr}
         \hline
         execution-time & C++                 & Go          & PyPy       & Python              \\
         \hline
-        1              &                     &             &            &                    \\
-        2              &                     &             &            &                    \\
-        4              &                     &             &            &                    \\
-        8	           &                     &             &            &                    \\
-        14             &                     &             &            &                    \\
-        16             &                     &             &            &                    \\
+        1              & 22.60               & 178.43      & 36.42      &                    \\
+        2              & 11.64               & 69.77       & 21.59      & 3,115.45           \\
+        4              & 6.20                & 36.68       & 11.97      & 1,634.00           \\
+        6              & 4.49                & 25.24       & 8.35       & 1,104.04           \\
+        8	           & 3.43                & 20.84       & 6.91       & 829.50             \\
         \hline
     \end{tabular}
 \caption{Desktop - Execution Time}{Execution time on the Desktop benchmark by implementation and core count}
