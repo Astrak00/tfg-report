@@ -40,15 +40,13 @@
 
 
 ## Results to re-run:
-- [ ] Server Go 28 cores
+- [x] Server Go 28 cores
 
-- [ ] Trend line Logarithmic Energy Consumption - Desktop (python & go)
-- [ ] Linear Energy Consumption without Python - Desktop (Go)
-- [ ] Logarithmic Execution Time - Desktop (all)
-- [ ] Execution time speedup - Desktop (go, es muy lineal)
-
-- [ ] Logarithmic energy consumption - Laptop (Python)
-
+- [x] Trend line Logarithmic Energy Consumption - Desktop (python & go)
+- [x] Linear Energy Consumption without Python - Desktop (Go)
+- [x] Logarithmic Execution Time - Desktop (all)
+- [x] Execution time speedup - Desktop (go, es muy lineal)
+- [x] Logarithmic energy consumption - Laptop (Python)
 
 
 ## Planning
