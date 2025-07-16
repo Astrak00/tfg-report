@@ -366,6 +366,7 @@
     ]
     table[row sep=\\] {
       x    y         \\
+      1    267512.68 \\
       2    176092.08 \\
       4    113582.17 \\
       6    95214.00  \\
@@ -376,9 +377,9 @@
     \addplot[
       green!60!black,
       forget plot,
-      domain=2:8,
+      domain=1:8,
       samples=200
-    ] {176092.08 * (x/2)^(-0.3)};
+    ] {262494.50 * x^(-0.569)};
 
   \end{semilogyaxis}
 \end{tikzpicture}
@@ -463,7 +464,7 @@
       forget plot,
       domain=1:8,
       samples=200
-    ] {5945.33 * x^(-0.5)};
+    ] {5789.20 * x^(-0.620)};
 
     %% PyPy 3.11.11 %%
     \addplot[

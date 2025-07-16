@@ -260,7 +260,7 @@
     \centering
     \begin{tikzpicture}
   \begin{semilogyaxis}[
-      title={Logarithmic Execution Time - Desktop},
+      title={Logarithmic Execution Time without Hyperthreading - Desktop},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -368,6 +368,7 @@
     ]
     table[row sep=\\] {
       x    y       \\
+      1    6232.49 \\
       2    3115.45 \\
       4    1634.00 \\
       6    1104.04 \\
@@ -378,9 +379,9 @@
     \addplot[
       green!60!black,
       forget plot,
-      domain=2:8,
+      domain=1:8,
       samples=200
-    ] {5123.25 * x^(-0.719)};
+    ] {6181.02 * x^(-0.964)};
 
   \end{semilogyaxis}
 \end{tikzpicture}
@@ -393,7 +394,7 @@
     \centering
     \begin{tikzpicture}
   \begin{axis}[
-      title={Linear Execution Time without Python - Desktop},
+      title={Linear Execution Time without Python without Hyperthreading - Desktop},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},

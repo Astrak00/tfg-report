@@ -31,6 +31,24 @@ This platform represents the most powerful as well as power-hungry combination o
 As it has two sockets (one per CPU chip), there must be intercommunication between these processors if a process spreads out to more than 32 threads, or is set by the user using the command \texttt{taskset}, which fixes the cores the process can run on.
 
 
+\subsubsection{Cache \& Numa}
+Regarding the cache of these processors, as it can be seen from \autoref{lst:xeon-cache}, the cache at level 1 has 32 instances of 1.5 MiB of data cache and 1 MiB of instruction cache, half the total number of virtual cores, which is 64. There is also 48MB of L3 cache for each of the two processors.
+
+\begin{lstlisting}[language=bash, caption={Cache of the Intel Xeon Gold 6326}, label={lst:xeon-cache}]
+$ lscpu | grep -i cache
+Caches (sum of all):
+  L1d:                    1.5 MiB (32 instances)
+  L1i:                    1 MiB (32 instances)
+  L2:                     40 MiB (32 instances)
+  L3:                     48 MiB (2 instances)
+NUMA:
+  NUMA node(s):           2
+  NUMA node0 CPU(s):      0-15,32-47
+  NUMA node1 CPU(s):      16-31,48-63
+\end{lstlisting}
+
+\subsection{Core Configurations}
+
 This system was the most versatile in terms of the number of tests that could be performed, as it has many processors and uses Linux on x86, providing a great advantage for forcing processes to run on specific cores.
 
 The tests were conducted on a variety of core configurations, always setting cores in the same processor for core numbers less than 16.
@@ -101,7 +119,22 @@ If we changed the implementation to a per-row renderer, on the go-side, the Go r
 
 
 \subsection{Personal Desktop}
-This platform is one of the most common in the amateur market, as it is a personal desktop computer with a Ryzen 3800x processor, which has 8 cores and 16 threads. It has 32GB of RAM, which is enough to run any of the tests. It has a Zen 2 architecture, which has heterogeneous cores. These tests were performed with hyperthreading enabled, as it is the most popular configuration, and the default configuration. 
+This platform is one of the most common in the amateur market, as it is a personal desktop computer with a Ryzen 3800x processor, which has 8 cores and 16 threads and has 32GB of RAM. It has a Zen 2 architecture, which has heterogeneous cores. These tests were performed with hyperthreading enabled, as it is the most popular configuration, and the default configuration. 
+
+\subsubsection{Cache \& Numa}
+The cache of the AMD Ryzen 3800x is shown in \autoref{lst:ryzen-cache}. As we can see, it has 8 instances of 256 KiB of L1 data cache and 256 KiB of L1 instruction cache, which is half the number of threads available in the system (the same as the server platform). It has also two L3 caches of 32 MiB each, which is due to the processor having two \glspl{CCX}. 
+
+\begin{lstlisting}[language=bash, caption={Cache of the AMD Ryzen 3800x}, label={lst:ryzen-cache}]
+$ lscpu | grep -i cache
+Caches (sum of all):
+  L1d:                    256 KiB (8 instances)
+  L1i:                    256 KiB (8 instances)
+  L2:                     4 MiB (8 instances)
+  L3:                     32 MiB (2 instances)
+NUMA:
+  NUMA node(s):           1
+  NUMA node0 CPU(s):      0-7
+\end{lstlisting}
 
 
 \subsubsection{Results}
@@ -125,6 +158,22 @@ This lapot is said to have one of the fastest single-core performance in the mar
 
 This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, which has 10 high performance cores and 4 high efficiency cores, which is a big.LITTLE architecture. This means that the high performance cores are used for CPU intensive tasks, while the high efficiency cores are used for less demanding tasks, such as web browsing or watching videos. But as Apple does not allow the user setting the cores to be used by a specific process, like it happens on Linux, we can not test the high efficiency cores isolated from the high performance cores, as the operating system will decide for us which cores to use for each process. 
 
+\subsubsection{Cache \& Numa}
+
+\begin{lstlisting}[language=bash, caption={Cache of the Apple M4 Pro by performance level}, label={lst:apple-cache}]
+Performance Level 0 (High-Performance Cores (10x)):
+  Level   Type   Size
+  L1d     Data   128 KB
+  L1i     Inst   192 KB
+  L2      Uni    16 MB
+
+Performance Level 1 (Efficiency Cores (4x)):
+  Level   Type   Size
+  L1d     Data   64 KB
+  L1i     Inst   128 KB
+  L2      Uni    4 MB
+\end{lstlisting}
+
 \subsubsection{Results}
 
 \input{parts/results/mbp-energy}
@@ -141,6 +190,8 @@ Even though the energy consumption does not decrease, the execution time does, a
 
 \subsection{Raspberry Pi 5}
 This SBC (Single Board Computer) is one of the most popular in the market, and though is is nota great platform for testing the performance of different programming languages its popularity has made it an interesting option as it has much less power requirements than the other alternatives. It has a 4 core ARM processor, 8GB of RAM, which is enough to run any of the tests. 
+
+\subsubsection{Cache \& Numa}
 
 
 \subsubsection{Results}
