@@ -321,3 +321,74 @@ This section provides the reader with the detailed results of the Raspberry Pi b
     \bottomrule
   \end{tabular}
 \end{table}
+
+\chapter{Number of Benchmarks for average calculation}
+\label{chap:appendix-number-benchmarks}
+
+The number of benchmarks that are run for each of the programs has to be 5 as if it is run with less iterations, the results vary more than 0.5\% between runs. I chose 5 times, as it can be seen in \autoref{fig:number-benchmarks-graph}, that after 5 iterations, the results start to stabilize. This is a good compromise between the time it takes to run the benchmarks and the stability of the results.
+
+It can be observed from this chart that, by using the different number of benchmarks to average from, the results can vary significantly.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.7\textwidth,
+            height=0.4\textwidth,
+            xlabel={Number of iterations},
+            ylabel={$\Delta$ (pkg) [\%]},
+            xtick={2,3,4,5,6,7,8,9,10,11,12},
+            ytick={0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0},
+            ymin=0.35, ymax=1.05,
+            grid=major,
+            mark size=2.5pt,
+            legend pos=north east
+        ]
+        \addplot[
+            color=blue,
+            mark=*,
+            thick
+        ] coordinates {
+            (2,0.87)
+            (3,0.96)
+            (4,0.60)
+            (5,0.53)
+            (6,0.56)
+            (7,0.49)
+            (8,0.56)
+            (9,0.52)
+            (10,0.40)
+            (11,0.42)
+            (12,0.41)
+        };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Variation of results with respect to the number of benchmark iterations}
+    \label{fig:number-benchmarks-graph}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+        \hline
+        Number of iterations & $\Delta$ (pkg) \\
+        \hline
+        2  & 0.87\% \\
+        3  & 0.96\% \\
+        4  & 0.60\% \\
+        5  & 0.50\% \\
+        6  & 0.56\% \\
+        7  & 0.49\% \\
+        8  & 0.56\% \\
+        9  & 0.52\% \\
+        10 & 0.40\% \\
+        11 & 0.42\% \\
+        12 & 0.41\% \\
+        \hline
+    \end{tabular}
+
+    \caption{Number of benchmarks for average calculation}
+    \label{fig:number-benchmarks}
+\end{figure}
+
