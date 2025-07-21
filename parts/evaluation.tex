@@ -212,7 +212,7 @@ If we turn to the execution times, we can see that the C++ implementation is the
 In this section, I would like to make some comment on the parallelization on different languages, and why some might experience a different behavior. 
 
 \subsection{Go}
-When choosing how many "cores" the tests are using, for the Go implementation, I used the size of the \texttt{waitChan} channel. This number can be changed to be more than the total number of threads in the system, which sometimes increases the performance.
+When choosing how many `cores' the tests are using, for the Go implementation, I used the size of the \texttt{waitChan} channel. This number can be changed to be more than the total number of threads in the system, which sometimes increases the performance.
 
 \input{parts/results/go-routines}
 

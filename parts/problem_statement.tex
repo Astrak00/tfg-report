@@ -7,13 +7,13 @@ To achieve this, we will define the user requirements, functional and non-functi
 \section{Project Description}
 This project aims to create a suite of programs that implement a ray-tracer engine in multiple programming languages, including C++, Python and Go. The goal is creating the pipeline to benchmark the performance and energy efficiency of each implementation, in multiple-core and single-core configurations.
 
-Each implementation has to be able to run on macOS and Linux, and the energy consumption evaluation of each benchmark must work on each platform, as not all platforms support the same energy consumption evaluation tools. \footnote{macOS uses \texttt{powermetrics} and Linux uses \texttt{perf} and a Raspberry Pi needs its power measured from the input source, as it does not have any internal counters}. This project is only implemented to run on \glspl{cpu} as this projects' scope does not include \glspl{gpu}.
+Each implementation has to be able to run on macOS and Linux, and the energy consumption evaluation of each benchmark must work on each platform, as not all platforms support the same energy consumption evaluation tools.\footnote{macOS uses \texttt{powermetrics} and Linux uses \texttt{perf} and a Raspberry Pi needs its power measured from the input source, as it does not have any internal counters} This project is only implemented to run on \glspl{cpu} as this projects' scope does not include \glspl{gpu}.
 
 
 \section{Requirements}
 
 
-The requirements for this project are divided into two main categories user requirements and program requirement. All of these requirements have been defined following the standard \cite{requirements-engineering-iso}. 
+The requirements for this project are divided into two main categories user requirements and program requirement. All of these requirements have been defined following the standard~\cite{requirements-engineering-iso}. 
 
 To better organize the requirements, we will use the following abbreviations:
 
@@ -26,8 +26,7 @@ To better organize the requirements, we will use the following abbreviations:
     \item[NF]  Non-Functional
 \end{description}
 
-\subsection{User Requirements}
-\label{sec:user-requirements}
+\subsection{User Requirements}\label{sec:user-requirements}
 This section describes the user requirements, those derived from the needs of the users of the end system. There are two main types of user requirements: capacity and restriction. The capacity requirements describe the functionalities that the user expects from the system, while the restriction requirements describe the constraints that the system must adhere to, defining the limitations of the system.
 
 To better describe these requirements, we will use the following format:
@@ -64,8 +63,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          &  Stable   \\
         \textbf{Verifiability}       &  Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-01}
-    \label{tab:ur-ca-01}
+\caption{Requirement UR-CA-01}\label{tab:ur-ca-01}
 \end{table}
 
 \begin{table}[H]
@@ -80,8 +78,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}       & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-02}
-    \label{tab:ur-ca-02}
+    \caption{Requirement UR-CA-02}\label{tab:ur-ca-02}
 \end{table}
 
 \begin{table}[H]
@@ -96,8 +93,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          &  Stable \\
         \textbf{Verifiability}       &  Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-03}
-    \label{tab:ur-ca-03}
+    \caption{Requirement UR-CA-03}\label{tab:ur-ca-03}
 \end{table}
 
 \begin{table}[H]
@@ -112,8 +108,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-04}
-    \label{tab:ur-ca-04}
+    \caption{Requirement UR-CA-04}\label{tab:ur-ca-04}
 \end{table}
 
 \begin{table}[H]
@@ -128,8 +123,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-05}
-    \label{tab:ur-ca-05}
+    \caption{Requirement UR-CA-05}\label{tab:ur-ca-05}
 \end{table}
 
 \begin{table}[H]
@@ -144,8 +138,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-06}
-    \label{tab:ur-ca-06}
+    \caption{Requirement UR-CA-06}\label{tab:ur-ca-06}
 \end{table}
 
 \begin{table}[H]
@@ -160,8 +153,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-07}
-    \label{tab:ur-ca-07}
+    \caption{Requirement UR-CA-07}\label{tab:ur-ca-07}
 \end{table}
 
 \begin{table}[H]
@@ -176,8 +168,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Unstable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-08}
-    \label{tab:ur-ca-08}
+    \caption{Requirement UR-CA-08}\label{tab:ur-ca-08}
 \end{table}
 
 \begin{table}[H]
@@ -192,8 +183,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-09}
-    \label{tab:ur-ca-09}
+    \caption{Requirement UR-CA-09}\label{tab:ur-ca-09}
 \end{table}
 
 \begin{table}[H]
@@ -208,8 +198,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-10}
-    \label{tab:ur-ca-10}
+    \caption{Requirement UR-CA-10}\label{tab:ur-ca-10}
 \end{table}
 
 \begin{table}[H]
@@ -224,8 +213,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-11}
-    \label{tab:ur-ca-11}
+    \caption{Requirement UR-CA-11}\label{tab:ur-ca-11}
 \end{table}
 
 \begin{table}[H]
@@ -240,8 +228,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-12}
-    \label{tab:ur-ca-12}
+    \caption{Requirement UR-CA-12}\label{tab:ur-ca-12}
 \end{table}
 
 \begin{table}[H]
@@ -256,8 +243,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-13}
-    \label{tab:ur-ca-13}
+    \caption{Requirement UR-CA-13}\label{tab:ur-ca-13}
 \end{table}
 
 \begin{table}[H]
@@ -272,8 +258,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-14}
-    \label{tab:ur-ca-14}
+    \caption{Requirement UR-CA-14}\label{tab:ur-ca-14}
 \end{table}
 
 \begin{table}[H]
@@ -288,8 +273,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-15}
-    \label{tab:ur-ca-15}
+    \caption{Requirement UR-CA-15}\label{tab:ur-ca-15}
 \end{table}
 
 \begin{table}[H]
@@ -304,8 +288,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-16}
-    \label{tab:ur-ca-16}
+    \caption{Requirement UR-CA-16}\label{tab:ur-ca-16}
 \end{table}
 
 \begin{table}[H]
@@ -320,8 +303,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-CA-17}
-    \label{tab:ur-ca-17}
+    \caption{Requirement UR-CA-17}\label{tab:ur-ca-17}
 \end{table}
 
 \subsubsection{Restriction}
@@ -338,8 +320,7 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \textbf{Stability}          &  Unstable \\
         \textbf{Verifiability}      &  Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-RE-01}
-    \label{tab:ur-re-01}
+    \caption{Requirement UR-RE-01}\label{tab:ur-re-01}
 \end{table}
 
 \begin{table}[H]
@@ -348,14 +329,13 @@ The ID of the requirement is composed of the prefix \textit{UR} (User Requiremen
         \toprule
         \multicolumn{2}{c}{UR-RE-02} \\
         \toprule
-        \textbf{Description}        & The system must have a "one-command" execution for any given language \\
+        \textbf{Description}        & The system must have a `one-command' execution for any given language \\
         \textbf{Necessity}          & Medium   \\
         \textbf{Priority}           & Low   \\
         \textbf{Stability}          & Stable \\
         \textbf{Verifiability}      & Verifiable \\
     \end{tabular}
-    \caption{Requirement UR-RE-02}
-    \label{tab:ur-re-02}
+    \caption{Requirement UR-RE-02}\label{tab:ur-re-02}
 \end{table}
 
 
@@ -397,8 +377,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             &  \textit{\nameref{tab:ur-re-01}}, \textit{\nameref{tab:ur-ca-14}} \\
     \end{tabular}
-    \caption{Requirement SR-NF-01}
-    \label{tab:sr-nf-01}
+    \caption{Requirement SR-NF-01}\label{tab:sr-nf-01}
 \end{table}
 
 \begin{table}[H]
@@ -414,8 +393,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             &  \textit{\nameref{tab:ur-re-02}}, \textit{\nameref{tab:ur-ca-03}}, \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-06}}, \textit{\nameref{tab:ur-ca-07}}, \textit{\nameref{tab:ur-ca-08}}, \textit{\nameref{tab:ur-ca-10}}, \textit{\nameref{tab:ur-ca-12}}, \textit{\nameref{tab:ur-ca-13}} \\
     \end{tabular}
-    \caption{Requirement SR-NF-02}
-    \label{tab:sr-nf-02}
+    \caption{Requirement SR-NF-02}\label{tab:sr-nf-02}
 \end{table}
 
 \begin{table}[H]
@@ -431,8 +409,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             &  \textit{\nameref{tab:ur-re-01}} \\
     \end{tabular}
-    \caption{Requirement SR-NF-03}
-    \label{tab:sr-nf-03}
+    \caption{Requirement SR-NF-03}\label{tab:sr-nf-03}
 \end{table}
 
 \begin{table}[H]
@@ -448,8 +425,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             &  \textit{\nameref{tab:ur-re-01}} \\
     \end{tabular}
-    \caption{Requirement SR-NF-04}
-    \label{tab:sr-nf-04}
+    \caption{Requirement SR-NF-04}\label{tab:sr-nf-04}
 \end{table}
 
 \begin{table}[H]
@@ -465,8 +441,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             &  \textit{\nameref{tab:ur-re-01}} \\
     \end{tabular}
-    \caption{Requirement SR-NF-05}
-    \label{tab:sr-nf-05}
+    \caption{Requirement SR-NF-05}\label{tab:sr-nf-05}
 \end{table}
 
 \begin{table}[H]
@@ -482,8 +457,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             &  \textit{\nameref{tab:ur-ca-04}}, \textit{\nameref{tab:ur-ca-14}} \\
     \end{tabular}
-    \caption{Requirement SR-NF-06}
-    \label{tab:sr-nf-06}
+    \caption{Requirement SR-NF-06}\label{tab:sr-nf-06}
 \end{table}
 
 \begin{table}[H]
@@ -499,8 +473,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-10}}, \textit{\nameref{tab:ur-ca-14}} \\
     \end{tabular}
-    \caption{Requirement SR-NF-07}
-    \label{tab:sr-nf-07}
+    \caption{Requirement SR-NF-07}\label{tab:sr-nf-07}
 \end{table}
 
 \begin{table}[H]
@@ -516,8 +489,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}}, \textit{\nameref{tab:ur-ca-14}} \\
     \end{tabular}
-    \caption{Requirement SR-NF-08}
-    \label{tab:sr-nf-08}
+    \caption{Requirement SR-NF-08}\label{tab:sr-nf-08}
 \end{table}
 
 \subsection{Functional Requirements}
@@ -535,8 +507,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-09}}, \textit{\nameref{tab:ur-ca-16}}, \textit{\nameref{tab:ur-ca-17}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-01}
-    \label{tab:sr-fn-01}
+    \caption{Requirement SR-FN-01}\label{tab:sr-fn-01}
 \end{table}
 
 \begin{table}[H]
@@ -552,8 +523,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}}, \textit{\nameref{tab:ur-ca-14}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-02}
-    \label{tab:sr-fn-02}
+    \caption{Requirement SR-FN-02}\label{tab:sr-fn-02}
 \end{table}
 
 \begin{table}[H]
@@ -569,8 +539,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}}, \textit{\nameref{tab:ur-ca-14}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-03}
-    \label{tab:sr-fn-03}
+    \caption{Requirement SR-FN-03}\label{tab:sr-fn-03}
 \end{table}
 
 \begin{table}[H]
@@ -586,8 +555,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-12}}, \textit{\nameref{tab:ur-ca-16}}, \textit{\nameref{tab:ur-ca-17}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-04}
-    \label{tab:sr-fn-04}
+    \caption{Requirement SR-FN-04}\label{tab:sr-fn-04}
 \end{table}
 
 \begin{table}[H]
@@ -603,8 +571,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-15}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-05}
-    \label{tab:sr-fn-05}
+    \caption{Requirement SR-FN-05}\label{tab:sr-fn-05}
 \end{table}
 
 \begin{table}[H]
@@ -620,8 +587,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-06}
-    \label{tab:sr-fn-06}
+    \caption{Requirement SR-FN-06}\label{tab:sr-fn-06}
 \end{table}
 
 \begin{table}[H]
@@ -637,8 +603,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-14}}, \textit{\nameref{tab:ur-ca-17}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-07}
-    \label{tab:sr-fn-07}
+    \caption{Requirement SR-FN-07}\label{tab:sr-fn-07}
 \end{table}
 
 \begin{table}[H]
@@ -654,8 +619,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-05}}, \textit{\nameref{tab:ur-ca-06}}, \textit{\nameref{tab:ur-ca-14}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-08}
-    \label{tab:sr-fn-08}
+    \caption{Requirement SR-FN-08}\label{tab:sr-fn-08}
 \end{table}
 
 \begin{table}[H]
@@ -671,8 +635,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-04}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-09}
-    \label{tab:sr-fn-09}
+    \caption{Requirement SR-FN-09}\label{tab:sr-fn-09}
 \end{table}
 
 
@@ -689,8 +652,7 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-10}
-    \label{tab:sr-fn-10}
+    \caption{Requirement SR-FN-10}\label{tab:sr-fn-10}
 \end{table}
 
 \begin{table}[H]
@@ -706,12 +668,10 @@ The ID of the requirement is composed of the prefix \textit{SR} (System Requirem
         \textbf{Verifiability}      & Verifiable \\
         \textbf{Origin}             & \textit{\nameref{tab:ur-ca-09}} \\
     \end{tabular}
-    \caption{Requirement SR-FN-11}
-    \label{tab:sr-fn-11}
+    \caption{Requirement SR-FN-11}\label{tab:sr-fn-11}
 \end{table}
 
-\section{Use Case}
-\label{sec:use-case}
+\section{Use Case}\label{sec:use-case}
 
 This section describes the use cases of the system. The use cases are represented in a diagram that shows the interactions between the user and the system. 
 
@@ -725,7 +685,7 @@ Use case template:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-xx}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-XX}} \\
         \toprule
         \textbf{Name}               &  The name of the use case inside the diagram. \\
         \textbf{Actors}             &  User, System \\
@@ -734,8 +694,7 @@ Use case template:
         \textbf{Preconditions}      &  The user has the system installed and configured. \\
         \textbf{Postconditions}     &  The benchmarks are executed, and the results are stored. \\
     \end{tabular}
-    \caption{Use Case UC-xx}
-    \label{tab:uc-xx}
+    \caption{Use Case UC-XX}\label{tab:uc-xx}
 \end{table}
 
 Start of use cases:
@@ -743,83 +702,79 @@ Start of use cases:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-01}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-01}} \\
         \toprule
         \textbf{Name}                         &  Run all benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running all benchmarks, multicore and single-core versions of all the languages implemented. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make all}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-01}
-    \label{tab:uc-01}
+    \caption{Use Case UC-01}\label{tab:uc-01}
 \end{table}
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-02}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-02}} \\
         \toprule
         \textbf{Name}                         &  Run C++ Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running all C++ implementation of the benchmarks, multicore and single-core versions. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make cpp cpp-single}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The C++ benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-02}
-    \label{tab:uc-single-core 02}
+    \caption{Use Case UC-02}\label{tab:uc-single-core 02}
 \end{table}
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-02.1}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-02.1}} \\
         \toprule
         \textbf{Name}                         &  Run C++ Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running the C++ implementation of the single-core benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make cpp-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
                                               & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The C++ single-core benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-02.1}
-    \label{tab:uc-02.1}
+    \caption{Use Case UC-02.1}\label{tab:uc-02.1}
 \end{table}
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-02.2}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-02.2}} \\
         \toprule
         \textbf{Name}                         &  Run C++ Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running the C++ implementation of the multicore benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make cpp}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The C++ multicore benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-02.2}
-    \label{tab:uc-02.2}
+    \caption{Use Case UC-02.2}\label{tab:uc-02.2}
 \end{table}
 
 
@@ -828,21 +783,20 @@ Start of use cases:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-03}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-03}} \\
         \toprule
         \textbf{Name}                         &  Run Go Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running all Go implementation of the benchmarks, multicore and single-core versions. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make go go-single}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Go benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-03}
-    \label{tab:uc-03}
+    \caption{Use Case UC-03}\label{tab:uc-03}
 \end{table}
 
 
@@ -850,41 +804,39 @@ Start of use cases:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-03.1}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-03.1}} \\
         \toprule
         \textbf{Name}                         &  Run Go Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running the Go implementation of the single-core benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make go-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
                                               & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Go single-core benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-03.1}
-    \label{tab:uc-03.1}
+    \caption{Use Case UC-03.1}\label{tab:uc-03.1}
 \end{table}
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-03.2}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-03.2}} \\
         \toprule
         \textbf{Name}                         &  Run Go Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running the Go implementation of the multicore benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make go}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Go multicore benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-03.2}
-    \label{tab:uc-03.2}
+    \caption{Use Case UC-03.2}\label{tab:uc-03.2}
 \end{table}
 
 
@@ -892,21 +844,20 @@ Start of use cases:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-04}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-04}} \\
         \toprule
         \textbf{Name}                         &  Run Python Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running all Python implementation of the benchmarks, multicore and single-core versions. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make python python-single}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Python benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-04}
-    \label{tab:uc-04}
+    \caption{Use Case UC-04}\label{tab:uc-04}
 \end{table}
 
 
@@ -914,41 +865,39 @@ Start of use cases:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-04.1}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-04.1}} \\
         \toprule
         \textbf{Name}                         &  Run Python Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running the Python implementation of the single-core benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make python-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
                                               & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Python single-core benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-04.1}
-    \label{tab:uc-04.1}
+    \caption{Use Case UC-04.1}\label{tab:uc-04.1}
 \end{table}
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-04.2}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-04.2}} \\
         \toprule
         \textbf{Name}                         &  Run Python Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running the Python implementation of the multicore benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make python}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The Python multicore benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-04.2}
-    \label{tab:uc-04.2}
+    \caption{Use Case UC-04.2}\label{tab:uc-04.2}
 \end{table}
 
 
@@ -956,21 +905,20 @@ Start of use cases:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-05}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-05}} \\
         \toprule
         \textbf{Name}                         &  Run PyPy Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running all PyPy implementation of the benchmarks, multicore and single-core versions. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make pypy pypy-single}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The PyPy benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-05}
-    \label{tab:uc-05}
+    \caption{Use Case UC-05}\label{tab:uc-05}
 \end{table}
 
 
@@ -978,41 +926,39 @@ Start of use cases:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-05.1}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-05.1}} \\
         \toprule
         \textbf{Name}                         &  Run PyPy Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running the PyPy implementation of the single-core benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make pypy-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
                                               & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The PyPy single-core benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-05.1}
-    \label{tab:uc-05.1}
+    \caption{Use Case UC-05.1}\label{tab:uc-05.1}
 \end{table}
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-05.2}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-05.2}} \\
         \toprule
         \textbf{Name}                         &  Run PyPy Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running the PyPy implementation of the multicore benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make pypy}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The PyPy multicore benchmark is executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-05.2}
-    \label{tab:uc-05.2}
+    \caption{Use Case UC-05.2}\label{tab:uc-05.2}
 \end{table}
 
 
@@ -1021,41 +967,39 @@ Start of use cases:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-06}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-06}} \\
         \toprule
         \textbf{Name}                         &  Run Single core Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running all PyPy implementation of the single-core version of the benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make all-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{3.} Finish the execution of the benchmarks.\\
                                               & \textsl{4.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The single-core implementation of the benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-06}
-    \label{tab:uc-06}
+    \caption{Use Case UC-06}\label{tab:uc-06}
 \end{table}
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID: UC-07}} \\
+        \multicolumn{2}{c}{\textbf{ID:\@ UC-07}} \\
         \toprule
         \textbf{Name}                         &  Run multicore Benchmarks. \\
         \textbf{Actors}                       &  User \\
         \textbf{Objective}                    &  Running all PyPy implementation of the multicore version of the benchmarks. \\
         \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make multi}.\\
                                               & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks <(SERVER / macOS / RPI)>=True.\\
+                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
                                               & \textsl{4.} Finish the execution of the benchmarks.\\
                                               & \textsl{5.} Open the resulting files.\\
         \textbf{Preconditions}                &  N/A \\
         \textbf{Postconditions}               &  The multicore implementation of the benchmarks are executed, and the results are stored, and those files are output. \\
     \end{tabular}
-    \caption{Use Case UC-07}
-    \label{tab:uc-07}
+    \caption{Use Case UC-07}\label{tab:uc-07}
 \end{table}
 
 
@@ -1068,9 +1012,9 @@ It can be seen in \autoref{tab:traceability-matrix-ur} that all requirements are
 
 \begin{landscape}
 
-\begin{table}
+\begin{table}[t]
     \centering
-    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
         \hline
         \textbf{Requirement} & \rotatebox{65}{\textbf{UC-01}} & \rotatebox{65}{\textbf{UC-02}} & \rotatebox{65}{\textbf{UC-02.}1} & \rotatebox{65}{\textbf{UC-02.}2} & \rotatebox{65}{\textbf{UC-03}} & \rotatebox{65}{\textbf{UC-03.}1} & \rotatebox{65}{\textbf{UC-03.}2} & \rotatebox{65}{\textbf{UC-04}} & \rotatebox{65}{\textbf{UC-04.}1} & \rotatebox{65}{\textbf{UC-04.}2} & \rotatebox{65}{\textbf{UC-05}} & \rotatebox{65}{\textbf{UC-05.}1} & \rotatebox{65}{\textbf{UC-05.}2} & \rotatebox{65}{\textbf{UC-06}} & \rotatebox{65}{\textbf{UC-07}} \\
         \hline
@@ -1115,8 +1059,7 @@ It can be seen in \autoref{tab:traceability-matrix-ur} that all requirements are
         \hline
 
     \end{tabular}
-\caption{Traceability matrix (for UC-CA \& UC-RE requirement)}
-\label{tab:traceability-matrix-ur}
+\caption{Traceability matrix (for UC-CA \& UC-RE requirement)}\label{tab:traceability-matrix-ur}
 \end{table}
 
 
@@ -1167,8 +1110,7 @@ It can be seen in \autoref{tab:traceability-matrix-ur} that all requirements are
         \hline
 
     \end{tabular}
-    \caption{Traceability matrix (for functional \& non-functional requirements)}
-    \label{tab:traceability-matrix-fn}
+    \caption{Traceability matrix (for functional \& non-functional requirements)}\label{tab:traceability-matrix-fn}
 \end{table}
 
 \end{landscape}
