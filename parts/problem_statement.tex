@@ -96,23 +96,33 @@ Use case template:
     \caption{Use Case UC-XX}\label{tab:uc-xx}
 \end{table}
 
-Start of use cases:
+\begin{itemize}
+    \item \textbf{ID}: code that identifies the use case, following the schema \textit{UC-XX}, where `XX' is a two-digit number that identifies the use case.
+    \item \textbf{Name}: the name of the use case inside the diagram.
+    \item \textbf{Actors}: entities that interact with the system.
+    \item \textbf{Objective}: brief description of the goal of the use case.
+    \item \textbf{Description}: steps the actor has to entail to achieve the objective of the use case.
+    \item \textbf{Preconditions}: conditions that must be met before the use case can be executed.
+    \item \textbf{Postconditions}: conditions that must be met after the use case is executed.
+\end{itemize}
+
+
 \begin{table}[H]
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
         \multicolumn{2}{c}{\textbf{ID:\@ UC-01}} \\
         \toprule
-        \textbf{Name}                         &  Run all benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all benchmarks, multicore and single-core versions of all the languages implemented. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make all}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The benchmarks are executed, and the results are stored, and those files are output. \\
+        \textbf{Name}               &  Generate Image \\
+        \textbf{Actors}             &  User \\
+        \textbf{Objective}          &  Generate a rendered image using the ray-tracer engine with the selected configuration. \\
+        \textbf{Description}        & \textsl{1.} The user downloads the code repository. \\
+                                   & \textsl{2.} The user sets the number of cores to use for rendering (CORES=<num>). \\
+                                   & \textsl{3.} The user selects the platform (SERVER / macOS / RPI). \\
+                                   & \textsl{4.} The user executes the command to generate the image. \\
+                                   & \textsl{5.} The system processes the scene and outputs the rendered image file. \\
+        \textbf{Preconditions}      &  The code repository has been downloaded. The number of cores and platform have been set. \\
+        \textbf{Postconditions}     &  The rendered image is generated and stored in the output directory. \\
     \end{tabular}
     \caption{Use Case UC-01}\label{tab:uc-01}
 \end{table}
@@ -123,77 +133,33 @@ Start of use cases:
         \toprule
         \multicolumn{2}{c}{\textbf{ID:\@ UC-02}} \\
         \toprule
-        \textbf{Name}                         &  Run C++ Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all C++ implementation of the benchmarks, multicore and single-core versions. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make cpp cpp-single}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The C++ benchmarks are executed, and the results are stored, and those files are output. \\
+        \textbf{Name}               &  Edit Scene file \\
+        \textbf{Actors}             &  User \\
+        \textbf{Objective}          &  Edit the scene file to change the parameters of the scene to be rendered. \\
+        \textbf{Description}        & \textsl{1.} The user opens the scene file in a text editor. \\
+                                   & \textsl{2.} The user modifies the parameters of the scene, such as camera position, light sources, and objects. \\
+                                   & \textsl{3.} The user saves the changes to the scene file. \\
+                                   & \textsl{4.} The user can repeat the process to make further changes to the scene file. \\
+        \textbf{Preconditions}      &  The scene file is accessible and editable. \\
+        \textbf{Postconditions}     &  The scene file is updated with the new parameters. \\
     \end{tabular}
-    \caption{Use Case UC-02}\label{tab:uc-single-core 02}
-\end{table}
+    \caption{Use Case UC-02}\label{tab:uc-02}
+\end{table} 
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-02.1}} \\
-        \toprule
-        \textbf{Name}                         &  Run C++ Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the C++ implementation of the single-core benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make cpp-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The C++ single-core benchmark is executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-02.1}\label{tab:uc-02.1}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-02.2}} \\
-        \toprule
-        \textbf{Name}                         &  Run C++ Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the C++ implementation of the multicore benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make cpp}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The C++ multicore benchmark is executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-02.2}\label{tab:uc-02.2}
-\end{table}
-
-
-
-\begin{table}[H]
+\begin{table}
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
         \multicolumn{2}{c}{\textbf{ID:\@ UC-03}} \\
         \toprule
-        \textbf{Name}                         &  Run Go Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all Go implementation of the benchmarks, multicore and single-core versions. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make go go-single}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The Go benchmarks are executed, and the results are stored, and those files are output. \\
+        \textbf{Name}               &  Set Cores to be used \\
+        \textbf{Actors}             &  User \\
+        \textbf{Objective}          &  Set the number of cores to be used for rendering the image. \\
+        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user opens the configuration file.\\
+                                             & \textsl{2.} The user sets the number of cores to be used for rendering (CORES=<num>).\\
+                                             & \textsl{3.} The user saves the changes to the configuration file.\\
+        \textbf{Preconditions}      &  The configuration file is accessible and editable. \\
+        \textbf{Postconditions}     &  The configuration file is updated with the new number of cores. \\
     \end{tabular}
     \caption{Use Case UC-03}\label{tab:uc-03}
 \end{table}
@@ -203,202 +169,19 @@ Start of use cases:
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-03.1}} \\
-        \toprule
-        \textbf{Name}                         &  Run Go Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the Go implementation of the single-core benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make go-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The Go single-core benchmark is executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-03.1}\label{tab:uc-03.1}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-03.2}} \\
-        \toprule
-        \textbf{Name}                         &  Run Go Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the Go implementation of the multicore benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make go}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The Go multicore benchmark is executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-03.2}\label{tab:uc-03.2}
-\end{table}
-
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
         \multicolumn{2}{c}{\textbf{ID:\@ UC-04}} \\
         \toprule
-        \textbf{Name}                         &  Run Python Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all Python implementation of the benchmarks, multicore and single-core versions. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make python python-single}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The Python benchmarks are executed, and the results are stored, and those files are output. \\
+        \textbf{Name}               &  Select Programming Language \\
+        \textbf{Actors}             &  User \\
+        \textbf{Objective}          &  Choose the programming language (Python, C++, or Go) for the ray-tracer execution. \\
+        \textbf{Description}        & \textsl{1.} The user reviews the available implementations. \\
+                                   & \textsl{2.} The user selects the desired programming language (Python, C++, or Go). \\
+                                   & \textsl{3.} The user ensures the required dependencies for the selected language are installed. \\
+                                   & \textsl{4.} The user proceeds to execute the benchmark or rendering task using the chosen implementation. \\
+        \textbf{Preconditions}      &  All language implementations are available and properly installed. \\
+        \textbf{Postconditions}     &  The selected language implementation is used for subsequent operations. \\
     \end{tabular}
     \caption{Use Case UC-04}\label{tab:uc-04}
-\end{table}
-
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-04.1}} \\
-        \toprule
-        \textbf{Name}                         &  Run Python Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the Python implementation of the single-core benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make python-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The Python single-core benchmark is executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-04.1}\label{tab:uc-04.1}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-04.2}} \\
-        \toprule
-        \textbf{Name}                         &  Run Python Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the Python implementation of the multicore benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make python}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The Python multicore benchmark is executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-04.2}\label{tab:uc-04.2}
-\end{table}
-
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-05}} \\
-        \toprule
-        \textbf{Name}                         &  Run PyPy Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all PyPy implementation of the benchmarks, multicore and single-core versions. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make pypy pypy-single}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The PyPy benchmarks are executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-05}\label{tab:uc-05}
-\end{table}
-
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-05.1}} \\
-        \toprule
-        \textbf{Name}                         &  Run PyPy Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the PyPy implementation of the single-core benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make pypy-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The PyPy single-core benchmark is executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-05.1}\label{tab:uc-05.1}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-05.2}} \\
-        \toprule
-        \textbf{Name}                         &  Run PyPy Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running the PyPy implementation of the multicore benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make pypy}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The PyPy multicore benchmark is executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-05.2}\label{tab:uc-05.2}
-\end{table}
-
-
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-06}} \\
-        \toprule
-        \textbf{Name}                         &  Run Single core Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all PyPy implementation of the single-core version of the benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make all-single}.\\
-                                              & \textsl{2.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{3.} Finish the execution of the benchmarks.\\
-                                              & \textsl{4.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The single-core implementation of the benchmarks are executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-06}\label{tab:uc-06}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{ID:\@ UC-07}} \\
-        \toprule
-        \textbf{Name}                         &  Run multicore Benchmarks. \\
-        \textbf{Actors}                       &  User \\
-        \textbf{Objective}                    &  Running all PyPy implementation of the multicore version of the benchmarks. \\
-        \multirow{1}{*}{\textbf{Description}} & \textsl{1.} The user writes the command to run the benchmarks: \texttt{make multi}.\\
-                                              & \textsl{2.} The user defines the number of cores to be used for the multicore benchmarks, CORES=<num>.\\
-                                              & \textsl{3.} The user defines the platform to be used for the benchmarks < (SERVER / macOS / RPI)>=True.\\
-                                              & \textsl{4.} Finish the execution of the benchmarks.\\
-                                              & \textsl{5.} Open the resulting files.\\
-        \textbf{Preconditions}                &  N/A \\
-        \textbf{Postconditions}               &  The multicore implementation of the benchmarks are executed, and the results are stored, and those files are output. \\
-    \end{tabular}
-    \caption{Use Case UC-07}\label{tab:uc-07}
 \end{table}
 
 
