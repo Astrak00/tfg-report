@@ -5,7 +5,7 @@
         \multicolumn{2}{c}{\textbf{RNF-01}} \\
         \toprule
         \textbf{Name}               & Code Inspectability \\
-        \textbf{Type}               & Functional \\
+        \textbf{Type}               & Non-Functional \\
         \textbf{Necessity}          & Essential \\
         \textbf{Priority}           & High \\
         \textbf{Complexity}         & Low \\
@@ -36,34 +36,34 @@
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{RF-03}} \\
+        \multicolumn{2}{c}{\textbf{RNF-03}} \\
         \toprule
         \textbf{Name}               & Individual Benchmark Execution \\
-        \textbf{Type}               & Functional \\
+        \textbf{Type}               & Non-Functional \\
         \textbf{Necessity}          & Desirable \\
         \textbf{Priority}           & Low \\
         \textbf{Complexity}         & Low \\
         \textbf{Description}        & The user must be able to run each benchmark individually. \\
         \bottomrule
     \end{tabular}
-\caption{Requirement RF-03}\label{tab:rf-03}
+\caption{Requirement RNF-03}\label{tab:rnf-03}
 \end{table}
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{RF-04}} \\
+        \multicolumn{2}{c}{\textbf{RNF-04}} \\
         \toprule
         \textbf{Name}               & Batch Benchmark Execution by Language \\
-        \textbf{Type}               & Functional \\
+        \textbf{Type}               & Non-Functional \\
         \textbf{Necessity}          & Desirable \\
         \textbf{Priority}           & Low \\
         \textbf{Complexity}         & Low \\
         \textbf{Description}        & The user must be able to run all benchmarks of one language together. \\
         \bottomrule
     \end{tabular}
-\caption{Requirement RF-04}\label{tab:rf-04}
+\caption{Requirement RNF-04}\label{tab:rnf-04}
 \end{table}
 
 \begin{table}[H]
@@ -87,31 +87,14 @@
     \centering
     \begin{tabular}{l p{10cm}}
         \toprule
-        \multicolumn{2}{c}{\textbf{rnf-5}} \\
+        \multicolumn{2}{c}{\textbf{RNF-06}} \\
         \toprule
         \textbf{Name}         & One-Command Execution Per Language \\
-        \textbf{Type}         & Functional \\
+        \textbf{Type}         & Non-Functional \\
         \textbf{Necessity}    & Desirable \\
         \textbf{Priority}     & Low \\
         \textbf{Complexity}   & Low \\
         \textbf{Description}  & The system must provide a single command to execute the benchmarks for any given language. \\
-        \bottomrule
-    \end{tabular}
-\caption{Requirement RNF-5}\label{tab:rnf-5}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l p{10cm}}
-        \toprule
-        \multicolumn{2}{c}{\textbf{RNF-06}} \\
-        \toprule
-        \textbf{Name}         & Consistent Program Architecture \\
-        \textbf{Type}         & Non-Functional \\
-        \textbf{Necessity}    & Essential \\
-        \textbf{Priority}     & High \\
-        \textbf{Complexity}   & Medium \\
-        \textbf{Description}  & All programs must follow the same architectural structure to ensure consistency, maintainability, and ease of comparison. \\
         \bottomrule
     \end{tabular}
 \caption{Requirement RNF-06}\label{tab:rnf-06}
@@ -123,12 +106,12 @@
         \toprule
         \multicolumn{2}{c}{\textbf{RNF-07}} \\
         \toprule
-        \textbf{Name}         & C++ Implementation Required \\
+        \textbf{Name}         & Consistent Program Architecture \\
         \textbf{Type}         & Non-Functional \\
         \textbf{Necessity}    & Essential \\
         \textbf{Priority}     & High \\
         \textbf{Complexity}   & Medium \\
-        \textbf{Description}  & The system must include an implementation of the program in C++. \\
+        \textbf{Description}  & All programs must follow the same architectural structure to ensure consistency, maintainability, and ease of comparison. \\
         \bottomrule
     \end{tabular}
 \caption{Requirement RNF-07}\label{tab:rnf-07}
@@ -140,12 +123,12 @@
         \toprule
         \multicolumn{2}{c}{\textbf{RNF-08}} \\
         \toprule
-        \textbf{Name}         & Go Implementation Required \\
+        \textbf{Name}         & C++ Implementation Required \\
         \textbf{Type}         & Non-Functional \\
         \textbf{Necessity}    & Essential \\
         \textbf{Priority}     & High \\
         \textbf{Complexity}   & Medium \\
-        \textbf{Description}  & The system must include an implementation of the program in Go. \\
+        \textbf{Description}  & The system must include an implementation of the program in C++. \\
         \bottomrule
     \end{tabular}
 \caption{Requirement RNF-08}\label{tab:rnf-08}
@@ -157,6 +140,23 @@
         \toprule
         \multicolumn{2}{c}{\textbf{RNF-09}} \\
         \toprule
+        \textbf{Name}         & Go Implementation Required \\
+        \textbf{Type}         & Non-Functional \\
+        \textbf{Necessity}    & Essential \\
+        \textbf{Priority}     & High \\
+        \textbf{Complexity}   & Medium \\
+        \textbf{Description}  & The system must include an implementation of the program in Go. \\
+        \bottomrule
+    \end{tabular}
+\caption{Requirement RNF-09}\label{tab:rnf-09}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{\textbf{RNF-10}} \\
+        \toprule
         \textbf{Name}         & Python Implementation (PyPy Compatible) \\
         \textbf{Type}         & Non-Functional \\
         \textbf{Necessity}    & Essential \\
@@ -165,6 +165,125 @@
         \textbf{Description}  & The system must include an implementation of the program in Python, with the ability to be executed using PyPy. \\
         \bottomrule
     \end{tabular}
-\caption{Requirement RNF-09}\label{tab:rnf-09}
+\caption{Requirement RNF-10}\label{tab:rnf-10}
 \end{table}
 
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{\textbf{RNF-11}} \\
+        \toprule
+        \textbf{Name}         & Multi-Core Utilization \\
+        \textbf{Type}         & Non-Functional \\
+        \textbf{Necessity}    & Essential \\
+        \textbf{Priority}     & High \\
+        \textbf{Complexity}   & High \\
+        \textbf{Description}  & The system must utilize all available CPU cores during multi-core benchmark execution. \\
+        \bottomrule
+    \end{tabular}
+\caption{Requirement RNF-11}\label{tab:rnf-11}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{\textbf{RNF-12}} \\
+        \toprule
+        \textbf{Name}         & C++ Single-Core Thread Safety \\
+        \textbf{Type}         & Non-Functional \\
+        \textbf{Necessity}    & Essential \\
+        \textbf{Priority}     & High \\
+        \textbf{Complexity}   & Medium \\
+        \textbf{Description}  & The C++ single-core benchmarks must be thread-safe to prevent race conditions during parallel test execution. \\
+        \bottomrule
+    \end{tabular}
+\caption{Requirement RNF-12}\label{tab:rnf-12}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{\textbf{RNF-13}} \\
+        \toprule
+        \textbf{Name}         & C++ Multi-Core Load Distribution \\
+        \textbf{Type}         & Non-Functional \\
+        \textbf{Necessity}    & Essential \\
+        \textbf{Priority}     & High \\
+        \textbf{Complexity}   & High \\
+        \textbf{Description}  & The C++ multi-core benchmarks must distribute workloads evenly across cores, minimizing idle time and maximizing throughput. \\
+        \bottomrule
+    \end{tabular}
+\caption{Requirement RNF-13}\label{tab:rnf-13}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{\textbf{RNF-14}} \\
+        \toprule
+        \textbf{Name}         & Go Single-Core \Gls{goroutine} Handling \\
+        \textbf{Type}         & Non-Functional \\
+        \textbf{Necessity}    & Essential \\
+        \textbf{Priority}     & Medium \\
+        \textbf{Complexity}   & Medium \\
+        \textbf{Description}  & The Go single-core benchmarks only use the main \gls{goroutine}. \\
+        \bottomrule
+    \end{tabular}
+\caption{Requirement RNF-14}\label{tab:rnf-14}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{\textbf{RNF-15}} \\
+        \toprule
+        \textbf{Name}         & Go Multi-Core Thread Synchronization \\
+        \textbf{Type}         & Non-Functional \\
+        \textbf{Necessity}    & Essential \\
+        \textbf{Priority}     & High \\
+        \textbf{Complexity}   & High \\
+        \textbf{Description}  & The Go multi-core benchmarks must synchronize threads efficiently, reducing contention and improving parallel performance. \\
+        \bottomrule
+    \end{tabular}
+\caption{Requirement RNF-15}\label{tab:rnf-15}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{\textbf{RNF-16}} \\
+        \toprule
+        \textbf{Name}         & Python Single-Core Responsiveness \\
+        \textbf{Type}         & Non-Functional \\
+        \textbf{Necessity}    & Desirable \\
+        \textbf{Priority}     & Medium \\
+        \textbf{Complexity}   & Low \\
+        \textbf{Description}  & The Python single-core benchmarks must be run with \gls{cpython} and \gls{pypy}. \\
+        \bottomrule
+    \end{tabular}
+\caption{Requirement RNF-16}\label{tab:rnf-16}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l p{10cm}}
+        \toprule
+        \multicolumn{2}{c}{\textbf{RNF-17}} \\
+        \toprule
+        \textbf{Name}         & Python Multi-Core Performance Improvement \\
+        \textbf{Type}         & Non-Functional \\
+        \textbf{Necessity}    & Desirable \\
+        \textbf{Priority}     & Medium \\
+        \textbf{Complexity}   & High \\
+        \textbf{Description}  & The Python multi-core benchmarks must utilize multiprocessing capabilities. \\
+        \bottomrule
+    \end{tabular}
+\caption{Requirement RNF-17}\label{tab:rnf-17}
+\end{table}
