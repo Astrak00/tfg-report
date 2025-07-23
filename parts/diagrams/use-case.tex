@@ -4,66 +4,29 @@
     \hspace*{-1.5cm}
     \centering
     \begin{tikzpicture}
-        \umlactor[name=user,x=-4,y=-14,] {User}
+        \umlactor[x=-6,y=0] {User}
 
-        \begin{umlsystem}[x=-2,y=-12]{Ray-Tracer Benchmarker}
+        \begin{umlsystem}[x=-2,y=-6]{Ray-Tracer Benchmarker}
 
-            \umlusecase[x =  0, y =  0, width=3cm, name=runall]{UC-01: Run all benchmarks}
-            \umlusecase[x =  6, y =  0, width=2cm, name=runcpp,  fill=blue!20]{UC-02: Run C++ benchmarks}
-            \umlusecase[x =  6, y = -3, width=2cm, name=rungo,   fill=violet!20]{UC-03: Run Go benchmarks}
-            \umlusecase[x =  6, y = -6, width=2cm, name=runpy,   fill=orange!20]{UC-04: Run Python benchmarks}
-            \umlusecase[x =  6, y = -9, width=2cm, name=runpypy, fill=green!20]{UC-05: Run PyPy benchmarks}
+            \umlusecase[x = 4, y = 0, width=4cm, name=generate]{UC-01: Generate Image}
+            \umlusecase[x = 12, y = 4, width=4cm, name=editscene]{UC-02: Edit Scene file}
+            \umlusecase[x = 12, y = 0, width=4cm, name=setcores]{UC-03: Set Cores to be used}
+            \umlusecase[x = 12, y = -4, width=4cm, name=selectlang]{UC-04: Select Programming Language}
 
-            \umlusecase[x = 14, y =  0, width = 2.5cm, fill = gray!10, name=single]{UC-06:\\Run single-core}
-            \umlusecase[x = 14, y = -3, width = 2.5cm, fill = gray!10, name=multi]{UC-07:\\Run multicore}
+            \umlassoc{User}{generate}
+            \umlassoc{User}{editscene}
+            \umlassoc{User}{setcores}
+            \umlassoc{User}{selectlang}
 
-            \umlusecase[width=3cm, x = 20, y =  2, name=cppsingle,fill=blue!20]{UC-02.1: C++ single-core}
-            \umlusecase[width=3cm, x = 20, y = 0.25, name=cppmulti,fill=blue!20]{UC-02.2: C++ multi-core}
-            \umlusecase[width=3cm, x = 20, y = -1.5, name=gosingle,fill=violet!20]{UC-03.1: Go single-core}
-            \umlusecase[width=3cm, x = 20, y = -3.25, name=gomulti,fill=violet!20]{UC-03.2: Go multi-core}
-            \umlusecase[width=3cm, x = 20, y = -5, name=pysingle,fill=orange!20]{UC-04.1: Python single-core}
-            \umlusecase[width=3cm, x = 20, y = -6.75, name=pymulti,fill=orange!20]{UC-04.2: Python multi-core}
-            \umlusecase[width=3cm, x = 20, y = -8.5, name=pypysingle,fill=green!20]{UC-05.1: PyPy single-core}
-            \umlusecase[width=3cm, x = 20, y = -10.25, name=pypymulti,fill=green!20]{UC-05.2: PyPy multi-core}
+            \umlextend[pos=0.5, anchor1=north, anchor2=west]{editscene}{generate}
+            \umlextend[pos=0.5, anchor1=west, anchor2=east]{setcores}{generate}
+            \umlextend[pos=0.5, anchor1=south, anchor2=west]{selectlang}{generate}
 
-            \umlassoc{User}{runall}
-            \umlassoc{User}{runcpp}
-            \umlassoc{User}{rungo}
-            \umlassoc{User}{runpy}
-            \umlassoc{User}{runpypy}
-
-            % Include relationships from runall - positioned at top and bottom
-            \draw [tikzuml dependency style] (runall) to[bend left=16] node[above] {$\ll \text{extend} \gg$} (single);
-            % \umlextend[anchor1=45,anchor2=-225,pos=0.7]{runall}{single}
-            \umlextend[anchor1=315,anchor2=135,pos=0.2]{runall}{multi}
-
-            % Include relationships to single-core - staggered positions
-            \umlinclude[anchor1=0,anchor2=180,pos=0.6]{runcpp}{single}
-            \umlinclude[anchor1=45,anchor2=210,pos=0.4]{rungo}{single}
-            \umlinclude[anchor1=60,anchor2=220,pos=0.6]{runpy}{single}
-            \umlinclude[anchor1=70,anchor2=230,pos=0.4]{runpypy}{single}
-
-            % Include relationships to multi-core - staggered positions
-            \umlinclude[anchor1=-30,anchor2=180,pos=0.4]{runcpp}{multi}
-            \umlinclude[anchor1=330,anchor2=190,pos=0.6]{rungo}{multi}
-            \umlinclude[anchor1=-60,anchor2=210,pos=0.4]{runpy}{multi}
-            \umlinclude[anchor1=270,anchor2=230,pos=0.3]{runpypy}{multi}
-
-            % Inheritance relationships
-            \umlinherit[anchor2=180]{single}{cppsingle}
-            \umlinherit[anchor2=180]{single}{gosingle}
-            \umlinherit[anchor2=180]{single}{pysingle}
-            \umlinherit[anchor2=180]{single}{pypysingle}
-
-            \umlinherit[anchor2=180]{multi}{cppmulti}
-            \umlinherit[anchor2=180]{multi}{gomulti}
-            \umlinherit[anchor2=180]{multi}{pymulti}
-            \umlinherit[anchor2=180]{multi}{pypymulti}
+            \draw[dashed] (2, 6) rectangle (17, -6);
         \end{umlsystem}
-
     \end{tikzpicture}
-    \caption{Cleaned-up use-case diagram for the Ray-Tracer Benchmarker}
-    \label{fig:use-case-v2}
+    \caption{Use-case diagram for the Ray-Tracer Benchmarker}
+    \label{fig:use-case-diagram}
 \end{figure}
 \end{landscape}
 
