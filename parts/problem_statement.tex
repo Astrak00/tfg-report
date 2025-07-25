@@ -259,107 +259,46 @@ This section provides a traceability matrix that maps the requirements to the us
 \end{table}
 
 
-\begin{landscape}
+\input{parts/diagrams/system-architecture.tex}
 
-\section{System Architecture}
-\begin{tikzpicture}[
-    auto,
-    node distance=1.5cm and 2.5cm,
-    block/.style={
-    rectangle,
-    draw,
-    fill=blue!20,
-    text width=8em,
-    text centered,
-    rounded corners,
-    minimum height=3em,
-    drop shadow
-    },
-    io/.style={
-    trapezium,
-    trapezium left angle=70,
-    trapezium right angle=110,
-    draw,
-    fill=gray!20,
-    text width=7em,
-    text centered,
-    minimum height=3em,
-    drop shadow
-    },
-    class/.style={
-    rectangle,
-    draw,
-    fill=green!20,
-    text width=7em,
-    text centered,
-    rounded corners,
-    minimum height=3em,
-    drop shadow
-    },
-    baseclass/.style={
-    class,
-    fill=green!40,
-    font=\bfseries
-    },
-    datastruct/.style={
-    rectangle,
-    draw,
-    fill=orange!20,
-    text width=6em,
-    text centered,
-    rounded corners,
-    minimum height=2.5em,
-    drop shadow
-    },
-    line/.style={-latex, thick}
-    ]
-% Nodes - Repositioned for better spacing
-\node[block, text width=10em] (main) {program entrypoint (main)};
-\node[io, above=1cm of main] (makefile) {Makefile};
-\node[io, left=2.5cm of main] (scene_data) {sphere\_data.txt};
+The system architecture diagram uses the following visual conventions:
 
-% Core classes - better spacing
-\node[class, below left=2cm and 1cm of main] (camera) {camera};
-\node[class, below right=2cm and 0cm of main] (hittable_list) {hittable\_list (world)};
-\node[baseclass, right=3cm of hittable_list] (hittable) {hittable objects};
-
-% Material hierarchy - moved down and spread out
-\node[class, below=2.5cm of hittable] (sphere) {sphere};
-\node[baseclass, left=3.5cm of sphere] (material) {material};
-
-% Data structures - repositioned to avoid conflicts
-\node[class, below=2.5cm of camera] (image) {Image};
-\node[datastruct, below right=0.75cm and 2cm of camera] (vec3) {vec3 / color / point3};
-
-\node[io, below=1cm of image] (output_ppm) {output.ppm};
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c l}
+        \toprule
+        \textbf{Symbol} & \textbf{Description} \\
+        \midrule
+        \tikz[baseline=-0.5ex]\node[block, text width=5em, minimum height=2em] {Component}; & Program components and entry points \\[0.5em]
+        \\ 
+        \tikz[baseline=-0.5ex]\node[io, text width=4em, minimum height=2em] {File}; & Input/output files and build scripts \\[0.5em]
+        \\
+        \tikz[baseline=-0.5ex]\node[class, text width=4em, minimum height=2em] {Class}; & Implementation classes \\[0.5em]
+        \\
+        \tikz[baseline=-0.5ex]\node[baseclass, text width=4em, minimum height=2em] {Base Class}; & Abstract base classes \\[0.5em]
+        \\
+        \tikz[baseline=-0.5ex]\node[datastruct, text width=4em, minimum height=2em] {Data Type}; & Data structures and types \\[0.5em]
+        \\
+        \tikz[baseline=-0.5ex]\draw[-latex, thick] (0,0) -- (1,0); & Direct relationship or dependency \\[0.5em]
+        \\
+        \tikz[baseline=-0.5ex]\draw[dashed, -latex, thick] (0,0) -- (1,0); & Inheritance relationship \\
+        \\
+        \bottomrule
+    \end{tabular}
+    \caption{Diagram Key for System Architecture}\label{tab:diagram-key}
+\end{table}
 
 
-% Arrows - rerouted to avoid overlaps
-\draw[line] (makefile) -- node[midway, right] {builds \& runs} (main);
-\draw[line] (scene_data) -- node[midway, above] {reads scene} (main);
-
-% Main to components - using better angles
-\draw[line] (main) -- node[midway, left] {configures} (camera);
-\draw[line] (main) -- node[midway, right] {populates} (hittable_list);
-
-% Camera connections - routed around components
-\draw[line] (camera) -- node[midway, left] {writes pixels} (image);
-\draw[line] (image) .. controls +(south:2) and +(north:2) .. node[midway, left] {writes file} (output_ppm);
-
-% World interaction - curved to avoid conflicts
-\draw[line] (camera) .. controls +(east:1.5) and +(west:1.5) .. node[midway, above] {world.hit()} (hittable_list);
-
-% Inheritance relationships
-\draw[line] (hittable_list) -- node[midway, above] {contains} (hittable);
-\draw[line,dashed] (sphere) -- node[midway, right] {inherits} (hittable);
-\draw[line] (sphere) .. controls +(west:2) and +(east:2) .. node[midway, above] {has a} (material);
-
-
-% Data structure connections - routed to avoid overlaps
-\draw[line] (camera) -- (vec3);
-\draw[line] (sphere) -- (vec3);
-\end{tikzpicture}
-
-\end{landscape}
-
-%% TODO: add a description for the system architecture and its components.
+The principal components of the system, shown in \autoref{fig:system-architecture}, are:
+\begin{itemize}
+    \item \textbf{sphere\_data.txt}: the file that contains the scene data, which is read by the program to generate the image. This is where the user can modify the scene parameters, adding more spheres, changing their positions, colors and materials.
+    \item \textbf{Makefile}: the file that contains the build instructions for the program, which is used to compile and run the program. It also restricts the number of cores to be used for rendering and organizes the energy consumption and execution time measurements.
+    \item \textbf{main}: the entry point of the program, which reads the sphere data, initializes the camera, the world and calls the rendering function.
+    \item \textbf{camera}: the class that represents the camera used to render the scene, which is responsible for generating the rays and writing the pixels to the image.
+    \item \textbf{hittable\_list}: the class that represents the world (all the elements in the scene), which contains a list of hittable objects (spheres) and is responsible for checking if a ray hits any of the objects in the scene.
+    \item \textbf{hittable}: the base class for all hittable objects in the scene, which defines the interface for checking if a ray hits an object.
+    \item \textbf{sphere}: the specification of a hittable object of a sphere, which inherits from the hittable class and implements the specific behavior for spheres.
+    \item \textbf{material}: the base class for all materials used in the scene, which defines the interface for calculating the color of a ray hit.
+    \item \textbf{Image}: the class that represents the image to be generated, which is responsible for storing the pixels and writing the image to a file.
+    \item \textbf{output.ppm}: the file that contains the generated image, which is written by the Image class after rendering the scene.
+\end{itemize}

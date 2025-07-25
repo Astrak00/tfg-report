@@ -1,0 +1,102 @@
+\tikzset{
+    auto,
+    node distance=1.5cm and 2.5cm,
+    block/.style={
+    rectangle,
+    draw,
+    fill=blue!20,
+    text width=8em,
+    text centered,
+    rounded corners,
+    minimum height=3em,
+    drop shadow
+    },
+    io/.style={
+    trapezium,
+    trapezium left angle=70,
+    trapezium right angle=110,
+    draw,
+    fill=gray!20,
+    text width=7em,
+    text centered,
+    minimum height=3em,
+    drop shadow
+    },
+    class/.style={
+    rectangle,
+    draw,
+    fill=green!20,
+    text width=7em,
+    text centered,
+    rounded corners,
+    minimum height=3em,
+    drop shadow
+    },
+    baseclass/.style={
+    class,
+    fill=green!40,
+    font=\bfseries
+    },
+    datastruct/.style={
+    rectangle,
+    draw,
+    fill=orange!20,
+    text width=6em,
+    text centered,
+    rounded corners,
+    minimum height=2.5em,
+    drop shadow
+    },
+    line/.style={-latex, thick}
+}
+
+\begin{landscape} 
+    \section{System Architecture} 
+
+        \begin{tikzpicture} 
+            % Nodes - Repositioned for better spacing
+            \node[block, text width=10em] (main) {program entrypoint (main)};
+            \node[io, above=1cm of main] (makefile) {Makefile};
+            \node[io, left=2.5cm of main] (scene_data) {sphere\_data.txt};
+
+            % Core classes - better spacing
+            \node[class, below left=2cm and 1cm of main] (camera) {camera};
+            \node[class, below right=2cm and 0cm of main] (hittable_list) {hittable\_list (world)};
+            \node[baseclass, right=3cm of hittable_list] (hittable) {hittable};
+
+            % Material hierarchy - moved down and spread out
+            \node[class, below=2.5cm of hittable] (sphere) {sphere};
+            \node[baseclass, left=3.5cm of sphere] (material) {material};
+
+            % Data structures - repositioned to avoid conflicts
+            \node[class, below=1.5cm of camera] (image) {Image};
+            \node[datastruct, below right=0.75cm and 2cm of camera] (vec3) {vec3 / color / point3};
+            \node[io, below=1cm of image] (output_ppm) {output.ppm};
+
+            % Arrows - rerouted to avoid overlaps
+            \draw[line] (makefile) -- node[midway, right] {builds \& runs} (main);
+            \draw[line] (scene_data) -- node[midway, above] {reads scene} (main);
+
+            % Main to components - using better angles
+            \draw[line] (main) -- node[midway, left] {configures} (camera);
+            \draw[line] (main) -- node[midway, right] {populates} (hittable_list);
+
+            % Camera connections - routed around components
+            \draw[line] (camera) -- node[midway, left] {writes pixels} (image);
+            \draw[line] (image) .. controls +(south:2) and +(north:2) .. node[midway, left] {writes file} (output_ppm);
+
+            % World interaction - curved to avoid conflicts
+            \draw[line] (camera) .. controls +(east:1.5) and +(west:2) .. node[midway, above] {world.hit()} (hittable_list);
+
+            % Inheritance relationships
+            \draw[line] (hittable_list) -- node[midway, above] {contains} (hittable);
+            \draw[line,dashed] (sphere) -- node[midway, right] {inherits} (hittable);
+            \draw[line] (sphere) .. controls +(west:2) and +(east:2) .. node[midway, above] {has a} (material);
+
+            % Data structure connections - routed to avoid overlaps
+            \draw[line] (camera) -- (vec3);
+            \draw[line] (sphere) -- (vec3);
+        \end{tikzpicture}
+
+        \captionof{figure}{System Architecture Diagram for the Ray Tracer.}\label{fig:system-architecture}
+\end{landscape}

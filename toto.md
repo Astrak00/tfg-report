@@ -77,5 +77,5 @@
 - [ ] Add impact on processes such as execution time on AWS or Azure or GCP
 - [ ] Add the energy cost that could be saved when renting a rack
 - [x] Add the use case Diagram
-- [ ] Add the class Diagram (system Architecture en el de Paula)
+- [x] Add the class Diagram (system Architecture en el de Paula) + explaination
 - [x] Fix the matrices for requirements and use cases
