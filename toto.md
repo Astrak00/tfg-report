@@ -29,14 +29,14 @@
 - [x] Test for personal PC (R7 3800X)
 - [x] Create graphs for the results of the personal PC, and add them to the report.
 
-- [ ] Talk about the PCs results pkg, 
-- [ ] Talk about the PCs results execution time 
+- [x] Talk about the PCs results pkg, 
+- [x] Talk about the PCs results execution time 
 
 ## Non-hyperthreading version of the desktop
-- [ ] Get the results
-- [ ] Create graphs for the results of the non-hyperthreading desktop, and add them to the report
-- [ ] Create relative speedup graphs for the non-hyperthreading desktop, and add them to the report
-- [ ] Talk about the non-hyperthreading desktop results pkg,
+- [x] Get the results
+- [x] Create graphs for the results of the non-hyperthreading desktop, and add them to the report
+- [x] Create relative speedup graphs for the non-hyperthreading desktop, and add them to the report
+- [x] Talk about the non-hyperthreading desktop results pkg,
 
 
 ## Results to re-run:
@@ -71,3 +71,11 @@
 - [x] Add an appendix with additional information and resources
 - [x] Possible move the tables to the appendix.
 - [x] Removed appendix from chapters
+
+
+## July 25
+- [ ] Add impact on processes such as execution time on AWS or Azure or GCP
+- [ ] Add the energy cost that could be saved when renting a rack
+- [x] Add the use case Diagram
+- [ ] Add the class Diagram (system Architecture en el de Paula)
+- [x] Fix the matrices for requirements and use cases

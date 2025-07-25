@@ -1,10 +1,8 @@
-
-\begin{landscape}
 \begin{figure}
     \hspace*{-1.5cm}
     \centering
     \begin{tikzpicture}
-        \umlactor[x=-6,y=0] {User}
+        \umlactor[x=-4,y=-2] {User}
 
         \begin{umlsystem}[x=-2,y=-6]{Ray-Tracer Benchmarker}
 
@@ -21,12 +19,7 @@
             \umlextend[pos=0.5, anchor1=north, anchor2=west]{editscene}{generate}
             \umlextend[pos=0.5, anchor1=west, anchor2=east]{setcores}{generate}
             \umlextend[pos=0.5, anchor1=south, anchor2=west]{selectlang}{generate}
-
-            \draw[dashed] (2, 6) rectangle (17, -6);
         \end{umlsystem}
     \end{tikzpicture}
-    \caption{Use-case diagram for the Ray-Tracer Benchmarker}
-    \label{fig:use-case-diagram}
+    \caption{Use-case diagram for the Ray-Tracer Benchmarker}\label{fig:use-case-diagram}
 \end{figure}
-\end{landscape}
-
