@@ -114,6 +114,8 @@ It also must be noted that the cores during the 48 core benchmark were being use
 If we changed the implementation to a per-row renderer, on the go-side, the Go runtime would be able to use all the cores more efficiently, as it would be able to schedule the goroutines more efficiently, and the execution time would be lower, but the energy consumption would be higher, as the cores would be used at 100\% of their capacity. Thus, in this case, as we will see in other sections, having a faster execution time is not always the best option in terms of energy consumption.
 
 
+All the raw data for the benchmarks can be found in the \autoref{chap:appendix-server-benchmarks}.
+
 % When changin to a per-pixel rendered, lower cores energy efficiency increased, but the many cores, from 48 oward would not get used as much, thus reducing the energy efficiency and increating the execution time. 
 
 
@@ -150,10 +152,10 @@ We can also see from the graphs \autoref{fig:linear-desktop-energy-hyperthreadin
 
 This can also be seen very clearly in the energy consumption of the PyPy and Python tests in \autoref{fig:linear-desktop-energy-hyperthreading} (\autoref{tab:desktop-energy-pkg-hyperthreading}) that when using more than 8 cores makes the energy consumption as the number of threads use separates from 8 (the number of real cores). This also affects the execution time but not as significantly, as we can see in \autoref{fig:linear-desktop-execution-time-hyperthreading} (\autoref{tab:desktop-execution-time-hyperthreading}), where the execution time does not change much when using more than 8 cores, but the energy consumption does.
 
-
+All the raw data for the benchmarks can be found in the \autoref{chap:appendix-desktop-benchmarks}.
 
 \subsection{Laptop}
-This lapot is said to have one of the fastest single-core performance in the market. It has a 14 core ARM processor, using the big.LITTLE architecture, with 10 high performance cores and 4 high efficiency cores. It has 48GB of RAM, which is enough to run any of the tests.
+This laptop is said to have one of the fastest single-core performance in the market. It has a 14 core ARM processor, using the big.LITTLE architecture, with 10 high performance cores and 4 high efficiency cores. It has 48GB of RAM, which is enough to run any of the tests.
 
 
 This platform is a personal laptop, with a 14 core processor, the Apple M4 Pro, which has 10 high performance cores and 4 high efficiency cores, which is a big.LITTLE architecture. This means that the high performance cores are used for CPU intensive tasks, while the high efficiency cores are used for less demanding tasks, such as web browsing or watching videos. But as Apple does not allow the user setting the cores to be used by a specific process, like it happens on Linux, we can not test the high efficiency cores isolated from the high performance cores, as the operating system will decide for us which cores to use for each process. 
@@ -187,12 +189,10 @@ We can see from \autoref{fig:log-mbp-energy} there does not seem to be a big dif
 
 Even though the energy consumption does not decrease, the execution time does, as we can see from \autoref{fig:log-mbp-execution-time}. The C++ implementation is the fastest, followed by the PyPy implementation, then the Go implementation, and finally the Python implementation, which is the slowest by a large margin. I also created this \autoref{fig:linear-mbp-execution-time} to better visualize the execution time of each implementation without Python, as it distorts the results due to its slow performance. Raw data for both energy consumption and execution time can be found in \autoref{tab:mbp-power-consumption} and \autoref{tab:mbp-time-execution} respectively.
 
+All the raw data for the benchmarks can be found in the \autoref{chap:appendix-laptop-benchmark}.
 
 \subsection{Raspberry Pi 5}
 This SBC (Single Board Computer) is one of the most popular in the market, and though is is nota great platform for testing the performance of different programming languages its popularity has made it an interesting option as it has much less power requirements than the other alternatives. It has a 4 core ARM processor, 8GB of RAM, which is enough to run any of the tests. 
-
-\subsubsection{Cache \& Numa}
-
 
 \subsubsection{Results}
 
@@ -206,6 +206,8 @@ From both \autoref{fig:log-rpi-energy} and \autoref{fig:log-rpi-execution} we ca
 It is impressive the slowness that python shows in this platform, $62$x less power efficient than PyPy and consuming more than $147$x the energy of the C++ implementation. 
 
 If we turn to the execution times, we can see that the C++ implementation is the fastest, followed by the Go implementation, then PyPy and lastly Python when looking at the 4 cores run of the benchmark. But, when the program was run with 2 cores, the PyPy implementation does not reduce much the execution time, compared to the Go result, interchanging the position of the Go and PyPy implementations, as it can be seen in clearer in the raw data in \autoref{tab:execution-time-by-cores} and \autoref{tab:power-sum-by-cores}.
+
+All the raw data for the benchmarks can be found in the \autoref{chap:appendix-rpi-benchmark}.
 
 \section{Comment on parallelizing different languages}
 

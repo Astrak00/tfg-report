@@ -1,21 +1,6 @@
 \chapter{Server Benchmarks Tables Results}
-
-This section provides the reader with the detailed results of the server benchmarks: energy\begin{table}[H]
-    \centering
-    \begin{tabular}{lrrrr}
-        \hline
-        execution-time & C++                 & Go          & PyPy       & Python              \\
-        \hline
-        1              & 22.60               & 178.43      & 36.42      &                    \\
-        2              & 11.64               & 69.77       & 21.59      & 3,115.45           \\
-        4              & 6.20                & 36.68       & 11.97      & 1,634.00           \\
-        6              & 4.49                & 25.24       & 8.35       & 1,104.04           \\
-        8	           & 3.43                & 20.84       & 6.91       & 829.50             \\
-        \hline
-    \end{tabular}
-\caption{Desktop - Execution Time}{Execution time on the Desktop benchmark by implementation and core count}
-\label{tab:desktop-execution-time-no-hyperthreading}
-\end{table}power consumption and execution time for the server executions across different programming languages and core counts.
+\label{chap:appendix-server-benchmarks}
+This section provides the reader with the detailed results of the server benchmarks:
 
 \begin{table}[H]
     \centering
@@ -90,6 +75,7 @@ This section provides the reader with the detailed results of the server benchma
 \end{table}
 
 \chapter{Desktop Tables Results}
+\label{chap:appendix-desktop-benchmarks}
 
 This section provides the reader with the detailed results of the personal desktop benchmarks, including energy consumption, RAM power consumption and execution times for the benchmarks ran on a personal desktop with different core counts and programming languages.
 
@@ -120,7 +106,7 @@ This section provides the reader with the detailed results of the personal deskt
         \hline
         1              & 1,008.55            & 5,945.33    & 1,635.95   &                    \\
         2              & 671.13              & 3,652.85    & 1,296.42   & 176,092.08         \\
-        4              & 6.20                & 2,421.40    & 914.60     & 113,582.17         \\
+        4              & 6.20 ??             & 2,421.40    & 914.60     & 113,582.17         \\
         6              & 388.96              & 1,878.72    & 789.89     & 95,214.00          \\
         8	           & 346.15              & 1,645.18    & 735.35     & 82,869.55          \\
         \hline
@@ -128,6 +114,9 @@ This section provides the reader with the detailed results of the personal deskt
 \caption{Desktop - Package energy consumption}{Energy usage by the package on the Desktop benchmark by implementation and core count}
 \label{tab:desktop-energy-pkg}
 \end{table}
+
+TODO:
+Esto está en esta gráfica: \autoref{fig:log-desktop-energy-pkg} y \autoref{fig:linear-desktop-energy-pkg}
 
 \begin{table}[H]
  \centering
@@ -166,6 +155,7 @@ This section provides the reader with the detailed results of the personal deskt
 \end{table}
 
 \chapter{Laptop Benchmarks Tables Results}
+\label{chap:appendix-laptop-benchmarks}
 
 This section provides the reader with the detailed results of the laptop benchmarks, including energy consumption and execution times for the benchmarks ran on a MacBook Pro with different core counts and programming languages.
 
@@ -207,10 +197,11 @@ This section provides the reader with the detailed results of the laptop benchma
 
 
 \chapter{Raspberry Pi Benchmarks Tables Results}
+\label{chap:appendix-rpi-benchmarks}
 
 This section provides the reader with the detailed results of the Raspberry Pi benchmarks, including energy consumption and execution times for the benchmarks ran on a Raspberry Pi 5 with different core counts and programming languages.
 
-\begin{table}[H]
+\begin{table}[h]
     \centering
     \begin{tabular}{lrrrr}
         \hline
@@ -391,6 +382,41 @@ It can be observed from this chart that, by using the different number of benchm
     \label{fig:number-benchmarks}
 \end{figure}
 
+\chapter{Scatter plot with python}
+\label{chap:appendix-scatter-plot}
+
+    \hypertarget{fig:conclusion-scatter-all}{} % anchor for links
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+    width=16cm, height=9cm,
+    xlabel={Time Taken (s)},
+    ylabel={Energy Consumption (Joules)},
+    ymode=log,
+    grid=both, minor tick num=1,
+    grid style={gray!30,dashed},
+    legend style={at={(0.5,1.05)},anchor=south,legend columns=-1, draw=none},
+    enlargelimits=0.1,
+    clip=false
+    ]
+    % plots
+    \PlotCXXconclusion
+    \PlotPythonconclusion
+    \PlotGoconclusion
+    \PlotPyPyconclusion
+    \legend{C++, Python, Go, PyPy}
+
+    % clickable "button" inside the axis (top-right) → jump to no-Python figure
+    \node[anchor=north east, fill=gray!15, draw, rounded corners,
+      inner sep=3pt] at (axis description cs:0.98,0.98)
+      {\hyperlink{fig:conclusion-scatter-nopy}{\shortstack{Show version \\ \emph{without} Python}}};
+
+
+    \end{axis}
+    \end{tikzpicture}
+    \caption{All languages. Colors = language; labels = platform-cores.}
+\end{figure}
 
 \chapter{Declaration of Use of Generative AI}
 
