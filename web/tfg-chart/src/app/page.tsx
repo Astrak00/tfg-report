@@ -90,7 +90,7 @@ const numberFmt = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
 });
 
-function CustomTooltip({ active, payload }: { active?: boolean; payload?: any[] }) {
+function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: any[]; label?: any }) {
   if (!active || !payload || !payload.length) return null;
   
   const dataPoint = payload[0]?.payload;
@@ -160,26 +160,31 @@ export default function EnergyVsTimeChart() {
     setList([]);
   };
 
-  const filteredDatasets = useMemo(() => {
-    const out: Record<string, { x: number; y: number; label: string }[]> = {};
+  // Create a single combined dataset with all filtered data points
+  const combinedData = useMemo(() => {
+    const allData: { x: number; y: number; label: string; lang: string }[] = [];
+    
     for (const [lang, data] of Object.entries(datasets)) {
-      out[lang] = data
-        .filter((d) => {
-          const [plat, core] = d.label.split("-");
-          return selectedPlatforms.includes(plat) && selectedCores.includes(core);
-        })
-        .map((d) => ({ ...d, lang } as any));
+      if (selectedLangs.includes(lang)) {
+        const filteredData = data
+          .filter((d) => {
+            const [plat, core] = d.label.split("-");
+            return selectedPlatforms.includes(plat) && selectedCores.includes(core);
+          })
+          .map((d) => ({ ...d, lang }));
+        
+        allData.push(...filteredData);
+      }
     }
-    return out;
-  }, [selectedPlatforms, selectedCores]);
+    
+    return allData;
+  }, [selectedLangs, selectedPlatforms, selectedCores]);
 
-  const totalDataPoints = useMemo(() => {
-    return Object.values(filteredDatasets).reduce((sum, data) => sum + data.length, 0);
-  }, [filteredDatasets]);
+  const totalDataPoints = combinedData.length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="max-w-7xl mx-auto p-6">
+      <div className="max-w-12xl mx-auto p-6">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -191,322 +196,269 @@ export default function EnergyVsTimeChart() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Interactive comparison of execution time vs energy consumption across different platforms and core counts
           </p>
-          {/* <div className="mt-4 flex items-center justify-center gap-4 text-sm text-gray-500">
-            <span className="flex items-center gap-1">
-              <BarChart3 className="w-4 h-4" />
-              {totalDataPoints} data points
-            </span>
-            <span>•</span>
-            <span>{selectedLangs.length} languages selected</span>
-          </div> */}
         </div>
 
         {/* Controls */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
-          {/* Languages */}
-          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="font-semibold text-gray-800 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-blue-500" />
-                Languages
-              </h2>
-              <div className="flex gap-1">
-                <button
-                  onClick={() => selectAll(allLangs, setSelectedLangs)}
-                  className="text-xs text-blue-600 hover:text-blue-800 font-medium"
-                >
-                  All
-                </button>
-                <span className="text-gray-300">|</span>
-                <button
-                  onClick={() => selectNone(setSelectedLangs)}
-                  className="text-xs text-gray-500 hover:text-gray-700 font-medium"
-                >
-                  None
-                </button>
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
+          {/* Chart */}
+          <div className="xl:col-span-2 bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/20">
+            <div className="flex items-center gap-2 mb-4">
+              <BarChart3 className="w-5 h-5 text-blue-600" />
+              <h3 className="text-lg font-semibold text-gray-800">
+                Energy Consumption vs Execution Time
+              </h3>
+              <div className="ml-auto text-sm text-gray-500">
+                {xScaleType === 'log' ? 'Log' : 'Linear'} × {yScaleType === 'log' ? 'Log' : 'Linear'} scale
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-2">
-              {allLangs.map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => toggleItem(selectedLangs, setSelectedLangs, lang)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg border transition-all duration-200 ${
-                    selectedLangs.includes(lang) 
-                      ? 'bg-white text-gray-900 shadow-md border-gray-300 ring-2 transform scale-[1.02]' 
-                      : 'bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700'
-                  }`}
-                  style={{ 
-                    borderColor: selectedLangs.includes(lang) ? COLORS[lang] : undefined
-                  }}
-                >
-                  <span className="w-4 h-4 rounded-full border-2" style={{ backgroundColor: COLORS[lang], borderColor: COLORS[lang] }} />
-                  <div className="flex flex-col items-start flex-1 min-w-0">
-                    <span className="font-medium truncate">{lang}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Platforms */}
-          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="font-semibold text-gray-800 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-500" />
-                Platforms
-              </h2>
-              <div className="flex gap-1">
-                <button
-                  onClick={() => selectAll(allPlatforms, setSelectedPlatforms)}
-                  className="text-xs text-green-600 hover:text-green-800 font-medium"
-                >
-                  All
-                </button>
-                <span className="text-gray-300">|</span>
-                <button
-                  onClick={() => selectNone(setSelectedPlatforms)}
-                  className="text-xs text-gray-500 hover:text-gray-700 font-medium"
-                >
-                  None
-                </button>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              {allPlatforms.map((platform) => {
-                const IconComponent = PLATFORM_ICONS[platform] || Monitor;
-                return (
-                  <button
-                    key={platform}
-                    onClick={() => toggleItem(selectedPlatforms, setSelectedPlatforms, platform)}
-                    className={`flex items-center gap-2 px-3 py-3 rounded-lg border transition-all duration-200 ${
-                      selectedPlatforms.includes(platform) 
-                        ? 'bg-white text-gray-900 shadow-md border-green-500 ring-2 ring-green-500 transform scale-[1.02]' 
-                        : 'bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700'
-                    }`}
-                  >
-                    <IconComponent className="w-4 h-4 text-green-600 flex-shrink-0" />
-                    <span className="font-medium text-sm truncate">{platform}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Cores */}
-          <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="font-semibold text-gray-800 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-purple-500" />
-                CPU Cores
-              </h2>
-              <div className="flex gap-1">
-                <button
-                  onClick={() => selectAll(allCores, setSelectedCores)}
-                  className="text-xs text-purple-600 hover:text-purple-800 font-medium"
-                >
-                  All
-                </button>
-                <span className="text-gray-300">|</span>
-                <button
-                  onClick={() => selectNone(setSelectedCores)}
-                  className="text-xs text-gray-500 hover:text-gray-700 font-medium"
-                >
-                  None
-                </button>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              {allCores.map((cores) => (
-                <button
-                  key={cores}
-                  onClick={() => toggleItem(selectedCores, setSelectedCores, cores)}
-                  className={`relative flex items-center justify-center gap-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
-                    selectedCores.includes(cores) 
-                      ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-md border-purple-400 transform scale-[1.02]' 
-                      : 'bg-gray-50 hover:bg-purple-50 border-gray-200 hover:border-purple-300 text-gray-700'
-                  }`}
-                >
-                  <Cpu className={`w-3 h-3 ${selectedCores.includes(cores) ? 'text-white' : 'text-purple-600'}`} />
-                  <span className="font-medium text-sm">{cores}</span>
-                  {selectedCores.includes(cores) && (
-                    <div className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-green-500 rounded-full" />
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Chart Options */}
-          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20">
-            <h2 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-amber-500" />
-              Chart Options
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Y-Axis Scale (Energy)
-                </label>
-                <div className="relative inline-flex items-center bg-gray-200 rounded-lg p-1">
-                  <button
-                    onClick={() => setYScaleType('linear')}
-                    className={`relative z-10 px-3 py-1 text-sm font-medium rounded-md transition-all duration-200 ${
-                      yScaleType === 'linear' 
-                        ? 'bg-amber-500 text-white shadow-sm' 
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    Linear
-                  </button>
-                  <button
-                    onClick={() => setYScaleType('log')}
-                    className={`relative z-10 px-3 py-1 text-sm font-medium rounded-md transition-all duration-200 ${
-                      yScaleType === 'log' 
-                        ? 'bg-amber-500 text-white shadow-sm' 
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    Log
-                  </button>
+            
+            {totalDataPoints === 0 ? (
+              <div className="h-96 flex items-center justify-center text-gray-500">
+                <div className="text-center">
+                  <BarChart3 className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <p className="text-lg font-medium">No data to display</p>
+                  <p className="text-sm">Select at least one language, platform, and core count</p>
                 </div>
               </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  X-Axis Scale (Time)
-                </label>
-                <div className="relative inline-flex items-center bg-gray-200 rounded-lg p-1">
-                  <button
-                    onClick={() => setXScaleType('linear')}
-                    className={`relative z-10 px-3 py-1 text-sm font-medium rounded-md transition-all duration-200 ${
-                      xScaleType === 'linear' 
-                        ? 'bg-blue-500 text-white shadow-sm' 
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    Linear
-                  </button>
-                  <button
-                    onClick={() => setXScaleType('log')}
-                    className={`relative z-10 px-3 py-1 text-sm font-medium rounded-md transition-all duration-200 ${
-                      xScaleType === 'log' 
-                        ? 'bg-blue-500 text-white shadow-sm' 
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    Log
-                  </button>
-                </div>
-              </div>
-              
-              {/* <div className="pt-4 border-t border-gray-200">
-                <div className="text-xs text-gray-500 space-y-1">
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    Time: Execution duration
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Zap className="w-3 h-3" />
-                    Energy: Power consumption
-                  </div>
-                </div>
-              </div> */}
-            </div>
-          </div>
-        </div>
-
-        {/* Chart */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/20">
-          <div className="flex items-center gap-2 mb-4">
-            <BarChart3 className="w-5 h-5 text-blue-600" />
-            <h3 className="text-lg font-semibold text-gray-800">
-              Energy Consumption vs Execution Time
-            </h3>
-            <div className="ml-auto text-sm text-gray-500">
-              {xScaleType === 'log' ? 'Log' : 'Linear'} × {yScaleType === 'log' ? 'Log' : 'Linear'} scale
-            </div>
-          </div>
-          
-          {totalDataPoints === 0 ? (
-            <div className="h-96 flex items-center justify-center text-gray-500">
-              <div className="text-center">
-                <BarChart3 className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                <p className="text-lg font-medium">No data to display</p>
-                <p className="text-sm">Select at least one language, platform, and core count</p>
-              </div>
-            </div>
-          ) : (
-            <ResponsiveContainer width="100%" height={600}>
-              <ScatterChart margin={{ top: 20, right: 30, bottom: 50, left: 60 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                <XAxis 
-                  type="number" 
-                  dataKey="x" 
-                  name="Time" 
-                  unit="s" 
-                  scale={xScaleType}
-                  domain={xScaleType === 'log' ? ['auto', 'auto'] : [0, 'auto']}
-                  tickFormatter={(value) => numberFmt.format(value)}
-                />
-                <YAxis 
-                  type="number" 
-                  dataKey="y" 
-                  name="Energy" 
-                  unit="J" 
-                  scale={yScaleType}
-                  domain={yScaleType === 'log' ? ['auto', 'auto'] : [0, 'auto']}
-                  tickFormatter={(value) => numberFmt.format(value)}
-                />
-                <Tooltip content={(props: any) => <CustomTooltip {...props} />} />
-                <Legend />
-                {Object.entries(filteredDatasets).map(([lang, data]) =>
-                  selectedLangs.includes(lang) && data.length > 0 ? (
+            ) : (
+              <ResponsiveContainer width="100%" height={500}>
+                <ScatterChart data={combinedData} margin={{ top: 20, right: 30, bottom: 50, left: 60 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis 
+                    type="number" 
+                    dataKey="x" 
+                    name="Time" 
+                    unit="s" 
+                    scale={xScaleType}
+                    domain={xScaleType === 'log' ? ['auto', 'auto'] : [0, 'auto']}
+                    tickFormatter={(value) => numberFmt.format(value)}
+                  />
+                  <YAxis 
+                    type="number" 
+                    dataKey="y" 
+                    name="Energy" 
+                    unit="J" 
+                    scale={yScaleType}
+                    domain={yScaleType === 'log' ? ['auto', 'auto'] : [0, 'auto']}
+                    tickFormatter={(value) => numberFmt.format(value)}
+                  />
+                  <Tooltip content={CustomTooltip} />
+                  <Legend />
+                  {selectedLangs.map((lang) => (
                     <Scatter 
                       key={lang} 
                       name={lang} 
-                      data={data} 
+                      data={combinedData.filter(d => d.lang === lang)} 
                       fill={COLORS[lang]}
                       opacity={0.8}
                     />
-                  ) : null
-                )}
-              </ScatterChart>
-            </ResponsiveContainer>
-          )}
-        </div>
+                  ))}
+                </ScatterChart>
+              </ResponsiveContainer>
+            )}
+          </div>
 
-        {/* Summary Stats */}
-        {totalDataPoints > 0 && (
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-            {selectedLangs.map((lang) => {
-              const data = filteredDatasets[lang] || [];
-              if (data.length === 0) return null;
-              
-              const avgTime = data.reduce((sum, d) => sum + d.x, 0) / data.length;
-              const avgEnergy = data.reduce((sum, d) => sum + d.y, 0) / data.length;
-              
-              return (
-                <div key={lang} className="bg-white/60 backdrop-blur-sm p-4 rounded-lg border border-white/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[lang] }} />
-                    <h4 className="font-semibold text-gray-800">{lang}</h4>
-                  </div>
-                  <div className="space-y-1 text-sm text-gray-600">
-                    <div className="flex items-center justify-between">
-                      <span>Avg Time:</span>
-                      <span className="font-medium">{numberFmt.format(avgTime)}s</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span>Avg Energy:</span>
-                      <span className="font-medium">{numberFmt.format(avgEnergy)}J</span>
-                    </div>
+          {/* Control Panel */}
+          <div className="space-y-4">
+            {/* Languages */}
+            <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="font-semibold text-gray-800 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-blue-500" />
+                  Languages
+                </h2>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => selectAll(allLangs, setSelectedLangs)}
+                    className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                  >
+                    All
+                  </button>
+                  <span className="text-gray-300">|</span>
+                  <button
+                    onClick={() => selectNone(setSelectedLangs)}
+                    className="text-xs text-gray-500 hover:text-gray-700 font-medium"
+                  >
+                    None
+                  </button>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {allLangs.map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => toggleItem(selectedLangs, setSelectedLangs, lang)}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
+                      selectedLangs.includes(lang) 
+                        ? 'bg-white text-gray-900 shadow-md border-gray-300 ring-2 transform scale-[1.02]' 
+                        : 'bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700'
+                    }`}
+                    style={{ 
+                      borderColor: selectedLangs.includes(lang) ? COLORS[lang] : undefined
+                    }}
+                  >
+                    <span className="w-3 h-3 rounded-full border-2" style={{ backgroundColor: COLORS[lang], borderColor: COLORS[lang] }} />
+                    <span className="font-medium text-sm truncate">{lang}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Platforms */}
+            <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="font-semibold text-gray-800 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  Platforms
+                </h2>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => selectAll(allPlatforms, setSelectedPlatforms)}
+                    className="text-xs text-green-600 hover:text-green-800 font-medium"
+                  >
+                    All
+                  </button>
+                  <span className="text-gray-300">|</span>
+                  <button
+                    onClick={() => selectNone(setSelectedPlatforms)}
+                    className="text-xs text-gray-500 hover:text-gray-700 font-medium"
+                  >
+                    None
+                  </button>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {allPlatforms.map((platform) => {
+                  const IconComponent = PLATFORM_ICONS[platform] || Monitor;
+                  return (
+                    <button
+                      key={platform}
+                      onClick={() => toggleItem(selectedPlatforms, setSelectedPlatforms, platform)}
+                      className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
+                        selectedPlatforms.includes(platform) 
+                          ? 'bg-white text-gray-900 shadow-md border-green-500 ring-2 ring-green-500 transform scale-[1.02]' 
+                          : 'bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700'
+                      }`}
+                    >
+                      <IconComponent className="w-3 h-3 text-green-600 flex-shrink-0" />
+                      <span className="font-medium text-xs truncate">{platform}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Cores */}
+            <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="font-semibold text-gray-800 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-purple-500" />
+                  CPU Cores
+                </h2>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => selectAll(allCores, setSelectedCores)}
+                    className="text-xs text-purple-600 hover:text-purple-800 font-medium"
+                  >
+                    All
+                  </button>
+                  <span className="text-gray-300">|</span>
+                  <button
+                    onClick={() => selectNone(setSelectedCores)}
+                    className="text-xs text-gray-500 hover:text-gray-700 font-medium"
+                  >
+                    None
+                  </button>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {allCores.map((cores) => (
+                  <button
+                    key={cores}
+                    onClick={() => toggleItem(selectedCores, setSelectedCores, cores)}
+                    className={`relative flex items-center justify-center gap-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
+                      selectedCores.includes(cores) 
+                        ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-md border-purple-400 transform scale-[1.02]' 
+                        : 'bg-gray-50 hover:bg-purple-50 border-gray-200 hover:border-purple-300 text-gray-700'
+                    }`}
+                  >
+                    <Cpu className={`w-3 h-3 ${selectedCores.includes(cores) ? 'text-white' : 'text-purple-600'}`} />
+                    <span className="font-medium text-sm">{cores}</span>
+                    {selectedCores.includes(cores) && (
+                      <div className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-green-500 rounded-full" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Chart Options */}
+            <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
+              <h2 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-amber-500" />
+                Chart Options
+              </h2>
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Y-Axis Scale (Energy)
+                  </label>
+                  <div className="relative inline-flex items-center bg-gray-200 rounded-lg p-1 w-full">
+                    <button
+                      onClick={() => setYScaleType('linear')}
+                      className={`relative z-10 px-3 py-1 text-sm font-medium rounded-md transition-all duration-200 flex-1 ${
+                        yScaleType === 'linear' 
+                          ? 'bg-amber-500 text-white shadow-sm' 
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      Linear
+                    </button>
+                    <button
+                      onClick={() => setYScaleType('log')}
+                      className={`relative z-10 px-3 py-1 text-sm font-medium rounded-md transition-all duration-200 flex-1 ${
+                        yScaleType === 'log' 
+                          ? 'bg-amber-500 text-white shadow-sm' 
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      Log
+                    </button>
                   </div>
                 </div>
-              );
-            })}
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    X-Axis Scale (Time)
+                  </label>
+                  <div className="relative inline-flex items-center bg-gray-200 rounded-lg p-1 w-full">
+                    <button
+                      onClick={() => setXScaleType('linear')}
+                      className={`relative z-10 px-3 py-1 text-sm font-medium rounded-md transition-all duration-200 flex-1 ${
+                        xScaleType === 'linear' 
+                          ? 'bg-blue-500 text-white shadow-sm' 
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      Linear
+                    </button>
+                    <button
+                      onClick={() => setXScaleType('log')}
+                      className={`relative z-10 px-3 py-1 text-sm font-medium rounded-md transition-all duration-200 flex-1 ${
+                        xScaleType === 'log' 
+                          ? 'bg-blue-500 text-white shadow-sm' 
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      Log
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
+
       </div>
     </div>
   );
