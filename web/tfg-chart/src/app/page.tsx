@@ -244,6 +244,7 @@ export default function EnergyVsTimeChart() {
           type: xScaleType === "log" ? "logarithmic" : "linear",
           title: { display: true, text: "Time (s)" },
           grid: { color: "#e2e8f0" },
+          min: 0,
           ticks: {
             callback(value: any) {
               const v = typeof value === "string" ? Number(value) : value;
@@ -255,6 +256,7 @@ export default function EnergyVsTimeChart() {
           type: yScaleType === "log" ? "logarithmic" : "linear",
           title: { display: true, text: "Energy (J)" },
           grid: { color: "#e2e8f0" },
+          min: 0,
           ticks: {
             callback(value: any) {
               const v = typeof value === "string" ? Number(value) : value;
