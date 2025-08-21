@@ -489,8 +489,6 @@ info:
 	...
 \end{lstlisting}
 
-The benchmark is run 5 times to obtain a good average. \autoref{chap:appendix-number-benchmarks} shows the percentage change between different runs for different numbers of iterations.
-
 When running the macOS version, the output has to be cleaned up, as the powermetrics command outputs a lot of information that is not needed for the report. This is done by running the \texttt{utilities/clean\_macos.sh} script inside the \texttt{results-<cores>} folder. Then, to get the power consumption, the \texttt{utilities/macos\_to\_jules.py} script has to be executed like this:
 \begin{lstlisting}[language=bash, caption={Running the power consumption script.}, label={lst:macos_power_script}]
 python3 macos_to_jules.py \
