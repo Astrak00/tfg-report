@@ -1,23 +1,35 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import { Scatter } from "react-chartjs-2";
 import {
-  ScatterChart,
-  Scatter,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+  Chart as ChartJS,
+  LinearScale,
+  LogarithmicScale,
+  PointElement,
+  LineElement,
+  Tooltip as ChartJSTooltip,
+  Legend as ChartJSLegend,
+  Title as ChartJSTitle,
+} from "chart.js";
 import { BarChart3, Zap, Clock, Cpu, Monitor, Smartphone } from "lucide-react";
+
+// Register Chart.js components once
+ChartJS.register(
+  LinearScale,
+  LogarithmicScale,
+  PointElement,
+  LineElement,
+  ChartJSTooltip,
+  ChartJSLegend,
+  ChartJSTitle
+);
 
 const COLORS: Record<string, string> = {
   "C++": "#2563eb", // blue-600
-  Python: "#ef4444", // red-500
-  Go: "#10b981", // green-500
-  PyPy: "#8b5cf6", // purple-500
+  "Python": "#ef4444", // red-500
+  "Go": "#10b981", // green-500
+  "PyPy": "#8b5cf6", // purple-500
 };
 
 const PLATFORM_ICONS: Record<string, any> = {
@@ -27,103 +39,66 @@ const PLATFORM_ICONS: Record<string, any> = {
   RaspberryPi: Cpu,
 };
 
-const datasets: Record<string, { x: number; y: number; label: string }[]> = {
-  "C++": [
-    { x: 23.70, y: 3756.26, label: "Server-1" },
-    { x: 12.52, y: 2591.91, label: "Server-2" },
-    { x: 6.69, y: 1362.61, label: "Server-4" },
-    { x: 7.48, y: 59.72, label: "Laptop-1" },
-    { x: 3.835, y: 57.32, label: "Laptop-2" },
-    { x: 2.06, y: 54.97, label: "Laptop-4" },
-    { x: 22.78, y: 991.49, label: "Desktop-1" },
-    { x: 11.71, y: 657.79, label: "Desktop-2" },
-    { x: 6.23, y: 442.17, label: "Desktop-4" },
-    { x: 49.26, y: 80.0, label: "RaspberryPi-1" },
-    { x: 25.25, y: 51.67, label: "RaspberryPi-2" },
-    { x: 12.80, y: 41.28, label: "RaspberryPi-4" },
-  ],
-  Python: [
-    { x: 5913.41, y: 1510534.76, label: "Server-1" },
-    { x: 4749.55, y: 1141490.15, label: "Server-2" },
-    { x: 1665.41, y: 313537.85, label: "Server-4" },
-    { x: 3022.81, y: 17546.05, label: "Laptop-1" },
-    { x: 1356.76, y: 16322.57, label: "Laptop-2" },
-    { x: 696.75, y: 16193.99, label: "Laptop-4" },
-    { x: 6063.96, y: 272235.58, label: "Desktop-1" },
-    { x: 3084.07, y: 174822.21, label: "Desktop-2" },
-    { x: 1600.72, y: 112247.92, label: "Desktop-4" },
-    { x: 8853.08, y: 11780.0, label: "RaspberryPi-1" },
-    { x: 4423.91, y: 7620.67, label: "RaspberryPi-2" },
-    { x: 2264.50, y: 5739, label: "RaspberryPi-4" },
-  ],
-  Go: [
-    { x: 172.95, y: 28522.69, label: "Server-1" },
-    { x: 89.32, y: 18231.97, label: "Server-2" },
-    { x: 45.51, y: 10304.27, label: "Server-4" },
-    { x: 54.16, y: 429.23, label: "Laptop-1" },
-    { x: 28.6562, y: 370.0134, label: "Laptop-2" },
-    { x: 14.80, y: 354.64, label: "Laptop-4" },
-    { x: 178.98, y: 5867.26, label: "Desktop-1" },
-    { x: 70.51968, y: 3746.84, label: "Desktop-2" },
-    { x: 36.79, y: 2335.54, label: "Desktop-4" },
-    { x: 165.03, y: 236.67, label: "RaspberryPi-1" },
-    { x: 81.98, y: 153.33, label: "RaspberryPi-2" },
-    { x: 41.10, y: 107.20, label: "RaspberryPi-4" },
-  ],
-  PyPy: [
-    { x: 46.58, y: 7972.65, label: "Server-1" },
-    { x: 26.43, y: 5147.60, label: "Server-2" },
-    { x: 13.97, y: 2828.21, label: "Server-4" },
-    { x: 26.52, y: 194.69, label: "Laptop-1" },
-    { x: 15.55, y: 211.21, label: "Laptop-2" },
-    { x: 8.25, y: 216.53, label: "Laptop-4" },
-    { x: 37.12, y: 1621.77, label: "Desktop-1" },
-    { x: 21.62, y: 1324.05, label: "Desktop-2" },
-    { x: 12.2871, y: 938.02, label: "Desktop-4" },
-    { x: 236.67, y: 190.0, label: "RaspberryPi-1" },
-    { x: 153.33, y: 152.33, label: "RaspberryPi-2" },
-    { x: 107.20, y: 181.6, label: "RaspberryPi-4" },
-  ],
-};
+const datasets: { x: number; y: number; label: string; language: string }[] = [
+    { x: 46.58, y: 7972.65, label: "Server-1", language: "PyPy" },
+    { x: 26.43, y: 5147.60, label: "Server-2", language: "PyPy" },
+    { x: 13.97, y: 2828.21, label: "Server-4", language: "PyPy" },
+    { x: 26.52, y: 194.69, label: "Laptop-1", language: "PyPy" },
+    { x: 15.55, y: 211.21, label: "Laptop-2", language: "PyPy" },
+    { x: 8.25, y: 216.53, label: "Laptop-4", language: "PyPy" },
+    { x: 37.12, y: 1621.77, label: "Desktop-1", language: "PyPy" },
+    { x: 21.62, y: 1324.05, label: "Desktop-2", language: "PyPy" },
+    { x: 12.2871, y: 938.02, label: "Desktop-4", language: "PyPy" },
+    { x: 236.67, y: 190.0, label: "RaspberryPi-1", language: "PyPy" },
+    { x: 153.33, y: 152.33, label: "RaspberryPi-2", language: "PyPy" },
+    { x: 107.20, y: 181.6, label: "RaspberryPi-4", language: "PyPy" },
+    { x: 23.70, y: 3756.26, label: "Server-1", language: "C++" },
+    { x: 12.52, y: 2591.91, label: "Server-2", language: "C++" },
+    { x: 6.69, y: 1362.61, label: "Server-4", language: "C++" },
+    { x: 7.48, y: 59.72, label: "Laptop-1", language: "C++" },
+    { x: 3.835, y: 57.32, label: "Laptop-2", language: "C++" },
+    { x: 2.06, y: 54.97, label: "Laptop-4", language: "C++" },
+    { x: 22.78, y: 991.49, label: "Desktop-1", language: "C++" },
+    { x: 11.71, y: 657.79, label: "Desktop-2", language: "C++" },
+    { x: 6.23, y: 442.17, label: "Desktop-4", language: "C++" },
+    { x: 49.26, y: 80.0, label: "RaspberryPi-1", language: "C++" },
+    { x: 25.25, y: 51.67, label: "RaspberryPi-2", language: "C++" },
+    { x: 12.80, y: 41.28, label: "RaspberryPi-4", language: "C++" },
+    { x: 5913.41, y: 1510534.76, label: "Server-1", language: "Python" },
+    { x: 4749.55, y: 1141490.15, label: "Server-2", language: "Python" },
+    { x: 1665.41, y: 313537.85, label: "Server-4", language: "Python" },
+    { x: 3022.81, y: 17546.05, label: "Laptop-1", language: "Python" },
+    { x: 1356.76, y: 16322.57, label: "Laptop-2", language: "Python" },
+    { x: 696.75, y: 16193.99, label: "Laptop-4", language: "Python" },
+    { x: 6063.96, y: 272235.58, label: "Desktop-1", language: "Python" },
+    { x: 3084.07, y: 174822.21, label: "Desktop-2", language: "Python" },
+    { x: 1600.72, y: 112247.92, label: "Desktop-4", language: "Python" },
+    { x: 8853.08, y: 11780.0, label: "RaspberryPi-1", language: "Python" },
+    { x: 4423.91, y: 7620.67, label: "RaspberryPi-2", language: "Python" },
+    { x: 2264.50, y: 5739, label: "RaspberryPi-4", language: "Python" },
+    { x: 172.95, y: 28522.69, label: "Server-1", language: "Go" },
+    { x: 89.32, y: 18231.97, label: "Server-2", language: "Go" },
+    { x: 45.51, y: 10304.27, label: "Server-4", language: "Go" },
+    { x: 54.16, y: 429.23, label: "Laptop-1", language: "Go" },
+    { x: 28.6562, y: 370.0134, label: "Laptop-2", language: "Go" },
+    { x: 14.80, y: 354.64, label: "Laptop-4", language: "Go" },
+    { x: 178.98, y: 5867.26, label: "Desktop-1", language: "Go" },
+    { x: 70.51968, y: 3746.84, label: "Desktop-2", language: "Go" },
+    { x: 36.79, y: 2335.54, label: "Desktop-4", language: "Go" },
+    { x: 165.03, y: 236.67, label: "RaspberryPi-1", language: "Go" },
+    { x: 81.98, y: 153.33, label: "RaspberryPi-2", language: "Go" },
+    { x: 41.10, y: 107.20, label: "RaspberryPi-4", language: "Go" },
+  ];
+
 
 const numberFmt = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
 });
 
-function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: any[]; label?: any }) {
-  if (!active || !payload || !payload.length) return null;
-  
-  const dataPoint = payload[0]?.payload;
-  if (!dataPoint) return null;
-
-  const [platform, cores] = dataPoint.label.split("-");
-  const lang = dataPoint.lang;
-  
-  if (!lang || !COLORS[lang]) return null;
-  
-  return (
-    <div className="rounded-xl border bg-white/95 backdrop-blur-md p-4 shadow-lg border-gray-200">
-      <div className="flex items-center gap-2 mb-2">
-        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[lang] }} />
-        <span className="font-semibold text-gray-900">{lang}</span>
-      </div>
-      <div className="text-sm text-gray-800 mb-1">{platform} • {cores} core{cores !== '1' ? 's' : ''}</div>
-      <div className="grid grid-cols-2 gap-3 text-xs">
-        <div className="flex items-center gap-1">
-          <Clock className="w-3 h-3 text-blue-600" />
-          <span className="text-gray-800">{numberFmt.format(dataPoint.x)} s</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <Zap className="w-3 h-3 text-amber-600" />
-          <span className="text-gray-800">{numberFmt.format(dataPoint.y)} J</span>
-        </div>
-      </div>
-    </div>
-  );
-}
+type DataPoint = { x: number; y: number; label: string; language: string };
 
 export default function EnergyVsTimeChart() {
-  const allLangs = Object.keys(datasets);
+  const allLangs = [...new Set(datasets.map(d => d.language))];
   const [selectedLangs, setSelectedLangs] = useState<string[]>(allLangs);
   const [xScaleType, setXScaleType] = useState<'linear' | 'log'>('log');
   const [yScaleType, setYScaleType] = useState<'linear' | 'log'>('log');
@@ -131,17 +106,13 @@ export default function EnergyVsTimeChart() {
   // derive platforms and cores from labels like "Server-1"
   const allPlatforms = useMemo(() => {
     const set = new Set<string>();
-    Object.values(datasets).forEach((arr) =>
-      arr.forEach((d) => set.add(d.label.split("-")[0]))
-    );
+    datasets.forEach((d) => set.add(d.label.split("-")[0]));
     return Array.from(set).sort();
   }, []);
 
   const allCores = useMemo(() => {
     const set = new Set<string>();
-    Object.values(datasets).forEach((arr) =>
-      arr.forEach((d) => set.add(d.label.split("-")[1]))
-    );
+    datasets.forEach((d) => set.add(d.label.split("-")[1]));
     return Array.from(set).sort((a, b) => Number(a) - Number(b));
   }, []);
 
@@ -162,40 +133,117 @@ export default function EnergyVsTimeChart() {
 
   // Create a single combined dataset with all filtered data points
   const combinedData = useMemo(() => {
-    const allData: { x: number; y: number; label: string; lang: string }[] = [];
-    
-    for (const [lang, data] of Object.entries(datasets)) {
-      if (selectedLangs.includes(lang)) {
-        const filteredData = data
-          .filter((d) => {
-            const [plat, core] = d.label.split("-");
-            return selectedPlatforms.includes(plat) && selectedCores.includes(core);
-          })
-          .map((d) => ({ ...d, lang }));
-        
-        allData.push(...filteredData);
-      }
-    }
-    
-    return allData;
+    return datasets.filter((d) => {
+      const [plat, core] = d.label.split("-");
+      return (
+        selectedLangs.includes(d.language) &&
+        selectedPlatforms.includes(plat) &&
+        selectedCores.includes(core)
+      );
+    });
   }, [selectedLangs, selectedPlatforms, selectedCores]);
 
   const totalDataPoints = combinedData.length;
+
+  // Build Chart.js datasets grouped by language
+  const chartData = useMemo(() => {
+    const byLang: Record<string, DataPoint[]> = {};
+    for (const dp of combinedData) {
+      if (!byLang[dp.language]) byLang[dp.language] = [];
+      byLang[dp.language].push(dp);
+    }
+    return {
+      datasets: Object.entries(byLang).map(([lang, data]) => ({
+        label: lang,
+        data,
+        parsing: { xAxisKey: "x", yAxisKey: "y" },
+        showLine: false,
+        backgroundColor: COLORS[lang] || "#8884d8",
+        borderColor: COLORS[lang] || "#8884d8",
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        borderWidth: 1,
+        hoverBorderWidth: 2,
+        opacity: 0.85,
+      })),
+    } as any;
+  }, [combinedData]);
+
+  const options = useMemo(() => {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top" as const },
+        title: {
+          display: false,
+          text: "Energy Consumption vs Execution Time",
+        },
+        tooltip: {
+          callbacks: {
+            title(items: any[]) {
+              const item = items?.[0];
+              const dp = item?.raw as DataPoint | undefined;
+              if (!dp) return "";
+              const [platform, cores] = dp.label.split("-");
+              return `${dp.language} • ${platform} • ${cores} core${cores !== "1" ? "s" : ""}`;
+            },
+            label(ctx: any) {
+              const dp = ctx.raw as DataPoint | undefined;
+              if (!dp) return "";
+              const t = numberFmt.format(dp.x);
+              const e = numberFmt.format(dp.y);
+              return [`Time: ${t} s`, `Energy: ${e} J`];
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          type: xScaleType === "log" ? "logarithmic" : "linear",
+          title: { display: true, text: "Time (s)" },
+          grid: { color: "#e2e8f0" },
+          ticks: {
+            callback(value: any) {
+              const v = typeof value === "string" ? Number(value) : value;
+              return numberFmt.format(v);
+            },
+          },
+        },
+        y: {
+          type: yScaleType === "log" ? "logarithmic" : "linear",
+          title: { display: true, text: "Energy (J)" },
+          grid: { color: "#e2e8f0" },
+          ticks: {
+            callback(value: any) {
+              const v = typeof value === "string" ? Number(value) : value;
+              return numberFmt.format(v);
+            },
+          },
+        },
+      },
+      elements: {
+        point: {
+          borderWidth: 1,
+        },
+      },
+    } as any;
+  }, [xScaleType, yScaleType]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-12xl mx-auto p-6">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
+        <div className="text-center mb-4">
+          <div className="flex items-center justify-center gap-3">
             <BarChart3 className="w-8 h-8 text-blue-600" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Programming Language Performance
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Programming Language Performance Comparaison
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          {/* <p className="text-md text-gray-600 max-w-3xl mx-auto">
             Interactive comparison of execution time vs energy consumption across different platforms and core counts
-          </p>
+          </p> */}
         </div>
 
         {/* Controls */}
@@ -221,45 +269,14 @@ export default function EnergyVsTimeChart() {
                 </div>
               </div>
             ) : (
-              <ResponsiveContainer width="100%" height={500}>
-                <ScatterChart data={combinedData} margin={{ top: 20, right: 30, bottom: 50, left: 60 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                  <XAxis 
-                    type="number" 
-                    dataKey="x" 
-                    name="Time" 
-                    unit="s" 
-                    scale={xScaleType}
-                    domain={xScaleType === 'log' ? ['auto', 'auto'] : [0, 'auto']}
-                    tickFormatter={(value) => numberFmt.format(value)}
-                  />
-                  <YAxis 
-                    type="number" 
-                    dataKey="y" 
-                    name="Energy" 
-                    unit="J" 
-                    scale={yScaleType}
-                    domain={yScaleType === 'log' ? ['auto', 'auto'] : [0, 'auto']}
-                    tickFormatter={(value) => numberFmt.format(value)}
-                  />
-                  <Tooltip content={CustomTooltip} />
-                  <Legend />
-                  {selectedLangs.map((lang) => (
-                    <Scatter 
-                      key={lang} 
-                      name={lang} 
-                      data={combinedData.filter(d => d.lang === lang)} 
-                      fill={COLORS[lang]}
-                      opacity={0.8}
-                    />
-                  ))}
-                </ScatterChart>
-              </ResponsiveContainer>
+              <div className="h-[500px]">
+                <Scatter data={chartData} options={options} />
+              </div>
             )}
           </div>
 
           {/* Control Panel */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             {/* Languages */}
             <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
               <div className="flex items-center justify-between mb-3">
