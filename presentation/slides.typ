@@ -4,7 +4,8 @@
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.1": *
 
-
+#let month_year = "September 2025"
+#let show_qr = true
 
 #show: codly-init.with()
 
@@ -13,7 +14,6 @@
 #show raw: set text(font: "Fantasque Sans Mono")
 #show math.equation: set text(font: "Lete Sans Math")
 
-#let month_year = "September 2025"
 
 #let my-stroke = stroke(
   thickness: 2pt,
@@ -47,6 +47,18 @@
   #strong(title)
   #line(stroke: my-stroke, length: 60%)
   #toolbox.register-section(title)
+]
+
+#let double-image-slide(title, image1, image2) = slide[
+  == #title
+  #set align(horizon)
+  #toolbox.side-by-side(columns: (1fr, 1fr))[
+    #set align(center)
+    #image(image1, height: auto)
+  ][
+    #set align(center)
+    #image(image2, height: auto)
+  ]
 ]
 
 #slide[
@@ -131,19 +143,51 @@
   Talk about the fact python is interpreted, PyPy uses a JIT, and that C++ and Go are compiled.
 ]
 
-#slide[
-  = Runtime comparison matrix multiplication
+#new-section-slide("Languages")
 
-  #set text(size: 1.05em)
+
+#slide[
+  = Language strengths comparison: TIOBE Index @tiobe-index
+  #set text(size: 1em)
+  #set align(left)
+
+  #item-by-item[
+    - *C++*, Compiled, manual memory management, \~9.2%, Systems, games, HPC#footnote[High Performance Computing], embedded, performance-critical software.
+
+    - *Go*, Compiled, statically linked, \~2%, Microservices, networking, tooling, cloud infrastructure.
+
+    - *Python*, \~35%, interpreted, used for Web, Data Science, AI/ML, scripting, automation.
+
+    - *PyPy*, JIT#footnote[Just-In-Time] for Python — runtime compilation, \~3%, Long-running Python apps, performance-sensitive Python code.
+
+  ]
+]
+
+#slide[
+  == Why not this other language?
+
+  // Add here pictures of rust, ADA, JavaScript, Metal and CUDA
+]
+
+
+
+#new-section-slide("Previous work in the area")
+
+#slide[
+  == Simple matrix multiplication example, with toy programs
+
+  #set text(size: 1.0em)
 
   #let times = (
-    ("Python", 1.8),
-    ("Go", 0.9),
-    ("C++", 0.45),
-    ("PyPy", 0.5),
+    ("Python", 1.8111),
+    ("Go", 0.9111),
+    ("C++", 0.45111),
+    ("PyPy", 0.5111),
   )
 
-  #let max = 1.8
+  #let max_tupple = times.fold(times.first(), (a, b) => if a.at(1) > b.at(1) { a } else { b })
+  #let max = max_tupple.at(1)
+
   #let width-scale = 12cm / max
 
   #for (name, t) in times [
@@ -169,102 +213,39 @@
 ]
 
 
-#new-section-slide("Previous work in the area")
 
-#new-section-slide("Languages")
-
-#slide[
-  = C++
-  #set text(size: 1.05em)
-  #set align(left)
-
-  // Image of C++ logo
-  // #image("/img/cpp-logo.png", height: 3em)
-]
-
-#slide[
-  = Go
-  #set text(size: 1.05em)
-  #set align(left)
-
-  // Image of gopher
-  // #image("/img/gopher.png", height: 3em)
-]
-
-#slide[
-  = Python
-  #set text(size: 1.05em)
-  #set align(left)
-
-  Python is a high-level, *interpreted* language known for its simplicity and readability. \
-  It is widely used in various domains, including web development, data analysis, scientific computing and Artificial Intelligence.
-
-  #v(0.5fr)
-
-  // #image("/img/python-logo.png", height: 3em)
-]
-
-#slide[
-  = PyPy
-  #set text(size: 1.05em)
-  #set align(left)
-
-  Compilation Just in Time of python code. \
-
-  It aims to improve the performance of Python programs by translating Python code into machine code at runtime.
-
-  // #image("/img/pypy-logo.png", height: 3em)
-]
-
-#slide[
-  = Language strengths comparison: TIOBE Index @tiobe-index
-  #set text(size: 1em)
-  #set align(left)
-
-  #table(
-    columns: (1fr, 2fr, 0.7fr, 3fr),
-    align: (left, left, right, left),
-
-    table.header[*Language*][*Execution model*][*Use (%) *][*Typical uses*],
-  )
-
-  #item-by-item(start: 1)[
-    - #table(
-        columns: (1fr, 2fr, 0.7fr, 3fr),
-        align: (left, left, right, left),
-        [Python], [Interpreted (bytecode), many implementations], [~35%], [Web, Data Science, AI/ML, scripting, automation],
-      )
-
-    - #table(
-        columns: (1fr, 2fr, 0.7fr, 3fr),
-        align: (left, left, right, left),
-        [PyPy],
-        [JIT#footnote[Just-In-Time] for Python — runtime compilation],
-        [~3%],
-        [Long-running Python apps, performance-sensitive Python code],
-      )
-
-    - #table(
-        columns: (1fr, 2fr, 0.7fr, 3fr),
-        align: (left, left, right, left),
-        [Go], [Compiled, statically linked], [~2%], [Microservices, networking, tooling, cloud infrastructure],
-      )
-
-    - #table(
-        columns: (1fr, 2fr, 0.7fr, 3fr),
-        align: (left, left, right, left),
-        [C++],
-        [Compiled, manual memory management],
-        [~9.2%],
-        [Systems, games, HPC#footnote[High Performance Computing], embedded, performance-critical software],
-      )
-  ]
-]
 
 
 #new-section-slide("Benchmark Design")
 
 #new-section-slide("Results")
+
+#slide[
+  = Benchmark Results
+
+  #text(size: 1em, weight: "bold")[
+    #toolbox.side-by-side(columns: (auto, 1fr))[
+      #image("img/charts.png", width: 25em)
+    ][
+      Benchmark results for different programming languages: \
+      #link("https://charts-tfg.astrak.es/")[View interactive charts at\ #underline[charts-tfg.astrak.es]]
+
+      #set align(right)
+      #if show_qr [#image("img/qr-charts.png", width: 4.6em)]
+    ]
+  ]
+]
+
+#for platform in ("Server", "Desktop", "Laptop", "RPi") {
+  double-image-slide(
+    [#platform benchmark results],
+    "img/graphs/log-" + str(lower(platform)) + "-energy.png",
+    "img/graphs/log-" + str(lower(platform)) + "-time.png",
+  )
+}
+
+
+
 
 #new-section-slide("Conclusions")
 
