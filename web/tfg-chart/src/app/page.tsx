@@ -26,10 +26,10 @@ ChartJS.register(
 );
 
 const COLORS: Record<string, string> = {
-  "C++": "#2563eb", // blue-600
-  "Python": "#ef4444", // red-500
-  "Go": "#10b981", // green-500
-  "PyPy": "#8b5cf6", // purple-500
+  "C++": "rgba(0, 0, 255, 1)", 
+  "Python": "rgba(225, 126, 48, 1)", 
+  "Go": "rgba(164, 32, 176, 1)", 
+  "PyPy": "rgba(63, 142, 39, 1)", 
 };
 
 const PLATFORM_ICONS: Record<string, any> = {
@@ -169,6 +169,61 @@ export default function EnergyVsTimeChart() {
     } as any;
   }, [combinedData]);
 
+  // Custom external tooltip to match the card style
+  const externalTooltip = React.useCallback((ctx: any) => {
+    const { chart, tooltip } = ctx;
+    let el = chart.canvas.parentNode.querySelector("#ext-tooltip") as HTMLDivElement | null;
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "ext-tooltip";
+      el.style.position = "absolute";
+      el.style.pointerEvents = "none";
+      el.style.zIndex = "50";
+      chart.canvas.parentNode.appendChild(el);
+    }
+
+    if (tooltip.opacity === 0) {
+      el.style.opacity = "0";
+      return;
+    }
+
+    const bb = chart.canvas.getBoundingClientRect();
+    const dp = tooltip.dataPoints?.[0]?.raw as DataPoint | undefined;
+    const dataset = tooltip.dataPoints?.[0]?.dataset ?? {};
+    const lang: string = dataset?.label ?? (dp as any)?.language ?? "";
+    const color: string = dataset?.borderColor || "#2563eb";
+    const [platform, cores] = (dp?.label ?? "-").split("-");
+    const time = dp ? numberFmt.format(dp.x) : "";
+    const energy = dp ? numberFmt.format(dp.y) : "";
+
+    el.className = "rounded-xl border bg-white/95 backdrop-blur-md p-4 shadow-lg border-gray-200 text-gray-900";
+    el.innerHTML = `
+      <div class="flex items-center gap-2 mb-2">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:${color}"></span>
+        <span class="font-semibold">${lang}</span>
+      </div>
+      <div class="text-sm text-gray-800 mb-1">${platform} • ${cores} core${cores !== "1" ? "s" : ""}</div>
+      <div class="grid grid-cols-2 gap-3 text-xs">
+        <div class="flex items-center gap-1">
+          <span class="inline-flex items-center justify-center w-3 h-3">⏱️</span>
+          <span class="text-gray-800">${time} s</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <span class="inline-flex items-center justify-center w-3 h-3">⚡</span>
+          <span class="text-gray-800">${energy} J</span>
+        </div>
+      </div>
+    `;
+
+    // Position near caret; clamp within parent bounds
+    const parentBB = (chart.canvas.parentNode as HTMLElement).getBoundingClientRect();
+    const x = bb.left + window.scrollX + tooltip.caretX - parentBB.left - el.offsetWidth / 2;
+    const y = bb.top + window.scrollY + tooltip.caretY - parentBB.top - el.offsetHeight - 12;
+    el.style.left = Math.max(8, Math.min(x, parentBB.width - el.offsetWidth - 8)) + "px";
+    el.style.top = Math.max(8, y) + "px";
+    el.style.opacity = "1";
+  }, []);
+
   const options = useMemo(() => {
     return {
       responsive: true,
@@ -180,22 +235,8 @@ export default function EnergyVsTimeChart() {
           text: "Energy Consumption vs Execution Time",
         },
         tooltip: {
-          callbacks: {
-            title(items: any[]) {
-              const item = items?.[0];
-              const dp = item?.raw as DataPoint | undefined;
-              if (!dp) return "";
-              const [platform, cores] = dp.label.split("-");
-              return `${dp.language} • ${platform} • ${cores} core${cores !== "1" ? "s" : ""}`;
-            },
-            label(ctx: any) {
-              const dp = ctx.raw as DataPoint | undefined;
-              if (!dp) return "";
-              const t = numberFmt.format(dp.x);
-              const e = numberFmt.format(dp.y);
-              return [`Time: ${t} s`, `Energy: ${e} J`];
-            },
-          },
+          enabled: false,
+          external: externalTooltip as any,
         },
       },
       scales: {
