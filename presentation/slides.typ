@@ -66,7 +66,7 @@
   #set align(horizon)
   #text(size: 1.57em, weight: "bold")[
     #toolbox.side-by-side(columns: (auto, 1fr))[
-      #image("/img/ray_traced_balls.png", height: 3em)
+      #image("/img/ray_traced_balls.png", height: 5em)
     ][
       Evaluating performance and energy impact of programming languages
     ]
