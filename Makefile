@@ -9,4 +9,4 @@ clean:
 	latexmk -c
 	rm -f *.bbl *.blg *.glg *.glo *.gls *.ist *.acn *.acr *.alg *.aux *.lof *.lot *.out *.toc
 
-new: clean comp glossary comp
+new: clean comp

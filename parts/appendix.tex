@@ -22,7 +22,7 @@ This section provides the reader with the detailed results of the server benchma
         60             &   1,975.05          & 1,744.76    & 1,354.03   &    93,015.31           \\
         \hline
     \end{tabular}
-\caption{Server - Package energy consumption}{Energy usage by the package on the Server benchmark by implementation and core count}
+\caption[Server - Package energy consumption]{Energy usage by the package on the Server benchmark by implementation and core count}
 \label{tab:server-energy-pkg}
 \end{table}
 
@@ -46,7 +46,7 @@ This section provides the reader with the detailed results of the server benchma
         60           & 90.01           &    90.23          &    91.31            &   2,703.02        \\
         \hline
     \end{tabular}
-\caption{Server - \gls{ram} energy consumption}{Energy usage by the \gls{ram} on the Server benchmark by implementation and core count}
+\caption[Server - \gls{ram} energy consumption]{Energy usage by the \gls{ram} on the Server benchmark by implementation and core count}
 \label{tab:server-energy-ram}
 \end{table}
 
@@ -70,7 +70,7 @@ This section provides the reader with the detailed results of the server benchma
         60           & 15.94           & \textbf{5.36} & \textbf{4.05} & 256.87          \\
         \hline
     \end{tabular}
-\caption{Server - Execution Time}{Execution time on the Server benchmark by implementation and core count}
+\caption[Server - Execution Time]{Execution time on the Server benchmark by implementation and core count}
 \label{tab:server-execution-time}
 \end{table}
 
@@ -94,7 +94,7 @@ This section provides the reader with the detailed results of the personal deskt
     16 & 321.60 & 1,194.03 & 937.02 & 98,436.51 \\
     \hline
     \end{tabular}
-\caption{Desktop - Package energy consumption with Hyperthreading}{Energy usage by the package on the Desktop benchmark by implementation and core count with Hyperthreading enabled}
+\caption[Desktop - Package energy consumption with Hyperthreading]{Energy usage by the package on the Desktop benchmark by implementation and core count with Hyperthreading enabled}
 \label{tab:desktop-energy-pkg-hyperthreading}
 \end{table}
 
@@ -111,7 +111,7 @@ This section provides the reader with the detailed results of the personal deskt
         8	           & 346.15              & 1,645.18    & 735.35     & 82,869.55          \\
         \hline
     \end{tabular}
-\caption{Desktop - Package energy consumption}{Energy usage by the package on the Desktop benchmark by implementation and core count}
+\caption[Desktop - Package energy consumption]{Energy usage by the package on the Desktop benchmark by implementation and core count}
 \label{tab:desktop-energy-pkg}
 \end{table}
 
@@ -133,7 +133,7 @@ Esto está en esta gráfica: \autoref{fig:log-desktop-energy-pkg} y \autoref{fig
     16 & 2.97 & 12.09 & 7.21 & 878.90 \\
     \hline
     \end{tabular}
-\caption{Desktop - Execution Time with Hyperthreading}{Execution time on the Desktop benchmark by implementation and core count with Hyperthreading enabled}
+\caption[Desktop - Execution Time with Hyperthreading]{Execution time on the Desktop benchmark by implementation and core count with Hyperthreading enabled}
 \label{tab:desktop-execution-time-hyperthreading}
 \end{table}
 
@@ -150,7 +150,7 @@ Esto está en esta gráfica: \autoref{fig:log-desktop-energy-pkg} y \autoref{fig
         8	           & 3.43                & 20.84       & 6.91       & 829.50             \\
         \hline
     \end{tabular}
-\caption{Desktop - Execution Time}{Execution time on the Desktop benchmark by implementation and core count}
+\caption[Desktop - Execution Time]{Execution time on the Desktop benchmark by implementation and core count}
 \label{tab:desktop-execution-time}
 \end{table}
 
@@ -173,7 +173,7 @@ This section provides the reader with the detailed results of the laptop benchma
         14    & 48.39  & 300.66  & 203.92       & 13,777.34   \\
         \hline
     \end{tabular}
-\caption{Laptop - Package energy consumption}{Energy usage by the package on the Laptop benchmark by implementation and core count}
+\caption[Laptop - Package energy consumption]{Energy usage by the package on the Laptop benchmark by implementation and core count}
 \label{tab:mbp-power-consumption}
 \end{table}
 
@@ -191,7 +191,7 @@ This section provides the reader with the detailed results of the laptop benchma
         14    & 1.48  & 5.94   & 3.62         & 262.00    \\
         \hline
     \end{tabular}
-\caption{Laptop - Execution Time}{Execution time on the Laptop benchmark by implementation and core count}
+\caption[Laptop - Execution Time]{Execution time on the Laptop benchmark by implementation and core count}
 \label{tab:mbp-time-execution}
 \end{table}
 
@@ -212,7 +212,7 @@ This section provides the reader with the detailed results of the Raspberry Pi b
         4     & 41.28  & 107.20  & 181.60       &  5\,739.00  \\
         \hline
     \end{tabular}
-\caption{Raspberry Pi - Package energy consumption}{Energy usage by the package on the Raspberry Pi benchmark by implementation and core count}
+\caption[Raspberry Pi - Package energy consumption]{Energy usage by the package on the Raspberry Pi benchmark by implementation and core count}
 \label{tab:rpi-power-consumption}
 \end{table}
 
@@ -227,7 +227,7 @@ This section provides the reader with the detailed results of the Raspberry Pi b
         4     & 12.80  &  41.10  &  72.14       & 2\,264.50   \\
         \hline
     \end{tabular}
-\caption{Raspberry Pi - Execution Time}{Execution time on the Raspberry Pi benchmark by implementation and core count}
+\caption[Raspberry Pi - Execution Time]{Execution time on the Raspberry Pi benchmark by implementation and core count}
 \label{tab:rpi-time-execution}
 \end{table}
 
@@ -390,7 +390,7 @@ It can be observed from this chart that, by using the different number of benchm
     \centering
     \begin{tikzpicture}
     \begin{axis}[
-    width=16cm, height=9cm,
+    width=14cm, height=9cm,
     xlabel={Time Taken (s)},
     ylabel={Energy Consumption (Joules)},
     ymode=log,
