@@ -188,7 +188,7 @@ We can see from \autoref{fig:log-mbp-energy} there does not seem to be a big dif
 
 Even though the energy consumption does not decrease, the execution time does, as we can see from \autoref{fig:log-mbp-execution-time}. The C++ implementation is the fastest, followed by the PyPy implementation, then the Go implementation, and finally the Python implementation, which is the slowest by a large margin. I also created this \autoref{fig:linear-mbp-execution-time} to better visualize the execution time of each implementation without Python, as it distorts the results due to its slow performance. Raw data for both energy consumption and execution time can be found in \autoref{tab:mbp-power-consumption} and \autoref{tab:mbp-time-execution} respectively.
 
-All the raw data for the benchmarks can be found in the \autoref{chap:appendix-laptop-benchmark}.
+All the raw data for the benchmarks can be found in the \autoref{chap:appendix-laptop-benchmarks}.
 
 \subsection{Raspberry Pi 5}
 This SBC (Single Board Computer) is one of the most popular in the market, and though is is nota great platform for testing the performance of different programming languages its popularity has made it an interesting option as it has much less power requirements than the other alternatives. It has a 4 core \gls{ARM} processor, 8GB of RAM, which is enough to run any of the tests. 
@@ -204,9 +204,7 @@ From both \autoref{fig:log-rpi-energy} and \autoref{fig:log-rpi-execution} we ca
 
 It is impressive the slowness that python shows in this platform, $62$x less power efficient than PyPy and consuming more than $147$x the energy of the C++ implementation. 
 
-If we turn to the execution times, we can see that the C++ implementation is the fastest, followed by the Go implementation, then PyPy and lastly Python when looking at the 4 cores run of the benchmark. But, when the program was run with 2 cores, the PyPy implementation does not reduce much the execution time, compared to the Go result, interchanging the position of the Go and PyPy implementations, as it can be seen in clearer in the raw data in \autoref{tab:execution-time-by-cores} and \autoref{tab:power-sum-by-cores}.
-
-All the raw data for the benchmarks can be found in the \autoref{chap:appendix-rpi-benchmark}.
+If we turn to the execution times, we can see that the C++ implementation is the fastest, followed by the Go implementation, then PyPy and lastly Python when looking at the 4 cores run of the benchmark. But, when the program was run with 2 cores, the PyPy implementation does not reduce much the execution time, compared to the Go result, interchanging the position of the Go and PyPy implementations, as it can be seen in clearer in the raw data in \autoref{chap:appendix-rpi-benchmarks}.
 
 \section{Comment on parallelizing different languages}
 
