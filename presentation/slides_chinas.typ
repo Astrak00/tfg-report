@@ -19,7 +19,8 @@
     subtitle: [],
     author: [Eduardo Alarcón Navarro],
     date: datetime.today(),
-    institution: [Universidad Carlos III de Madrid\ Tutor: Jose Daniel García Sánchez],
+    institution: [Universidad Carlos III de Madrid\ Tutor: Jose Daniel García
+      Sánchez],
   ),
   config-colors(
     primary: rgb("#04364A"), // Top right second bar
@@ -72,9 +73,7 @@
 
 #title-slide(
   "img/ray_traced_balls.png",
-  [Evaluating performance and
-    energy impact of
-    programming languages],
+  [Evaluating performance and energy impact of programming languages],
   [Eduardo Alarcón Navarro],
   [Jose Daniel García Sánchez],
 )
@@ -86,7 +85,8 @@
 = Introduction
 
 == Motivation
-This is my motivation to discuss the performance and energy impact of programming languages.
+This is my motivation to discuss the performance and energy impact of
+programming languages.
 
 == The problem with choosing a language
 
@@ -132,7 +132,8 @@ This is my motivation to discuss the performance and energy impact of programmin
 )
 
 == Characteristics of language
-Talk about the fact python is interpreted, PyPy uses a JIT, and that C++ and Go are compiled.
+Talk about the fact python is interpreted, PyPy uses a JIT, and that C++ and Go
+are compiled.
 
 = Languages
 
@@ -141,18 +142,22 @@ Talk about the fact python is interpreted, PyPy uses a JIT, and that C++ and Go 
 #set text(size: 1em)
 #set align(left)
 
-- #emph[*C++*], Compiled, manual memory management, ~9.2%, Systems, games, HPC#footnote[High Performance Computing], embedded, performance-critical software.
+- #emph[*C++*], Compiled, manual memory management, ~9.2%, Systems, games,
+  HPC#footnote[High Performance Computing], embedded, performance-critical
+  software.
 #pause
-- #emph[*Go*], Compiled, statically linked, ~2%, Microservices, networking, tooling, cloud infrastructure.
+- #emph[*Go*], Compiled, statically linked, ~2%, Microservices, networking,
+  tooling, cloud infrastructure.
 #pause
-- #emph[*Python*], ~35%, interpreted, used for Web, Data Science, AI/ML, scripting, automation.
+- #emph[*Python*], ~35%, interpreted, used for Web, Data Science, AI/ML,
+  scripting, automation.
 #pause
-- #emph[*PyPy*], JIT#footnote[Just-In-Time] for Python — runtime compilation, ~3%, Long-running Python apps, performance-sensitive Python code.
+- #emph[*PyPy*], JIT#footnote[Just-In-Time] for Python — runtime compilation,
+  ~3%, Long-running Python apps, performance-sensitive Python code.
 
 == Why not this other language?
 
-Add here pictures of rust, ADA, JavaScript, Metal and CUDA
-and talk smth
+Add here pictures of rust, ADA, JavaScript, Metal and CUDA and talk smth
 
 
 
@@ -168,7 +173,9 @@ and talk smth
     ("C++", 0.45111),
     ("PyPy", 0.5111),
   )
-  #let max_tupple = times.fold(times.first(), (a, b) => if a.at(1) > b.at(1) { a } else { b })
+  #let max_tupple = times.fold(times.first(), (a, b) => if a.at(1) > b.at(1) {
+    a
+  } else { b })
   #let max = max_tupple.at(1)
   #let width-scale = 12cm / max
 
@@ -186,7 +193,12 @@ and talk smth
       #set text(size: .95em, weight: "bold")
       #name
       #v(0.35em)
-      #box(width: t * horiz-scale, height: bar-height, fill: blue.lighten(25%), stroke: none)[]
+      #box(
+        width: t * horiz-scale,
+        height: bar-height,
+        fill: blue.lighten(25%),
+        stroke: none,
+      )[]
       #v(0.25em)
       #set text(size: .9em)
       #t s
@@ -215,7 +227,8 @@ a
     [
       Benchmark outcomes across programming languages: \
       #h(0.4em)
-      #link("https://charts-tfg.astrak.es/")[View interactive charts at\ #underline[charts-tfg.astrak.es]]
+      #link("https://charts-tfg.astrak.es/")[View interactive charts at\
+        #underline[charts-tfg.astrak.es]]
 
       #set align(right)
       #if show_qr [
@@ -239,9 +252,10 @@ a
 
 == Summary of Findings
 
-This is otra cosa and includes a gif, but does not have movement when exported to pdf
+This is otra cosa and includes a gif, but does not have movement when exported
+to pdf
 
-#image("/img/cat-space.gif", height: auto)
+
 
 
 

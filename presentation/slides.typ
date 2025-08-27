@@ -185,7 +185,9 @@
     ("PyPy", 0.5111),
   )
 
-  #let max_tupple = times.fold(times.first(), (a, b) => if a.at(1) > b.at(1) { a } else { b })
+  #let max_tupple = times.fold(times.first(), (a, b) => if a.at(1) > b.at(1) {
+    a
+  } else { b })
   #let max = max_tupple.at(1)
 
   #let width-scale = 12cm / max
@@ -204,7 +206,12 @@
       #set text(size: .95em, weight: "bold")
       #name
       #v(0.35em)
-      #box(width: t * horiz-scale, height: bar-height, fill: blue.lighten(25%), stroke: none)[]
+      #box(
+        width: t * horiz-scale,
+        height: bar-height,
+        fill: blue.lighten(25%),
+        stroke: none,
+      )[]
       #v(0.25em)
       #set text(size: .9em)
       #t s
@@ -228,7 +235,9 @@
       #image("img/charts.png", width: 25em)
     ][
       Benchmark results for different programming languages: \
-      #link("https://charts-tfg.astrak.es/")[View interactive charts at\ #underline[charts-tfg.astrak.es]]
+      #link(
+        "https://charts-tfg.astrak.es/",
+      )[View interactive charts at\ #underline[charts-tfg.astrak.es]]
 
       #set align(right)
       #if show_qr [#image("img/qr-charts.png", width: 4.6em)]
