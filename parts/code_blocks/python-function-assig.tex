@@ -1,4 +1,5 @@
-\begin{lstlisting}[language=Python]
+
+\begin{lstlisting}[language=Python,caption={Python function assignment example.}, label={lst:python-augment-twice-bad}]
 def augment_twice_bad(a_list, val):
     """Put val on the end of 'a_list' twice."""
     a_list = a_list + [val, val]
@@ -7,6 +8,7 @@ nums = [1, 2, 3]
 augment_twice_bad(nums, 4)
 print(nums)             # [1, 2, 3]
 \end{lstlisting}
+
 
 When calling the function \texttt{augment\_twice\_bad}, the parameters are assigned the values \texttt{nums} and \texttt{4} respectively. 
 
@@ -113,3 +115,17 @@ When the function ends, its local names are destroyed, and any values no longer 
 
 \end{tikzpicture}
 \end{center}
+
+If the goal was to modify the list passed in, the \texttt{=} operator can not be used. Instead, a method that mutates the list in place should be used, such as \texttt{list.append()} or \texttt{list.extend()}. The correct implementation of the function would be:
+
+\begin{lstlisting}[language=Python, caption={Correct implementation of augment\_twice\_good}, label={lst:python-augment-twice-good}]
+def augment_twice_good(a_list, val):
+    """Put val on the end of 'a_list' twice."""
+    a_list.extend([val, val]) # Mutates the list in place: [1, 2, 3, 4, 4]
+
+# Or, an in-place addition:
+def augment_twice_good(a_list, val):
+    """Put val on the end of 'a_list' twice."""
+    a_list += [val, val] # Mutates the list in place: [1, 2, 3, 4, 4]
+
+\end{lstlisting}

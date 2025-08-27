@@ -2,7 +2,7 @@
 
 The premise of this chapter is to describe the design, implementation and decisions taken during the development of the different programs that compose this project.
 
-Section \autoref{sec:general_program_design} describes the general design of the programs, and how they are divided. In the next sections, \autoref{sec:sphere-object} and \autoref{sec:renderer}, we will see how the objects are designed and how the rendering is done, respectively. Then, \autoref{sec:output} describes how the output is generated and how it can be used to visualize the results of the ray-tracer and finally, the last section, \autoref{sec:running_program}, describes how the program can be run and how to use the \texttt{Makefile} to run the program with different parameters.
+Section \ref{sec:general_program_design} describes the general design of the programs, and how they are divided. In \autoref{sec:sphere-object} and \autoref{sec:renderer}, we will see how the objects are designed and how the rendering is done, respectively. Then, \autoref{sec:output} describes how the output is generated and how it can be used to visualize the results of the ray-tracer and finally, the last section, \ref{sec:running_program}, describes how the program can be run and how to use the \texttt{Makefile} to run the program with different parameters.
 
 \section{General Program Design}
 \label{sec:general_program_design}
@@ -108,17 +108,17 @@ To ensure the consistency between programs and runs, I decided to create a file 
 \end{itemize}
 
 \subsection{Language Specific}
-To try eliminating any possible influence of libraries created in other programming languages, all programs have been created only using their own standard library. The only exception for this is OpenMP used for C++ parallelization.
+To try eliminating any possible influence of libraries created in other programming languages, all programs have been created only using their own standard library.
 
 \subsubsection{C++}
 When using C++, the intent was to use some of C++ modern features that would make development easier and adapted to new standards such as the use of smart pointers, \texttt{constexpr} and range-based loops. It was designed as an object-oriented program, with polymorphism though virtual functions (inside \texttt{material}, \texttt{hittable}).
 
 The idea of making it header only was the benefits of inlining, easy to distribute and easily separable concepts and, as the compilation time is not crucial, the re-compilation of the headers every time there is a modification is not a drawback.
 
-To perform multithreaded operations, I chose the OpenMP library, because of its convenience of parallelizing and great performance. It has been the standard for decades, originating from the Fortran world (1960s\')
+For multithreaded operations, I selected the \gls{openMP} library due to its ease of use and excellent performance. \gls{openMP} has been a widely adopted standard for decades, supported by most compilers, and originally emerged from the Fortran ecosystem in the 1960s.
 
 \subsubsection{Go}
-When choosing Go as to build the ray-tracer, as Go does not support inheritance like other \gls{oop} languages, I had to use \texttt{interfaces}, which are the tools go provide for polymorphism. Interfaces are a type that defines a set of method signatures. Thus, for any struct that has the signature methods described in an interface, it can be called as an object from that type. 
+When choosing Go as to build the ray-tracer, as Go does not support inheritance like other \gls{oop} languages, I had to use \texttt{interfaces}, which are the tools Go provide for polymorphism. Interfaces are a type that defines a set of method signatures. Thus, for any struct that has the signature methods described in an interface, it can be called as an object from that type.
 
 % --- GO CODE Interfaces ---
 \begin{lstlisting}[language=Go, caption={Go interface example.}, label={lst:go_interface_example}
@@ -135,7 +135,7 @@ type Hittable interface {
 In my specific implementation, two instances of these keywords were used to denote all types of materials and all Hittable objects, that have to implement a scatter function and a hit function as described in \autoref{lst:go_interface_example}.
 
 \subsubsection{Python}
-python is one of the most open languages, where there are many ways of developing the same program. There have been some problems with python's parameters in functions, whether they are passed as parameters or as references. Unlike in C++ where you can add \texttt{\&} to symbolize the passing the parameter by reference in the function signature, or using the \texttt{*} in Go, in Python, at first, it seems you can not specify this behavior. But if you research into the inner-workings of pythons functions and how they work, it seems that "Python passes function arguments by assigning to them" as \cite{python-names-pycon15} states at PyCon 2015:
+Python is one of the most open languages, where there are many ways of developing the same program. There have been some problems with python's parameters in functions, whether they are passed as parameters or as references. Unlike in C++ where you can add \texttt{\&} to symbolize the passing the parameter by reference in the function signature, or using the \texttt{*} in Go, in Python, at first, it seems you can not specify this behavior. But if you research into the inner-workings of python functions and how they work, it seems that "Python passes function arguments by assigning to them" as \cite{python-names-pycon15} states at PyCon 2015:
 
 \input{parts/code_blocks/python-function-assig}
 

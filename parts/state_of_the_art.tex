@@ -27,14 +27,14 @@ Nowadays, the technology has improved, the architecture is now called x86-64, a 
 Then, a new paradigm came, instead of having a homogeneous set of cores, cores focused on performance and efficiency were added to the same package, the hybrid architecture. This set of heterogeneous cores meant the scheduler had to be changed in the operating systems, to better allocate more demanding programs on high performing cores and lower important tasks, such as background jobs to the highly efficient cores. This technology was released by Intel on the 12th generation Intel Core processors, using Intel 7 (a $7 nm$ node). This approach was revolutionary for power efficiency as \textcite{big-little} state.
 
 
-\subsection{ARM Architecture}
-The ARM (Advanced RISC Machine) is the newest architecture that has reached the global scale. Developed in 1986, the goal of this new 32 bit architecture was the simplicity. As \textcite{arm:story} puts it, the energy efficient came later. This allowed the ARM architecture to dominate on the mobile sector, specially on smartphones, which run on batteries.
+\subsection{\gls{ARM} Architecture}
+The \gls{ARM} (Advanced RISC Machine) is the newest architecture that has reached the global scale. Developed in 1986, the goal of this new 32 bit architecture was the simplicity. As \textcite{arm:story} puts it, the energy efficient came later. This allowed the \gls{ARM} architecture to dominate on the mobile sector, specially on smartphones, which run on batteries.
 
 The characteristics of this \gls{isa} are a reduced set of instructions (\gls{RISC}), which  allows processors to have fewer transistors than \gls{cisc} architectures such as x86, resulting in lower cost, lower temperatures and lower power consumption.
 
-Currently, this technology is not only used in low-power light devices, but many laptops, and even desktops are using ARM chips due to their power efficiency and performance \cite{arm:optimization-big.LITTLE}.
+Currently, this technology is not only used in low-power light devices, but many laptops, and even desktops are using \gls{ARM} chips due to their power efficiency and performance \cite{arm:optimization-big.LITTLE}.
 
-ARM also has a hybrid technology, called big.LITTLE, as described by the \cite{arm:biglittle2013}{ ARM White Paper} that combines high-efficiency cores and high-performance cores. This architecture dominates the mobile device market and is increasingly found in modern laptops. 
+\gls{ARM} also has a hybrid technology, called big.LITTLE, as described by the \cite{arm:biglittle2013}{ \gls{ARM} White Paper} that combines high-efficiency cores and high-performance cores. This architecture dominates the mobile device market and is increasingly found in modern laptops. 
 
 
 
@@ -42,20 +42,13 @@ ARM also has a hybrid technology, called big.LITTLE, as described by the \cite{a
 \subsection{CPU Design for Multi-core dies}
 Is it important to note that a computer that reports having more than 32 logical cores, usually has more than one socket, thus the performance and scaling of programs on multiple sockets can affect the energy efficiency and performance. This is due to the fact that information has to move between the multiple cache levels. 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.75\linewidth]{img/table-multi-core-numa.png}
-    \caption{Architectures and most important parameters used for evaluation}
-    \label{fig:architectures-numas}
-\end{figure}
-
-From \cite{zen2-architecture}'s \autoref{fig:architectures-numas} we can see there are multiple configurations, depending on the architecture, the amount of cache per core, how many cores there are per chip and the memory bandwidth.
+From \cite{phd-apmtrlk}'s Table 2.1 we can see there are multiple configurations, depending on the architecture, the amount of cache per core, how many cores there are per chip and the memory bandwidth.
 
 
 \begin{figure}
     \centering
     \includegraphics[width=0.75\linewidth]{img/xeon-architecture.png}
-    \caption{Intel Xeon Skylake-X}
+    \caption{Intel Xeon Skylake-X CPU distribution of cores and caches. Figure adapted from \autocite{phd-apmtrlk}}
     \label{fig:xeon-layour}
 \end{figure}
 
@@ -65,9 +58,11 @@ The traditional layout of these \glspl{cpu} can be found from \autoref{fig:xeon-
 \begin{figure}
     \centering
     \includegraphics[width=0.85\linewidth]{img/ccx-zen2-layout.png}
-    \caption[Zen hierarchy architecture]{AMD introduced an additional hierarchy level with its Zen architecture: \gls{CCX}. A single core complex has up to four cores, with a sliced victim L3 cache. Two \glspl{CCX} are combined onto a die, sharing a local partition of main memory. Multiple dies make up a socket}
+    \caption{AMD's ZEN architecture}
     \label{fig:zen2-architecture}
 \end{figure}
+
+AMD introduced an additional hierarchy level with its Zen architecture: \gls{CCX}. A single core complex has up to four cores, with a sliced victim L3 cache. Two \glspl{CCX} are combined onto a die, sharing a local partition of main memory. Multiple dies make up a socket, as it can be seen from \autoref{fig:zen2-architecture}.	
 
 Using AMD's ZEN 2 architecture as a new CPU architecture example, we can observe there are is an additional layer, compared to \autoref{fig:xeon-layour}. As \textcite{zen2-architecture} puts it in their paper, in \autoref{fig:zen2-architecture}, the victim of this design is the L3 cache, which is shared between fewer cores.
 
@@ -77,13 +72,15 @@ Using AMD's ZEN 2 architecture as a new CPU architecture example, we can observe
 Hyperthreading is a technology that allows a single physical core to appear as two logical cores to the operating system. This means that the operating system can schedule two threads on a single physical core, allowing for better utilization of the CPU resources. This usually entails a better performance, as described by \textcite{hyperthreading}, but when \gls{cpu} intensive benchmarks are run, such as integer sorting, the performance can be worse than running the same program on a system that does not have hyperthreading enabled. This is due to the two threads sharing the same resources, such as the cache and the execution units, which can lead to contention and reduced performance.
 
 
-\subsection{GPU and Accelerators}
+\subsection{\gls{gpu} and Accelerators}
 \label{sec:gpu-accelerators}
-The \gls{gpu} is a specialized processor designed to handle complex mathematical calculations, particularly those related to graphics rendering. It is optimized for parallel processing, allowing it to perform many calculations simultaneously. This makes it ideal for tasks such as image processing, machine learning, and scientific simulations. Most games run using GPU acceleration and most AI workloads can also be accelerated by using the GPU. 
+The \gls{gpu} is a specialized processor designed to handle complex mathematical calculations, particularly those related to graphics rendering. It is optimized for parallel processing, allowing it to perform many calculations simultaneously. This makes it ideal for tasks such as image processing, machine learning, and scientific simulations. Most games and image renderers run using a \gls{gpu} acceleration and most AI workloads can also be accelerated by it.
 
-We can see from this recent paper \cite{gpu-energy-efficiency}, the fields where \glspl{gpu} are used are medical image processing, matrix-related computation, artificial intelligence, deep learning, etc. an acceleration of up to $50x$ can be obtained on specific kernels, compared to a \gls{cpu}.
+We can see from this paper \cite{gpu-energy-efficiency}, the fields where \glspl{gpu} are used are medical image processing, matrix-related computation, artificial intelligence, deep learning, etc. an acceleration of up to $50x$ can be obtained on specific kernels, compared to a \gls{cpu}.
 
-This would be the ideal architecture to implement our testing framework if what we were looking for is extreme performance, but, as the goal of this project is to analyze the energy efficiency of different programming languages, the \gls{gpu} is being considered for this project. 
+This would be the ideal architecture to implement our testing framework if what we were looking for is extreme performance, but, as the goal of this project is to analyze the energy efficiency of different programming languages, the \gls{gpu} is not being considered for this project. 
+
+An accelerator is a hardware component that enhances the performance of a system by offloading specific tasks from the CPU. Accelerators can take many forms, including \glspl{gpu}, \glspl{fpga}, and application-specific integrated circuits (ASICs). These devices are designed to perform particular computations more efficiently than a general-purpose CPU, making them valuable for tasks such as machine learning, data processing, and scientific simulations. They were very popular in the past, but their use has declined with the rise of more powerful \Glspl{cpu}.
 
 \subsubsection{CUDA}
 \label{sec:cuda}
@@ -125,7 +122,7 @@ In this section, the different programming languages that have been chosen will 
 		\addlinespace
 		
 		\textbf{Concurrency} &
-		Provides low-level primitives like threads and \gls{mutex}es, requiring manual management. &
+		Provides primitives like threads and \gls{mutex}es, requiring manual management. &
 		Offers threading (limited by the \gls{GIL} for \gls{cpu}-bound tasks) and multiprocessing libraries. &
 		Built-in support with lightweight \glspl{goroutine} and \glspl{channel} managed by the Go runtime. \\
 		\addlinespace
@@ -143,7 +140,7 @@ In this section, the different programming languages that have been chosen will 
 		\addlinespace
 		
 		\textbf{Programming Paradigms} &
-		Multi-paradigm: Supports procedural, object-oriented (\gls{oop}), and generic programming. &
+		Multi-paradigm: Supports procedural, object-oriented (\gls{oop}), and \gls{genP}. &
 		Multi-paradigm: Supports procedural, object-oriented, and functional styles. &
 		Primarily procedural and concurrent. Uses composition over inheritance (no classes). \\
 		\bottomrule
@@ -151,7 +148,7 @@ In this section, the different programming languages that have been chosen will 
 \end{table}
 
 
-\begin{table*} 
+\begin{table} 
 	\centering
 	\caption{Comparison of Language Characteristics Impacting Energy Efficiency}
 	\label{tab:language_comparison_energy}
@@ -204,7 +201,7 @@ In this section, the different programming languages that have been chosen will 
 		Interfaces provide abstraction with a small, well-defined runtime cost. Composition is favored over inheritance. \\
 		\bottomrule
 	\end{tabularx}
-\end{table*}
+\end{table}
 
 
 
@@ -236,9 +233,9 @@ Go's scheduler performs a series of steps before starting to run the user's code
         \item \textbf{Allocator Structures}: Other structures such as the \texttt{mheap} (the global heap structure for Go), \texttt{mcentral} (a central cache for memory spans) and for each \texttt{P} a per-thread cache for allocating small objects without locking the main thread, called \texttt{mcache}.
         \item \textbf{\gls{GC} Pacer}: The pacer determines the optimal time to trigger a \gls{gc-cycle} based on the \texttt{GOGC} environment variable. The goal of Go's collection system is to perform one as the heap doubles in size since the previous cycle.
     \end{itemize}
-        
-    \item \textbf{Package Initialization}: At this point, the runtime can start reading from the supplied files. It starts with importing the required dependencies and initializing package-level variables. Once all files are processed in lexical file name order, the \texttt{init()} function or functions are called in order. 
-        
+
+    \item \textbf{Package Initialization}: At this point, the runtime can start reading from the supplied files. It starts with importing the required dependencies and initializing package-level variables. Once all files are processed in lexical file name order, the \texttt{init()} function of each file and then subsequent functions inside each file are called.
+
     \item \textbf{Creating the Main \Gls{goroutine}}: The runtime doesn't call the \texttt{main.main} function directly. Instead, it creates a new \gls{goroutine} to execute it. This is done using the internal \texttt{runtime.newproc} function. A new \gls{goroutine} (\texttt{G}) is created, and its instruction pointer is set to the \texttt{main.main} function. This new \gls{goroutine} is then placed into the local run queue of one of the available \texttt{P}s, making it runnable.
         
     \item \textbf{Start the Scheduler}: Finally, the \texttt{runtime.mstart} is called on the main thread, that enters into the scheduling loop. From this point on, the Go program is running, and the scheduler is fully operational, managing the execution of all goroutines on the available threads.
@@ -255,7 +252,7 @@ Python, on the contrary to most of the other popular languages is an interpreted
 As \cite{10.1145/1103845.1094836} puts it: "Garbage collection also can have a significant impact on both execution time and memory usage, and can be fine-tuned to obtain better performance"
 
 \subsubsection{"Compiling" Python code to \gls{bytecode}}
-There are multiple steps between the Python code that the user writes and its execution, which can be divided into two phases \cite{cpython-docs} on \gls{CPython}, the default python interpreter:
+There are multiple steps between the Python code that the user writes and its execution. While using \gls{CPython}, this can be divided into two phases \cite{cpython-docs}:
 
 
 %% -----------------
@@ -318,14 +315,16 @@ As python's interpreter is almost completely independent of its syntax and langu
 C++ is one of the most famous language when it comes to high performance computing applications. Based on the programming language C, released in 1978 as a high-level language at the time, compared to assembly.
 
 
-As we can see from \autoref{tab:language_comparison}, there are many characteristics on why the language is one of the most used for high performance software, for example, \href{https://blender.org}{blender} or \href{https://www.foundry.com/products/nuke-family}{nuke}. This known examples and the multiple tests performed in multiple courses during the computer science degree.
+As we can see from \autoref{tab:language_comparison}, there are many characteristics on why it is one of the most used languages for high performance software, for example, \underline{\href{https://blender.org}{blender}} a 3D creative software or \underline{\href{https://www.foundry.com/products/nuke-family}{nuke}} a VFX composition tool. This known examples and the multiple tests performed in multiple courses during the computer science degree have shown its capabilities.
 
-If we take into account the energy efficiency, from \autoref{tab:language_comparison_energy} we can observe that being a compiled language, with multiple optimizations at the compilation level, zero-cost abstractions, no runtime and direct memory management makes it one of the best low energy consumption language in theory.
+If we take into account the energy efficiency, from \autoref{tab:language_comparison_energy} we can observe that being a compiled language, with multiple optimizations at the compilation level, zero-cost abstractions, no \gls{runtime} and direct memory management makes it one of the best low energy consumption language in theory.
 In this section, the different programming languages that have been chosen will be discussed, as well as why other similar languages were not.
+
+
 
 \subsubsection{Compilers}
 
-There are two main compilers for C++ widely used in the industry Clang++ and G++:
+There are two main compilers for C++:
 
 \textbf{G++} is the C++ compiler for the GNU Compiler Collection (GCC). It is widely considered as a seasoned, reliable veteran; it's the default on most Linux distributions and has a long history of producing highly optimized code for final release builds. While its error messages have improved significantly over the years, they can sometimes be verbose and a bit cryptic, leaving you to decipher a long template expansion error.
 
@@ -336,9 +335,17 @@ There are two main compilers for C++ widely used in the industry Clang++ and G++
 
 There are many more languages, but to reduce the scope of the project and have a good analysis on each of the languages to be analyzed, a reduced group had to be selected. 
 
-As a contender for a fast, high energy efficient language we could have used Rust, a recently new programming language, focused on performance and type-safety. As Rust is a compiled language and uses the same \gls{LLVM} backend for compilation, a similar result is to be expected from this benchmark compared to the C++ implementation. 
+As a contender for a fast, high energy efficient language we could have used Rust, a recently new programming language, focused on performance and type-safety. As Rust is a compiled language and uses the same \gls{LLVM} backend for compilation, a similar result is to be expected from this benchmark compared to the C++ implementation, thus, I excluded it from the study.
 
-Other programming languages that could have been good contenders to be tested, not because of their efficiency but because of their widespread use could have been:
+Other languages that could have been good contenders to be tested, not because of their efficiency but because of their widespread use could have been:
+\begin{itemize}
+	\item \textbf{Java}
+	\item \textbf{JavaScript}
+	\item \textbf{Perl}
+	\item \textbf{Fortran}
+\end{itemize}
+
+I would also like to mention that, I have not used GPU specific code, as that is not the goal of this project, as we can not really compare the energy efficiency of a CUDA program with a C++ program, as the CUDA program is designed to run on a GPU, which has a completely different architecture and power consumption profile than a CPU.
 
 \begin{table}[!ht]
 	\centering
@@ -357,7 +364,7 @@ Other programming languages that could have been good contenders to be tested, n
 		\addlinespace
 		
 		\textbf{JavaScript / TypeScript} &
-		These languages was designed for more web-centric environments, these languages run on JavaScript engines and typically use a single-threaded event loop for concurrency. This distinct execution paradigm and primary application domain fall outside the scope of this study, which focuses on general-purpose compiled languages. Some runtimes that Javascipt use are Node, Deno or bun, but all of them have to use a core, either \gls{V8} (for node and Deno) or JavaScriptCode (for bun). \\
+		These languages were designed for more web-centric environments, these languages run on JavaScript engines and typically use a single-threaded event loop for concurrency. This distinct execution paradigm and primary application domain fall outside the scope of this study, which focuses on general-purpose compiled languages. Some runtimes that JavaScript use are Node, Deno or bun, but all of them have to use a core, either \gls{V8} (for node and Deno) or JavaScriptCore (for bun). \\
 		\addlinespace
 		
 		\textbf{Ada} &
@@ -386,5 +393,5 @@ Other studies such as \cite{ranking-rui-pereira}, specifically on their Table 3,
 
 As \textcite{usenix-comparing-29x} state in their publication "studies have found that \gls{V8} and \gls{CPython} can be $8.01$x and $29.50$x slower on average that their C++ counterparts respectively" but they also state that, "choosing a language for your application simple because it is 'fast' is the ultimate form of premature optimization" \cite{python-is-slow}. They have also found out that with respect to a language with a runtime, it can provide a better performance and scalability. Although this might be counter-intuitive, Go's scheduler automatically maps user threads to kernel threads thus reducing the number of context switches.
 
-Another challenge this area faces is measuring the energy consumption. Some \glspl{cpu} have internal registers that can provide these measurements, like the intel RAPL, but other machines might have those registers not accessible to the user or, in case of most ARM processors, these registers do not exist. Another technique is using the measurement from an external power plug, like the TP-link HS110, used by \textcite{meassuring-jit} in their measurements. The problem with these kinds of measurement devices it that the entire system is measured instead of only the \gls{cpu} or the \gls{ram} and the precision it provides is much lower, being able to read only at a $1$ Hz frequency. 
+Another challenge this area faces is measuring the energy consumption. Some \glspl{cpu} have internal registers that can provide these measurements, like the intel \gls{RAPL}, but other machines might have those registers not accessible to the user or, in case of most \gls{ARM} processors, these registers do not exist. Another technique is using the measurement from an external power plug, like the TP-link HS110, used by \textcite{meassuring-jit} in their measurements. The problem with these kinds of measurement devices it that the entire system is measured instead of only the \gls{cpu} or the \gls{ram} and the precision it provides is much lower, being able to read only at a $1$ Hz frequency. 
 

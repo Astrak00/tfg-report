@@ -27,9 +27,14 @@
     description = {}
 }
 
+\newglossaryentry{runtime}{
+    name = {runtime},
+    description = {The runtime is a set of code that is executed while a program is running, which can include the program's memory management and other system resources it uses.}
+}
+
 \newglossaryentry{goroutine}{
     name = {goroutine},
-    description = {A goroutine is a lightweight thread managed by the Go runtime}
+    description = {A goroutine is a lightweight thread managed by the Go \gls{runtime}.}
 }
 
 \newglossaryentry{channel}{
@@ -64,12 +69,12 @@
 
 \newglossaryentry{CPython}{
     name = {CPython},
-    description = {Pythons default interpreter, with a \gls{GIL}, until version 3.13 which an experimental free-threaded version was created and version 3.14 will continue its development (both known as 3.13t and 3.14t respectively)}
+    description = {Python's default interpreter, with a \gls{GIL}, until version 3.13 which an experimental free-threaded version was created and version 3.14 will continue its development (both known as 3.13t and 3.14t respectively)}
 }
 
 \newglossaryentrywithacronym{VM}
 {Virtual Machine}
-{The Python virtual machine is the same as the interpreter, which turns python's code into machine ready instructions. Pythons default VM implementation if \gls{CPython}, but others exists such as Jython (Java), IronPython (.NET) or PyPy}
+{The Python virtual machine is the same as the interpreter, which turns python's code into machine ready instructions. Python's default VM implementation is \gls{CPython}, but others exist such as Jython (Java), IronPython (.NET) or PyPy}
 
 \newglossaryentrywithacronym{GC}
 {Garbage Collector}
@@ -151,7 +156,7 @@
 
 \newglossaryentry{V8}{
     name = {V8},
-    description = {Google's open-source, high-performance JavaScript and WebAssembly engine, written in C++, that powers the Google Chrome browser and the Node.js runtime environment}
+    description = {Google's open-source, high-performance JavaScript and WebAssembly engine, written in C++, that powers the Google Chrome browser and the Node.js \gls{runtime} environment}
 }
 
 \newacronym{ram}{RAM}{Random Acces Memory}
@@ -181,7 +186,7 @@
 
 \newglossaryentry{green-thread}{
     name = {Green threads},
-    description = {Green threads are software threads managed by a runtime environment or library, rather than directly by the operating system}
+    description = {Green threads are software threads managed by a \gls{runtime} environment or library, rather than directly by the operating system}
 }
 \newglossaryentrywithacronym{wg}
 {Wait Group}
@@ -231,3 +236,13 @@
 \newglossaryentrywithacronym{ALU}
 {Arithmetic Logic Unit}
 {A component of a computer's CPU that performs arithmetic and logical operations on binary data, serving as the fundamental building block for processing instructions in digital computers.}
+
+\newglossaryentrywithacronym{RAPL}
+{Running Average Power Limit}
+{A feature in Intel processors that allows software to monitor and control the power consumption of the CPU and other components, helping to optimize energy efficiency and thermal management.}
+
+\newacronym{ARM}{ARM}{Advanced \gls{RISC} Machine}
+
+\newglossaryentrywithacronym{genP}
+{Generic Programming}
+{Generic programming is a programming paradigm that enables the writing of code that is independent of any particular type. It allows algorithms to be written in a way that can operate on different data types without being rewritten for each type. This is often achieved through the use of templates or polymorphism. For example: }
