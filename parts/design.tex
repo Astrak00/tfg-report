@@ -2,7 +2,7 @@
 
 The premise of this chapter is to describe the design, implementation and decisions taken during the development of the different programs that compose this project.
 
-Section \ref{sec:general_program_design} describes the general design of the programs, and how they are divided. In \autoref{sec:sphere-object} and \autoref{sec:renderer}, we will see how the objects are designed and how the rendering is done, respectively. Then, \autoref{sec:output} describes how the output is generated and how it can be used to visualize the results of the ray-tracer and finally, the last section, \ref{sec:running_program}, describes how the program can be run and how to use the \texttt{Makefile} to run the program with different parameters.
+Section \ref{sec:general_program_design} describes the general design of the programs, and how they are divided. Section \ref{sec:scene} describes the implementation of the scene objects and their interactions. In \autoref{sec:sphere-object} and \autoref{sec:renderer}, we will see how the objects are designed and how the rendering is done, respectively. Then, \autoref{sec:output} describes how the output is generated and how it can be used to visualize the results of the ray-tracer and finally, the last section, \ref{sec:running_program}, describes how the program can be run and how to use the \texttt{Makefile} to run the program with different parameters.
 
 \section{General Program Design}
 \label{sec:general_program_design}
@@ -16,7 +16,7 @@ As it can be inferred from the \autoref{fig:general_program_flow}, the program i
 
 \input{parts/diagrams/code-files}
 
-\begin{figure}[]
+\begin{figure}
     \centering
     \begin{multicols}{3}
 
@@ -115,7 +115,7 @@ When using C++, the intent was to use some of C++ modern features that would mak
 
 The idea of making it header only was the benefits of inlining, easy to distribute and easily separable concepts and, as the compilation time is not crucial, the re-compilation of the headers every time there is a modification is not a drawback.
 
-For multithreaded operations, I selected the \gls{openMP} library due to its ease of use and excellent performance. \gls{openMP} has been a widely adopted standard for decades, supported by most compilers, and originally emerged from the Fortran ecosystem in the 1960s.
+For multithreaded operations, I selected the \gls{openMP} standard due to its ease of use and excellent performance. \gls{openMP} has been a widely adopted standard for decades, supported by most compilers, and originally emerged from the Fortran ecosystem in the 1960s.
 
 \subsubsection{Go}
 When choosing Go as to build the ray-tracer, as Go does not support inheritance like other \gls{oop} languages, I had to use \texttt{interfaces}, which are the tools Go provide for polymorphism. Interfaces are a type that defines a set of method signatures. Thus, for any struct that has the signature methods described in an interface, it can be called as an object from that type.

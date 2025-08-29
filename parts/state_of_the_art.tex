@@ -58,7 +58,7 @@ The traditional layout of these \glspl{cpu} can be found from \autoref{fig:xeon-
 \begin{figure}
     \centering
     \includegraphics[width=0.85\linewidth]{img/ccx-zen2-layout.png}
-    \caption{AMD's ZEN architecture}
+    \caption{AMD's ZEN architecture. Figure adapted from \autocite{phd-apmtrlk}}
     \label{fig:zen2-architecture}
 \end{figure}
 
@@ -67,27 +67,31 @@ AMD introduced an additional hierarchy level with its Zen architecture: \gls{CCX
 Using AMD's ZEN 2 architecture as a new CPU architecture example, we can observe there are is an additional layer, compared to \autoref{fig:xeon-layour}. As \textcite{zen2-architecture} puts it in their paper, in \autoref{fig:zen2-architecture}, the victim of this design is the L3 cache, which is shared between fewer cores.
 
 
-\subsection{Hyperthreading}
+\subsection{Simultaneous multithreading \& Hyperthreading}
 \label{sec:hyperthreading}
-Hyperthreading is a technology that allows a single physical core to appear as two logical cores to the operating system. This means that the operating system can schedule two threads on a single physical core, allowing for better utilization of the CPU resources. This usually entails a better performance, as described by \textcite{hyperthreading}, but when \gls{cpu} intensive benchmarks are run, such as integer sorting, the performance can be worse than running the same program on a system that does not have hyperthreading enabled. This is due to the two threads sharing the same resources, such as the cache and the execution units, which can lead to contention and reduced performance.
 
+SMT or Simultaneous Multithreading is a technology that allows a single physical core to appear as two logical cores to the operating system. This means that the operating system can schedule two threads on a single physical core, allowing for better utilization of the CPU resources. This usually entails a better performance, as described by \textcite{hyperthreading}.
 
-\subsection{\gls{gpu} and Accelerators}
-\label{sec:gpu-accelerators}
-The \gls{gpu} is a specialized processor designed to handle complex mathematical calculations, particularly those related to graphics rendering. It is optimized for parallel processing, allowing it to perform many calculations simultaneously. This makes it ideal for tasks such as image processing, machine learning, and scientific simulations. Most games and image renderers run using a \gls{gpu} acceleration and most AI workloads can also be accelerated by it.
+However, for CPU-intensive benchmarks, such as floating-point operations, performance can sometimes degrade when hyperthreading is enabled. This is because the two threads share the same resources, such as the cache and execution units, which can lead to contention and reduced efficiency.
 
-We can see from this paper \cite{gpu-energy-efficiency}, the fields where \glspl{gpu} are used are medical image processing, matrix-related computation, artificial intelligence, deep learning, etc. an acceleration of up to $50x$ can be obtained on specific kernels, compared to a \gls{cpu}.
+Hyperthreading is Intel's specific implmementation of SMT, which was first introduced in 2002 with the Pentium 4 processor. It has been included in most Intel processors since then, including the Core i3, i5, i7, and i9 series. AMD also has its own implementation of SMT, which is included in its Ryzen processors.
 
-This would be the ideal architecture to implement our testing framework if what we were looking for is extreme performance, but, as the goal of this project is to analyze the energy efficiency of different programming languages, the \gls{gpu} is not being considered for this project. 
+% \subsection{GPU and Accelerators}
+% \label{sec:gpu-accelerators}
+% The \gls{gpu} is a specialized processor designed to handle complex mathematical calculations, particularly those related to graphics rendering. It is optimized for parallel processing, allowing it to perform many calculations simultaneously. This makes it ideal for tasks such as image processing, machine learning, and scientific simulations. Most games and image renderers run using a \gls{gpu} acceleration and most AI workloads can also be accelerated by it.
 
-An accelerator is a hardware component that enhances the performance of a system by offloading specific tasks from the CPU. Accelerators can take many forms, including \glspl{gpu}, \glspl{fpga}, and application-specific integrated circuits (ASICs). These devices are designed to perform particular computations more efficiently than a general-purpose CPU, making them valuable for tasks such as machine learning, data processing, and scientific simulations. They were very popular in the past, but their use has declined with the rise of more powerful \Glspl{cpu}.
+% We can see from this paper \cite{gpu-energy-efficiency}, the fields where \glspl{gpu} are used are medical image processing, matrix-related computation, artificial intelligence, deep learning, etc. an acceleration of up to $50x$ can be obtained on specific kernels, compared to a \gls{cpu}.
 
-\subsubsection{CUDA}
-\label{sec:cuda}
-CUDA (Compute Unified Device Architecture) is a parallel computing platform and application programming interface (API) model created by NVIDIA. It allows developers to use a C-like programming language to write algorithms that can be executed on the GPU, enabling significant performance improvements for compute-intensive tasks. CUDA provides a rich set of libraries and tools for optimizing performance, making it a popular choice for high-performance computing applications. However, we will not use CUDA in this project as the focus is on analyzing the energy efficiency of programming languages rather than leveraging GPU acceleration. 
-\subsubsection{OpenCL}
-\label{sec:opencl}
-OpenCL (Open Computing Language) is an open standard for parallel programming of heterogeneous systems. It allows developers to write programs that can execute across various devices, including CPUs, GPUs, and other accelerators. OpenCL provides a C-like programming language and a set of APIs for managing parallel tasks, making it a versatile choice for high-performance computing applications. A future project could be analyzing the energy efficiency of CUDA programs vs OpenCL programs, as they are both parallel programming models for GPU acceleration.
+% This would be the ideal architecture to implement our testing framework if what we were looking for is extreme performance, but, as the goal of this project is to analyze the energy efficiency of different programming languages, the \gls{gpu} is not being considered for this project. 
+
+% An accelerator is a hardware component that enhances the performance of a system by offloading specific tasks from the CPU. Accelerators can take many forms, including \glspl{gpu}, \glspl{fpga}, and application-specific integrated circuits (ASICs). These devices are designed to perform particular computations more efficiently than a general-purpose CPU, making them valuable for tasks such as machine learning, data processing, and scientific simulations. They were very popular in the past, but their use has declined with the rise of more powerful \Glspl{cpu}.
+
+% \subsubsection{CUDA}
+% \label{sec:cuda}
+% CUDA (Compute Unified Device Architecture) is a parallel computing platform and application programming interface (API) model created by NVIDIA. It allows developers to use a C-like programming language to write algorithms that can be executed on the GPU, enabling significant performance improvements for compute-intensive tasks. CUDA provides a rich set of libraries and tools for optimizing performance, making it a popular choice for high-performance computing applications. However, we will not use CUDA in this project as the focus is on analyzing the energy efficiency of programming languages rather than leveraging GPU acceleration. 
+% \subsubsection{OpenCL}
+% \label{sec:opencl}
+% OpenCL (Open Computing Language) is an open standard for parallel programming of heterogeneous systems. It allows developers to write programs that can execute across various devices, including CPUs, GPUs, and other accelerators. OpenCL provides a C-like programming language and a set of APIs for managing parallel tasks, making it a versatile choice for high-performance computing applications. A future project could be analyzing the energy efficiency of CUDA programs vs OpenCL programs, as they are both parallel programming models for GPU acceleration.
 
 
 
@@ -140,7 +144,7 @@ In this section, the different programming languages that have been chosen will 
 		\addlinespace
 		
 		\textbf{Programming Paradigms} &
-		Multi-paradigm: Supports procedural, object-oriented (\gls{oop}), and \gls{generic}. &
+		Multi-paradigm: Supports procedural, object-oriented (\gls{oop}), \gls{generic} and functional. &
 		Multi-paradigm: Supports procedural, object-oriented, and functional styles. &
 		Primarily procedural and concurrent. Uses composition over inheritance (no classes). \\
 		\bottomrule
@@ -203,7 +207,7 @@ In this section, the different programming languages that have been chosen will 
 	\end{tabularx}
 \end{table}
 
-
+\FloatBarrier
 
 \subsection{Go: Compiled Language with an Embedded Managed Runtime}
 Go is a language developed by \href{https://google.com}{Google}, released in 2009, focused on concurrency. It has a runtime which manages the \glspl{goroutine}. As described by \cite{rosecrance2019garbage}, Go has a Garbage Collector, which means while the program is running, there needs to be a thread checking for unused memory structures. 
@@ -252,7 +256,7 @@ Python, on the contrary to most of the other popular languages is an interpreted
 As \cite{10.1145/1103845.1094836} puts it: "Garbage collection also can have a significant impact on both execution time and memory usage, and can be fine-tuned to obtain better performance"
 
 \subsubsection{"Compiling" Python code to \gls{bytecode}}
-There are multiple steps between the Python code that the user writes and its execution. While using \gls{CPython}, this can be divided into two phases \cite{cpython-docs}:
+There are multiple steps between the Python code that the user writes and its execution. While using \gls{CPython}, the default python interpreter, this can be divided into two phases \cite{cpython-docs}:
 
 
 %% -----------------
@@ -312,19 +316,19 @@ As python's interpreter is almost completely independent of its syntax and langu
 
 
 \subsection{C++: Directly Compiled, Unmanaged Language}
-Based on the programming language C, released in 1978 as a high-level language at the time, compared to assembly. C++ is one of the most famous language when it comes to high performance computing applications.
+Based on the programming language C (high-level language at the time, compared to assembly, in 1972), C++ was released in 1983. Nowadays, it is known as one of the most famous languages when it comes to high performance computing applications.
+
+As we can see from \autoref{tab:language_comparison}, there are many characteristics on why it is one of the most used languages for high performance software, for example, blender\footnote{\href{https://blender.org}{blender.org}} or nuke\footnote{\href{https://www.foundry.com/products/nuke-family}{nuke.com}}. These known examples and the multiple tests performed in multiple courses during the computer science degree have shown its capabilities.
 
 
-As we can see from \autoref{tab:language_comparison}, there are many characteristics on why it is one of the most used languages for high performance software, for example, \underline{\href{https://blender.org}{blender}} a 3D creative software or \underline{\href{https://www.foundry.com/products/nuke-family}{nuke}} a VFX composition tool. This known examples and the multiple tests performed in multiple courses during the computer science degree have shown its capabilities.
-
-If we take into account the energy efficiency, from \autoref{tab:language_comparison_energy} we can observe that being a compiled language, with multiple optimizations at the compilation level, zero-cost abstractions, no \gls{runtime} and direct memory management makes it one of the best low energy consumption language in theory.
+If we take into account the energy efficiency, from \autoref{tab:language_comparison_energy} we can observe that being a compiled language, with multiple optimizations at the compilation level, zero-cost abstractions and direct memory management makes it one of the best low energy consumption language in theory.
 In this section, the different programming languages that have been chosen will be discussed, as well as why other similar languages were not.
 
 
 
 \subsubsection{Compilers}
 
-There are two main compilers for C++:
+There are three main compilers for C++: \textbf{G++}, \textbf{Clang++} and \textbf{MSVC}. As this project is being done on a Linux system, I will only be using G++ and Clang++.
 
 \textbf{G++} is the C++ compiler for the GNU Compiler Collection (GCC). It is widely considered as a seasoned, reliable veteran; it's the default on most Linux distributions and has a long history of producing highly optimized code for final release builds. While its error messages have improved significantly over the years, they can sometimes be verbose and a bit cryptic, leaving you to decipher a long template expansion error.
 
@@ -337,17 +341,9 @@ There are many more languages, but to reduce the scope of the project and have a
 
 As a contender for a fast, high energy efficient language we could have used Rust, a recently new programming language, focused on performance and type-safety. As Rust is a compiled language and uses the same \gls{LLVM} backend for compilation, a similar result is to be expected from this benchmark compared to the C++ implementation, thus, I excluded it from the study.
 
-Other languages that could have been good contenders to be tested, not because of their efficiency but because of their widespread use could have been:
-\begin{itemize}
-	\item \textbf{Java}
-	\item \textbf{JavaScript}
-	\item \textbf{Perl}
-	\item \textbf{Fortran}
-\end{itemize}
+Other languages that, while not necessarily the most efficient, could have been strong candidates for testing due to their widespread adoption are listed in \autoref{tab:excluded_languages}
 
-I would also like to mention that, I have not used GPU specific code, as that is not the goal of this project, as we can not really compare the energy efficiency of a CUDA program with a C++ program, as the CUDA program is designed to run on a GPU, which has a completely different architecture and power consumption profile than a CPU.
-
-\begin{table}[!ht]
+\begin{table}
 	\centering
 	\caption{Languages Excluded from the Study and Justification}
 	\label{tab:excluded_languages}
@@ -376,7 +372,6 @@ I would also like to mention that, I have not used GPU specific code, as that is
 		\bottomrule
 	\end{tabularx}
 \end{table}
-
 
 
 \section{Previous Benchmarks}
