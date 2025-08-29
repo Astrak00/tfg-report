@@ -1,0 +1,387 @@
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  \begin{semilogyaxis}[
+      title={Logarithmic energy (pkg) consumption - Server},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Energy (J)},
+      ymode=log,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,14,16,28,32,48,60},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.98,0.98)},
+        anchor=north east,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+
+    %% C++ %%
+    % open circles
+    \addplot[
+      blue,
+      only marks,
+      mark=o,
+      mark options={draw=blue,fill=white}
+    ] table[row sep=\\] {
+      x    y \\
+      1    3756.26  \\
+      2    2591.91  \\
+      4    1362.61  \\
+      8    799.23   \\
+      14   603.37   \\
+      16   627.16   \\
+      28   541.37   \\  
+      32   529.61   \\  
+      48   740.57   \\
+      60   666.04   \\
+    };
+    \addlegendentry{C++}
+    % filled circles at 28 & 32
+    \addplot[
+      blue,
+      only marks,
+      mark=*,
+      mark options={draw=blue,fill=blue}
+    ] table[row sep=\\] {
+      x    y \\
+      28   766.51   \\  
+      32   757.79   \\  
+    };
+    \addlegendentry{C++ same CPU}
+    % trendline, but do NOT add to legend:
+    \addplot[
+      blue,
+      forget plot,
+      domain=1:60,
+      samples=200
+    ] {2839.30 * x^(-0.452)};
+
+    %% Go %%
+    \addplot[
+      violet,
+      only marks,
+      mark=o,
+      mark options={draw=violet,fill=white}
+    ] table[row sep=\\] {
+      x    y \\
+      1    28522.69 \\
+      2    18231.97 \\
+      4    10304.27	\\
+      8    5617.27  \\
+      14   3155.30  \\
+      16   2904.52  \\
+      28   1830.15  \\
+      32   2043.31  \\
+      48   1985.14  \\
+      60   1975.05  \\
+    };
+    \addlegendentry{Go}
+    \addplot[
+      violet,
+      only marks,
+      mark=*,
+      mark options={draw=violet,fill=violet}
+    ] table[row sep=\\] {
+      x    y \\
+      28   2116.22  \\
+      32   1889.55  \\
+    };
+    \addlegendentry{Go same CPU}
+    \addplot[
+      violet,
+      forget plot,
+      domain=1:60,
+      samples=200
+    ] {23600 * x^(-0.6783)};
+
+    %% PyPy %%
+    \addplot[
+      orange,
+      only marks,
+      mark=o,
+      mark options={draw=orange,fill=white}
+    ] table[row sep=\\] {
+      x    y \\
+      1    7972.65  \\
+      2    5147.60  \\
+      4    2828.21  \\
+      8    1747.96  \\
+      14   1232.03  \\
+      16   1140.80  \\
+      28   1252.93  \\
+      32   1257.81  \\
+      48   1354.03  \\
+      60   1354.03  \\
+    };
+    \addlegendentry{PyPy}
+    \addplot[
+      orange,
+      only marks,
+      mark=*,
+      mark options={draw=orange,fill=orange}
+    ] table[row sep=\\] {
+      x    y \\
+      28   1175.52  \\
+      32   1155.74  \\
+    };
+    \addlegendentry{PyPy same CPU}
+    \addplot[
+      orange,
+      forget plot,
+      domain=1:60,
+      samples=200
+    ] {6250 * x^(-0.4633)};
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      only marks,
+      mark=o,
+      mark options={draw=green!60!black,fill=white}
+    ] table[row sep=\\] {
+      x    y \\
+      1    1510534.76 \\
+      2    1141490.15 \\
+      4    313537.85  \\
+      8    194458.98  \\
+      14   130506.94  \\
+      16   111438.01  \\
+      28   122384.40  \\
+      32   120259.78  \\
+      48   97331.00   \\
+      60   93015.31   \\
+    };
+    \addlegendentry{Python}
+    \addplot[
+      green!60!black,
+      only marks,
+      mark=*,
+      mark options={draw=green!60!black,fill=green!60!black}
+    ] table[row sep=\\] {
+      x    y \\
+      28   96049.86 \\  
+      32   87343.61 \\
+    };
+    \addlegendentry{Python same CPU}
+    \addplot[
+      green!60!black,
+      forget plot,
+      domain=1:60,
+      samples=200
+    ] {1.27e6 * x^(-0.7046)};
+
+  \end{semilogyaxis}
+\end{tikzpicture}
+\caption[Server - Logarithmic energy (pkg) consumption]{Logarithm energy (pkg) consumption on the Server across different programming languages. Source: \autoref{tab:server-energy-pkg}}
+\label{fig:log-server-energy-pkg}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  \begin{semilogyaxis}[
+      title={Logarithmic energy (ram) consumption - Server},
+      width=\plotwidthgraph,
+      height=\plotheightgraph,
+      xlabel={Number of Cores},
+      ylabel={Energy (J)},
+      ymode=log,
+      xmode=linear,
+      grid=both,
+      minor tick num=1,
+      grid style={gray!30,dashed},
+      xtick={1,2,4,8,14,16,28,32,48,60},
+      x tick label style={
+        font=\footnotesize,
+        rotate=45,
+        anchor=north east
+      },
+      legend style={
+        at={(0.98,0.98)},
+        anchor=north east,
+        font=\scriptsize,
+        nodes={scale=0.8,transform shape},
+        draw=none
+      },
+      legend columns=2,
+      transpose legend,
+      legend cell align=left,
+    ]
+
+    %% C++ %%
+    \addplot[
+      blue,
+      only marks,
+      mark=o,
+      mark options={draw=blue,fill=white}
+    ] table[row sep=\\] {
+      x    y \\
+      1    176.83  \\
+      2    111.08  \\
+      4    67.60   \\
+      8    26.28   \\
+      14   18.28   \\
+      16   19.29   \\
+      28   16.91   \\
+      32   17.80   \\
+      48   27.02   \\
+      60   24.40   \\
+    };
+    \addlegendentry{C++}
+    \addplot[
+      blue,
+      only marks,
+      mark=*,
+      mark options={draw=blue,fill=blue}
+    ] table[row sep=\\] {
+      x    y \\
+      28   29.01   \\
+      32   28.15   \\
+    };
+    \addlegendentry{C++ same CPU}
+    % power‐law fit: y = 138.9 * x^(-0.5506)
+    \addplot[
+      blue,
+      forget plot,
+      domain=1:60,
+      samples=200
+    ] {128.71 * x^(-0.540)};
+
+    %% Go %%
+    \addplot[
+      violet,
+      only marks,
+      mark=o,
+      mark options={draw=violet,fill=white}
+    ] table[row sep=\\] {
+      x    y \\
+      1    1049.92 \\
+      2    755.43  \\
+      4    426.69  \\
+      8    175.15  \\
+      14   107.26  \\
+      16   95.60   \\
+      28   55.09   \\
+      32   61.70   \\
+      48   85.73   \\
+      60   90.01   \\
+    };
+    \addlegendentry{Go}
+    \addplot[
+      violet,
+      only marks,
+      mark=*,
+      mark options={draw=violet,fill=violet}
+    ] table[row sep=\\] {
+      x    y \\
+      28   78.01   \\
+      32   65.66   \\
+    };
+    \addlegendentry{Go same CPU}
+    % power‐law fit: y = 1024.9 * x^(-0.7437)
+    \addplot[
+      violet,
+      forget plot,
+      domain=1:60,
+      samples=200
+    ] {975.38 * x^(-0.728)};
+
+    %% PyPy %%
+    \addplot[
+      orange,
+      only marks,
+      mark=o,
+      mark options={draw=orange,fill=white}
+    ] table[row sep=\\] {
+      x    y \\
+      1    355.42  \\
+      2    253.06  \\
+      4    170.08  \\
+      8    88.94   \\
+      14   72.28   \\
+      16   71.84   \\
+      28   81.44   \\
+      32   83.50   \\
+      48   89.06   \\
+      60   91.31   \\
+    };
+    \addlegendentry{PyPy}
+    \addplot[
+      orange,
+      only marks,
+      mark=*,
+      mark options={draw=orange,fill=orange}
+    ] table[row sep=\\] {
+      x    y \\
+      28   78.81   \\
+      32   77.79   \\
+    };
+    \addlegendentry{PyPy same CPU}
+    % power‐law fit: y = 292.4 * x^(-0.3661)
+    \addplot[
+      orange,
+      forget plot,
+      domain=1:60,
+      samples=200
+    ] {273.36 * x^(-0.357)};
+
+    %% Python %%
+    \addplot[
+      green!60!black,
+      only marks,
+      mark=o,
+      mark options={draw=green!60!black,fill=white}
+    ] table[row sep=\\] {
+      x    y \\
+      1    59269.48 \\
+      2    36442.43 \\
+      4    12799.44 \\
+      8    6683.08  \\
+      14   4031.07  \\
+      16   3705.32  \\
+      28   4057.46  \\
+      32   4037.98  \\
+      48   2850.62  \\
+      60   2703.02  \\
+    };
+    \addlegendentry{Python}
+    \addplot[
+      green!60!black,
+      only marks,
+      mark=*,
+      mark options={draw=green!60!black,fill=green!60!black}
+    ] table[row sep=\\] {
+      x    y \\
+      28   2831.52 \\
+      32   2576.33 \\
+    };
+    \addlegendentry{Python same CPU}
+    % power‐law fit: y = 4.79e4 * x^(-0.7649)
+    \addplot[
+      green!60!black,
+      forget plot,
+      domain=1:60,
+      samples=200
+    ] {45451.50 * x^(-0.760)};
+
+  \end{semilogyaxis}
+\end{tikzpicture}
+\caption[Server - Logarithmic energy (ram) consumption]{Logarithm energy (ram) consumption on the Server across different programming languages. Source: \autoref{tab:server-energy-ram}}
+\label{fig:log-server-energy-ram}
+\end{figure}
+

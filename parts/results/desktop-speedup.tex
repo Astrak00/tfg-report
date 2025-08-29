@@ -2,12 +2,12 @@
     \centering
     \begin{tikzpicture}
   \begin{axis}[
-      title={Energy efficiency speedup - Desktop},
+      title={Relative energy efficiency speedup - Desktop},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
       ylabel={Relative Efficiency},
-      ymode=linear,
+      ymode=log,
       xmode=linear,
       grid=both,
       minor tick num=1,
@@ -37,13 +37,13 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.507304763 \\
-      4   2.242327612 \\
-      8   2.796316665 \\
-      12  2.920958049 \\
-      14  2.977358037 \\
-      16  3.082991294 \\
+      1   100.00 \\
+      2   66.34	 \\
+      4   44.60	 \\
+      8   35.76	 \\
+      12  34.24	 \\
+      14  33.59	 \\
+      16  32.44	 \\
     };
     \addlegendentry{C++}
 
@@ -55,13 +55,13 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.565922217 \\
-      4   2.51216421 \\
-      8   3.7060202 \\
-      12  4.430729033 \\
-      14  4.702083667 \\
-      16  4.913829636 \\
+      1   591.76 \\
+      2   377.90 \\
+      4   235.56 \\
+      8   159.68 \\
+      12  133.56 \\
+      14  125.85 \\
+      16  120.43 \\
     };
     \addlegendentry{Go}
 
@@ -73,13 +73,13 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.224855557 \\
-      4   1.728929021 \\
-      8   2.169853226 \\
-      12  1.924538378 \\
-      14  1.824201658 \\
-      16  1.730774156 \\
+      1   163.57	\\
+      2   133.54	\\
+      4   94.61	\\
+      8   75.38	\\
+      12  84.99	\\
+      14  89.67	\\
+      16  94.51	\\
     };
     \addlegendentry{PyPy 3.11.11}
 
@@ -91,19 +91,19 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.557213926 \\
-      4   2.425306233 \\
-      8   3.280598124 \\
-      12  3.022507745 \\
-      14  2.903193084 \\
-      16  2.765595611 \\
+      1   27457.22 \\
+      2   17632.27 \\
+      4   11321.13 \\
+      8   8369.58 \\
+      12  9084.25 \\
+      14  9457.59 \\
+      16  9928.14 \\
     };
     \addlegendentry{Python}
 
   \end{axis}
 \end{tikzpicture}
-    \caption[Desktop - Energy relative efficiency]{Energy relative efficiency of the Desktop benchmark across different programming languages.}
+    \caption[Desktop - Energy relative efficiency]{TODO: this caption has to be redone. Energy relative efficiency of the Desktop benchmark across different programming languages.}
     \label{fig:Desktop-relative-energy}
 \end{figure}
 
@@ -111,7 +111,7 @@
     \centering
     \begin{tikzpicture}
   \begin{axis}[
-      title={Execution time speedup - Desktop},
+      title={Relative execution time speedup - Desktop},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -146,13 +146,13 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.945646974 \\
-      4   3.655656668 \\
-      8   6.610738645 \\
-      12  7.1187961 \\
-      14  7.364144843 \\
-      16  7.681150623 \\
+      1   100.00 \\
+      2   194.56 \\
+      4   365.57 \\
+      8   661.07 \\
+      12  711.88 \\
+      14  736.41 \\
+      16  768.12 \\
     };
     \addlegendentry{C++}
 
@@ -164,13 +164,13 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   2.538053207 \\
-      4   4.865410816 \\
-      8   9.331069679 \\
-      12  12.49384497 \\
-      14  13.80297016 \\
-      16  14.80688794 \\
+      1   12.73 \\
+      2   32.30 \\
+      4   61.92 \\
+      8   118.75 \\
+      12  159.00 \\
+      14  175.66 \\
+      16  188.43 \\
     };
     \addlegendentry{Go}
 
@@ -182,13 +182,13 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.717169848 \\
-      4   3.02089183 \\
-      8   5.420981145 \\
-      12  5.338031207 \\
-      14  5.297047365 \\
-      16  5.150413498 \\
+      1   61.36 \\
+      2   105.37 \\
+      4   185.38 \\
+      8   332.66 \\
+      12  327.57 \\
+      14  325.05 \\
+      16  316.05 \\
     };
     \addlegendentry{PyPy 3.11.11}
 
@@ -200,18 +200,18 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.966219963 \\
-      4   3.788270278 \\
-      8   7.348116911 \\
-      12  7.142557627 \\
-      14  6.998465036 \\
-      16  6.899487996 \\
+      1   0.38  \\
+      2   0.74  \\
+      4   1.42  \\
+      8   2.76  \\
+      12  2.68  \\
+      14  2.63  \\
+      16  2.59  \\
     };
     \addlegendentry{Python}
 
   \end{axis}
 \end{tikzpicture}
-    \caption[Desktop - Execution time speedup]{Execution time speedup of the Desktop benchmark across different programming languages.}
+    \caption[Desktop - Execution time speedup]{TODO: Execution time speedup of the Desktop benchmark across different programming languages.}
     \label{fig:Desktop-time-speedup}
 \end{figure}

@@ -75,13 +75,14 @@ The tests were conducted on a variety of core configurations, always setting cor
 
 The results for the server are shown in the following figures and tables. The energy consumption is measured in joules, and the execution time is measured in seconds. 
 
-\input{parts/results/server-energy-pkg}
-
-\input{parts/results/server-energy-ram}
-
+\input{parts/results/server-energy}
 
 \input{parts/results/server-execution-time}
+
+\input{parts/results/server-wattage}
+
 \input{parts/results/server-speedup.tex}
+TODO: Hablar sobre el 100, y que significan estos números.
 
 
 From \autoref{fig:log-server-energy-pkg}, we can see that the energy consumption of the server is not linear with the number of cores. It can be observed that the energy consumption decreases as the number of cores increases, but there is a point in the graph and \autoref{tab:server-energy-pkg} where the energy consumption starts to increase slightly again, as well as the execution times in \autoref{fig:log-server-execution-time}, but not as much as the energy consumption.
@@ -198,7 +199,8 @@ This SBC (Single Board Computer) is one of the most popular in the market, and t
 \input{parts/results/rpi-energy}
 
 \input{parts/results/rpi-execution}
-\input{parts/results/raspberry-speedup.tex}
+
+\input{parts/results/rpi-speedup}
 
 From both \autoref{fig:log-rpi-energy} and \autoref{fig:log-rpi-execution} we can see that the trend lines, in this case intersect, meaning that passing from 2 to 4 cores, the energy increases for the PyPy implementation and decreases for the rest of the implementation. This is due to the fact that the Raspberry Pi 5 has a much less powerfull processor and thus, compiled languages such as C++ and Go can obtain better power efficiency results when using more cores, as the processor is able to handle the load better. 
 

@@ -7,7 +7,7 @@
       height=\plotheightgraph,
       xlabel={Number of Cores},
       ylabel={Relative Efficiency},
-      ymode=linear,
+      ymode=log,
       xmode=linear,
       grid=both,
       minor tick num=1,
@@ -37,12 +37,12 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.041812436 \\
-      4   1.069494819 \\
-      8   1.050991109 \\
-      10  1.06893843 \\
-      14  1.215060831 \\
+      1   100.00 \\
+      2   95.99 \\
+      4   92.06 \\
+      8   93.68 \\
+      10  92.11 \\
+      14  81.03 \\
     };
     \addlegendentry{C++}
 
@@ -54,12 +54,12 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.160033617 \\
-      4   1.210314987 \\
-      8   1.232920914 \\
-      10  1.274120302 \\
-      14  1.427607056 \\
+      1   718.79 \\
+      2   619.63 \\
+      4   593.89 \\
+      8   583.00 \\
+      10  564.15 \\
+      14  503.50 \\
     };
     \addlegendentry{Go}
 
@@ -71,12 +71,12 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   0.9217920879 \\
-      4   0.8991166162 \\
-      8   0.8988151816 \\
-      10  0.9056839419 \\
-      14  0.9547354298 \\
+      1   326.03 \\
+      2   353.69 \\
+      4   362.61 \\
+      8   362.73 \\
+      10  359.98 \\
+      14  341.48 \\
     };
     \addlegendentry{PyPy 3.11.11}
 
@@ -88,18 +88,18 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.074956681 \\
-      4   1.083492072 \\
-      8   1.131338076 \\
-      10  1.174270223 \\
-      14  1.273544411 \\
+      1   29382.98 \\
+      2   27334.11 \\
+      4   27118.78 \\
+      8   25971.88 \\
+      10  25022.33 \\
+      14  23071.82 \\
     };
     \addlegendentry{Python}
 
   \end{axis}
 \end{tikzpicture}
-    \caption[Laptop - Energy relative efficiency]{Energy relative efficiency of the Laptop benchmark across different programming languages.}
+    \caption[Laptop - Energy relative efficiency]{TODO: Energy relative efficiency of the Laptop benchmark across different programming languages.}
     \label{fig:laptop-relative-energy}
 \end{figure}
 
@@ -112,7 +112,7 @@
       height=\plotheightgraph,
       xlabel={Number of Cores},
       ylabel={Speedup},
-      ymode=linear,
+      ymode=log,
       xmode=linear,
       grid=both,
       minor tick num=1,
@@ -142,12 +142,12 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.949152542 \\
-      4   3.632167153 \\
-      8   5.472181552 \\
-      10  5.937251787 \\
-      14  5.050675676 \\
+      1   100.00 \\
+      2   51.30 \\
+      4   27.53 \\
+      8   18.27 \\
+      10  16.84 \\
+      14  19.80 \\
     };
     \addlegendentry{C++}
 
@@ -159,12 +159,12 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1	 \\
-      2   1.8899226	 \\
-      4   3.659077089	 \\
-      8   6.823484944	 \\
-      10  8.13671875	 \\
-      14  9.11904361	 \\
+      1   724.52 \\
+      2   383.36 \\
+      4   198.01 \\
+      8   106.18 \\
+      10  89.04 \\
+      14  79.45 \\
     };
     \addlegendentry{Go}
 
@@ -176,12 +176,12 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   1.705439815 \\
-      4   3.216468591 \\
-      8   5.804990151 \\
-      10  6.954116413 \\
-      14  7.324772162 \\
+      1   354.82 \\
+      2   208.05 \\
+      4   110.31 \\
+      8   61.12 \\
+      10  51.02 \\
+      14  48.44 \\
     };
     \addlegendentry{PyPy 3.11.11}
 
@@ -193,17 +193,17 @@
     ]
     table[row sep=\\] {
       x   y     \\
-      1   1 \\
-      2   2.227968773 \\
-      4   4.338455223 \\
-      8   8.617862305 \\
-      10  10.48247378 \\
-      14  11.53744275 \\
+      1   40438.93 \\
+      2   18150.58 \\
+      4   9321.04 \\
+      8   4692.45 \\
+      10  3857.77 \\
+      14  3505.02 \\
     };
     \addlegendentry{Python}
 
   \end{axis}
 \end{tikzpicture}
-    \caption[Laptop - Execution time speedup]{Execution time speedup of the Laptop benchmark across different programming languages.}
+    \caption[Laptop - Execution time speedup]{TODO: Execution time speedup of the Laptop benchmark across different programming languages.}
     \label{fig:laptop-time-speedup}
 \end{figure}
