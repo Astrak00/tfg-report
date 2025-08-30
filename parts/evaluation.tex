@@ -75,7 +75,7 @@ The tests were conducted on a variety of core configurations, always setting cor
 
 The results for the server are shown in the following figures and tables. The energy consumption is measured in joules, and the execution time is measured in seconds. 
 
-TODO: poner que es pkg y ram. y en mayus RAM
+In this graphs, \texttt{pkg} refers to the energy consumption of the CPU package, while \texttt{ram} refers to the energy consumption of the \gls{ram}.
 
 \input{parts/results/server-energy}
 \input{parts/results/server-execution-time}
@@ -96,7 +96,7 @@ I want to specifically discuss the 60-core test, as it is the most interesting o
 Considering the 32-core and 48-core tests with the Python program, the energy consumption reduces significantly when the program starts using virtual cores, as the program is able to run on more cores, and the Python runtime is not very demanding, being able to use these cores efficiently. As shown in \autoref{fig:log-server-energy-pkg} and \autoref{fig:log-server-execution-time}, this is an advantage to Python with respect to itself.
 
 
-A usually not looked aspect is the energy consumed by the \gls{ram} in the system, which is shown in \autoref{fig:log-server-energy-ram}. As we can see, the energy consumed by the \gls{ram} is not linear with the number of cores, and after incrementing the cores to more than $8$ cores, the energy consumption does not decrease substantially. But we can see that when using the cores in the same processor, (28 same CPU \& 32 same CPU), the RAM energy consumption is much higher than their counterpart using different processors when using \textbf{C++} or \textbf{Go}. But, at those same core counts, if we check the \textbf{Python} and \textbf{PyPy} implementations, the energy consumption is lower when using the same processor, as the Python runtime is not very demanding and does not require much memory bandwidth, thus being able to use the memory more efficiently.
+A usually not looked aspect is the energy consumed by the \gls{ram} in the system, which is shown in \autoref{fig:log-server-energy-ram}. As we can see, the energy consumed by the \gls{ram} is not linear with the number of cores, and after incrementing the cores to more than $8$ cores, the energy consumption does not decrease substantially. But we can see that when using the cores in the same processor, (28 same CPU \& 32 same CPU), the \gls{ram} energy consumption is much higher than their counterpart using different processors when using \textbf{C++} or \textbf{Go}. But, at those same core counts, if we check the \textbf{Python} and \textbf{PyPy} implementations, the energy consumption is lower when using the same processor, as the Python runtime is not very demanding and does not require much memory bandwidth, thus being able to use the memory more efficiently.
 
 
 
