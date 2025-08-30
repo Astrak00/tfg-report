@@ -1,116 +1,118 @@
 \begin{figure}
  \centering
-\begin{tikzpicture}
-\begin{axis}[
- title={Logarithmic execution time speedup - Server},
- width=\plotwidthgraph,
- height=\plotheightgraph,
- xlabel={Number of Cores},
- ylabel={Speedup},
- ymode=log,
- xmode=linear,
- grid=both,
- minor tick num=1,
- grid style={gray!30,dashed},
- xtick={1,2,4,8,14,16,28,32,48,60},
- x tick label style={
- font=\footnotesize,
- rotate=45,
- anchor=north east
- },
- legend style={
- at={(0.02,0.15)},
- anchor=north west,
- font=\scriptsize,
- nodes={scale=0.8,transform shape},
- draw=none
- },
- legend columns=2,
- transpose legend,
- legend cell align=left,
- ]
-%% C++ %%
-\addplot[
- blue,
- mark=o,
- line width=1pt,
- ]
- table[row sep=\\] {
- x y \\
- 1 1.00 \\
- 2 0.77 \\
- 4 0.78 \\
- 8 0.70 \\
- 14 0.64 \\
- 16 0.66 \\
- 28 0.66 \\
- 32 0.67 \\
- 48 0.45 \\
- 60 0.44 \\
- };
-\addlegendentry{C++}
-%% Go %%
-\addplot[
- violet,
- mark=o,
- line width=1pt,
- ]
- table[row sep=\\] {
- x y \\
- 1 1.00 \\
- 2 0.80 \\
- 4 0.73 \\
- 8 0.70 \\
- 14 0.74 \\
- 16 0.71 \\
- 28 1.05 \\
- 32 0.68 \\
- 48 1.28 \\
- 60 1.32 \\
- };
-\addlegendentry{Go}
-%% PyPy 3.11.11 %%
-\addplot[
- orange,
- mark=o,
- line width=1pt,
- ]
- table[row sep=\\] {
- x y \\
- 1 1.00 \\
- 2 0.88 \\
- 4 0.83 \\
- 8 0.75 \\
- 14 0.71 \\
- 16 0.72 \\
- 28 0.72 \\
- 32 0.73 \\
- 48 0.50 \\
- 60 0.50 \\
- };
-\addlegendentry{PyPy 3.11.11}
-%% Python %%
-\addplot[
- green!60!black,
- mark=o,
- line width=1pt,
- ]
- table[row sep=\\] {
- x y \\
- 1 1.00 \\
- 2 1.07 \\
- 4 1.35 \\
- 8 1.15 \\
- 14 1.04 \\
- 16 1.11 \\
- 28 1.11 \\
- 32 1.12 \\
- 48 0.71 \\
- 60 0.71 \\
- };
-\addlegendentry{Python}
-\end{axis}
-\end{tikzpicture}
-\caption[Server - Execution time speedup]{Execution time speedup of the Server benchmark across different programming languages (higher is better).}
-\label{fig:server-time-speedup}
+    \begin{tikzpicture}
+    \begin{axis}[
+    title={Wattage - Server},
+    width=\plotwidthgraph,
+    height=\plotheightgraph,
+    xlabel={Number of Cores},
+    ylabel={Wattage (W)},
+    ymode=linear,
+    xmode=linear,
+    grid=both,
+    minor tick num=1,
+    grid style={gray!30,dashed},
+    xtick={1,2,4,8,14,16,28,32,48,60},
+    x tick label style={
+    font=\footnotesize,
+    rotate=45,
+    anchor=north east
+    },
+    legend style={
+    at={(0.02,0.15)},
+    anchor=north west,
+    font=\scriptsize,
+    nodes={scale=0.8,transform shape},
+    draw=none
+    },
+    legend columns=2,
+    transpose legend,
+    legend cell align=left,
+    ]
+    %% C++ %%
+        \addplot[
+        blue,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  165.9 \\
+        2  215.9 \\
+        4  213.9 \\
+        8  235.5 \\
+        14 260.4  \\
+        16 253.2  \\
+        28 252.6  \\
+        32 248.3  \\
+        48 370.5  \\
+        60 381.2  \\
+        };
+        \addlegendentry{C++}
+    %% Go %%
+        \addplot[
+        violet,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  171.0 \\
+        2  212.6 \\
+        4  235.8 \\
+        8  243.6 \\
+        14 232.5 \\
+        16 240.9 \\
+        28 162.2 \\
+        32 250.9 \\
+        48 133.9 \\
+        60 129.5 \\
+        };
+        \addlegendentry{Go}
+    %% PyPy 3.11.11 %%
+        \addplot[
+        orange,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  178.8 \\
+        2  204.3 \\
+        4  214.7 \\
+        8  239.7 \\
+        14 253.1 \\
+        16 248.7 \\
+        28 247.5 \\
+        32 246.5 \\
+        48 358.4 \\
+        60 356.5 \\
+        };
+        \addlegendentry{PyPy 3.11.11}
+    %% Python %%
+        \addplot[
+        green!60!black,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  265.5 \\
+        2  248.0 \\
+        4  196.0 \\
+        8  230.4 \\
+        14 254.7 \\
+        16 238.7 \\
+        28 238.9 \\
+        32 237.6 \\
+        48 372.1 \\
+        60 372.6 \\
+        };
+        \addlegendentry{Python}
+    \end{axis}
+    \end{tikzpicture}
+\caption[Server - Wattage]{Wattage of the Server benchmark across different programming languages.}
+\label{fig:server-wattage}
 \end{figure}
+
+What \autoref{fig:server-wattage} entails is that go, at 28 cores, and more than 32, does not demand as much power as other languages, which means the CPU usage is lower. This can also be observed in \autoref{fig:htop_60_not_100}, where the CPU utilization is not at its maximum, unlike the other languages. This does not mean GO is more efficient, but that it can not use the entire CPU for this task efficiently.

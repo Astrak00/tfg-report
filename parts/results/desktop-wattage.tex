@@ -1,0 +1,104 @@
+\begin{figure}
+ \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+    title={Wattage - Desktop},
+    width=\plotwidthgraph,
+    height=\plotheightgraph,
+    xlabel={Number of Cores},
+    ylabel={Wattage (W)},
+    ymode=linear,
+    xmode=linear,
+    grid=both,
+    minor tick num=1,
+    grid style={gray!30,dashed},
+    xtick={1,2,4,8,12,14,16},
+    x tick label style={
+    font=\footnotesize,
+    rotate=45,
+    anchor=north east
+    },
+    legend style={
+    at={(0.02,0.95)},
+    anchor=north west,
+    font=\scriptsize,
+    nodes={scale=0.8,transform shape},
+    draw=none
+    },
+    legend columns=2,
+    transpose legend,
+    legend cell align=left,
+    ]
+    %% C++ %%
+        \addplot[
+        blue,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  43.53  \\
+        2  56.19  \\
+        4  70.97  \\
+        8  102.91  \\
+        12 106.09   \\
+        14 107.67   \\
+        16 108.45   \\
+        };
+        \addlegendentry{C++}
+    %% Go %%
+        \addplot[
+        violet,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  32.78  \\
+        2  53.13  \\
+        4  63.49  \\
+        8  82.54  \\
+        12 92.44   \\
+        14 96.23   \\
+        16 98.78   \\
+        };
+        \addlegendentry{Go}
+    %% PyPy 3.11.11 %%
+        \addplot[
+        orange,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1   43.69  \\
+        2   61.25  \\
+        4   76.34  \\
+        8   109.16  \\
+        12  121.19   \\
+        14  126.87   \\
+        16  130.02   \\
+        };
+        \addlegendentry{PyPy 3.11.11}
+    %% Python %%
+        \addplot[
+        green!60!black,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  44.89   \\
+        2  56.69   \\
+        4  70.12   \\
+        8  100.56   \\
+        12 106.09    \\
+        14 108.22    \\
+        16 112.00    \\
+        };
+        \addlegendentry{Python}
+    \end{axis}
+    \end{tikzpicture}
+\caption[Desktop - Wattage]{Wattage of the Desktop benchmark across different programming languages.}
+\label{fig:desktop-wattage}
+\end{figure}

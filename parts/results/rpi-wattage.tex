@@ -1,0 +1,88 @@
+\begin{figure}
+ \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+    title={Wattage - Laptop},
+    width=\plotwidthgraph,
+    height=\plotheightgraph,
+    xlabel={Number of Cores},
+    ylabel={Wattage (W)},
+    ymode=linear,
+    xmode=linear,
+    grid=both,
+    minor tick num=1,
+    grid style={gray!30,dashed},
+    xtick={1,2,4},
+    x tick label style={
+    font=\footnotesize,
+    rotate=45,
+    anchor=north east
+    },
+    legend style={
+    at={(0.02,0.95)},
+    anchor=north west,
+    font=\scriptsize,
+    nodes={scale=0.8,transform shape},
+    draw=none
+    },
+    legend columns=2,
+    transpose legend,
+    legend cell align=left,
+    ]
+    %% C++ %%
+        \addplot[
+        blue,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  1.62  \\
+        2  2.05  \\
+        4  3.23  \\
+        };
+        \addlegendentry{C++}
+    %% Go %%
+        \addplot[
+        violet,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  1.43  \\
+        2  1.87  \\
+        4  2.61  \\
+        };
+        \addlegendentry{Go}
+    %% PyPy 3.11.11 %%
+        \addplot[
+        orange,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  1.50   \\
+        2  2.05   \\
+        4  2.52   \\
+        };
+        \addlegendentry{PyPy 3.11.11}
+    %% Python %%
+        \addplot[
+        green!60!black,
+        mark=o,
+        line width=0.75pt,
+        ]
+        table[row sep=\\] {
+        x y \\
+        1  1.33   \\
+        2  1.72   \\
+        4  2.53   \\
+        };
+        \addlegendentry{Python}
+    \end{axis}
+    \end{tikzpicture}
+\caption[Laptop - Wattage]{Wattage of the Laptop benchmark across different programming languages.}
+\label{fig:laptop-wattage}
+\end{figure}

@@ -1,186 +1,148 @@
-\begin{figure}
+\begin{figure}[]
+  \centering
+
+  % ----- first sub‑figure (relative efficiency) -----
+  \begin{subfigure}[t]{0.48\textwidth}
     \centering
     \begin{tikzpicture}
-  \begin{axis}[
-      title={Logarithmic relative efficiency - RPI},
-      width=\plotwidthgraph,
-      height=\plotheightgraph,
-      xlabel={Number of Cores},
-      ylabel={Relative Efficiency},
-      ymode=log,
-      xmode=linear,
-      grid=both,
-      minor tick num=1,
-      grid style={gray!30,dashed},
-      xtick={1,2,4},
-      x tick label style={
-        font=\footnotesize,
-        rotate=45,
-        anchor=north east
-      },
-      legend style={
-        at={(0.7,0.98)},
-        anchor=north west,
-        font=\scriptsize,
-        nodes={scale=0.8,transform shape},
-        draw=none
-      },
-      legend columns=2,
-      transpose legend,
-      legend cell align=left,
-    ]
-    %% C++ %%
-    \addplot[
-      blue,
-      mark=o,
-      line width=1pt,
-    ]
-    table[row sep=\\] {
-      x   y     \\
-      1  100.00 \\
-      2  64.58 \\
-      4  51.60 \\
-    };
-    \addlegendentry{C++}
+      \begin{axis}[
+          title={Logarithmic relative efficiency -- RPI},
+          width=0.5*\plotwidthgraph,
+          height=0.8*\plotheightgraph,
+          xlabel={Number of Cores},
+          ylabel={Relative Efficiency},
+          ymode=log,
+          grid=both,
+          minor tick num=1,
+          grid style={gray!30,dashed},
+          xtick={1,2,4},
+          x tick label style={
+            font=\footnotesize,
+            rotate=45,
+            anchor=north east
+          },
+          legend style={
+            at={(0.3,0.65)},
+            anchor=north west,
+            font=\scriptsize,
+            nodes={scale=0.8,transform shape},
+            draw=none
+          },
+          legend columns=2,
+          transpose legend,
+          legend cell align=left,
+        ]
 
-    %% Go %%
-    \addplot[
-      violet,
-      mark=o,
-      line width=1pt,
-    ]
-    table[row sep=\\] {
-      x   y     \\
-      1   295.83 \\
-      2   191.67 \\
-      4   134.00 \\
-    };
-    \addlegendentry{Go}
+        % --- data ---
+        \addplot[blue,mark=o,line width=1pt] table[row sep=\\]{
+          x   y\\
+          1  100.00\\
+          2   64.58\\
+          4   51.60\\
+        };
+        \addlegendentry{C++}
 
-    %% PyPy 3.11.11 %%
-    \addplot[
-      orange,
-      mark=o,
-      line width=1pt,
-    ]
-    table[row sep=\\] {
-      x   y     \\
-      1   237.50  \\
-      2   190.42  \\
-      4   227.00 \\
-    };
-    \addlegendentry{PyPy 3.11.11}
+        \addplot[violet,mark=o,line width=1pt] table[row sep=\\]{
+          x   y\\
+          1  295.83\\
+          2  191.67\\
+          4  134.00\\
+        };
+        \addlegendentry{Go}
 
-    %% Python %%
-    \addplot[
-      green!60!black,
-      mark=o,
-      line width=1pt,
-    ]
-    table[row sep=\\] {
-      x   y     \\
-      1   14725.00  \\
-      2   9525.83  \\
-      4   7173.75 \\
-    };
-    \addlegendentry{Python}
+        \addplot[orange,mark=o,line width=1pt] table[row sep=\\]{
+          x   y\\
+          1  237.50\\
+          2  190.42\\
+          4  227.00\\
+        };
+        \addlegendentry{PyPy 3.11.11}
 
-  \end{axis}
-\end{tikzpicture}
-  \caption[RPI - Energy relative efficiency]{TODO: Energy relative usage of the RPI (C++ set as baseline at 100).}
-  \label{fig:rpi-relative-energy-pkg}
-\end{figure}
+        \addplot[green!60!black,mark=o,line width=1pt] table[row sep=\\]{
+          x   y\\
+          1 14725.00\\
+          2  9525.83\\
+          4  7173.75\\
+        };
+        \addlegendentry{Python}
 
-
-\begin{figure}
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Logarithmic relative efficiency – RPI (C++ is 100 \%).}
+    \label{fig:rpi-relative-energy-pkg}
+  \end{subfigure}
+  \hfill
+  % ----- second sub‑figure (speedup) -----
+  \begin{subfigure}[t]{0.48\textwidth}
     \centering
     \begin{tikzpicture}
-  \begin{axis}[
-      title={Logarithmic execution time speedup - RPI},
-      width=\plotwidthgraph,
-      height=\plotheightgraph,
-      xlabel={Number of Cores},
-      ylabel={Speedup},
-      ymode=log,
-      xmode=linear,
-      grid=both,
-      minor tick num=1,
-      grid style={gray!30,dashed},
-      xtick={1,2,4},
-      x tick label style={
-        font=\footnotesize,
-        rotate=45,
-        anchor=north east
-      },
-      legend style={
-        at={(0.7,0.98)},
-        anchor=north west,
-        font=\scriptsize,
-        nodes={scale=0.8,transform shape},
-        draw=none
-      },
-      legend columns=2,
-      transpose legend,
-      legend cell align=left,
-    ]
-    %% C++ %%
-    \addplot[
-      blue,
-      mark=o,
-      line width=1pt,
-    ]
-    table[row sep=\\] {
-      x   y     \\
-      1   100  \\
-      2   51.25897718 \\
-      4   25.98195835 \\
-    };
-    \addlegendentry{C++}
+      \begin{axis}[
+          title={Logarithmic execution‑time speedup -- RPI},
+          width=0.5*\plotwidthgraph,
+          height=0.8*\plotheightgraph,
+          xlabel={Number of Cores},
+          ylabel={Speedup},
+          ymode=log,
+          grid=both,
+          minor tick num=1,
+          grid style={gray!30,dashed},
+          xtick={1,2,4},
+          x tick label style={
+            font=\footnotesize,
+            rotate=45,
+            anchor=north east
+          },
+          legend style={
+            at={(0.3,0.65)},
+            anchor=north west,
+            font=\scriptsize,
+            nodes={scale=0.8,transform shape},
+            draw=none
+          },
+          legend columns=2,
+          transpose legend,
+          legend cell align=left,
+        ]
 
-    %% Go %%
-    \addplot[
-      violet,
-      mark=o,
-      line width=1pt,
-    ]
-    table[row sep=\\] {
-      x   y     \\
-      1   334.9893837 \\
-      2   166.4016986 \\
-      4   83.43286551 \\
-    };
-    \addlegendentry{Go}
+        % --- data ---
+        \addplot[blue,mark=o,line width=1pt] table[row sep=\\]{
+          x   y\\
+          1  100\\
+          2  51.25897718\\
+          4  25.98195835\\
+        };
+        \addlegendentry{C++}
 
-    %% PyPy 3.11.11 %%
-    \addplot[
-      orange,
-      mark=o,
-      line width=1pt,
-    ]
-    table[row sep=\\] {
-      x   y     \\
-      1   256.5027464  \\
-      2   151.0628494  \\
-      4   146.428006 \\
-    };
-    \addlegendentry{PyPy 3.11.11}
+        \addplot[violet,mark=o,line width=1pt] table[row sep=\\]{
+          x   y\\
+          1 334.9893837\\
+          2 166.4016986\\
+          4  83.43286551\\
+        };
+        \addlegendentry{Go}
 
-    %% Python %%
-    \addplot[
-      green!60!black,
-      mark=o,
-      line width=1pt,
-    ]
-    table[row sep=\\] {
-      x   y     \\
-      1   17970.75486  \\
-      2   8980.04214  \\
-      4   4596.681539 \\
-    };
-    \addlegendentry{Python}
+        \addplot[orange,mark=o,line width=1pt] table[row sep=\\]{
+          x   y\\
+          1 256.5027464\\
+          2 151.0628494\\
+          4 146.428006\\
+        };
+        \addlegendentry{PyPy 3.11.11}
 
-  \end{axis}
-\end{tikzpicture}
-  \caption[RPI - Execution time speedup]{TODO: Energy efficiency speedup of the RPI benchmark across different programming languages (higher is better).}
-  \label{fig:rpi-time-speedup}
+        \addplot[green!60!black,mark=o,line width=1pt] table[row sep=\\]{
+          x   y\\
+          1 17970.75486\\
+          2 8980.04214\\
+          4 4596.681539\\
+        };
+        \addlegendentry{Python}
+
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Logarithmic execution‑time speedup – RPI (higher is better).}
+    \label{fig:rpi-time-speedup}
+  \end{subfigure}
+
+  \caption{Relative execution and energy consumption - RPI.}
+  \label{fig:rpi-relative-combined}
 \end{figure}
