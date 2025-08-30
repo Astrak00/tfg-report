@@ -74,7 +74,7 @@
 
 \newglossaryentrywithacronym{VM}
 {Virtual Machine}
-{The Python virtual machine is the same as the interpreter, which turns python's code into machine ready instructions. Python's default VM implementation is \gls{CPython}, but others exist such as Jython (Java), IronPython (.NET) or PyPy}
+{The Python virtual machine is the same as the interpreter, which turns Python's code into machine ready instructions. Python's default VM implementation is \gls{CPython}, but others exist such as Jython (Java), IronPython (.NET) or PyPy}
 
 \newglossaryentrywithacronym{GC}
 {Garbage Collector}
@@ -82,7 +82,7 @@
 
 \newglossaryentry{heap-allocation}{
     name = {Heap Allocation},
-    description = {Heap allocation is the process of reserving a block of memory from a large, flexible pool (the heap) for program data whose size or lifetime is not known at compile time, allowing for dynamic memory management during program execution. As python does not know the sizes of most variables, it needs to perform heap allocations always.}
+    description = {Heap allocation is the process of reserving a block of memory from a large, flexible pool (the heap) for program data whose size or lifetime is not known at compile time, allowing for dynamic memory management during program execution. As Python does not know the sizes of most variables, it needs to perform heap allocations always.}
 }
 
 \newglossaryentry{polymorphism}{
@@ -147,7 +147,7 @@
 
 \newglossaryentry{numpy}{
     name = {numpy},
-    description = {The most popular python package for scientific computation with python}
+    description = {The most popular Python package for scientific computation with Python}
 }
 \newglossaryentry{PyTorch}{
     name = {PyTorch},
@@ -246,3 +246,10 @@
 \newglossaryentrywithacronym{generic}
 {generic}
 {Generics is a programming paradigm that enables the writing of code that is independent of any particular type. It allows algorithms to be written in a way that can operate on different data types without being rewritten for each type. This is often achieved through the use of templates or polymorphism. For example: }
+
+\newglossaryentry{mgp}{
+    name = {M:P:G Model},
+    description = {
+        The M:P:G model is a concurrency model used in the Go programming language to manage the execution of goroutines. It consists of three main components: M (Machine), P (Processor), and G (Goroutine). \textbf{M} represents the operating system threads, \textbf{P} represents the logical processors that schedule and execute goroutines, and \textbf{G} represents the lightweight threads (goroutines) that are managed by the Go runtime. This model allows for efficient scheduling and execution of concurrent tasks in Go programs.
+    }
+}

@@ -4,7 +4,7 @@ After analyzing the data collected from the various experiments, I clearly confi
 
 I found that the most efficient programming language, by a great margin is \gls{CPP}, outperforming in every case. The results indicate that it outperforms both in energy consumption and execution time when compared to Go, a compiled language, and interpretations of languages, such as \gls{CPython} or PyPy, the other languages and implementations of languages used in this project. This was to be expected, as \gls{CPP} is a compiled language and is known for its performance and energy efficiency, as it is an evolution of C.
 
-The program used to perform the benchmarks is an image renderer, that processes each pixel of an image, casting multiple rays per pixel, and calculating the color of each one based on the intersection of the rays with the objects in the scene. This is a computationally intensive task that uses the \gls{ALU}, that can be parallelized.
+The program used to perform the benchmarks is an image renderer that processes each pixel of an image, casting multiple rays per pixel, and calculating the color of each one based on the intersection of the rays with the objects in the scene. This is a computationally intensive task that uses the \gls{ALU}, that can be parallelized.
 
 This benchmark has been performed on the same component, the \gls{cpu}, even when performing the benchmarks on different platforms, such as a desktop computer, a laptop, and a \gls{SBC}.
 
@@ -12,14 +12,14 @@ This benchmark has been performed on the same component, the \gls{cpu}, even whe
 
 The main findings of this project are that \gls{CPP} is up to $440$ times faster and $300$ times more energy efficient on the Server than \gls{CPython}, and up to $180$ times faster and $150$ times more energy efficient on the Raspberry Pi (the two extremes of the platforms used in this project). 
 
-On every test case, \gls{CPP} outperformed the other programming languages, given the same number of cores and platform. An interesting result is that the lowerst consuming board has been the Raspberry Pi, due to its design for IoT low-consumption devices. For each of the languages tested, the performance on up to 4 cores on each platform is detailed on this graph:
+On every test case, \gls{CPP} outperformed the other programming languages, given the same number of cores and platform. An interesting result is that the lowest consuming board has been the Raspberry Pi, due to its design for IoT low-consumption devices. For each of the languages tested, the performance on up to 4 cores on each platform is detailed on this graph:
 
 \input{parts/conclusions/grouped_graphs.tex}
 
 \section{Discussion of Results}
 
 % Move this to a different section
-The most impressive and surprising result for many tests has been the performance of PyPy compared to the other programming languages. PyPy is just an interpreter for Python (that can run a limited subset of what \gls{CPython} can run), but it uses a \gls{jit} compilation technique that allows it to execute Python code much faster than the standard interpreter. This \gls{jit} is not compatible with some python libraries such as Numpy \cite{numpy} as these libraries use \gls{c-extension} to speed up \gls{CPython}'s speed. This means that PyPy can only be used with pure Python code, which limits its applicability in some cases.
+The most impressive and surprising result for many tests has been the performance of PyPy compared to the other programming languages. PyPy is just an interpreter for Python (that can run a limited subset of what \gls{CPython} can run), but it uses a \gls{jit} compilation technique that allows it to execute Python code much faster than the standard interpreter. This \gls{jit} is not compatible with some Python libraries such as Numpy \cite{numpy} as these libraries use \gls{c-extension} to speed up \gls{CPython}'s speed. This means that PyPy can only be used with pure Python code, which limits its applicability in some cases.
 
 The implementation of multiple threads in the different programming languages was also a key factor in the performance of the programs. Depending on the technique used, parallelizing for each line or for each pixel, the performance deferred on the different languages. The easiest to implement, and the one that showed the best results, was C++, followed by Go, with its \glspl{goroutine} and \glspl{channel}. Python's default implementation, \gls{CPython}, does not support true multithreading due to the \gls{GIL}, which limits the performance of multi-threaded programs, thus, the need of the library multithreading is needed.
 

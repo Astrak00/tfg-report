@@ -135,7 +135,7 @@ type Hittable interface {
 In my specific implementation, two instances of these keywords were used to denote all types of materials and all Hittable objects, that have to implement a scatter function and a hit function as described in \autoref{lst:go_interface_example}.
 
 \subsubsection{Python}
-Python is one of the most open languages, where there are many ways of developing the same program. There have been some problems with python's parameters in functions, whether they are passed as parameters or as references. Unlike in C++ where you can add \texttt{\&} to symbolize the passing the parameter by reference in the function signature, or using the \texttt{*} in Go, in Python, at first, it seems you can not specify this behavior. But if you research into the inner-workings of python functions and how they work, it seems that "Python passes function arguments by assigning to them" as \cite{python-names-pycon15} states at PyCon 2015:
+Python is one of the most open languages, where there are many ways of developing the same program. There have been some problems with Python's parameters in functions, whether they are passed as parameters or as references. Unlike in C++ where you can add \texttt{\&} to symbolize the passing the parameter by reference in the function signature, or using the \texttt{*} in Go, in Python, at first, it seems you can not specify this behavior. But if you research into the inner-workings of Python functions and how they work, it seems that "Python passes function arguments by assigning to them" as \cite{python-names-pycon15} states at PyCon 2015:
 
 \input{parts/code_blocks/python-function-assig}
 
@@ -205,14 +205,14 @@ class Material(ABC):
 The main loop of the program is processing the object read from the file, added to the scene. 
 This loop has two version in each of the programs designed:
 \begin{itemize}
-    \item \textbf{Single-threaded loop}: The program only runs using one core. It has a double loop where it processes all the pixels in the image, one by one. This is an extremely \gls{cpu} intensive process, as there are many pixels and iterations to go though each of those pixels. After all pixels are processed, they are outputted into the \texttt{output\_file}
+    \item \textbf{Single-threaded loop}: The program only runs using one core. It has a double loop where it processes all the pixels in the image, one by one. This is an extremely \gls{cpu} intensive process, as there are many pixels and iterations to  GO though each of those pixels. After all pixels are processed, they are outputted into the \texttt{output\_file}
     
     \item \textbf{multithreaded loop}: There are many ways a multithreaded renderer can work, even on different programming languages, different implementations have been chosen for specific reasons regarding their parallelization implementations. But in general, each of the pixels is processed, and then they are all joined into an array / list that is outputted to a file.
 \end{itemize}
 
 
 \subsection{Multiprocessing}
-As previously stated, each of the programming languages, not only uses a different approach into how they have been parallelized, but even the algorithm had to be changed, as the implementation of python's interpreters makes the obvious parallelization perform surprisingly bad (this will be discussed in its section)
+As previously stated, each of the programming languages, not only uses a different approach into how they have been parallelized, but even the algorithm had to be changed, as the implementation of Python's interpreters makes the obvious parallelization perform surprisingly bad (this will be discussed in its section)
 
 \subsubsection{C++}
 To implement multiprocessing in C++, the \gls{openMP} library has been used, as it allows implementing parallelism with a low-effort compared to the great results it provides. 
@@ -263,7 +263,7 @@ lines_remaining := c.imageHeight
 for pixel_idx := range c.imageHeight * c.ImageWidth {
     waitChan <- struct{}{}
     wg.Add(1)
-    go func(pixel_idx int) { 
+     GO func(pixel_idx int) { 
         defer wg.Done()
         ... 
         <-waitChan 
@@ -279,14 +279,14 @@ To prevent the program from continue running before all the \glspl{goroutine} ar
 
 \subsubsection{Python}
 
-To parallelize in python, I had to use the \texttt{concurrent.futures} library to properly parallelize the python execution.
+To parallelize in Python, I had to use the \texttt{concurrent.futures} library to properly parallelize the Python execution.
 
 This library can create two types of "executors" which are:
 \begin{itemize}
     \item \textbf{ThreadPoolExecutor}: for \gls{i-o}-bound tasks (uses threads)
     \item \textbf{ProcessPoolExecutor}: for \gls{cpu}-bound tasks (uses processes)
 \end{itemize}
-To submit a task, you can use the following semantics, using python's list comprehension to create all the jobs:
+To submit a task, you can use the following semantics, using Python's list comprehension to create all the jobs:
 \begin{lstlisting}[language=Python, caption={Python submiting jobs ProcessPoolExecutor.}, label={lst:python_executor_sumbit}]
 futures = [
     executor.submit(self.process_row, j, world)
@@ -307,7 +307,7 @@ for future in futures:
 \end{lstlisting}
 
 
-There is an interesting aspect on why the difference between the loops in Python and the rest of the programming languages: Compiled languages iterate over every pixel, while python iterates over every line, why is this? Because a copy of the entire python environment has to be created and the overhead of copying so much information slows down the program extremely. We will see the impact of these change in the evaluation section of the report.
+There is an interesting aspect on why the difference between the loops in Python and the rest of the programming languages: Compiled languages iterate over every pixel, while Python iterates over every line, why is this? Because a copy of the entire Python environment has to be created and the overhead of copying so much information slows down the program extremely. We will see the impact of these change in the evaluation section of the report.
 
 \section{Output}
 \label{sec:output}
@@ -407,7 +407,7 @@ endef
 
 # ====== Language-Specific Targets ======
 # Python Implementations
-.PHONY: python python-single pypy pypy-single
+.PHONY: Python Python-single pypy pypy-single
 python: $(RESULTS_DIR)
 	...
 
@@ -432,7 +432,7 @@ cpp-single: cpp-build $(RESULTS_DIR)
 	...
     
 # Go Implementations
-.PHONY: go go-single go-build
+.PHONY:  GO go-single go-build
 go-build:
 	...
 
@@ -445,10 +445,10 @@ go-single: go-build $(RESULTS_DIR)
 # ====== Batch Operations ======
 .PHONY: all all-multi all-single benchmark
 
-all-multi: cpp go pypy python $(RESULTS_DIR)
+all-multi: cpp  GO pypy Python $(RESULTS_DIR)
 	...
 
-all-single: cpp-single go-single pypy-single python-single $(RESULTS_DIR)
+all-single: cpp-single go-single pypy-single Python-single $(RESULTS_DIR)
 	...
 
 all: all-multi all-single
