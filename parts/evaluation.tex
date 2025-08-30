@@ -229,17 +229,17 @@ For these tests, I tested many optimization flags, such as \texttt{-O3} and \tex
 
 As to not leave the reader with the intrigue of what would happen if we used different compiler flags, I have compiled and tested all the programs with the following flags:
 \begin{itemize}
-    \item \texttt{-O0}: No optimizations, the compiler will not optimize the code at all.
-    \item \textbf{-O1}: Basic optimizations; the compiler will optimize the code. It performs a basic cleanup, removing dead code and some simple inlining.
-    \item \textbf{-O2}: More optimizations; this is the recommended optimization level for most use cases.
-    \item \textbf{-O3}: Maximum optimizations, very aggressive optimizations:
+    \item \textbf{\texttt{-O0}}: No optimizations, the compiler will not optimize the code at all.
+    \item \textbf{\texttt{-O1}}: Basic optimizations; the compiler will optimize the code. It performs a basic cleanup, removing dead code and some simple inlining.
+    \item \textbf{\texttt{-O2}}: More optimizations; this is the recommended optimization level for most use cases.
+    \item \textbf{\texttt{-O3}}: Maximum optimizations, very aggressive optimizations:
     \begin{itemize}
         \item Loop transformations: Unrolling loops even more than \texttt{-O2}, changing the distribution of loops and interchanging them.
         \item Speculative optimizations
         \item Vectorization: \gls{SIMD} instructions (AVX, SSE, etc.)
         \item Predictive commoning (reusing computations from previous loop iterations)
     \end{itemize}
-    \item \textbf{-O3 with --fast-math}: Maximum optimizations; the compiler will optimize the code as much as possible, but operations will not be as precise.
+    \item \textbf{\texttt{-O3 with --fast-math}}: Maximum optimizations; the compiler will optimize the code as much as possible, but operations will not be as precise.
 \end{itemize}
 
 As \autocite{llvm-fast-math} explains, the \texttt{--fast-math} flag allows the compiler to perform optimizations that may not be mathematically correct, but will result in faster code. 
