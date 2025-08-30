@@ -6,7 +6,7 @@
     \centering
     \begin{tikzpicture}
       \begin{axis}[
-          title={Logarithmic relative efficiency -- RPI},
+          title={Relative Efficiency - RPI},
           width=0.5*\plotwidthgraph,
           height=0.8*\plotheightgraph,
           xlabel={Number of Cores},
@@ -65,10 +65,9 @@
           4  7173.75\\
         };
         \addlegendentry{Python}
-
       \end{axis}
     \end{tikzpicture}
-    \caption{Relative energy usage on the Raspberry, using C++ single core set as baseline set at 100 (lower is better).}
+    \caption[RPi - Relative Energy Efficiency]{Relative energy usage on the Raspberry, using C++ single core set as baseline set at 100 (lower is better).}
     \label{fig:rpi-relative-energy-pkg}
   \end{subfigure}
   \hfill
@@ -77,7 +76,7 @@
     \centering
     \begin{tikzpicture}
       \begin{axis}[
-          title={Logarithmic execution-time speedup -- RPI},
+          title={Execution Time Speedup - RPI},
           width=0.5*\plotwidthgraph,
           height=0.8*\plotheightgraph,
           xlabel={Number of Cores},
@@ -139,10 +138,10 @@
 
       \end{axis}
     \end{tikzpicture}
-    \caption{Relative execution time on the Raspberry, using C++ single core set as baseline set at 100 (lower is better).}
+    \caption[RPI - Execution Time Speedup]{Relative execution time on the Raspberry, using C++ single core set as baseline set at 100 (lower is better).}
     \label{fig:rpi-time-speedup}
   \end{subfigure}
 
-  \caption{Relative execution and energy consumption - RPI.}
+  \caption{Raspberry Pi - Relative execution and energy consumption.}
   \label{fig:rpi-relative-combined}
 \end{figure}

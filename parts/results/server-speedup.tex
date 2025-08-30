@@ -2,7 +2,7 @@
     \centering
     \begin{tikzpicture}
   \begin{axis}[
-      title={Logarithmic relative efficiency - Server},
+      title={Relative Efficiency - Server},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -115,7 +115,7 @@
 
   \end{axis}
 \end{tikzpicture}
-  \caption[Server - Energy relative efficiency]{Relative energy usage on the server, using C++ single core set as baseline set at 100. \footnote{If the relative energy is 50, it means it draws half the power compared to the baseline.} (lower is better)}
+  \caption[Server - Relative Energy Efficiency]{Logarithmic relative energy usage on the server, using C++ single core set as baseline set at 100. \footnote{If the relative energy is 50, it means it draws half the power compared to the baseline.} (lower is better)}
   \label{fig:server-relative-energy-pkg}
 \end{figure}
 
@@ -124,7 +124,7 @@
     \centering
     \begin{tikzpicture}
   \begin{axis}[
-      title={Logarithmic execution time speedup - Server},
+      title={Execution Time Speedup - Server},
       width=\plotwidthgraph,
       height=\plotheightgraph,
       xlabel={Number of Cores},
@@ -237,6 +237,6 @@
 
   \end{axis}
 \end{tikzpicture}
-  \caption[Server - Execution time speedup]{Relative execution time on the server, using C++ single core set as baseline set at 100 (lower is better) .}
+  \caption[Server - Execution Time Speedup]{Logarithmic relative execution time on the server, using C++ single core set as baseline set at 100 (lower is better) .}
   \label{fig:server-time-speedup}
 \end{figure}
