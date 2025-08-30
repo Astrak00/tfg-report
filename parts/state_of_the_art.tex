@@ -22,19 +22,19 @@ While the energy efficiency of a system is significantly affected by connected d
 \subsection{x86 Architecture}
 The x86 architecture is the most widely adopted in the world of desktop and server computers, whose market share is almost entirely shared by \href{https://amd.com}{AMD} and \href{https://intel.com}{Intel} who created it in 1978. Originally called x86-16, due to the 16 bit word size, it debuted in the Intel 8086 a single core, a $3 \mu m$ node processor.
 
-Nowadays, the technology has improved, the architecture is now called x86-64, a 64 bit extension, created by AMD, and releases the full specification in August 2000. From 2006 onward, the two companies have been developing multicore processors, adding further \gls{SIMD} Extensions such as AVX-512 \cite{intel-avx512}. Then came the integrated graphics and finally Power Efficiency Focus. 
+Nowadays, the technology has improved, the architecture is now called x86-64, a 64-bit extension, created by AMD, and releases the full specification in August 2000. From 2006 onward, the two companies have been developing multicore processors, adding further \gls{SIMD} Extensions such as AVX-512 \cite{intel-avx512}. Then came the integrated graphics and finally Power Efficiency Focus. 
 
 Then, a new paradigm came, instead of having a homogeneous set of cores, cores focused on performance and efficiency were added to the same package, the hybrid architecture. This set of heterogeneous cores meant the scheduler had to be changed in the operating systems, to better allocate more demanding programs on high performing cores and lower important tasks, such as background jobs to the highly efficient cores. This technology was released by Intel on the 12th generation Intel Core processors, using Intel 7 (a $7 nm$ node). This approach was revolutionary for power efficiency as \textcite{big-little} state.
 
 
 \subsection{\gls{ARM} Architecture}
-The \gls{ARM} (Advanced RISC Machine) is the newest architecture that has reached the global scale. Developed in 1986, the goal of this new 32 bit architecture was the simplicity. As \textcite{arm:story} puts it, the energy efficiency focus came later. This allowed the \gls{ARM} architecture to dominate on the mobile sector, specially on smartphones, which are battery-powered devices.
+The \gls{ARM} (Advanced RISC Machine) is the newest architecture that has reached the global scale. Developed in 1986, the goal of this new 32 bit architecture was the simplicity. As \textcite{arm:story} mentions, the energy efficiency focus came later. This allowed the \gls{ARM} architecture to dominate on the mobile sector, specially on smartphones, which are battery-powered devices.
 
 The characteristics of this \gls{isa} are a reduced set of instructions (\gls{RISC}), which  allows processors to have fewer transistors than \gls{cisc} architectures such as x86, resulting in lower cost, lower temperatures and lower power consumption.
 
-Currently, this technology is not only used in low-power light devices, but many laptops, and even desktops are using \gls{ARM} chips due to their power efficiency and performance \cite{arm:optimization-big.LITTLE}.
+Currently, this technology is not only used in low-power light devices, but many laptops and even desktops are using \gls{ARM} chips due to their power efficiency and performance \cite{arm:optimization-big.LITTLE}.
 
-\gls{ARM} also has a hybrid technology, called big.LITTLE, as described by the \cite{arm:biglittle2013}{ \gls{ARM} White Paper} that combines high-efficiency cores and high-performance cores. This architecture dominates the mobile device market and is increasingly found in modern laptops. 
+\gls{ARM} also has a hybrid technology, called big.LITTLE, as described by the \gls{ARM} White Paper \cite{arm:biglittle2013} that combines high-efficiency cores and high-performance cores. This architecture dominates the mobile device market and is increasingly found in modern laptops.
 
 
 
@@ -52,7 +52,7 @@ From \cite{phd-apmtrlk}'s Table 2.1 we can see there are multiple configurations
     \label{fig:xeon-layour}
 \end{figure}
 
-The traditional layout of these \glspl{cpu} can be found from \autoref{fig:xeon-layour}, where each ten cores form a \gls{NUMA} domain, two \gls{NUMA} domains for each of the chips (sockets) and multiple chips (two in this case) form a \gls{NUMA} node.
+The traditional layout of these \glspl{cpu} is shown in \autoref{fig:xeon-layour}, where each ten cores form a \gls{NUMA} domain, two \gls{NUMA} domains for each of the chips (sockets) and multiple chips (two in this case) form a \gls{NUMA} node.
 
 
 \begin{figure}
@@ -64,7 +64,7 @@ The traditional layout of these \glspl{cpu} can be found from \autoref{fig:xeon-
 
 AMD introduced an additional hierarchy level with its Zen architecture: \gls{CCX}. A single core complex has up to four cores, with a sliced victim L3 cache. Two \glspl{CCX} are combined onto a die, sharing a local partition of main memory. Multiple dies make up a socket, as it can be seen from \autoref{fig:zen2-architecture}.	
 
-Using AMD's ZEN 2 architecture as a new CPU architecture example, we can observe there is an additional layer, compared to \autoref{fig:xeon-layour}. As \textcite{zen2-architecture} puts it in their paper, in \autoref{fig:zen2-architecture}, the victim of this design is the L3 cache, which is shared between fewer cores.
+Using AMD's ZEN 2 architecture as a new CPU architecture example, we can observe there is an additional layer, compared to \autoref{fig:xeon-layour}. As \textcite{zen2-architecture} mentions in their paper, in \autoref{fig:zen2-architecture}, the victim of this design is the L3 cache, which is shared between fewer cores.
 
 
 \subsection{Simultaneous multithreading \& Hyperthreading}
@@ -216,11 +216,11 @@ This language was designed for backend tasks, handling thousands of simultaneous
 
 From \autoref{tab:language_comparison}, it can be seen that Go is statically typed and compiled, which makes it have a good start as an efficient programming language. But from the \autoref{tab:language_comparison_energy}, we can observe  GO has a managed runtime, which means the energy consumption will be higher than other languages that do not have this. This runtime is the section of the program in charge of running and scheduling \glspl{goroutine}. This is why  GO binaries have a bigger minimum size as the runtime has to be fitted in the binary, which is great for \gls{cross-compilation}, but not great for either energy efficiency or performance.
 
-Go's scheduler performs a series of steps before starting to run the user's code. As described in \cite{go:GoLabConf-runtime}, \cite{go:ardanlabs-runtime} and \cite{go:memory-allocation}, the runtime can be divided into these steps:
+Go's scheduler performs a series of steps before starting to run the user's code. As described in references \cite{go:GoLabConf-runtime}, \cite{go:ardanlabs-runtime} and \cite{go:memory-allocation}, the runtime can be divided into the following steps:
 \begin{enumerate}
     \item \textbf{OS Loading}:
-    The main function is not the actual entry point of a Go program. Rather, the starting point is an assembly level function within the runtime. You can find it in a file corresponding to your specific OS and architecture, for example, \texttt{rt0\_linux\_amd64.s}. This is the first function the Go's program code will have the OS execute after loading the binary, and its only responsibility is to get the environment setup for the Go runtime.
-        
+    The main function is not the actual entry point of a Go program. Rather, the starting point is an assembly level function within the runtime. You can find it in a file corresponding to your specific OS and architecture, for example, \texttt{rt0\_linux\_amd64.s}. This is the first function the Go program code will have the OS execute after loading the binary, and its only responsibility is to set up the environment for the Go runtime.
+
     \item \textbf{Argument and Environment setup}:
         The runtime, after being loaded into memory, calls an internal function \texttt{runtime.args} that handles the arguments and environment. This function copies the arguments (\texttt{argc} and \texttt{argv}) and environment variables into a Go-managed memory space. This ensures that the rest of the Go program, including the main function, can access this information through standard library functions like \texttt{os.Args} and \texttt{os.Getenv}.
     \item \textbf{Scheduler Initialization (M:P:G Model)}:
@@ -229,8 +229,8 @@ Go's scheduler performs a series of steps before starting to run the user's code
             \item \textbf{\texttt{M0} and \texttt{G0} Creation}: The program starts with a single \gls{os} thread ($M0$). Every $M$ thread has a special \gls{goroutine} called \texttt{g0}, which is responsible for scheduling other runtime tasks.
             \item \textbf{P Initializations}: A list of \texttt{Ps} or processors, which is a resource required to execute Go code, is created. The limit of \texttt{P} is determined by the \texttt{GOMAXPROCS} environment variable or inside the  code by using the \texttt{runtime.GOMAXPROCS()} function.
         \end{itemize}
-        At this time, the scheduler limits are put in place, limiting the maximum number of \gls{os} threads to 10,000.
-        
+        At this point, the scheduler limits the maximum number of \gls{os} threads to 10,000.
+
     \item \textbf{Memory Allocator and \gls{GC} initialization}: Go's runtime includes a complex memory allocator and Garbage Collector \cite{go:memory-distribution} and \cite{go:memory-internals}.
     \begin{itemize}
         \item \textbf{Memory Reservation}: The runtime reserves a large region of virtual memory, divided into 3 areas: \texttt{spans}, \texttt{bitmap} and \texttt{arena} where  GO objects are allocated on the heap.
@@ -253,7 +253,7 @@ Python is the most popular language according to the \href{https://www.tiobe.com
 
 Python, on the contrary to most of the other popular languages is an interpreted language, which means instead of having a compiler turn the code into assembly and then into binary, it has an interpreter that runs the \gls{bytecode} instructions written by the programmer one by one.
 
-As \cite{10.1145/1103845.1094836} puts it: "Garbage collection also can have a significant impact on both execution time and memory usage, and can be fine-tuned to obtain better performance"
+As \cite{10.1145/1103845.1094836} mentions: "Garbage collection also can have a significant impact on both execution time and memory usage, and can be fine-tuned to obtain better performance"
 
 \subsubsection{"Compiling" Python code to \gls{bytecode}}
 There are multiple steps between the Python code that the user writes and its execution. While using \gls{CPython}, the default Python interpreter, this can be divided into two phases \cite{cpython-docs}:
@@ -382,7 +382,7 @@ One of the first papers published that sparked the flame in the energy efficienc
 
 As \textcite{vankempen2025itseasygreenenergy} put it, "Despite the fact that these studies are statistical and only establish associations, they have nonetheless been broadly interpreted as establishing a causal relationship, that the choice of programming language has a direct effect on a system’s energy consumption. This misinterpretation stems in part from the work’s presentation, not only in ranking of languages by efficiency, but also from the specific claim that “it is almost always possible to choose the best language” when considering execution time and energy consumption \cite{ranking-rui-pereira}". Continuing with that idea, they also state that short benchmarks are not realistic of a real-life program being executed on a machine.
 
-The most important aspect of comparing two languages in a benchmark is ensuring that the algorithm used to solve the task is the same across the languages. Thus, the benchmarks that test the languages using libraries sometimes poison the results by adding another language without their knowledge. For instance, if the Python program uses \texttt{\gls{numpy}}, most of that library is implemented in C, or if we were to use \texttt{\gls{PyTorch}}, that library is mostly implemented in C++.
+The most important aspect of comparing two languages in a benchmark is ensuring that the algorithm used to solve the task is the same across the languages. Thus, the benchmarks that rely on libraries may skew the results by incorporating a language's optimized routines without the tester's knowledge. For instance, if the Python program uses \texttt{\gls{numpy}}, most of that library is implemented in C, or if we were to use \texttt{\gls{PyTorch}}, that library is mostly implemented in C++.
 
 Other studies such as \cite{ranking-rui-pereira}, specifically on their Table 3, on the top languages, for \texttt{binary-trees}, \texttt{fannkuch-redux}, and \texttt{fasta}, are C, C++, Rust and \gls{fortran}, exchanging positions depending on the test. As we see from this list, these are all compiled languages, which is not a surprise, as \textcite{imact-compiler} comment on their paper comparing multiple compiler flags and other languages. 
 
