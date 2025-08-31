@@ -205,7 +205,7 @@ class Material(ABC):
 The main loop of the program is processing the object read from the file, added to the scene. 
 This loop has two version in each of the programs designed:
 \begin{itemize}
-    \item \textbf{Single-threaded loop}: The program only runs using one core. It has a double loop where it processes all the pixels in the image, one by one. This is an extremely \gls{cpu} intensive process, as there are many pixels and iterations to  GO though each of those pixels. After all pixels are processed, they are outputted into the \texttt{output\_file}
+    \item \textbf{Single-threaded loop}: The program only runs using one core. It has a double loop where it processes all the pixels in the image, one by one. This is an extremely \gls{cpu} intensive process, as there are many pixels and iterations to go though each of those pixels. After all pixels are processed, they are outputted into the \texttt{output\_file}
     
     \item \textbf{multithreaded loop}: There are many ways a multithreaded renderer can work, even on different programming languages, different implementations have been chosen for specific reasons regarding their parallelization implementations. But in general, each of the pixels is processed, and then they are all joined into an array / list that is outputted to a file.
 \end{itemize}
@@ -263,7 +263,7 @@ lines_remaining := c.imageHeight
 for pixel_idx := range c.imageHeight * c.ImageWidth {
     waitChan <- struct{}{}
     wg.Add(1)
-     GO func(pixel_idx int) { 
+     go func(pixel_idx int) { 
         defer wg.Done()
         ... 
         <-waitChan 
@@ -432,7 +432,7 @@ cpp-single: cpp-build $(RESULTS_DIR)
 	...
     
 # Go Implementations
-.PHONY:  GO go-single go-build
+.PHONY: go go-single go-build
 go-build:
 	...
 
@@ -445,7 +445,7 @@ go-single: go-build $(RESULTS_DIR)
 # ====== Batch Operations ======
 .PHONY: all all-multi all-single benchmark
 
-all-multi: cpp  GO pypy Python $(RESULTS_DIR)
+all-multi: cpp  go pypy Python $(RESULTS_DIR)
 	...
 
 all-single: cpp-single go-single pypy-single Python-single $(RESULTS_DIR)
