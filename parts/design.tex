@@ -107,7 +107,7 @@ To ensure the consistency between programs and runs, I decided to create a file 
     \item \textbf{focusDist <double>} $\Rightarrow{}$ Specified the distance from camera look from point to a plane where the elements are in perfect focus
 \end{itemize}
 
-\subsection{Language Specific}
+\subsection{Language-Specific}
 To try eliminating any possible influence of libraries created in other programming languages, all programs have been created only using their own standard library.
 
 \subsubsection{C++}
@@ -335,7 +335,7 @@ This is an example image, of an image that this program would generate at maximu
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.65\linewidth]{img/ray_traced_balls.png}
-    \caption[Sample program output high-resolution]{Example of program output, 1920 width, 300 samples per pixel and 200 max depth}
+    \caption[Sample program output (high resolution)]{Example of program output, 1920 width, 300 samples per pixel and 200 max depth}
     \label{fig:ray_traced_max}
 \end{figure}
 
@@ -348,9 +348,9 @@ And this is an example of the same picture, but with the settings used to test t
     \label{fig:ray_traced_average}
 \end{figure}
 
-\section{Running the program}
+\section{Running the Renderer}
 \label{sec:running_program}
-To run the program, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for macOS, as it needs \gls{sudo} privileges.
+To run the renderer, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for macOS, as it needs \gls{sudo} privileges.
 
 \begin{lstlisting}[caption={Makefile for running the program.}, label={lst:makefile_run}]
 # ====== Configuration ======

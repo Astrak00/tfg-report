@@ -23,11 +23,11 @@ The x86 architecture is the most widely adopted in the world of desktop and serv
 
 Nowadays, the technology has improved, the architecture is now called x86-64, a 64-bit extension, created by AMD, and releases the full specification in August 2000. From 2006 onward, the two companies have been developing multicore processors, adding further \gls{SIMD} Extensions such as AVX-512 \cite{intel-avx512}. Then came the integrated graphics and finally Power Efficiency Focus. 
 
-Then, a new paradigm came, instead of having a homogeneous set of cores, cores focused on performance and efficiency were added to the same package, the hybrid architecture. This set of heterogeneous cores meant the scheduler had to be changed in the operating systems, to better allocate more demanding programs on high performing cores and lower important tasks, such as background jobs to the highly efficient cores. This technology was released by Intel on the 12th generation Intel Core processors, using Intel 7 (a $7 nm$ node). This approach was revolutionary for power efficiency as \textcite{big-little} state.
+Then, a new paradigm came, instead of having a homogeneous set of cores, cores focused on performance and efficiency were added to the same package, the hybrid architecture. This set of heterogeneous cores meant the scheduler had to be changed in the operating systems, to better allocate more demanding programs on high performing cores and lower-priority tasks, such as background jobs to the highly efficient cores. This technology was released by Intel on the 12th generation Intel Core processors, using Intel 7 (a $7 nm$ node). This approach was revolutionary for power efficiency as \textcite{big-little} states.
 
 
 \subsection{\gls{ARM} Architecture}
-The \gls{ARM} (Advanced RISC Machine) is the newest architecture that has reached the global scale. Developed in 1986, the goal of this new 32 bit architecture was the simplicity. As \textcite{arm:story} mentions, the energy efficiency focus came later. This allowed the \gls{ARM} architecture to dominate on the mobile sector, specially in smartphones, which are battery-powered devices.
+The \gls{ARM} (Advanced RISC Machine) is the newest architecture that has reached the global scale. Developed in 1986, the goal of this new 32 bit architecture was the simplicity, although the focus on energy efficiency came later (\textcite{arm:story}). This allowed the \gls{ARM} architecture to dominate on the mobile sector, specially in smartphones, which are battery-powered devices.
 
 The characteristics of this \gls{isa} are a reduced set of instructions (\gls{RISC}), which  allows processors to have fewer transistors than \gls{cisc} architectures such as x86, resulting in lower cost, lower temperatures and lower power consumption.
 
@@ -39,7 +39,7 @@ Currently, this technology is not only used in low-power light devices, but many
 
 
 \subsection{CPU Design for Multi-core dies}
-It is important to note that a computer that reports having more than 32 logical cores, usually has more than one socket, thus the performance and scaling of programs on multiple sockets can affect the energy efficiency and performance. This is due to the fact that information has to move between the multiple cache levels. 
+It is important to note that a computer that reports having more than 32 logical cores, usually has more than one socket, thus the performance and scaling of programs on multiple sockets can affect the energy efficiency and performance. This is due to the fact that information has to move across multiple cache levels.
 
 From \cite{phd-apmtrlk}'s Table 2.1 we can see there are multiple configurations, depending on the architecture, the amount of cache per core, how many cores there are per chip and the memory bandwidth.
 
@@ -61,7 +61,7 @@ The traditional layout of these \glspl{cpu} is shown in \autoref{fig:xeon-layour
     \label{fig:zen2-architecture}
 \end{figure}
 
-AMD introduced an additional hierarchy level with its Zen architecture: \gls{CCX}. A single core complex has up to four cores, with a sliced victim L3 cache. Two \glspl{CCX} are combined onto a die, sharing a local partition of main memory. Multiple dies make up a socket, as it can be seen from \autoref{fig:zen2-architecture}.	
+AMD introduced an additional hierarchy level with its Zen architecture: \gls{CCX}. A single core complex has up to four cores, with a partitioned (victim) L3 cache. Two \glspl{CCX} are combined onto a die, sharing a local partition of main memory. Multiple dies make up a socket, as it can be seen from \autoref{fig:zen2-architecture}.
 
 Using AMD's ZEN 2 architecture as a new CPU architecture example, we can observe there is an additional layer, compared to \autoref{fig:xeon-layour}. As \textcite{zen2-architecture} mentions in their paper, in \autoref{fig:zen2-architecture}, the victim of this design is the L3 cache, which is shared between fewer cores.
 
@@ -73,7 +73,7 @@ SMT or Simultaneous Multithreading is a technology that allows a single physical
 
 However, for CPU-intensive benchmarks, such as floating-point operations, performance can sometimes degrade when hyperthreading is enabled. This is because the two threads share the same resources, such as the cache and execution units, which can lead to contention and reduced efficiency.
 
-Hyperthreading is Intel's specific implementation of SMT, which was first introduced in 2002 with the Pentium 4 processor. It has been included in most Intel processors since then, including the Core i3, i5, i7, and i9 series. AMD also has its own implementation of SMT, which is included in its Ryzen processors.
+Hyperthreading is Intel's specific implementation of SMT, which was first introduced in 2002 with the Pentium 4 processor and has since been integrated into most Intel processors, such as the Core i3, Core i5, Core i7, and Core i9 series. AMD also has its own implementation of SMT, which is included in its Ryzen processors.
 
 % \subsection{GPU and Accelerators}
 % \label{sec:gpu-accelerators}
