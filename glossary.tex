@@ -17,9 +17,10 @@
 }
 
 
-\newglossaryentrywithacronym{RISC}
-{Reduced Instruction Set Computer}
-{A Reduced Instruction Set Computer is a type of microprocessor architecture that utilizes a small, highly-optimized set of instructions rather than the highly-specialized set of instructions typically found in other architectures.}
+\newglossaryentry{RISC}{
+    name ={Reduced Instruction Set Computer},
+    description = {A Reduced Instruction Set Computer is a type of microprocessor architecture that utilizes a small, highly-optimized set of instructions rather than the highly-specialized set of instructions typically found in other architectures.}
+}
 
 
 \newglossaryentry{CISC}{
@@ -63,22 +64,25 @@
     description = {Compiling a program with a different architecture than the host machine that is making the compilation.}
 }
 
-\newglossaryentrywithacronym{GIL}
-{Global Interpreter Lock}
-{The global interpreter lock is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once}
+\newglossaryentry{GIL}{
+    name = {Global Interpreter Lock},
+    description = {The global interpreter lock is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once}
+}
 
 \newglossaryentry{CPython}{
     name = {CPython},
     description = {Python's default interpreter, with a \gls{GIL}, until version 3.13 which an experimental free-threaded version was created and version 3.14 will continue its development (both known as 3.13t and 3.14t respectively)}
 }
 
-\newglossaryentrywithacronym{VM}
-{Virtual Machine}
-{The Python virtual machine is the same as the interpreter, which turns Python's code into machine ready instructions. Python's default VM implementation is \gls{CPython}, but others exist such as Jython (Java), IronPython (.NET) or PyPy}
+\newglossaryentry{VM}{
+    name = {Virtual Machine},
+    description = {The Python virtual machine is the same as the interpreter, which turns Python's code into machine ready instructions. Python's default VM implementation is \gls{CPython}, but others exist such as Jython (Java), IronPython (.NET) or PyPy}
+}
 
-\newglossaryentrywithacronym{GC}
-{Garbage Collector}
-{The garbage collector is an automatic memory management whose primary job is to reclaim memory that was allocated by the program but is no longer being used}
+\newglossaryentry{GC}{
+    name = {Garbage Collector},
+    description = {The garbage collector is an automatic memory management whose primary job is to reclaim memory that was allocated by the program but is no longer being used}
+}
 
 \newglossaryentry{heap-allocation}{
     name = {Heap Allocation},
@@ -100,16 +104,14 @@
     description = {Bytecode is a set of instructions for a hypothetical machine, for example the Python Virtual Machine (PVM). or the \href{https://www.java.com/en/}{Java} Virtual Machine (JVM)}
 }
 
-\newglossaryentrywithacronym{AST}
-{Abstract Syntax Tree}
-{An abstract syntax tree is a data structure used in computer science to represent the structure of a program or code snippet. It is a tree representation of the abstract syntactic structure of text (often source code) written in a formal language.}
-
+\newglossaryentry{AST}{
+    name = {Abstract Syntax Tree},
+    description = {An abstract syntax tree is a data structure used in computer science to represent the structure of a program or code snippet. It is a tree representation of the abstract syntactic structure of text (often source code) written in a formal language.}
+}
 
 \newacronym{cpu}{CPU}{Central Processing Unit}
 \newacronym{gpu}{GPU}{Graphics Processing Unit}
 \newacronym{isa}{ISA}{Instruction Set Architecture}
-\newacronym{cisc}{CISC}{Complex Instruction Set Computer}
-\newacronym{os}{OS}{Operating System}
 
 \newglossaryentry{gc-cycle}{
     name = {Garbage Collection cycle},
@@ -133,6 +135,7 @@
 
 \newacronym{i-o}{I/O}{Input / Output}
 \newacronym{json}{JSON}{JavaScript Object Notation}
+
 \newglossaryentry{c-extension}{
     name = {C extension},
     description = {
@@ -147,7 +150,7 @@
 
 \newglossaryentry{numpy}{
     name = {numpy},
-    description = {The most popular Python package for scientific computation with Python}
+    description = {The most popular Python package for scientific computation with Python, using \gls{c-extension} for performance-critical code and providing support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays.}
 }
 \newglossaryentry{PyTorch}{
     name = {PyTorch},
@@ -165,19 +168,23 @@
     description = {Fortran was a pioneering, high-level compiled programming language (short for Formula Translation) developed in the 1950s, which remains widely used for its high performance in scientific, engineering, and numerical computation.}
 }
 
-\newglossaryentrywithacronym{NUMA}
-{Non-Uniform Memory Access}
-{It's a computer memory design where the time it takes to access memory depends on which processor is accessing which memory location}
+\newglossaryentry{NUMA}{
+    name = {Non-Uniform Memory Access},
+    description = {It's a computer memory design where the time it takes to access memory depends on which processor is accessing which memory location}
+}
 
-\newglossaryentrywithacronym{CCX}{Core Complex}{
-    A Core Complex (CCX) is a group of CPU cores that share a common cache and memory controller, allowing for efficient communication and data sharing between the cores within a single processor package. In AMD's Zen architecture, each CCX typically contains four cores and a shared L3 cache.}
+\newglossaryentry{CCX}{
+    name= {Core Complex (CCX)},
+    description = {
+    A Core Complex (CCX) is a group of cores that share a common cache and memory controller, allowing for efficient communication and data sharing between the cores within a single processor package. In AMD's Zen architecture, each CCX typically contains four cores and a shared L3 cache.}
+}
 
 \newacronym{fov}{FOV}{Field of Vision}
 
-\newglossaryentrywithacronym{oop}
-{Object-Oriented Programming}
-{Programming paradigm that organizes code into reusable units called "objects," which contain both data and the functions that operate on that data}
-
+\newglossaryentry{oop}{
+    name = {Object-Oriented Programming},
+    description = {Programming paradigm that organizes code into reusable units called "objects," which contain both data and the functions that operate on that data}
+}
 
 \newglossaryentry{openMP}{
     name = {openMP},
@@ -188,9 +195,10 @@
     name = {Green threads},
     description = {Green threads are software threads managed by a \gls{runtime} environment or library, rather than directly by the operating system}
 }
-\newglossaryentrywithacronym{wg}
-{Wait Group}
-{A Go WaitGroup is a synchronization primitive that uses an internal counter, incremented by Add when goroutines start and decremented by Done when they finish, to block Wait until all registered goroutines have completed.}
+\newglossaryentry{wg}{
+    name = {Wait Group},
+    description = {A Go WaitGroup is a synchronization primitive that uses an internal counter, incremented by \texttt{Add} when goroutines start and decremented by \texttt{Done} when they finish, to block \texttt{Wait} until all registered goroutines have completed.}
+}
 
 \newacronym{rgb}{RGB}{Red Green Blue}
 
@@ -221,31 +229,37 @@
 
 \newacronym{IDE}{IDE}{Integrated Development Environment}
 
-\newglossaryentrywithacronym{fpga}
-{Field Programmable Gate Array}
-{A Field Programmable Gate Array is an integrated circuit that can be configured by the user after manufacturing to perform specific hardware tasks, allowing for customizable and reprogrammable logic functions.}
+\newglossaryentry{fpga}{
+    name = {Field Programmable Gate Array},
+    description = {A Field Programmable Gate Array is an integrated circuit that can be configured by the user after manufacturing to perform specific hardware tasks, allowing for customizable and reprogrammable logic functions.}
+}
 
-\newglossaryentrywithacronym{OS}
-{Operating System}
-{An operating system is a software that manages computer hardware and software resources. It acts as an intermediary between users and the computer hardware, providing a user interface and managing system resources.}
+\newglossaryentry{OS}{
+    name = {Operating System},
+    description = {An operating system is software that manages computer hardware and software resources. It acts as an intermediary between users and the computer hardware, providing a user interface and managing system resources.}
+}
 
-\newglossaryentrywithacronym{SBC}
-{Single Board Computer}
-{A single-board computer is a complete computer built on a single circuit board, integrating all the necessary components such as the processor, memory, and input/output interfaces, making it compact and suitable for embedded applications.}
+\newglossaryentry{SBC}{
+    name = {Single Board Computer},
+    description = {A single-board computer is a complete computer built on a single circuit board, integrating all the necessary components such as the processor, memory, and input/output interfaces, making it compact and suitable for embedded applications.}
+}
 
-\newglossaryentrywithacronym{ALU}
-{Arithmetic Logic Unit}
-{A component of a computer's CPU that performs arithmetic and logical operations on binary data, serving as the fundamental building block for processing instructions in digital computers.}
+\newglossaryentry{ALU}{
+    name = {Arithmetic Logic Unit},
+    description = {A component of a computer's CPU that performs arithmetic and logical operations on binary data, serving as the fundamental building block for processing instructions in digital computers.}
+}
 
-\newglossaryentrywithacronym{RAPL}
-{Running Average Power Limit}
-{A feature in Intel processors that allows software to monitor and control the power consumption of the CPU and other components, helping to optimize energy efficiency and thermal management.}
+\newglossaryentry{RAPL}{
+    name = {Running Average Power Limit},
+    description = {A feature in Intel processors that allows software to monitor and control the power consumption of the CPU and other components, helping to optimize energy efficiency and thermal management.}
+}
 
 \newacronym{ARM}{ARM}{Advanced \gls{RISC} Machine}
 
-\newglossaryentrywithacronym{generic}
-{generic}
-{Generics is a programming paradigm that enables the writing of code that is independent of any particular type. It allows algorithms to be written in a way that can operate on different data types without being rewritten for each type. This is often achieved through the use of templates or polymorphism. For example: }
+\newglossaryentry{generic}{
+    name = {Generic},
+    description = {Generics is a programming paradigm that enables the writing of code that is independent of any particular type. It allows algorithms to be written in a way that can operate on different data types without being rewritten for each type. This is often achieved through the use of templates or polymorphism.}
+}
 
 \newglossaryentry{mgp}{
     name = {M:P:G Model},

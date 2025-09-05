@@ -2,11 +2,11 @@
 
 The premise of this chapter is to describe the design, implementation and decisions taken during the development of the different programs that compose this project.
 
-Section \ref{sec:general_program_design} describes the general design of the programs, and how they are divided. Section \ref{sec:scene} describes the implementation of the scene objects and their interactions. In \autoref{sec:sphere-object} and \autoref{sec:renderer}, we will see how the objects are designed and how the rendering is done, respectively. Then, \autoref{sec:output} describes how the output is generated and how it can be used to visualize the results of the ray-tracer and finally, the last section, \ref{sec:running_program}, describes how the program can be run and how to use the \texttt{Makefile} to run the program with different parameters.
+Section \ref{sec:general_program_design} describes the general design of the programs, and how they are divided. Section \ref{sec:scene} describes the implementation of the scene objects and their interactions. In both \autoref{sec:sphere-object} and \autoref{sec:renderer}, we will see how the objects are designed and how the rendering is done, respectively. Then, \autoref{sec:output} describes how the output is generated and how it can be used to visualize the results of the ray-tracer and finally, the last section, \ref{sec:running_program}, describes how the program can be run and how to use the \texttt{Makefile} to run the program with different parameters.
 
 \section{General Program Design}
 \label{sec:general_program_design}
-The "30,000 foot view" of the programs is a ray-tracer, that has multiple spheres, with different materials, indexes of refraction and sizes. Each of the pixels is calculated individually, and then, when all pixels have been processed, they are outputted to a \texttt{ppm} file.
+The "30,000 feet view" of the programs is a ray-tracer, that has multiple spheres, with different materials, indexes of refraction and sizes. Each of the pixels is calculated individually, and then, when all pixels have been processed, they are outputted to a \texttt{ppm} file.
 
 As it can be inferred from the \autoref{fig:general_program_flow}, the program is divided into two main sections:
 \begin{itemize}
@@ -103,7 +103,7 @@ To ensure the consistency between programs and runs, I decided to create a file 
     \item \textbf{lookFrom <x: double> <y: double> <z: double>} $\Rightarrow{}$ Position of the camera in 3D space, where x is width, y is the height and z is the depth.
     \item \textbf{lookAt <x: double> <y: double> <z: double>} $\Rightarrow{}$ States the relative "up" orientation of the camera.
     \item \textbf{vup <x: double> <y: double> <z: double>} $\Rightarrow{}$ Vector that describes what is "up" in the scene
-    \item \textbf{defocusAngle <double>} $\Rightarrow{}$ This parameter represents the "aperture". A higher number will mean more objects will be in focus, and a smaller number results in a shallower dept of field.
+    \item \textbf{defocusAngle <double>} $\Rightarrow{}$ This parameter represents the "aperture"\footnote{If it were to be a digital camera}. A higher number will mean more objects will be in focus, and a smaller number results in a shallower depth of field.
     \item \textbf{focusDist <double>} $\Rightarrow{}$ Specified the distance from camera look from point to a plane where the elements are in perfect focus
 \end{itemize}
 
@@ -111,7 +111,7 @@ To ensure the consistency between programs and runs, I decided to create a file 
 To try eliminating any possible influence of libraries created in other programming languages, all programs have been created only using their own standard library.
 
 \subsubsection{C++}
-When using C++, the intent was to use some of C++ modern features that would make development easier and adapted to new standards such as the use of smart pointers, \texttt{constexpr} and range-based loops. It was designed as an object-oriented program, with polymorphism though virtual functions (inside \texttt{material}, \texttt{hittable}).
+When using C++, the intent was to use some of its modern features that would make development easier and adapted to new standards such as the use of smart pointers, \texttt{constexpr} and range-based loops. It was designed as an object-oriented program, with polymorphism though virtual functions (inside \texttt{material}, \texttt{hittable}).
 
 The idea of making it header only was the benefits of inlining, easy to distribute and easily separable concepts and, as the compilation time is not crucial, the re-compilation of the headers every time there is a modification is not a drawback.
 
@@ -192,7 +192,7 @@ type Dielectric struct {
 All spheres in Python are different classes that inherit from the same Material class:
 \begin{lstlisting}[language=Python, caption={Python abscract class.}, label={lst:python_material_abstract}]
 class Material(ABC):
-    \@abstractmethod
+    @abstractmethod
     def scatter(self, r_in: Ray, rec: 'HitRecord') -> tuple[bool, Color, Ray]:
         """Returns (scatter_happened, attenuation, scattered_ray)"""
         
@@ -212,7 +212,7 @@ This loop has two version in each of the programs designed:
 
 
 \subsection{Multiprocessing}
-As previously stated, each of the programming languages, not only uses a different approach into how they have been parallelized, but even the algorithm had to be changed, as the implementation of Python's interpreters makes the obvious parallelization perform surprisingly bad (this will be discussed in its section)
+As previously stated, each of the programming languages, not only uses a different approach into how they have been parallelized, but even the algorithm had to be changed, as the implementation of Python's interpreters makes the obvious parallelization perform surprisingly bad (this will be discussed in its section):
 
 \subsubsection{C++}
 To implement multiprocessing in C++, the \gls{openMP} library has been used, as it allows implementing parallelism with a low-effort compared to the great results it provides. 
@@ -239,13 +239,13 @@ Dividing this \texttt{\#pragma} directive into its components to better understa
     \item \textbf{shared(image, world, lines\_remaining, cout\_mutex, std::cout)}: The named variables refer to a single instance in shared memory, visible to all threads:
     \begin{itemize}
         \item image: the pixel buffer, where all threads dump the processed pixel.
-        \item World: the scene description, with all the spheres.
-        \item Lines remaining: and atomic counter for progress reporting
+        \item world: the scene description, with all the spheres.
+        \item lines remaining: and atomic counter for progress reporting
         \item cout\_mutex + std::cout: Locking the cout\_mutex before writing to std::cout to serialize console output.
     \end{itemize}
     
     \item \textbf{firstprivate$(
-    samples\_ per_pixel,
+    samples\_ per\_pixel,
     max\_ depth,
     image\_ width,
     image\_ height)$}:
@@ -253,7 +253,7 @@ Dividing this \texttt{\#pragma} directive into its components to better understa
 \end{itemize}
 
 \subsubsection{Go}
-To parallelize in go, its standard library provides a system called \glspl{goroutine}. These are "\glspl{green-thread}" that are created by Go's runtime every time the keyword \texttt{go} comes before a function.
+To parallelize in Go, its standard library provides a system called \glspl{goroutine}. These are "\glspl{green-thread}" that are created by Go's runtime every time the keyword \texttt{go} comes before a function.
 
 \begin{lstlisting}[language=Go, caption={Goroutines.}, label={lst:go_goroutines_example}]
 var wg sync.WaitGroup
@@ -307,13 +307,14 @@ for future in futures:
 \end{lstlisting}
 
 
-There is an interesting aspect on why the difference between the loops in Python and the rest of the programming languages: Compiled languages iterate over every pixel, while Python iterates over every line, why is this? Because a copy of the entire Python environment has to be created and the overhead of copying so much information slows down the program extremely. We will see the impact of these change in the evaluation section of the report.
+There is an interesting aspect on why the difference between the loops in Python and the rest of the programming languages: Compiled languages iterate over every pixel, while Python iterates over every line, why is this? Because a copy of the entire Python environment has to be created and the overhead of copying so much information slows down the program extremely. We will see the impact of these changes in the evaluation section of the report.
 
 \section{Output}
 \label{sec:output}
 The output of the program was initially thought to be though the standard output of the terminal, and redirecting the output to a \texttt{\gls{ppm}} file, but for measuring performance concerns and stability between different programs and their implementation of interacting with the operating system, it was decided that the program would create a file and output all the data into that file.
 
-The design of the output is a \gls{ppm} file, in which the first three lines define the content, aspect and maximum values of a file. 
+The design of the output is a \gls{ppm} file, in which the first three lines define the content, aspect and maximum values of a file, once all pixels have been processed, the file is closed.
+
 \begin{table}[H]
   \begin{tabular}{@{}ll@{}}
     \toprule
@@ -330,7 +331,7 @@ The design of the output is a \gls{ppm} file, in which the first three lines def
 
 In my specific case, I used P3, as I am outputting the \gls{rgb} values individually and a 255 maximum color value, to simplify the outputting of the resulting image.
 
-This is an example image, of an image that this program would generate at maximum reasonable quality settings, 1920 width, 300 samples per pixel and 200 max depth.
+\autoref{fig:ray_traced_max} is an example image, of an image that this program would generate at maximum reasonable quality settings, 1920 width, 300 samples per pixel and 200 max depth.
 
 \begin{figure}[h]
     \centering
@@ -339,7 +340,7 @@ This is an example image, of an image that this program would generate at maximu
     \label{fig:ray_traced_max}
 \end{figure}
 
-And this is an example of the same picture, but with the settings used to test the programs on the personal laptop and server, which takes 168x more time than \autoref{fig:ray_traced_max}
+And this \autoref{fig:ray_traced_average} is an example of the same picture, but with the settings used to test the programs on the personal laptop and server, which takes 168x more time than \autoref{fig:ray_traced_max}
 
 \begin{figure}[h]
     \centering
@@ -350,13 +351,14 @@ And this is an example of the same picture, but with the settings used to test t
 
 \section{Running the Renderer}
 \label{sec:running_program}
-To run the renderer, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for macOS, as it needs \gls{sudo} privileges.
+To run the renderer, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for macOS, as it needs \gls{sudo} privileges to perform the power measurements.
 
 \begin{lstlisting}[caption={Makefile for running the program.}, label={lst:makefile_run}]
 # ====== Configuration ======
 CORES                 ?= 14
 MAC_OS                ?= False
 SERVER                ?= False
+DESKTOP               ?= False
 RESULTS_DIR           := $(CURDIR)/results-$(CORES)
 SPHERE_DATA           := sphere_data.txt
 POWERMETRICS_PID_FILE := $(RESULTS_DIR)/power/powermetrics.pid

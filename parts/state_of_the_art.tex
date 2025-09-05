@@ -11,27 +11,27 @@ An energy-efficient system is defined as a system designed and optimized to perf
 
 As \textcite{Muralidhar2020Energy} put it, the average power a system draws is:
 $$P_{avg} = P_{dynamic} + P_{leakage}$$
-The dynamic power depends on the $V$ supply, the clock frequency, the node capacitance and the switching activity. This power can be reduced by reducing the load on the chip or by manually setting a limit on how much voltage the chip can draw (known as undervolting \cite{undervolting-effects})
+The dynamic power depends on the $V$ (voltage) supply, the clock frequency, the node capacitance and the switching activity. This power can be reduced by reducing the load on the chip or by manually setting a limit on how much voltage the chip can draw (known as undervolting \cite{undervolting-effects})
 
 
 \section{System Architectures}
 
-While the energy efficiency of a system is significantly affected by connected devices (e.g., a graphics card or an \gls{ai-accelerator}), this study excludes any external devices and expansion cards. Therefore, the processor architecture is the primary factor determining energy consumption on the system.
+While the energy efficiency of a system is significantly affected by connected devices (e.g., a graphics card or an \gls{ai-accelerator}), this study excludes any external devices and expansion cards. Therefore, the processor architecture is the primary factor determining energy consumption on the system, for the same program on the same programming language.
 
 \subsection{x86 Architecture}
-The x86 architecture is the most widely adopted in the world of desktop and server computers, whose market share is almost entirely shared by \href{https://amd.com}{AMD} and \href{https://intel.com}{Intel} who created it in 1978. Originally called x86-16, due to the 16 bit word size, it debuted in the Intel 8086 a single core, a $3 \mu m$ processor node.
+The x86 architecture is the most widely adopted in the world of desktop and server computers, having a market share is almost entirely shared by \href{https://amd.com}{AMD} and \href{https://intel.com}{Intel} who created it in 1978. Originally called x86-16, due to the 16 bit word size, it debuted in the Intel 8086 a single core, a $3 \mu m$ processor node.
 
-Nowadays, the technology has improved, the architecture is now called x86-64, a 64-bit extension, created by AMD, and releases the full specification in August 2000. From 2006 onward, the two companies have been developing multicore processors, adding further \gls{SIMD} Extensions such as AVX-512 \cite{intel-avx512}. Then came the integrated graphics and finally Power Efficiency Focus. 
+Nowadays, the technology has improved, the architecture is now called x86-64, a 64-bit extension, created by AMD, and releases the full specification in August 2000. From 2006 onward, the two companies have been developing multicore processors, adding further \gls{SIMD} Extensions such as AVX-512 \cite{intel-avx512}. Then came the integrated graphics and finally a Power Efficiency focus. 
 
-Then, a new paradigm came, instead of having a homogeneous set of cores, cores focused on performance and efficiency were added to the same package, the hybrid architecture. This set of heterogeneous cores meant the scheduler had to be changed in the operating systems, to better allocate more demanding programs on high performing cores and lower-priority tasks, such as background jobs to the highly efficient cores. This technology was released by Intel on the 12th generation Intel Core processors, using Intel 7 (a $7 nm$ node). This approach was revolutionary for power efficiency as \textcite{big-little} states.
+Then, a new paradigm came, instead of having a homogeneous set of cores, cores focused on performance and efficiency were added to the same package, the hybrid architecture. This set of heterogeneous cores meant the scheduler had to be changed in the operating systems, to better allocate more demanding programs on high performing cores and lower-priority tasks, such as background jobs to the highly efficient ones. This technology was released by Intel on the 12th generation Intel Core processors, using Intel 7 (a $7 nm$ node). This approach was revolutionary for power efficiency as \textcite{big-little} states.
 
 
 \subsection{\gls{ARM} Architecture}
-The \gls{ARM} (Advanced RISC Machine) is the newest architecture that has reached the global scale. Developed in 1986, the goal of this new 32 bit architecture was the simplicity, although the focus on energy efficiency came later (\textcite{arm:story}). This allowed the \gls{ARM} architecture to dominate on the mobile sector, specially in smartphones, which are battery-powered devices.
+The \gls{ARM} (Advanced RISC Machine) is the newest architecture that has reached the global scale. Developed in 1986, the goal of that new 32-bit architecture was the simplicity, although the focus on energy efficiency came later (\textcite{arm:story}). This allowed the \gls{ARM} architecture to dominate on the mobile sector, as well as in smartphones, which are one of the most common battery-powered devices, which require efficient power management.
 
-The characteristics of this \gls{isa} are a reduced set of instructions (\gls{RISC}), which  allows processors to have fewer transistors than \gls{cisc} architectures such as x86, resulting in lower cost, lower temperatures and lower power consumption.
+The characteristics of this \gls{isa} is a reduced set of instructions (\gls{RISC}), which  allows processors to have fewer transistors than \gls{CISC} architectures such as x86, resulting in lower cost, lower temperatures and lower power consumption.
 
-Currently, this technology is not only used in low-power light devices, but many laptops and even desktops are using \gls{ARM} chips due to their power efficiency and performance \cite{arm:optimization-big.LITTLE}.
+Currently, this technology is not only used in low-power light devices, but many laptops and even desktops are starting using \gls{ARM} chips due to their power efficiency and performance \cite{arm:optimization-big.LITTLE}. Apple's M1 chip is a great example of this, starting the trend of \gls{ARM} in laptops and desktops.
 
 \gls{ARM} also has a hybrid technology, called big.LITTLE, as described by the \gls{ARM} White Paper \cite{arm:biglittle2013} that combines high-efficiency cores and high-performance cores. This architecture dominates the mobile device market and is increasingly found in modern laptops.
 
@@ -39,7 +39,7 @@ Currently, this technology is not only used in low-power light devices, but many
 
 
 \subsection{CPU Design for Multi-core dies}
-It is important to note that a computer that reports having more than 32 logical cores, usually has more than one socket, thus the performance and scaling of programs on multiple sockets can affect the energy efficiency and performance. This is due to the fact that information has to move across multiple cache levels.
+It is important to note that a computer that reports having more than 32 logical cores, if it is at least a couple of years old, usually has more than one socket, thus the performance and scaling of programs on multiple sockets can affect the energy efficiency and performance. This is due to the fact that information has to move across multiple cache levels.
 
 From \cite{phd-apmtrlk}'s Table 2.1 we can see there are multiple configurations, depending on the architecture, the amount of cache per core, how many cores there are per chip and the memory bandwidth.
 
@@ -74,24 +74,6 @@ SMT or Simultaneous Multithreading is a technology that allows a single physical
 However, for CPU-intensive benchmarks, such as floating-point operations, performance can sometimes degrade when hyperthreading is enabled. This is because the two threads share the same resources, such as the cache and execution units, which can lead to contention and reduced efficiency.
 
 Hyperthreading is Intel's specific implementation of SMT, which was first introduced in 2002 with the Pentium 4 processor and has since been integrated into most Intel processors, such as the Core i3, Core i5, Core i7, and Core i9 series. AMD also has its own implementation of SMT, which is included in its Ryzen processors.
-
-% \subsection{GPU and Accelerators}
-% \label{sec:gpu-accelerators}
-% The \gls{gpu} is a specialized processor designed to handle complex mathematical calculations, particularly those related to graphics rendering. It is optimized for parallel processing, allowing it to perform many calculations simultaneously. This makes it ideal for tasks such as image processing, machine learning, and scientific simulations. Most games and image renderers run using a \gls{gpu} acceleration and most AI workloads can also be accelerated by it.
-
-% We can see from this paper \cite{gpu-energy-efficiency}, the fields where \glspl{gpu} are used are medical image processing, matrix-related computation, artificial intelligence, deep learning, etc. an acceleration of up to $50x$ can be obtained on specific kernels, compared to a \gls{cpu}.
-
-% This would be the ideal architecture to implement our testing framework if what we were looking for is extreme performance, but, as the goal of this project is to analyze the energy efficiency of different programming languages, the \gls{gpu} is not being considered for this project. 
-
-% An accelerator is a hardware component that enhances the performance of a system by offloading specific tasks from the CPU. Accelerators can take many forms, including \glspl{gpu}, \glspl{fpga}, and application-specific integrated circuits (ASICs). These devices are designed to perform particular computations more efficiently than a general-purpose CPU, making them valuable for tasks such as machine learning, data processing, and scientific simulations. They were very popular in the past, but their use has declined with the rise of more powerful \Glspl{cpu}.
-
-% \subsubsection{CUDA}
-% \label{sec:cuda}
-% CUDA (Compute Unified Device Architecture) is a parallel computing platform and application programming interface (API) model created by NVIDIA. It allows developers to use a C-like programming language to write algorithms that can be executed on the GPU, enabling significant performance improvements for compute-intensive tasks. CUDA provides a rich set of libraries and tools for optimizing performance, making it a popular choice for high-performance computing applications. However, we will not use CUDA in this project as the focus is on analyzing the energy efficiency of programming languages rather than leveraging GPU acceleration. 
-% \subsubsection{OpenCL}
-% \label{sec:opencl}
-% OpenCL (Open Computing Language) is an open standard for parallel programming of heterogeneous systems. It allows developers to write programs that can execute across various devices, including CPUs, GPUs, and other accelerators. OpenCL provides a C-like programming language and a set of APIs for managing parallel tasks, making it a versatile choice for high-performance computing applications. A future project could be analyzing the energy efficiency of CUDA programs vs OpenCL programs, as they are both parallel programming models for GPU acceleration.
-
 
 
 \section{Programming Languages}
@@ -225,10 +207,10 @@ Go's scheduler performs a series of steps before starting to run the user's code
     \item \textbf{Scheduler Initialization (M:P:G Model)}:
         The heart of the concurrency system in Go is the \gls{mgp} model. Before any Go code is executed, the scheduler must be initialized, which happens inside \texttt{runtime.schedinit}.
         \begin{itemize}
-            \item \textbf{\texttt{M0} and \texttt{G0} Creation}: The program starts with a single \gls{os} thread ($M0$). Every $M$ thread has a special \gls{goroutine} called \texttt{g0}, which is responsible for scheduling other runtime tasks.
+            \item \textbf{\texttt{M0} and \texttt{G0} Creation}: The program starts with a single \gls{OS} thread ($M0$). Every $M$ thread has a special \gls{goroutine} called \texttt{g0}, which is responsible for scheduling other runtime tasks.
             \item \textbf{P Initializations}: A list of \texttt{Ps} or processors, which is a resource required to execute Go code, is created. The limit of \texttt{P} is determined by the \texttt{GOMAXPROCS} environment variable or inside the  code by using the \texttt{runtime.GOMAXPROCS()} function.
         \end{itemize}
-        At this point, the scheduler limits the maximum number of \gls{os} threads to 10,000.
+        At this point, the scheduler limits the maximum number of \gls{OS} threads to 10,000.
 
     \item \textbf{Memory Allocator and \gls{GC} initialization}: Go's runtime includes a complex memory allocator and Garbage Collector \cite{go:memory-distribution} and \cite{go:memory-internals}.
     \begin{itemize}
@@ -310,14 +292,14 @@ There are multiple steps between the Python code that the user writes and its ex
     \end{tabular}
 \end{table}
 
-As Python's interpreter is almost completely independent of its syntax and language development, there are multiple interpreters, each one with its features. One of the most popular alternatives to \gls{CPython} is \href{https://pypy.org/}{PyPy}, a fast implementation of Python with a \gls{jit} compiler. The problem with Just in Time compilers are that there might incur into potential warmup costs, before the functions Go through the compiler. This process can optimize some hot code paths (a function or a section of the code that is run multiple times). Other examples are shown out in \autoref{tab:python_implementations}
+As Python's interpreter is almost completely independent of its syntax and language development, there are multiple interpreters, each one with its features. One of the most popular alternatives to \gls{CPython} is \href{https://pypy.org/}{PyPy}, a fast implementation of Python with a \gls{jit} compiler. The problem with Just in Time compilers is that there might incur into potential warmup costs, before the functions pass through the compiler. This process can optimize some hot code paths (a function or a section of the code that is run multiple times). Other examples are shown out in \autoref{tab:python_implementations}
 
 
 
 \subsection{C++: A high-Performance Compiled Language}
-Based on the programming language C (high-level language at the time, compared to assembly, in 1972), C++ was released in 1983. Nowadays, it is known as one of the most famous languages when it comes to high performance computing applications.
+Based on the programming language C (a high-level language at the time, compared to assembly, in 1972), C++ was released in 1983. Nowadays, it is known as one of the most famous languages when it comes to high performance computing applications.
 
-As we can see from \autoref{tab:language_comparison}, there are many characteristics on why it is one of the most used languages for high performance software, for example, blender\footnote{\href{https://blender.org}{blender.org}} or nuke\footnote{\href{https://www.foundry.com/products/nuke-family}{nuke.com}}. These known examples and the multiple tests performed in multiple courses during the computer science degree have shown its capabilities.
+As we can see from \autoref{tab:language_comparison}, there are many characteristics on why it is one of the most used languages for high performance software, for example, blender\footnote{\href{https://blender.org}{blender.org} 3D modeling and FVX open-source software} or nuke\footnote{\href{https://www.foundry.com/products/nuke-family}{nuke.com} node based visual effects software}. These known examples and the multiple tests performed in multiple courses during the computer science degree have shown its capabilities.
 
 
 If we take into account the energy efficiency, from \autoref{tab:language_comparison_energy} we can observe that being a compiled language, with multiple optimizations at the compilation level, zero-cost abstractions and direct memory management make it one of the best low energy consumption languages in theory.
@@ -359,7 +341,7 @@ Other languages that, while not necessarily the most efficient, could have been 
 		\addlinespace
 		
 		\textbf{JavaScript / TypeScript} &
-		These languages were designed for more web-centric environments, these languages run on JavaScript engines and typically use a single-threaded event loop for concurrency. This distinct execution paradigm and primary application domain fall outside the scope of this study, which focuses on general-purpose compiled languages. Some runtimes that JavaScript use are Node, Deno or bun, but all of them have to use a core, either \gls{V8} (for node and Deno) or JavaScriptCore (for bun). \\
+		These languages were designed for more web-centric environments, these languages run on JavaScript engines and typically use a single-threaded event loop for concurrency. This distinct execution paradigm and primary application domain fall outside the scope of this study, which focuses on general-purpose compiled languages. Some runtimes that JavaScript use are Node, Deno or Bun, but all of them have to use a core, either \gls{V8} (for Node and Deno) or JavaScriptCore (for bun). \\
 		\addlinespace
 		
 		\textbf{Ada} &
@@ -383,9 +365,9 @@ As \textcite{vankempen2025itseasygreenenergy} put it, "Despite the fact that the
 
 The most important aspect of comparing two languages in a benchmark is ensuring that the algorithm used to solve the task is the same across the languages. Thus, the benchmarks that rely on libraries may skew the results by incorporating a language's optimized routines without the tester's knowledge. For instance, if the Python program uses \texttt{\gls{numpy}}, most of that library is implemented in C, or if we were to use \texttt{\gls{PyTorch}}, that library is mostly implemented in C++.
 
-Other studies such as \cite{ranking-rui-pereira}, specifically on their Table 3, on the top languages, for \texttt{binary-trees}, \texttt{fannkuch-redux}, and \texttt{fasta}, are C, C++, Rust and \gls{fortran}, exchanging positions depending on the test. As we see from this list, these are all compiled languages, which is not a surprise, as \textcite{imact-compiler} comment on their paper comparing multiple compiler flags and other languages. 
+Other studies such as \cite{ranking-rui-pereira}, specifically on their Table 3, on the top languages, for \texttt{binary-trees}, \texttt{fannkuch-redux}, and \texttt{fasta}, are C, C++, Rust and \Gls{fortran}, exchanging positions depending on the test. As we see from this list, these are all compiled languages, which is not a surprise, as \textcite{imact-compiler} comment on their paper comparing multiple compiler flags and other languages. 
 
 As \textcite{usenix-comparing-29x} state in their publication "studies have found that \gls{V8} and \gls{CPython} can be $8.01$x and $29.50$x slower on average that their C++ counterparts respectively" but they also state that, "choosing a language for your application simple because it is 'fast' is the ultimate form of premature optimization" \cite{python-is-slow}. They have also found out that with respect to a language with a runtime, it can provide a better performance and scalability. Although this might be counter-intuitive, Go's scheduler automatically maps user threads to kernel threads thus reducing the number of context switches.
 
-Another challenge this area faces is measuring the energy consumption. Some \glspl{cpu} have internal registers that can provide these measurements, like the intel \gls{RAPL}, but other machines might have those registers not accessible to the user or, in case of most \gls{ARM} processors, these registers do not exist. Another technique is using the measurement from an external power plug, like the TP-link HS110, used by \textcite{meassuring-jit} in their measurements. The problem with these kinds of measurement devices it that the entire system is measured instead of only the \gls{cpu} or the \gls{ram} and the precision it provides is much lower, being able to read only at a $1$ Hz frequency. 
+Another challenge this area faces is measuring the energy consumption. Some \glspl{cpu} have internal registers that can provide these measurements, like intel's \gls{RAPL}, but other machines might have those registers not accessible to the user or, in case of most \gls{ARM} processors, these registers do not exist. Another technique is using the measurement from an external power plug, like the TP-link HS110, used by \textcite{meassuring-jit} in their measurements. The problem with these kinds of measurement devices it that the entire system is measured instead of only the \gls{cpu} or the \gls{ram} and the precision it provides is much lower, being able to read only at a $1$ Hz frequency. 
 

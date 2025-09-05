@@ -121,11 +121,12 @@ If the goal was to modify the list passed in, the \texttt{=} operator can not be
 \begin{lstlisting}[language=Python, caption={Correct implementation of augment\_twice\_good}, label={lst:python-augment-twice-good}]
 def augment_twice_good(a_list, val):
     """Put val on the end of 'a_list' twice."""
-    a_list.extend([val, val]) # Mutates the list in place: [1, 2, 3, 4, 4]
+    # Mutates the list in place: [1, 2, 3, 4, 4]
+    a_list.extend([val, val])
 
 # Or, an in-place addition:
 def augment_twice_good(a_list, val):
     """Put val on the end of 'a_list' twice."""
-    a_list += [val, val] # Mutates the list in place: [1, 2, 3, 4, 4]
-
+    # Mutates the list in place: [1, 2, 3, 4, 4]
+    a_list += [val, val]
 \end{lstlisting}

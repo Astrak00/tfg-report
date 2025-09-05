@@ -1,8 +1,8 @@
 \chapter{Problem Statement \& Analysis}\label{chap:analysis}
 
-This chapter contains an analysis of the functionalities provided by the renderer and the accompanying helper files. The objective of this analysis is to provide a clear understanding of the requirements and functionalities that the renderer must fulfill, as well as the constraints and non-functional requirements that must be considered during its development.
+This chapter contains an analysis of the functionalities provided by the ray-tracer and the accompanying helper files. The objective of this analysis is to provide a clear understanding of the requirements and functionalities that the ray-tracer must fulfill, as well as the constraints and non-functional requirements that must be considered during its development.
 
-To achieve this, we will define the user requirements, functional and non-functional requirements, and restrictions the renderer must adhere to. Then, we will present a use case diagram that illustrates the interactions between the user and the renderer, as well as traceability matrices that link the requirements to the use cases and functionalities of the renderer.
+To achieve this, we will define the user requirements, functional and non-functional requirements, and restrictions the ray-tracer must adhere to. Then, we will present a use case diagram that illustrates the interactions between the user and the ray-tracer, as well as traceability matrices that link the requirements to the use cases and functionalities of the ray-tracer.
 
 \section{Project Description}
 This project aims to create a suite of programs that implement a ray-tracer engine in multiple programming languages, including C++, Python, and Go. The goal is to create the pipeline to benchmark the performance and energy efficiency of each implementation, in multiple-core and single-core configurations.
@@ -90,7 +90,7 @@ Use case template:
         \textbf{Preconditions}      &  The user has the system installed and configured. \\
         \textbf{Postconditions}     &  The benchmarks are executed, and the results are stored. \\
     \end{tabular}
-    \caption{Use Case UC-XX}\label{tab:uc-xx}
+    \caption{Use Case Template}\label{tab:uc-xx}
 \end{table}
 
 \begin{itemize}
@@ -201,19 +201,19 @@ This section provides a traceability matrix that maps the requirements to the us
         \hline
         RF-04                &                &                &  \checkmark    &                \\
         \hline
-        RF-05                & \checkmark     &                &  \checkmark    &                \\
+        RF-05                &  \checkmark    &                &  \checkmark    &                \\
         \hline
         RF-06                &  \checkmark    &                & \checkmark     &                \\
         \hline
-        RF-07                & \checkmark     &  \checkmark    &                &                \\
+        RF-07                &  \checkmark    &  \checkmark    &                &                \\
         \hline
-        RF-08                &  \checkmark    & \checkmark     &                &  \checkmark    \\         
+        RF-08                &  \checkmark    &  \checkmark    &                &  \checkmark    \\         
         \hline
-        RF-09                &                &                & \checkmark     &                \\
+        RF-09                &                &                &  \checkmark    &                \\
         \hline
-        RF-10                &                &                &                &                \\
+        RF-10                &  \checkmark    &                &                &                \\
         \hline
-        RF-11                & \checkmark     &                &                &                \\
+        RF-11                &  \checkmark    &                &                &                \\
         \hline
         RF-12                &                &                &                &  \checkmark    \\
         \hline  
@@ -254,7 +254,7 @@ This section provides a traceability matrix that maps the requirements to the us
         RNF-07                & \checkmark     & \checkmark     &                &  \checkmark    \\       
         \hline
     \end{tabular}
-\caption{Traceability matrix for functional requirement}\label{tab:non-func-traceability-matrix}
+\caption{Traceability matrix for non-functional requirement}\label{tab:non-func-traceability-matrix}
 \end{table}
 
 
@@ -299,5 +299,5 @@ The principal components of the system, shown in \autoref{fig:system-architectur
     \item \textbf{sphere}: the specification of a hittable object of a sphere, which inherits from the hittable class and implements the specific behavior for spheres.
     \item \textbf{material}: the base class for all materials used in the scene, which defines the interface for calculating the color of a ray hit.
     \item \textbf{Image}: the class that represents the image to be generated, which is responsible for storing the pixels and writing the image to a file.
-    \item \textbf{output.ppm}: the file that contains the generated image, which is written by the Image class after rendering the scene.
+    \item \textbf{output.ppm}: the file that contains the generated image, which is written by the \texttt{Image} class after rendering the scene.
 \end{itemize}

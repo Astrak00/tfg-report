@@ -1,10 +1,10 @@
 \chapter{Conclusions}\label{chap:conclusions}
 
-After analyzing the data collected from the various experiments, I clearly confirmed the election of a programming language does affect the performance and energy consumption. 
+After analyzing the data collected from the various experiments, I have clearly confirmed the election of a programming language does affect the performance and energy consumption. 
 
-I found that the most efficient programming language, by a great margin is \gls{CPP}, outperforming in every case. The results indicate that it outperforms both in energy consumption and execution time when compared to Go, a compiled language, and interpretations of languages, such as \gls{CPython} or PyPy, the other languages and implementations of languages used in this project. This was to be expected, as \gls{CPP} is a compiled language and is known for its performance and energy efficiency, as it is an evolution of C.
+I found that the most efficient programming language, by a great margin is \gls{CPP}, outperforming in every case. The results indicate that it outperforms both in energy consumption and execution time when compared to Go, a compiled language, and interpretations of languages, such as \gls{CPython} or PyPy. This was to be expected, as \gls{CPP} is a compiled language and is known for its performance and energy efficiency, being an evolution of C.
 
-The program used to perform the benchmarks is an image renderer that processes each pixel of an image, casting multiple rays per pixel, and calculating the color of each one based on the intersection of the rays with the objects in the scene. This is a computationally intensive task that uses the \gls{ALU}, that can be parallelized.
+The program used to perform the benchmarks is an image renderer that processes each pixel of an image, casting multiple rays per pixel, and calculating the color of each one, using floating point operations, based on the intersection of the rays with the objects in the scene. This is a computationally intensive task that uses the \gls{ALU}, that can be parallelized.
 
 This benchmark has been performed on the same component, the \gls{cpu}, even when performing the benchmarks on different platforms, such as a desktop computer, a laptop, and a \gls{SBC}.
 
@@ -14,7 +14,7 @@ The main findings of this project are that \gls{CPP} is up to $440$ times faster
 
 On every test case, \gls{CPP} outperformed the other programming languages, given the same number of cores and platform. An interesting result is that the lowest consuming board has been the Raspberry Pi, due to its design for IoT low-consumption devices. For each of the languages tested, the performance on up to 4 cores on each platform is detailed on this graph:
 
-\input{parts/conclusions/grouped_graphs.tex}
+\input{parts/conclusions/grouped_graphs}
 
 \section{Discussion of Results}
 
@@ -23,7 +23,7 @@ The most impressive and surprising result for many tests has been the performanc
 
 The implementation of multiple threads in the different programming languages was also a key factor in the performance of the programs. Depending on the technique used, parallelizing for each line or for each pixel, the performance deferred on the different languages. The easiest to implement, and the one that showed the best results, was C++, followed by Go, with its \glspl{goroutine} and \glspl{channel}. Python's default implementation, \gls{CPython}, does not support true multithreading due to the \gls{GIL}, which limits the performance of multi-threaded programs, thus, the need of the library multithreading is needed.
 
-If we were to use libraries such as \Gls{numpy}, the performance of \gls{CPython} would be much better, as these libraries are optimized for performance and can take advantage of the underlying hardware. However, this would not be a fair comparison, as we would not be using pure Python code.
+If I were to use libraries such as \Gls{numpy}, the performance of \gls{CPython} would be much better, as these libraries are optimized for performance and can take advantage of the underlying hardware. However, this would not be a fair comparison, as we would not be using pure Python code.
 
 If I was to deploy a render-farm, with this program, I could be paying 300x less energy costs if I used \gls{CPP} instead of \gls{CPython} or Go, and renders could take up to 400x less time. This is a significant difference, and it is clear that \gls{CPP} is the best choice for these types of application.
 
@@ -39,9 +39,9 @@ Future research could focus on the following areas:
 \begin{itemize}
     \item Investigating the performance of other programming languages, such as Rust, Javascript, or Java, in similar scenarios.
     \item Exploring the impact of different libraries and frameworks on the performance of the programming languages.
-    \item Analyzing the performance external accelerators such as \gls{gpu} or \gls{fpga} in conjunction with the programming languages.
+    \item Analyzing the performance external accelerators such as \gls{gpu} or \gls{fpga} in conjunction with the programming languages, such as Numpy
     \item Conducting a more extensive analysis of the performance of the programming languages in different scenarios, such as web applications, data processing, or machine learning.
     \item Analyzing more workloads, such a web-server or a database, to see how the programming languages perform in these scenarios.
     \item Investigating the impact of different hardware configurations on the performance of the programming languages such as the \gls{ram} speed, size and SSD storage speed.
-    \item Exploring the impact of different operating systems on the performance of the programming languages, such as Linux, Windows, or macOS.
+    \item Exploring the impact of different operating systems on the performance of the programming languages, such as Linux, Windows or macOS on the same hardware.
 \end{itemize}

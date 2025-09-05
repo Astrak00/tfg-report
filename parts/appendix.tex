@@ -22,7 +22,7 @@ This section provides the reader with the detailed results of the server benchma
         60             &   1,975.05          & 1,744.76    & 1,354.03   &    93,015.31           \\
         \hline
     \end{tabular}
-\caption[Server - Package energy consumption]{Energy usage by the package on the Server benchmark by implementation and core count}
+\caption[Server - Package energy consumption]{Energy usage by the package on the server benchmark by implementation and core count}
 \label{tab:server-energy-pkg}
 \end{table}
 
@@ -46,7 +46,7 @@ This section provides the reader with the detailed results of the server benchma
         60           & 90.01           &    90.23          &    91.31            &   2,703.02        \\
         \hline
     \end{tabular}
-\caption[Server - \gls{ram} energy consumption]{Energy usage by the \gls{ram} on the Server benchmark by implementation and core count}
+\caption[Server - ram energy consumption]{Energy usage by the ram on the server benchmark by implementation and core count}
 \label{tab:server-energy-ram}
 \end{table}
 
@@ -160,14 +160,14 @@ This section provides the reader with the detailed results of the laptop benchma
     \centering
     \begin{tabular}{lrrrr}
         \hline
-        Cores & C++   & Go       & PyPy 3.11.11 & Python      \\
+        Cores & C++   & Go       & PyPy     & Python      \\
         \hline
-        1     & 58.79  & 429.23  & 194.69       & 17,546.05   \\
-        2     & 68.93  & 370.01  & 211.21       & 16,322.57   \\
-        4     & 54.97  & 354.64  & 216.53       & 16,193.99   \\
-        8     & 55.94  & 348.14  & 216.60       & 15,509.12   \\
-        10    & 55.00  & 336.88  & 214.96       & 14,942.09   \\
-        14    & 48.39  & 300.66  & 203.92       & 13,777.34   \\
+        1     & 58.79  & 429.23  & 194.69   & 17,546.05   \\
+        2     & 68.93  & 370.01  & 211.21   & 16,322.57   \\
+        4     & 54.97  & 354.64  & 216.53   & 16,193.99   \\
+        8     & 55.94  & 348.14  & 216.60   & 15,509.12   \\
+        10    & 55.00  & 336.88  & 214.96   & 14,942.09   \\
+        14    & 48.39  & 300.66  & 203.92   & 13,777.34   \\
         \hline
     \end{tabular}
 \caption[Laptop - Package energy consumption]{Energy usage by the package on the Laptop benchmark by implementation and core count}
@@ -178,14 +178,14 @@ This section provides the reader with the detailed results of the laptop benchma
     \centering
     \begin{tabular}{lrrrr}
         \hline
-        Cores & C++  & Go    & PyPy 3.11.11 & Python    \\
+        Cores & C++  & Go    & PyPy     & Python    \\
         \hline
-        1     & 7.48  & 54.16  & 26.52        & 2,697.08  \\
-        2     & 3.63  & 26.76  & 15.55        & 1,356.76  \\
-        4     & 2.06  & 14.80  & 8.25         & 696.75    \\
-        8     & 1.37  & 7.94   & 4.57         & 350.76    \\
-        10    & 1.26  & 6.66   & 3.81         & 288.37    \\
-        14    & 1.48  & 5.94   & 3.62         & 262.00    \\
+        1     & 7.48  & 54.16  & 26.52  & 2,697.08  \\
+        2     & 3.63  & 26.76  & 15.55  & 1,356.76  \\
+        4     & 2.06  & 14.80  & 8.25   & 696.75    \\
+        8     & 1.37  & 7.94   & 4.57   & 350.76    \\
+        10    & 1.26  & 6.66   & 3.81   & 288.37    \\
+        14    & 1.48  & 5.94   & 3.62   & 262.00    \\
         \hline
     \end{tabular}
 \caption[Laptop - Execution Time]{Execution time on the Laptop benchmark by implementation and core count}
@@ -196,7 +196,7 @@ This section provides the reader with the detailed results of the laptop benchma
 \chapter{Raspberry Pi Benchmarks Tables Results}
 \label{chap:appendix-rpi-benchmarks}
 
-This section provides the reader with the detailed results of the Raspberry Pi benchmarks, including energy consumption and execution times for the benchmarks ran on a Raspberry Pi 5 with different core counts and programming languages.
+This section provides the reader with the detailed results of the Raspberry Pi benchmarks, including energy consumption and execution times for the benchmarks ran with different core counts and programming languages.
 
 \begin{table}[h]
     \centering
@@ -412,10 +412,8 @@ It can be observed from this chart that, by using the different number of benchm
 
     \end{axis}
     \end{tikzpicture}
-    \caption{All languages. Colors = language; labels = platform-cores.}
+    \caption{All languages. Colors = language; labels = platform-cores. \href{https://charts-tfg.astrak.es}{Interactive version: charts-tfg.astrak.es}}
 \end{figure}
-
-
 
 
 

@@ -1,10 +1,11 @@
 \chapter{Socioeconomic Environment \& Sustainable Development Goals}\label{chap:economic-env}
+In this section of the report, an analysis of the budget for the project is presented. The budget includes the costs associated with the development of the benchmarks, the framework, and the evaluation of the results.
 
 \section{Budget}
-In this section of the report, an analysis of the budget for the project is presented. The budget includes the costs associated with the development of the benchmarks, the framework, and the evaluation of the results. The budget is divided into different categories, including human resources, material resources, software, and indirect costs.
+The budget is divided into different categories, including human resources, material resources, software, and indirect costs.
 
 \subsection{Human Resources}
-The human resources budget includes the costs associated with the personnel involved in the project. This includes salaries, benefits, and any other costs related to the project team. The total cost for human resources is estimated to be €9,000. This budget is based on the assumption that the project will require a total of 300 hours of work, with an hourly rate of €30, which is a reasonable rate for software development and project management in Spain. If we were to consider a different region, such as the United States, the hourly rate could be significantly higher, potentially reaching €100/hour or more, which would increase the total cost to €30,000 or more.
+The human resources budget includes the costs associated with the personnel involved in the project. This includes salaries, benefits, and any other costs related to the project team. The total cost for human resources is estimated to be €9,000. This budget is based on the assumption that the project will require a total of 300 hours of work, with an hourly rate of €30, which is a reasonable rate for software development and project management in Spain. If we were to consider a different region, such as the United States, the hourly rate could be significantly higher, potentially reaching €100/hour or more, which would increase the total cost to more than 30,000€. However, for the purposes of this budget, we will use the €30/hour rate.
 
 \begin{table}[h]
   \centering
@@ -33,7 +34,7 @@ The material resources budget includes the costs associated with the physical re
       Personal Laptop       & Development \& testing  & 3,444€   & 48        & 7     & 71.75€     & 502.25€  \\
       Professional Server   & Development \& testing  & 4,500€   & 24        & 1     & 187.50€    & 187.50€  \\
       Raspberry Pi 5        & Development \& testing  & 85€      & 12        & 2     & 7.08€      & 14.17€   \\
-      Desktop      & Development \& testing  & 2,000€   & 72        & 2     & 27.78€     & 55.56€   \\
+      Desktop               & Development \& testing  & 2,000€   & 72        & 2     & 27.78€     & 55.56€   \\
       Hardware              & Power measurement       & 20€      & 12        & 1     & 1.67€      & 1.67€    \\
       Software              & Licenses, tools, etc.   & 0€       & $\infty$  & 3     & 0€         & 0.00€    \\
       \hline
@@ -49,14 +50,17 @@ The material resources budget includes the costs associated with the physical re
 \subsubsection{Hardware}
 The hardware budget includes the costs associated with the physical machines used for testing and evaluation. This includes the server used for testing, a personal computer, one laptop and a Raspberry Pi 5 as compute nodes. I also acquired a power measurement device. The total cost for hardware is estimated to be $761.14$€.
 
+If the project required to buy this hardware, the cost of the hardware would be significantly higher: 10,049€. However, as I already own most of the hardware used for the project, the amortized cost is much lower, as it can be seen in \autoref{tab:material-resources}.
+
 \subsection{Software}
 The software budget would include the costs associated with the software tools and licenses needed for the project. As this project has been developed using open-source software or free tools, the software budget is estimated to be €0. The free for everyone software used includes:
 \begin{itemize}
     \item \textbf{VS Code:} Served as the primary Integrated Development Environment.
     \item \textbf{CMake:} Managed the build process in a cross-platform environment.
     \item \textbf{Ubuntu:} Operating System for most of the testing.
-    \item \textbf{MacOS:} Supported development and compatibility checks on an alternative OS.
+    \item \textbf{MacOS:} Supported development and compatibility checks on an alternative OS. It is included on Apple's price on their devices.
     \item \textbf{\LaTeX } Used for formatting and compiling the project documentation.
+    \item \textbf{Google Documents}: Used for storing the benchmark data.
 \end{itemize}
 
 But there are some software licenses that were used during the project, but they were not paid for, as they were provided by the fact that these tools have an education license. The following table summarizes the software licensing costs:
@@ -87,7 +91,7 @@ Some of these costs may include office space, utilities, and other general expen
     \item Utilities (electricity, internet, etc.): €100/month
     \item Administrative expenses: €50/month
 \end{itemize}
-Assuming the project runs for 6 months, and the work is performed remotely, eliminating the need for office space, the total indirect costs can be estimated to be: 900€.
+Assuming the project runs for 6 months, and the work is performed remotely, eliminating the need for office space, the total indirect costs can be estimated to be: 1050€.
 
 \subsection{Total Cost \& Offer}
 The total cost for the project is the sum of all the individual budget categories. This includes human resources, material resources, software, and indirect costs. The total estimated cost for the project is 10,661.14€.
