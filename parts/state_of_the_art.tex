@@ -21,7 +21,7 @@ While the energy efficiency of a system is significantly affected by connected d
 \subsection{x86 Architecture}
 The x86 architecture is the most widely adopted in the world of desktop and server computers, having a market share is almost entirely shared by \href{https://amd.com}{AMD} and \href{https://intel.com}{Intel} who created it in 1978. Originally called x86-16, due to the 16 bit word size, it debuted in the Intel 8086 a single core, a $3 \mu m$ processor node.
 
-Nowadays, the technology has improved, the architecture is now called x86-64, a 64-bit extension, created by AMD, and releases the full specification in August 2000. From 2006 onward, the two companies have been developing multicore processors, adding further \gls{SIMD} Extensions such as AVX-512 \cite{intel-avx512}. Then came the integrated graphics and finally a Power Efficiency focus. 
+Nowadays, the technology has improved, the architecture is now called x86-64, a 64-bit extension, created by AMD, and released the full specification in August 2000. From 2006 onward, the two companies have been developing multicore processors, adding further \gls{SIMD} Extensions such as AVX-512 \cite{intel-avx512}. Then came the integrated graphics and finally a Power Efficiency focus. 
 
 Then, a new paradigm came, instead of having a homogeneous set of cores, cores focused on performance and efficiency were added to the same package, the hybrid architecture. This set of heterogeneous cores meant the scheduler had to be changed in the operating systems, to better allocate more demanding programs on high performing cores and lower-priority tasks, such as background jobs to the highly efficient ones. This technology was released by Intel on the 12th generation Intel Core processors, using Intel 7 (a $7 nm$ node). This approach was revolutionary for power efficiency as \textcite{big-little} states.
 
@@ -31,7 +31,7 @@ The \gls{ARM} (Advanced RISC Machine) is the newest architecture that has reache
 
 The characteristics of this \gls{isa} is a reduced set of instructions (\gls{RISC}), which  allows processors to have fewer transistors than \gls{CISC} architectures such as x86, resulting in lower cost, lower temperatures and lower power consumption.
 
-Currently, this technology is not only used in low-power light devices, but many laptops and even desktops are starting using \gls{ARM} chips due to their power efficiency and performance \cite{arm:optimization-big.LITTLE}. Apple's M1 chip is a great example of this, starting the trend of \gls{ARM} in laptops and desktops.
+Currently, this technology is not only used in low-power light devices, but many laptops and even desktops are starting using \gls{ARM} chips due to their power efficiency and performance \cite{arm:optimization-big.LITTLE}. Apple's M1 chip, and now M4 series is a great example of this, starting the trend of \gls{ARM} in laptops and desktops.
 
 \gls{ARM} also has a hybrid technology, called big.LITTLE, as described by the \gls{ARM} White Paper \cite{arm:biglittle2013} that combines high-efficiency cores and high-performance cores. This architecture dominates the mobile device market and is increasingly found in modern laptops.
 
@@ -320,7 +320,7 @@ There are three main compilers for C++: \textbf{G++}, \textbf{Clang++} and \text
 
 There are many more languages, but to reduce the scope of the project and have a good analysis on each of the languages to be analyzed, a reduced group had to be selected. 
 
-As a contender for a fast, high energy efficient language we could have used Rust, a recently new programming language, focused on performance and type-safety. As Rust is a compiled language and uses the same \gls{LLVM} backend for compilation, a similar result is to be expected from this benchmark compared to the C++ implementation, thus, I excluded it from the study.
+As a contender for a fast, high energy efficient language we could have used Rust, a recently new programming language, focused on performance and type-safety. As Rust is a compiled language and uses the same \gls{LLVM} backend for compilation, a similar result is to be expected from this benchmark compared to the C++ implementation although the borrow checker might introduce performance delays, thus, I excluded it from the study.
 
 Other languages that, while not necessarily the most efficient, could have been strong candidates for testing due to their widespread adoption are listed in \autoref{tab:excluded_languages}
 

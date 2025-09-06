@@ -9,13 +9,14 @@
             xlabel={Time Taken (s)},
             ylabel={Energy Consumption (Joules)},
             ymode=log,
-            xmin=0, xtick={0,20,40,60,80,100,120,140,160,180,200,220,240,260},
-            % enlarge x limits=false,
+            xmax=60,
+            xmin=0, xtick={0,20,40,60},%80,100},%,120,140,160,180,200,220,240,260},
+            enlarge x limits=false,
             grid=both, minor tick num=1,
             grid style={gray!30,dashed},
             legend style={at={(0.5,1.05)},anchor=south,legend columns=-1, draw=none},
             enlargelimits=0.1,
-            clip=false
+            clip=true
             ]
             % plots (no Python)
             \PlotCXXconclusion
@@ -24,12 +25,13 @@
             \legend{C++, Go, PyPy}
 
             % clickable "button" back to the full plot
-            \node[anchor=north east, fill=gray!15, draw, rounded corners,
+            \node[anchor=north west, fill=gray!15, draw, rounded corners,
                     inner sep=3pt] at (axis description cs:0.98,0.98)
                                 {\hyperref[chap:appendix-scatter-plot]{\strut Show \emph{with} Python}};
             \end{axis}
         \end{tikzpicture}
-    \caption[Scatter plot of C++, Go, and PyPy.]{The plot shows the relationship between time taken and energy consumption for each programming language. The data points represent different implementations, where the label has the form X-Y, with X being the platform and Y being the number of cores used. \href{https://charts-tfg.astrak.es}{Interactive version: charts-tfg.astrak.es}}
+    \caption[Scatter plot of C++, Go, and PyPy.]{The plot shows the relationship between time taken and energy consumption for each programming language. The data points represent different implementations, where the label has the form X-Y, where X is the platform and Y is the number of cores used. \href{https://charts-tfg.astrak.es}{Interactive version at: charts-tfg.astrak.es}}
     \label{fig:conclusion-scatter-nopy}
     \end{figure}
 % \end{adjustbox}
+

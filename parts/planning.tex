@@ -1,11 +1,18 @@
 \chapter{Planning}\label{chap:planning}
 
-This chapter will cover the plan followed for the development of this project. It will include the initial plan, the changes made during the project and the final plan.
+This chapter will cover the plan followed for the development of this project. It will include the initial plan and the final plan, along with a gantt diagram illustrating the timeline of the project.
 
 \section{Initial Plan}
 The initial plan for the development of this project was to create a suite of benchmarks, and a framework for evaluating the performance of different programming models on multiple computing systems. 
 
-The benchmarks were to be implemented in three different programming languages: C++, Go, and Python. The framework was to be designed to allow for easy integration of new benchmarks and to provide a way to measure the performance and energy consumption of the benchmarks on different hardware platforms.
+At the start of the project, there were multiple options for the benchmarks to be implemented, including using existing benchmark suites, using existing algorithms, or creating new benchmarks from scratch. An example of the benchmark that could have been implemented is a Neural Network training and inference benchmark, which would evaluate the performance of different programming models in training and inference tasks, but it was not chosen in the end, as among other reasons, most of python's implementations on this field are based on libraries that use C/C++ on the backend, which would not give a fair comparison between the languages.
+
+The benchmarks were to be implemented in three different programming languages: C++, Go, and Python. Though, at the start of the project, it was not clear which ones would be the best fit, thus, a version of the ray-tracer in Rust and JavaScript/TypeScript were also considered. The scope of not only including the CPU as the main hardware platform, but also including other platforms such as GPUs and FPGAs was also considered, creating a version in \gls{CUDA} and \gls{Metal}, but it was discarded due to the fact that the language did not impact the performance much, as the code was being executed on the GPU was the same independently of the language used to call it.
+
+\section{Final Plan}
+The final plan for the development of this project was to create a suite of benchmarks, only for CPU, using only C++, Go, and Python (with the possibility of using CPython or PyPy). The benchmarks chosen was a ray-tracer, implemented as an object-oriented program. The benchmarks were to be implemented in a way that would allow for easy comparison between the different programming models, and the performance of each benchmark was to be measured in terms of execution time and power consumption.
+
+The framework was to be designed to allow for easy integration of new benchmarks and to provide a way to measure the performance and energy consumption of the benchmarks on different hardware platforms.
 
 The development of the project started on February 19th, 2025, and was completed in August of the same year. The Gantt diagram (\autoref{fig:gantt}) illustrates the project plan shows the different phases of the project, including the initial research, the development of the benchmarks, the implementation of the framework, and the evaluation of the results.
 
