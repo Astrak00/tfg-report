@@ -6,7 +6,7 @@ Section \ref{sec:general_program_design} describes the general design of the pro
 
 \section{General Program Design}
 \label{sec:general_program_design}
-The "30,000 feet view" of the programs is a ray-tracer, that has multiple spheres, with different materials, indexes of refraction and sizes. Each of the pixels is calculated individually, and then, when all pixels have been processed, they are outputted to a \texttt{ppm} file.
+The `30,000 feet view' of the programs is a ray-tracer, that has multiple spheres, with different materials, indexes of refraction and sizes. Each of the pixels is calculated individually, and then, when all pixels have been processed, they are outputted to a \texttt{ppm} file.
 
 As it can be inferred from the \autoref{fig:general_program_flow}, the program is divided into two main sections:
 \begin{itemize}
@@ -97,13 +97,13 @@ To ensure the consistency between programs and runs, I decided to create a file 
 \begin{itemize}
     \item \textbf{ratio <width: double> <height: double>} $\Rightarrow{}$ Aspect ratio of the output image (width / height).
     \item \textbf{width <int>} $\Rightarrow{}$ The number of pixels for the width in the output image.
-    \item \textbf{samplesPerPixel <int>} $\Rightarrow{}$ How many times each of the pixels is processed. The higher this number is, the slower the render, but the less noise that the output image has. See \autoref{fig:ray_traced_average} and \autoref{fig:ray_traced_max} for examples of the same image with different \texttt{samplesPerPixel} values.
+    \item \textbf{samplesPerPixel <int>} $\Rightarrow{}$ The number of rays per pixel used for anti-aliasing. The higher this number is, the slower the render, but the less noise that the output image has. See \autoref{fig:ray_traced_average} and \autoref{fig:ray_traced_max} for examples of the same image with different \texttt{samplesPerPixel} values.
     \item \textbf{maxDepth <int>} $\Rightarrow{}$ Specifies how many bounces a ray has to perform before getting the resulting color.
     \item \textbf{vfov <int>} $\Rightarrow{}$ State the \gls{fov} of the camera.
     \item \textbf{lookFrom <x: double> <y: double> <z: double>} $\Rightarrow{}$ Position of the camera in 3D space, where x is width, y is the height and z is the depth.
-    \item \textbf{lookAt <x: double> <y: double> <z: double>} $\Rightarrow{}$ States the relative "up" orientation of the camera.
-    \item \textbf{vup <x: double> <y: double> <z: double>} $\Rightarrow{}$ Vector that describes what is "up" in the scene
-    \item \textbf{defocusAngle <double>} $\Rightarrow{}$ This parameter represents the "aperture"\footnote{If it were to be a digital camera}. A higher number will mean more objects will be in focus, and a smaller number results in a shallower depth of field.
+    \item \textbf{lookAt <x: double> <y: double> <z: double>} $\Rightarrow{}$ States the relative `up' orientation of the camera.
+    \item \textbf{vup <x: double> <y: double> <z: double>} $\Rightarrow{}$ Vector that describes what is `up' in the scene
+    \item \textbf{defocusAngle <double>} $\Rightarrow{}$ This parameter represents the `aperture'\footnote{If it were to be a digital camera}. A higher number will mean more objects will be in focus, and a smaller number results in a shallower depth of field.
     \item \textbf{focusDist <double>} $\Rightarrow{}$ Specified the distance from camera look from point to a plane where the elements are in perfect focus
 \end{itemize}
 
@@ -135,13 +135,13 @@ type Hittable interface {
 In my specific implementation, two instances of these keywords were used to denote all types of materials and all Hittable objects, that have to implement a scatter function and a hit function as described in \autoref{lst:go_interface_example}.
 
 \subsubsection{Python}
-Python is one of the most open languages, where there are many ways of developing the same program. There have been some problems with Python's parameters in functions, whether they are passed as parameters or as references. Unlike in C++ where you can add \texttt{\&} to symbolize the passing the parameter by reference in the function signature, or using the \texttt{*} in Go, in Python, at first, it seems you can not specify this behavior. But if you research into the inner-workings of Python functions and how they work, it seems that "Python passes function arguments by assigning to them" as \cite{python-names-pycon15} states at PyCon 2015:
+Python is one of the most open languages, where there are many ways of developing the same program. There have been some problems with Python's parameters in functions, whether they are passed as parameters or as references. Unlike in C++ where you can add \texttt{\&} to symbolize the passing the parameter by reference in the function signature, or using the \texttt{*} in Go, in Python, at first, it seems you can not specify this behavior. But if you research into the inner-workings of Python functions and how they work, it seems that `Python passes function arguments by assigning to them' as \cite{python-names-pycon15} states at PyCon 2015:
 
 \input{parts/code_blocks/python-function-assig}
 
 \section{Object}
 \label{sec:sphere-object}
-All objects in this program are spheres, even the "ground" is a sphere with a big enough radius that it seems a plane.
+All objects in this program are spheres, even the `ground' is a sphere with a big enough radius that it seems a plane.
 
 \subsubsection{C++}
 Each of the spheres in C++ is a class called \texttt{sphere}, as all objects in this scene are spheres. \texttt{sphere} is a derived class from \texttt{hittable}, an abstract class, such that in the case that, in the future the program is modified to have more objects, it is easily implemented. 
@@ -253,7 +253,7 @@ Dividing this \texttt{\#pragma} directive into its components to better understa
 \end{itemize}
 
 \subsubsection{Go}
-To parallelize in Go, its standard library provides a system called \glspl{goroutine}. These are "\glspl{green-thread}" that are created by Go's runtime every time the keyword \texttt{go} comes before a function.
+To parallelize in Go, its standard library provides a system called \glspl{goroutine}. These are `\glspl{green-thread}' that are created by Go's runtime every time the keyword \texttt{go} comes before a function.
 
 \begin{lstlisting}[language=Go, caption={Goroutines.}, label={lst:go_goroutines_example}]
 var wg sync.WaitGroup
@@ -281,7 +281,7 @@ To prevent the program from continue running before all the \glspl{goroutine} ar
 
 To parallelize in Python, I had to use the \texttt{concurrent.futures} library to properly parallelize the Python execution.
 
-This library can create two types of "executors" which are:
+This library can create two types of `executors' which are:
 \begin{itemize}
     \item \textbf{ThreadPoolExecutor}: for \gls{i-o}-bound tasks (uses threads)
     \item \textbf{ProcessPoolExecutor}: for \gls{cpu}-bound tasks (uses processes)
@@ -350,7 +350,7 @@ And this \autoref{fig:ray_traced_average} is an example of the same picture, but
 
 \section{Running the Renderer}
 \label{sec:running_program}
-To run the renderer, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for macOS, as it needs \gls{sudo} privileges to perform the power measurements.
+To run the renderer, I have designed a \texttt{Makefile} that allows to run the program with different parameters, such as the number of cores to be used and where the user can specify the platform the benchmark is being run on. This is specially needed for macOS, as it needs \gls{sudo} privileges to perform the power measurements \footnote{This is a security risk, as it allows the program to have sudo privileges.}.
 
 \begin{lstlisting}[caption={Makefile for running the program.}, label={lst:makefile_run}]
 # ====== Configuration ======

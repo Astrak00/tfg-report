@@ -7,7 +7,7 @@ The purpose is to provide background information necessary to understand the stu
 
 \section{Energy Efficient Systems}
 
-An energy-efficient system is defined as a system designed and optimized to performs its functions while consuming the minimum amount of energy possible, without compromising its performance, safety and reliability.
+An energy-efficient system is defined as a system designed and optimized to perform its functions while consuming the minimum amount of energy possible, without compromising its performance, safety and reliability.
 
 As \textcite{Muralidhar2020Energy} put it, the average power a system draws is:
 $$P_{avg} = P_{dynamic} + P_{leakage}$$
@@ -19,7 +19,7 @@ The dynamic power depends on the $V$ (voltage) supply, the clock frequency, the 
 While the energy efficiency of a system is significantly affected by connected devices (e.g., a graphics card or an \gls{ai-accelerator}), this study excludes any external devices and expansion cards. Therefore, the processor architecture is the primary factor determining energy consumption on the system, for the same program on the same programming language.
 
 \subsection{x86 Architecture}
-The x86 architecture is the most widely adopted in the world of desktop and server computers, having a market share is almost entirely shared by \href{https://amd.com}{AMD} and \href{https://intel.com}{Intel} who created it in 1978. Originally called x86-16, due to the 16 bit word size, it debuted in the Intel 8086 a single core, a $3 \mu m$ processor node.
+The x86 architecture is the most widely adopted in the world of desktop and server computers, having a market share almost entirely shared by \href{https://amd.com}{AMD} and \href{https://intel.com}{Intel} who created it in 1978. Originally called x86-16, due to the 16 bit word size, it debuted in the Intel 8086 a single core, a $3 \mu m$ processor node.
 
 Nowadays, the technology has improved, the architecture is now called x86-64, a 64-bit extension, created by AMD, and released the full specification in August 2000. From 2006 onward, the two companies have been developing multicore processors, adding further \gls{SIMD} Extensions such as AVX-512 \cite{intel-avx512}. Then came the integrated graphics and finally a Power Efficiency focus. 
 
@@ -120,7 +120,7 @@ In this section, the different programming languages that have been chosen will 
 		
 		\textbf{Standard Library} &
 		Rich library with a focus on performance (e.g., STL containers, algorithms). &
-		Extensive "batteries-included" library for a vast array of tasks, speeding up development. &
+		Extensive `batteries-included' library for a vast array of tasks, speeding up development. &
 		Comprehensive library designed for modern needs like networking, \gls{i-o}, and \gls{json} handling. \\
 		\addlinespace
 		
@@ -181,7 +181,7 @@ In this section, the different programming languages that have been chosen will 
         \addlinespace
 
 		\textbf{Abstractions} &
-		Aims for "zero-cost abstractions," where high-level features are compiled away and incur no runtime overhead. &
+		Aims for `zero-cost abstractions,' where high-level features are compiled away and incur no runtime overhead. &
 		High-level abstractions and dynamic features are powerful but generally incur significant runtime overhead. &
 		Interfaces provide abstraction with a small, well-defined runtime cost. Composition is favored over inheritance. \\
 		\bottomrule
@@ -234,9 +234,9 @@ Python is the most popular language according to the \href{https://www.tiobe.com
 
 Python, on the contrary to most of the other popular languages is an interpreted language, which means instead of having a compiler turn the code into assembly and then into binary, it has an interpreter that runs the \gls{bytecode} instructions written by the programmer one by one.
 
-As \cite{10.1145/1103845.1094836} mentions: "Garbage collection also can have a significant impact on both execution time and memory usage, and can be fine-tuned to obtain better performance"
+As \cite{10.1145/1103845.1094836} mentions: `Garbage collection also can have a significant impact on both execution time and memory usage, and can be fine-tuned to obtain better performance'
 
-\subsubsection{"Compiling" Python code to \gls{bytecode}}
+\subsubsection{`Compiling' Python code to \gls{bytecode}}
 There are multiple steps between the Python code that the user writes and its execution. While using \gls{CPython}, the default Python interpreter, this can be divided into two phases \cite{cpython-docs}:
 
 
@@ -247,14 +247,14 @@ There are multiple steps between the Python code that the user writes and its ex
 \input{parts/diagrams/python-intepreter-execution}
 
 \begin{enumerate}
-    \item \textbf{Phase 1: The "Frontend"} 
+    \item \textbf{Phase 1: The `Frontend'} 
     \begin{enumerate}
         \item \textbf{Reading the source code}: The Python interpreter reads the \textit{.py} files that were passed as an argument when invoked.
         \item \textbf{Lexical Analysis (Lexing \& Tokenizing)}: In this step, the interpreter breaks down the code into a sequence of tokens, the smallest meaningful unit of the language's grammar.
         \item \textbf{Parsing}: The stream of tokens from the previous step is fed into the parser, which checks if the sequence of tokens conforms to the rules that define Python's grammar \cite{python_grammar_ref}.
         \item \textbf{Compiling to \gls{bytecode}}: The \gls{AST} is traversed generating \gls{bytecode}. When the compilation is done, Python caches the bytecode into a folder named \texttt{\_\_pycache\_\_} and stores \texttt{.pyc} files, representing the \gls{bytecode} version of the same named file, so that in future executions, all the previous steps can be skipped.
     \end{enumerate}
-    \item \textbf{Phase 2: The "Backend"} 
+    \item \textbf{Phase 2: The `Backend'} 
     \begin{enumerate}
         \item \textbf{Loading the \gls{bytecode}} into the \gls{PVM}, either from the output of the compiler or from the \texttt{.pyc} file.
         \item \textbf{Python's Execution loop}: As we can see form \autoref{fig:python-loop}, the loop is extremely simple. It starts by fetching the next instruction, decoding that instruction, executing it and moving the pointer to the next instruction.
@@ -361,13 +361,13 @@ Research in this area has intensified recently, driven by the growing global imp
 
 One of the first papers published that sparked the flame in the energy efficiency aspect of software development is \textcite{energy-efficiency-rui-v1}, that analyzed the performance of twenty-seven languages in ten different programming problems. The problem I found out with these kinds of tests is that the algorithms usually are quite simple and do not represent real-world applications. 
 
-As \textcite{vankempen2025itseasygreenenergy} put it, "Despite the fact that these studies are statistical and only establish associations, they have nonetheless been broadly interpreted as establishing a causal relationship, that the choice of programming language has a direct effect on a system’s energy consumption. This misinterpretation stems in part from the work’s presentation, not only in ranking of languages by efficiency, but also from the specific claim that “it is almost always possible to choose the best language” when considering execution time and energy consumption \cite{ranking-rui-pereira}". Continuing with that idea, they also state that short benchmarks are not realistic of a real-life program being executed on a machine.
+As \textcite{vankempen2025itseasygreenenergy} put it, `Despite the fact that these studies are statistical and only establish associations, they have nonetheless been broadly interpreted as establishing a causal relationship, that the choice of programming language has a direct effect on a system’s energy consumption. This misinterpretation stems in part from the work’s presentation, not only in ranking of languages by efficiency, but also from the specific claim that “it is almost always possible to choose the best language” when considering execution time and energy consumption \cite{ranking-rui-pereira}'. Continuing with that idea, they also state that short benchmarks are not realistic of a real-life program being executed on a machine.
 
 The most important aspect of comparing two languages in a benchmark is ensuring that the algorithm used to solve the task is the same across the languages. Thus, the benchmarks that rely on libraries may skew the results by incorporating a language's optimized routines without the tester's knowledge. For instance, if the Python program uses \texttt{\gls{numpy}}, most of that library is implemented in C, or if we were to use \texttt{\gls{PyTorch}}, that library is mostly implemented in C++.
 
 Other studies such as \cite{ranking-rui-pereira}, specifically on their Table 3, on the top languages, for \texttt{binary-trees}, \texttt{fannkuch-redux}, and \texttt{fasta}, are C, C++, Rust and \Gls{fortran}, exchanging positions depending on the test. As we see from this list, these are all compiled languages, which is not a surprise, as \textcite{imact-compiler} comment on their paper comparing multiple compiler flags and other languages. 
 
-As \textcite{usenix-comparing-29x} state in their publication "studies have found that \gls{V8} and \gls{CPython} can be $8.01$x and $29.50$x slower on average that their C++ counterparts respectively" but they also state that, "choosing a language for your application simple because it is 'fast' is the ultimate form of premature optimization" \cite{python-is-slow}. They have also found out that with respect to a language with a runtime, it can provide a better performance and scalability. Although this might be counter-intuitive, Go's scheduler automatically maps user threads to kernel threads thus reducing the number of context switches.
+As \textcite{usenix-comparing-29x} state in their publication `studies have found that \gls{V8} and \gls{CPython} can be $8.01$x and $29.50$x slower on average that their C++ counterparts respectively" but they also state that, "choosing a language for your application simple because it is 'fast' is the ultimate form of premature optimization' \cite{python-is-slow}. They have also found out that with respect to a language with a runtime, it can provide a better performance and scalability. Although this might be counter-intuitive, Go's scheduler automatically maps user threads to kernel threads thus reducing the number of context switches.
 
 Another challenge this area faces is measuring the energy consumption. Some \glspl{cpu} have internal registers that can provide these measurements, like intel's \gls{RAPL}, but other machines might have those registers not accessible to the user or, in case of most \gls{ARM} processors, these registers do not exist. Another technique is using the measurement from an external power plug, like the TP-link HS110, used by \textcite{meassuring-jit} in their measurements. The problem with these kinds of measurement devices it that the entire system is measured instead of only the \gls{cpu} or the \gls{ram} and the precision it provides is much lower, being able to read only at a $1$ Hz frequency. 
 

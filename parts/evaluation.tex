@@ -6,12 +6,12 @@ This section reflects the results of all the testing performed with the differen
   \centering
   \begin{tabular}{lccccc}
     \toprule
-               & \gls{OS}       & C++                  & Go       & Python & PyPy \\
+               & \gls{OS}                         & C++                  & Go       & Python & PyPy \\
     \midrule
-    Server     & Ubuntu 24.04.2 &  GCC 14.2.0          & 1.24.2  & 3.12.3 & 7.3.19 \\
-    Laptop     & macOS 15.5     &  Apple Clang 17.0.0  & 1.24.2  & 3.13.5 & 7.3.19 \\
-    Raspberry  & Debian 12      &  GCC 14.2.0          & 1.24.4  & 3.13.5 & 7.3.19 \\
-    Desktop    & Ubuntu 24.04.2 &  GCC 13.3.0          & 1.24.5  & 3.13.5 & 7.3.19 \\
+    Server     & Ubuntu 24.04.2                   &  GCC 14.2.0          & 1.24.2  & 3.12.3 & 7.3.19 \\
+    Laptop     & macOS 15.5 \footnote{(Squioia)}  &  Apple Clang 17.0.0  & 1.24.2  & 3.13.5 & 7.3.19 \\
+    Raspberry  & Debian 12                        &  GCC 14.2.0          & 1.24.4  & 3.13.5 & 7.3.19 \\
+    Desktop    & Ubuntu 24.04.2                   &  GCC 13.3.0          & 1.24.5  & 3.13.5 & 7.3.19 \\
     \bottomrule
   \end{tabular}
   \caption[Language versions and compilers per platform]{Programming languages versions and operating systems used.}
@@ -20,7 +20,7 @@ This section reflects the results of all the testing performed with the differen
 
 \section{Measurement Platforms}
 
-The benchmark is ran 5 times to obtain a good average. \autoref{chap:appendix-number-benchmarks} shows the percentage change between different runs for different numbers of iterations, showing that 5 runs are enough to obtain a good average.
+The benchmark is run 5 times to obtain a good average. \autoref{chap:appendix-number-benchmarks} shows the percentage change between different runs for different numbers of iterations, showing that 5 runs are enough to obtain a good average.
 
 \subsection{Many-Core Platform}
 

@@ -70,7 +70,7 @@ To better describe these requirements, we will use the format described in \auto
 
 \section{Use Case}\label{sec:use-case}
 
-This section describes the use cases of the system. The use cases are represented in a diagram that shows the interactions between the user and the system. The `User' is considered to be a software engineer who will use the system to generate images using the ray-tracer engine to analyze the performance and energy efficiency of the different implementations.
+This section describes the use cases of the system. The use cases are represented in a diagram that shows the interactions between the user and the system. The `User' is considered to be a researcher who will use the system to generate images using the ray-tracer engine to analyze the performance and energy efficiency of the different implementations.
 
 
 \input{parts/diagrams/use-case-diagram.tex}
@@ -86,7 +86,7 @@ Use case template:
         \textbf{Name}               &  The name of the use case inside the diagram. \\
         \textbf{Actors}             &  User, System \\
         \textbf{Objective}          &  Brief description of the goal of the use case. \\
-        \textbf{Description}        &  Steps the actor has to entail. \\
+        \textbf{Description}        &  Steps the actor has to perform. \\
         \textbf{Preconditions}      &  The user has the system installed and configured. \\
         \textbf{Postconditions}     &  The benchmarks are executed, and the results are stored. \\
     \end{tabular}
@@ -98,7 +98,7 @@ Use case template:
     \item \textbf{Name}: the name of the use case inside the diagram.
     \item \textbf{Actors}: entities that interact with the system.
     \item \textbf{Objective}: brief description of the goal of the use case.
-    \item \textbf{Description}: steps the actor has to entail to achieve the objective of the use case.
+    \item \textbf{Description}: steps the actor has to perform to achieve the objective of the use case.
     \item \textbf{Preconditions}: conditions that must be met before the use case can be executed.
     \item \textbf{Postconditions}: conditions that must be met after the use case is executed.
 \end{itemize}
@@ -193,7 +193,7 @@ This section provides a traceability matrix that maps the requirements to the us
         \hline
         \textbf{Requirement} & \textbf{UC-01} & \textbf{UC-02} & \textbf{UC-03} & \textbf{UC-04} \\
         \hline
-        RF-01                &                &                &                &                \\
+        RF-01                &  \checkmark    &   \checkmark   &  \checkmark    &  \checkmark    \\
         \hline
         RF-02                &  \checkmark    &                &                &                \\
         \hline
@@ -215,7 +215,7 @@ This section provides a traceability matrix that maps the requirements to the us
         \hline
         RF-11                &  \checkmark    &                &                &                \\
         \hline
-        RF-12                &                &                &                &  \checkmark    \\
+        RF-12                &  \checkmark    &  \checkmark    &  \checkmark    &  \checkmark    \\
         \hline  
         RF-13                &  \checkmark    &                &                &                \\
         \hline 
