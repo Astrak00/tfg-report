@@ -22,61 +22,61 @@ As it can be inferred from the \autoref{fig:general_program_flow}, the program i
 
         \textbf{C++ Implementation}
         \dirtree{%
-        .1 ..
-        .2 .clang-format.
-        .2 .clang-tidy.
-        .2 CMakeLists.txt.
-        .2 src/.
-        .3 camera.hpp.
-        .3 color.hpp.
-        .3 hittable\_list.hpp.
-        .3 hittable.hpp.
-        .3 image.hpp.
-        .3 interval.hpp.
-        .3 main.cpp.
-        .3 material.hpp.
-        .3 ray.hpp.
-        .3 rtweekend.hpp.
-        .3 sphere.hpp.
-        .3 vec3.hpp.
+    .1 ..
+    .2 .clang-format.
+    .2 .clang-tidy.
+    .2 CMakeLists.txt.
+    .2 src/.
+    .3 camera.hpp.
+    .3 color.hpp.
+    .3 hittable\_list.hpp.
+    .3 hittable.hpp.
+    .3 image.hpp.
+    .3 interval.hpp.
+    .3 main.cpp.
+    .3 material.hpp.
+    .3 ray.hpp.
+    .3 rtweekend.hpp.
+    .3 sphere.hpp.
+    .3 vec3.hpp.
         }
         
         \columnbreak
         
         \textbf{Go Implementation}
         \dirtree{%
-        .1 ..
-        .2 camera.go.
-        .2 color.go.
-        .2 go.mod.
-        .2 hittable\_list.go.
-        .2 hittable.go.
-        .2 image.go.
-        .2 interval.go.
-        .2 main.go.
-        .2 material.go.
-        .2 ray-tracer.
-        .2 ray.go.
-        .2 rtweekend.go.
-        .2 sphere.go.
-        .2 vec3.go.
+    .1 ..
+    .2 camera.go.
+    .2 color.go.
+    .2 go.mod.
+    .2 hittable\_list.go.
+    .2 hittable.go.
+    .2 image.go.
+    .2 interval.go.
+    .2 main.go.
+    .2 material.go.
+    .2 ray-tracer.
+    .2 ray.go.
+    .2 rtweekend.go.
+    .2 sphere.go.
+    .2 vec3.go.
         }
         
         \columnbreak
         
         \textbf{Python Implementation}
         \dirtree{%
-        .1 ..
-        .2 camera.py.
-        .2 color.py.
-        .2 hittable.py.
-        .2 image.py.
-        .2 main.py.
-        .2 material.py.
-        .2 ray.py.
-        .2 tree-py.txt.
-        .2 utils.py.
-        .2 vec3.py.
+    .1 ..
+    .2 camera.py.
+    .2 color.py.
+    .2 hittable.py.
+    .2 image.py.
+    .2 main.py.
+    .2 material.py.
+    .2 ray.py.
+    .2 tree-py.txt.
+    .2 utils.py.
+    .2 vec3.py.
         }
         
     \end{multicols}
@@ -294,10 +294,10 @@ futures = [
 ]
 \end{lstlisting}
 
-This creates a job for every pixel, running the function \texttt{self.process\_row} inside the camera object, with parameters \texttt{j} and \texttt{world}.
+This creates a job for every pixel row, running the function \texttt{self.process\_row} inside the camera object, with parameters \texttt{j} and \texttt{world}.
 
-To retrieve the results, you can simply iterate the futures object, as if it was a list of objects:
-\begin{lstlisting}[language=Python, caption={Python retieving data from Process execution pool.}, label={lst:python_executor_retrieve}]
+To retrieve the results, you can simply iterate the futures object as if it were a list of results:
+\begin{lstlisting}[language=Python, caption={Python retrieving data from Process execution pool.}, label={lst:python_executor_retrieve}]
 for future in futures:
     j, row_pixels = future.result()
     processed_rows += 1
@@ -306,8 +306,7 @@ for future in futures:
         img.set_pixel(i, j, row_pixels[i])
 \end{lstlisting}
 
-
-There is an interesting aspect on why the difference between the loops in Python and the rest of the programming languages: Compiled languages iterate over every pixel, while Python iterates over every line, why is this? Because a copy of the entire Python environment has to be created and the overhead of copying so much information slows down the program extremely. We will see the impact of these changes in the evaluation section of the report.
+An interesting aspect that explains the difference between the loops in Python and the other languages is that compiled languages iterate over every pixel while Python iterates over every line. This happens because a copy of the Python environment must be created for some parallelization approaches, and the overhead of copying so much information slows the program significantly. We will see the impact of these changes in the evaluation section of the report.
 
 \section{Output}
 \label{sec:output}

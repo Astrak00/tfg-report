@@ -1,24 +1,24 @@
 \chapter{Conclusions}\label{chap:conclusions}
 
-After analyzing the data collected from the various experiments, I have clearly confirmed the election of a programming language does affect the performance and energy consumption. 
+After analyzing the data collected from the various experiments, I have confirmed that the choice of programming language affects performance and energy consumption.
 
 The program used to perform the benchmarks is an image renderer that processes each pixel of an image, casting multiple rays per pixel, and calculating the color of each one, using floating point operations, based on the intersection of the rays with the objects in the scene. This is a computationally intensive task that uses the \gls{ALU}, that can be parallelized.
 
-This benchmark has been performed on the same component, the \gls{cpu}, even when performing the benchmarks on different platforms, such as a desktop computer, a laptop, and a \gls{SBC}.
+This benchmark has been performed on the same component, the \gls{cpu}, even when running the benchmarks on different platforms such as a desktop computer, a laptop, and a \gls{SBC}.
 
-I found that the most efficient programming language, by a great margin is \gls{CPP}, outperforming in every case. The results indicate that it outperforms both in energy consumption and execution time when compared to Go, a compiled language, and interpretations of languages, such as \gls{CPython} or PyPy. This was to be expected, as \gls{CPP} is a compiled language and is known for its performance and energy efficiency, being an evolution of C.
+I found that the most efficient programming language by a large margin is \gls{CPP}; it outperforms the other languages in every case. The results indicate that it performs better both in energy consumption and execution time when compared to Go (a compiled language) and interpreted implementations such as \gls{CPython} or PyPy. This was to be expected, as \gls{CPP} is a compiled language known for its performance and energy efficiency.
 
 
 \section{Summary of Findings}
-The main findings of this project are that \gls{CPP} is always faster and less consuming than any other language tested for a given platform and a specific core configuration, being up to $440$ times faster and $300$ times more energy efficient on the Server than \gls{CPython}, and up to $180$ times faster and $150$ times more energy efficient on the Raspberry Pi (the two extremes of the platforms used in this project).
+The main findings of this project are that \gls{CPP} is consistently faster and more energy efficient than the other languages tested for a given platform and core configuration. Measured extremes include up to $440\times$ speedup and $300\times$ better energy efficiency on the Server versus \gls{CPython}, and up to $180\times$ speedup and $150\times$ better energy efficiency on the Raspberry Pi.
 
-An interesting result is that the lowest consuming board has been the Raspberry Pi, due to its design for IoT low-consumption devices. 
+An interesting result is that the lowest-consuming board was the Raspberry Pi, explained by its design for IoT and low-power operation.
 
-For each of the languages tested, the performance on up to 4 cores on each platform, limited to 60 seconds, is detailed on this graph:
+The detailed performance and energy consumption for each language (up to 4 cores, 60 s limit) are shown in the following graph:
 
 \input{parts/conclusions/grouped_graphs}
 
-In all cases, we can observe that the python results lie at a large distance from the other programming languages, arround $100$ times lower, indicating a significant performance gap. This is due to the fact that \gls{CPython} is an interpreted language, without \gls{jit} compilation, and with a \gls{GIL} that limits the performance. For the other programming languages, the order in which they appear in the graphs is the same in all cases, being C++ the fastest, then PyPy and finally Go. Except for three specific cases: the Raspberry Pi energy consumption and execution time at 4 cores, where Go is faster than PyPy in both scenarios (\autoref{fig:rpi-relative-combined}) and on the energy consumption of the \gls{ram} on the server benchmark, using 28 or more cores, where Go is more efficient than PyPy (\autoref{fig:log-server-energy-ram}).
+In all cases, we can observe that Python's results lie far behind the other programming languages, around $100$ times lower, indicating a significant performance gap. This is due to the fact that \gls{CPython} is an interpreted implementation without \gls{jit} compilation and with a \gls{GIL} that limits multi-threaded performance. For the other programming languages, the order in the graphs is consistent: C++ is the fastest, then PyPy, and then Go. Exceptions include the Raspberry Pi energy consumption and execution time at 4 cores, where Go is faster than PyPy in both scenarios (\autoref{fig:rpi-relative-combined}), and the energy consumption of the \gls{ram} on the server benchmark (28 or more cores), where Go is more efficient than PyPy (\autoref{fig:log-server-energy-ram}).
 
 With respect to the wattage consumption, we can see that the laptop, although it has its power limited to less than 60W, the wattage consumption does not increase when allowing the program the use of all 14 cores compared to only 10, which might be due to the fact that the platform has 10 High-Performance cores and 4 Efficiency cores. It is also interesting, with respect to this platform, that the energy consumption is always the same, on every core configuration, for any given programming language.
 
@@ -32,11 +32,11 @@ The most impressive and surprising result for many tests has been the performanc
 The implementation of multiple threads in the different programming languages was also a key factor in the performance of the programs. Depending on the technique used, parallelizing for each line or for each pixel, the performance deferred on the different languages. The easiest to implement, and the one that showed the best results, was C++, followed by Go, with its \glspl{goroutine} and \glspl{channel}. Python's default implementation, \gls{CPython}, does not support true multithreading due to the \gls{GIL}, which limits the performance of multi-threaded programs, thus, the need of the library multithreading is needed.
 
 
-It can be observed that as the program has access to more cores, both the the energy consumption and the execution time decrease. We can also see that when comparing multithreaded performace compared to single-threaded performance, the results tend to stabilize after 8/16 cores, depending on the platform, which follows Amdahl's law (\cite{amdahl:law}), which states that: 
+It can be observed that as the program has access to more cores, both the energy consumption and the execution time generally decrease. When comparing multithreaded performance to single-threaded performance, the results tend to stabilize after about 8-16 cores (depending on the platform), which follows Amdahl's law (\cite{amdahl:law}), which states:
 $$
 S = \frac{1}{(1 - P) + \frac{P}{N}}
 $$
-Where $S$ is the speedup, $P$ is the parallelizable portion of the program, and $N$ is the number of cores. This is due to the fact that the program has a portion that is not parallelizable (the creation of the world and instantiation of the speheres), and as the number of cores increases, the impact of this portion becomes more significant.
+Where $S$ is the speedup, $P$ is the parallelizable portion of the program, and $N$ is the number of cores. This is because the program has a serial portion (for example, creating the world and instantiating the spheres); as the number of cores increases, the impact of this serial portion becomes more significant.
 
 If I were to use libraries such as \Gls{numpy}, the performance of \gls{CPython} would be much better, as these libraries are optimized for performance and can take advantage of the underlying hardware. However, this would not be a fair comparison, as we would not be using pure Python code.
 
@@ -47,8 +47,7 @@ There is an interesting outlier in this analysis, which are the results of PyPy 
 
 In conclusion, if the program is to be run only a couple of times, and the performance is not a key factor, \gls{CPython} is a good enough choice because of its ease of use and development speed. However, if the program is to be run multiple times, or if performance is a key factor, \gls{CPP} is the best choice. Go is also a good choice, as it has a good balance between performance and ease of use, specially for hundreds of threads working light tasks, for example a web server. PyPy is a good choice for pure Python code, but it has limitations when it comes to libraries that use \glspl{c-extension}.
 
-This comes as an interesting conclusion, as when I think about a program or funciton that has to be run multiple times, I think about a web serverless function, for example AWS Lambda (\cite{aws:lambda}), but in the \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-samples.html}{examples} they provide, there is no mention either of PyPy or C++. The main focus they have is Node.js (a JavaScript runtime), Python, Ruby, Java, and, in fifth place, Go. This is an interesting choice, as it seems that the focus is on ease of use rather than performance. I think this is also due to the fact that these services charge by execution time, so the slower the execution time, the more they can charge the custumer. 
-
+This is an interesting conclusion: when I think about a program or function that must be run multiple times (for example, a serverless function such as AWS Lambda \cite{aws:lambda}), the provider examples (\href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-samples.html}{examples}) do not mention PyPy or C++. The main focus is Node.js (a JavaScript runtime), Python, Ruby, Java, and, in fifth place, Go. This choice seems to favour ease of use over raw performance. It may also be because these services charge by execution time, so slower execution can increase cost to the customer.
 
 \section{Directions for Future Research}
 Future research could focus on the following areas:
