@@ -282,6 +282,41 @@ performance of various programming languages using a set of benchmarks.
 
 #image("img/ray_tracer_explaination.png", width: 20em)
 
+== Paralelization techniques
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1cm,
+  [
+    === Line parallelization
+    Distributing each line of the image to a different thread.
+    #linebreak()
+    Used in C++ and Go implementations.
+  ],
+  [
+    #pause
+    === Pixel parallelization
+    Distributing each pixel of the image to a different thread.
+    #linebreak()
+    Used in Python implementation with multiprocessing.
+  ],
+)
+
+== Render Demo
+
+#link("https://youtu.be/2HfsBqe9KDc")[
+  Line-paralellization video recreation:
+  #image("img/ray_traced_balls.png", width: 20em)
+]
+
+== Tool Demo
+
+#link("https://youtu.be/Z3_cgH9QvIw")[
+  Tool demo video:
+  #image("img/terminal_execution.png", width: 20em)
+]
+
+
 = Results
 
 == Interactive viewer
