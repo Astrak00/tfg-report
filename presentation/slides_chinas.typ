@@ -4,6 +4,7 @@
 #import "@preview/codly-languages:0.1.1": *
 
 #show: codly-init.with()
+#codly(languages: codly-languages)
 
 #let show_qr = true
 
@@ -27,7 +28,7 @@
     secondary: rgb("#176B87"),
     tertiary: rgb("#448C95"),
     neutral: rgb("#303030"),
-    neutral-darkest: rgb("#0c2b5c"), // General colour of the bars,
+    neutral-darkest: rgb("#0d2b5a"), // General colour of the bars,
     accent: rgb("#FF4081"), // Accent color for highlights,
   ),
 )
@@ -50,7 +51,7 @@
   #line(length: 100%, stroke: 1pt + blue)
 
   #set align(center)
-  #text(size: 1.1em)[TFG Defense]
+  #text(size: 1.1em)[TFG Defense:]
   #text(style: "italic")[Grado en Ingeniería Informática] \
   #text(style: "italic")[Universidad Carlos III de Madrid]
 
@@ -94,123 +95,192 @@ programming languages.
   columns: (1fr, 1fr),
   gutter: 1em,
   [
-    #codly(languages: codly-languages)
+    #pause
     ```python
-    def main():
-        print("Hello, world!")
+    print("Hello, world!")
+    ```
+    #pause
+    ```cxx
+    #include <iostream>
+    int main() {
+      std::cout << "Hello, world!\n";
+      return 0;
+    }
     ```
 
     #pause
-    #codly(languages: codly-languages)
-    ```go
-    package main
-    import "fmt"
-    func main() {
-        fmt.Println("Hello, world!")
+    ```rust
+    pub fn main() {
+      println!("Hello, world!");
     }
     ```
   ],
   [
     #pause
-    #codly(languages: codly-languages)
-    ```cxx
-    #include <iostream>
-    int main() {
-        std::cout << "Hello, world!" << std::endl;
-        return 0;
+    ```go
+    package main
+    import "fmt"
+    func main() {
+      fmt.Println("Hello, world!")
     }
     ```
 
     #pause
-    #codly(languages: codly-languages)
-    ```rust
-    pub fn main() {
-        println!("Hello, world!");
-    }
+    ```ADA
+    with Ada.Text_IO; use Ada.Text_IO;
+    procedure Hello is
+    begin
+      Put_Line("Hello, world!");
+    end Hello;
     ```
   ],
 )
 
-== Characteristics of language
-Talk about the fact python is interpreted, PyPy uses a JIT, and that C++ and Go
-are compiled.
 
 = Languages
 
 == Language strengths comparison: TIOBE Index @tiobe-index
 
-#set text(size: 1em)
-#set align(left)
 
-- #emph[*C++*], Compiled, manual memory management, ~9.2%, Systems, games,
-  HPC#footnote[High Performance Computing], embedded, performance-critical
-  software.
-#pause
-- #emph[*Go*], Compiled, statically linked, ~2%, Microservices, networking,
-  tooling, cloud infrastructure.
-#pause
-- #emph[*Python*], ~35%, interpreted, used for Web, Data Science, AI/ML,
-  scripting, automation.
-#pause
-- #emph[*PyPy*], JIT#footnote[Just-In-Time] for Python — runtime compilation,
-  ~3%, Long-running Python apps, performance-sensitive Python code.
+== Language strengths comparison: TIOBE Index — C++
+// Slide 1: C++
+#slide[
+  #set text(size: 1em)
+  #set align(left)
+  #grid(
+    columns: (1fr, 1fr, 1fr),
+    gutter: 1cm,
+    [
+      #image("img/cpp_logo.png", width: 7em)
+    ],
+    [
+
+      #image("img/win11.png", width: 11em)
+
+      #grid(
+        columns: (1fr, 1fr, 1fr),
+        gutter: 6em,
+        [
+          #image("img/macos_logo.png", width: 5em)
+        ],
+        [
+          #image("img/tux.png", width: 5em)
+        ],
+      )
+    ],
+    [
+      - #emph[*C++*], Compiled, manual memory management, ~9.2%, Systems, games,
+        HPC#footnote[High Performance Computing], embedded, performance-critical
+        software.
+    ],
+  )
+]
+
+// Slide 2: Go
+== Language strengths comparison: TIOBE Index — Go
+#slide[
+  #set text(size: 1em)
+  #set align(left)
+  #grid(
+    columns: (1fr, 1fr, 1fr),
+    gutter: 1cm,
+    [
+      #image("img/go_logo.png", width: 10em)
+    ],
+    [
+      #image("img/go_example.png", width: 10em)
+    ],
+    [
+      - #emph[*Go*], Compiled, statically linked, ~2%, Microservices,
+        networking, tooling, cloud infrastructure.
+    ],
+  )
+]
+
+// Slide 3: Python
+== Language strengths comparison: TIOBE Index — Python
+
+#slide[
+  #set text(size: 1em)
+  #set align(left)
+  #grid(
+    columns: (1fr, 1fr, 1fr),
+    gutter: 1cm,
+    [
+      #image("img/python_logo.png", width: 10em)
+    ],
+    [
+      #image("img/python_example.png", width: 12em)
+    ],
+    [
+      - #emph[*Python*], ~35%, interpreted, used for Web, Data Science, AI/ML,
+        scripting, automation.
+    ],
+  )
+]
+
 
 == Why not this other language?
 
-Add here pictures of rust, ADA, JavaScript, Metal and CUDA and talk smth
+#grid(
+  columns: (1.1fr, 1fr, 1fr, 1.2fr, 1fr),
+  gutter: 1.5em,
+  [
+    #set text(size: 0.9em)
+    #image("img/rust_logo.png", width: 6em)
+    #pause
+    Simmilar to C++
+  ],
+  [
+    #pause
+    #image("img/ada_logo.png", width: 6em)
+    #set text(size: 0.9em)
+    #pause
+    Not as popular as others
+  ],
+  [
+    #pause
+    #image("img/js_logo.png", width: 6em)
+    #set text(size: 0.9em)
+    #pause
+    Not used for compute intensive tasks
+  ],
+  [
+    #pause
+    #image("img/metal_logo.png", width: 6em)
+    #set text(size: 0.9em)
+    #pause
+    GPU programming language & proprietary
+  ],
+  [
+    #pause
+    #image("img/cuda_logo.png", width: 6em)
+    #set text(size: 0.9em)
+    #pause
+    GPU programming language & C/C++ extension
+  ],
+)
 
 
 
 = Previous works
 
-== Simple matrix multiplication example, with toy programs
+== Example: Computer Language Benchmarks Game
+The Computer Language Benchmarks Game is a well-known project that compares the
+performance of various programming languages using a set of benchmarks.
 
-#slide[
-  #set text(size: 1.0em)
-  #let times = (
-    ("Python", 1.8111),
-    ("Go", 0.9111),
-    ("C++", 0.45111),
-    ("PyPy", 0.5111),
-  )
-  #let max_tupple = times.fold(times.first(), (a, b) => if a.at(1) > b.at(1) {
-    a
-  } else { b })
-  #let max = max_tupple.at(1)
-  #let width-scale = 12cm / max
+#image("img/benchmarks_game.png", width: 30em)
 
-  #for (name, t) in times [
-    *#name* #sym.arrow.r #t seconds \
-  ]
 
-  #set text(size: 1em)
-  #let bar-height = 1.2em
-  #let horiz-scale = 3.2cm / max
-
-  #set align(center)
-  #for (name, t) in times [
-    #box[
-      #set text(size: .95em, weight: "bold")
-      #name
-      #v(0.35em)
-      #box(
-        width: t * horiz-scale,
-        height: bar-height,
-        fill: blue.lighten(25%),
-        stroke: none,
-      )[]
-      #v(0.25em)
-      #set text(size: .9em)
-      #t s
-    ] #h(1.2cm)
-  ]
-
-]
 
 = Benchmark Design
 
-== Program declaration
-a
+
+#image("img/ray_traced_balls.png", width: 30em)
+
+== Ray Tracing
+
+#image("img/ray_tracer_explaination.png", width: 20em)
 
 = Results
 
@@ -256,6 +326,19 @@ This is otra cosa and includes a gif, but does not have movement when exported
 to pdf
 
 
+== What would happen if GPUs were used? - Metal
+#grid(
+  columns: (1fr, 1.3fr),
+  gutter: 4cm,
+  [
+    #image("img/m4_gpu.png", width: 17em)
+  ],
+  [
+    Execution time: 1.14 s
+    #linebreak()
+    Energy consumption: 6.362 J / 0.001767 Wh
+  ],
+)
 
 
 
@@ -264,19 +347,17 @@ to pdf
 ]
 
 
-= References
+// = References
 
-== References
+// == References
 
-#bibliography(title: none, "references.bib")
+// #bibliography(title: none, "references.bib")
 
 
-#show: appendix
+// #show: appendix
 
 // = Appendix
 
 // == Appendix
 
 // Please pay attention to the current slide number.
-
-== this
