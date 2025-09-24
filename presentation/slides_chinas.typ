@@ -86,8 +86,22 @@
 = Introduction
 
 == Motivation
-This is my motivation to discuss the performance and energy impact of
-programming languages.
+#list(
+  spacing: 0.7em,
+  marker: "→",
+  [
+    Discovering which programming language to use as a multi-language developer
+  ],
+)
+#pause
+#list(
+  spacing: 0.7em,
+  marker: "→",
+  [
+    Understanding the trade-offs between performance, energy consumption, and
+    ease of use
+  ],
+)
 
 == The problem with choosing a language
 
@@ -272,6 +286,43 @@ performance of various programming languages using a set of benchmarks.
 #image("img/benchmarks_game.png", width: 30em)
 
 
+== Example: N-body simulation
+N-body simulation is a classic problem in computational physics that involves
+simulating the motion of a group of particles under the influence of physical
+forces.
+
+#pause
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1em,
+  [
+    #image("img/fluid_sim.png", width: 10em)
+  ],
+  pause,
+
+  [
+    #image("img/n_body.png", width: 10em)
+  ],
+)
+
+== Other examples
+
+#list(
+  spacing: 0.7em,
+  marker: "→",
+  [
+    fannkuch-redux
+  ],
+  [
+    mandelbrot
+  ],
+  [
+    regex-dna
+  ],
+  [
+    spectral-norm
+  ],
+)
 
 = Benchmark Design
 
